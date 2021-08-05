@@ -8,6 +8,7 @@ import creator from './documents/creator'
 import article from './documents/article'
 import project from './documents/project'
 import category from './documents/category'
+import employer from './documents/employer'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -18,6 +19,7 @@ export default createSchema({
   types: schemaTypes.concat([
     category,
     creator,
+    employer,
     article,
     project,
   ]),

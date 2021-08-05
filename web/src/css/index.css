@@ -13,11 +13,16 @@
     @apply sticky;
     @apply bg-gray-800;
     @apply top-0;
+    @apply h-12;
     @apply w-full;
     @apply z-20;
     @apply shadow;
     @apply text-lg;
     @apply flex items-center;
+}
+
+.nav ul {
+    @apply ml-6;
 }
 
 .nav a {
@@ -292,4 +297,28 @@ h1 {
 }
 .article-body pre {
     @apply bg-gray-600 rounded;
+}
+
+.creator-details-banner {
+    @apply mt-8;
+    @apply grid grid-cols-1 sm:grid-cols-3 gap-4;
+    @apply bg-gray-200 p-6 rounded shadow z-10;
+}
+.creator-badge {
+    @apply inline-block text-center;
+}
+.creator-image {
+    @apply rounded-full h-40 w-40 md:h-80 md:w-80;
+    @apply mb-8;
+}
+.employer-image {
+    @apply h-16 w-40;
+    @apply mt-4;
+}
+.employment-dates {
+    @apply italic;
+}
+.creator-details-footer {
+    @apply mt-4;
+    @apply flex space-x-2;
 }

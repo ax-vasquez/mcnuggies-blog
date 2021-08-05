@@ -29,8 +29,8 @@ export const Navbar = () => (
         <ul className="inline-block">
             {Object.keys(OPTIONS).map(option => <li key={`nav-${OPTIONS[option].label.toLowerCase()}`}><Link to={OPTIONS[option].url}>{OPTIONS[option].label}</Link></li>)}
         </ul>
-        <div className="nav-search-icon">
+        {/* <div className="nav-search-icon">
             <BiSearchAlt size={30}/>
-        </div>
+        </div> */}
     </div>
 )
