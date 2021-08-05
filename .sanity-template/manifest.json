@@ -1,0 +1,39 @@
+{
+    "version": 1, 
+    "title": "Creators Blog",
+    "description": "Just another blog starter",
+    "deployment": {
+      "provider": "netlify",
+      "sites": [
+        {
+          "id": "studio",
+          "type": "studio",
+          "title": "Sanity Studio",
+          "description": "The Sanity Studio is where you edit and structure your content.",
+          "dir": "./studio-path",
+          "buildSettings": {
+            "base": "studio-path",
+            "dir": "dist",
+            "cmd": "npm run build"
+          }
+        },
+        {
+          "id": "site",
+          "type": "web",
+          "title": "Creators Blog",
+          "description": "Creators blog site powered by GatsbyJS",
+          "dir": "./site-directory",
+          "buildSettings": {
+            "base": "site-directory",
+            "dir": "./directory-to-deploy",
+            "cmd": "npm run build"
+          },
+          "previewMedia": {
+            "type": "image",
+            "src": "assets/Gatsby-Monogram.svg",
+            "alt": "Gatsby logo"
+          }
+        }
+      ]
+    }
+  }
