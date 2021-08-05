@@ -1,0 +1,41 @@
+{
+  "name": "creators-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CreatorsBlog",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@types/react-redux": "^7.1.18",
+    "autoprefixer": "^10.3.1",
+    "gatsby": "^3.10.1",
+    "gatsby-plugin-image": "^1.10.1",
+    "gatsby-plugin-postcss": "^4.10.0",
+    "gatsby-plugin-sharp": "^3.10.2",
+    "gatsby-source-filesystem": "^3.10.0",
+    "gatsby-source-sanity": "^7.0.7",
+    "gatsby-transformer-sharp": "^3.10.0",
+    "postcss": "^8.3.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "react-syntax-highlighter": "^15.4.4",
+    "redux": "^4.1.0",
+    "tailwindcss": "^2.2.7"
+  },
+  "devDependencies": {
+    "postcss-import": "^14.0.2",
+    "typescript": "^4.3.5"
+  }
+}
