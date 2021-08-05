@@ -1,3 +1,5 @@
+import { richTextFieldConfig } from '../../shared'
+
 export default {
     name: `creator`,
     title: `Creator`,
@@ -42,15 +44,8 @@ export default {
       {
         name: `bio`,
         title: `Bio`,
-        type: `array`,
-        of: [
-          {
-            title: `Block`,
-            type: `block`,
-            styles: [{ title: `Normal`, value: `normal` }],
-            lists: [],
-          },
-        ],
+        validation: Rule => Rule.required(),
+        ...richTextFieldConfig,
       },
     ],
     preview: {

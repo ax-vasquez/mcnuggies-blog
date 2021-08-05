@@ -68,7 +68,12 @@ const BlogPage = ({ data }) => {
     // TODO: Filter blog feed by text
     const filterText = useSelector((state: any) => state.blog.filterText)
     const articleEdges = data.allSanityArticle.edges
-    const categories = data.allSanityCategory.edges.map(edge => edge.node.title)
+    const categories = []
+    articleEdges.forEach(edge => {
+      if (!!edge.node.categories) {
+        edge.node.categories.forEach(cat => categories.push(cat.title))
+      }
+    })
 
     const filteredByText = filterText !== ``
     const filteredByCategory = activeCategories.length > 0
