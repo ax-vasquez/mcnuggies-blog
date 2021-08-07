@@ -9,6 +9,7 @@ import article from './documents/article'
 import project from './documents/project'
 import category from './documents/category'
 import employer from './documents/employer'
+import series from './documents/series'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -22,5 +23,6 @@ export default createSchema({
     employer,
     article,
     project,
+    series
   ]),
 })

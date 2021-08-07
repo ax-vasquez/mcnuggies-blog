@@ -59,11 +59,22 @@ export default {
         title: `Categories`,
         type: `array`,
         of: [{ type: `reference`, to: [{type: `category`}] }]
+      },
+      {
+        name: `series`,
+        title: `Series`,
+        type: `reference`,
+        to: [{type: `series`}]
+      },
+      {
+        name: `seriesIndex`,
+        title: `Series Index`,
+        type: `number`,
       }
     ],
     preview: {
       select: {
-        title: `name`,
+        title: `title`,
         media: `image`,
       },
     },
