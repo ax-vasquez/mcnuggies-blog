@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+h1, h2, h3 {
+    @apply mt-10;
+    @apply mb-4;
+}
+ul, ol {
+    @apply ml-2;
+    @apply pl-8;
+}
+li span {
+    @apply ml-2;
+}
+ul {
+    @apply list-disc;
+}
+ul ul {
+    list-style-type: circle;
+}
+ul ul ul {
+    list-style-type: square;
+}
+ol {
+    @apply list-decimal;
+}
+ol ol {
+    list-style-type: lower-roman;
+}
+li {
+    @apply my-1;
+}
+
 /* To make VS code play nice with the @apply directive, install the PostCSS plugin (https://marketplace.visualstudio.com/items?itemName=csstools.postcss) */
 .layout {
     @apply container;
@@ -33,7 +63,7 @@
 }
 
 .nav li {
-    @apply mx-2;
+    @apply mx-2 my-2;
     @apply inline-block;
 }
 
@@ -168,11 +198,13 @@ h1 {
     @apply block text-center;
 }
 .date-banner-text {
+    @apply my-1;
     @apply text-white;
     @apply text-xl italic font-extralight;
     @apply inline-block;
 }
 .date-banner-text-active {
+    @apply my-1;
     @apply text-purple-400;
     @apply text-xl italic font-extralight;
     @apply inline-block;
@@ -267,33 +299,14 @@ h1 {
     @apply text-purple-500 hover:text-purple-800;
 }
 .article-body blockquote {
-    @apply border-l-4 px-4 my-4 w-11/12 mx-auto;
+    @apply border-l-4 px-4 my-10 w-11/12 mx-auto;
     @apply border-gray-400;
     @apply bg-gray-100 text-gray-600 py-2;
     @apply italic;
 }
 .article-body code {
     @apply bg-gray-200;
-    @apply p-1 rounded;
-}
-.article-body ul, ol {
-    @apply list-inside;
-    @apply ml-2;
-}
-.article-body div > ul {
-    @apply list-disc;
-    @apply my-4;
-}
-.article-body div > ul > li > ul  {
-    list-style-type: circle;
-    @apply my-2 ml-4;
-}
-.article-body ul > li > ul {
-    list-style-type: square;
-    @apply my-2 ml-4 pl-2;
-}
-.article-body ol {
-    @apply list-decimal;
+    @apply p-0.5 rounded;
 }
 .article-body pre {
     @apply bg-gray-600 rounded;
