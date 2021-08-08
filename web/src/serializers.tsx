@@ -41,12 +41,8 @@ const serializers = {
             )
         }
     },
-    // list: {
-
-    // },
-    // listItem: {
-
-    // }
+    // Wrap each list item in a span - allows for greater control in styling
+    listItem: ({ children }) => <li><span>{children}</span></li>
 }
 
 export default serializers
