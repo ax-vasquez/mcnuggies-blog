@@ -20,7 +20,7 @@ export const ArticleRow = (
             </div>
             <div className="article-row-details">
                 <div className="article-row-title-line">
-                    <h3 className="inline-block">{title}</h3>
+                    <h3 className="inline-block my-auto">{title}</h3>
                     <p className="inline-block">{publishDate}</p>
                 </div>
                 <blockquote>
