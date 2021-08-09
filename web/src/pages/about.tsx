@@ -65,7 +65,7 @@ const AboutPage = ({ data }) => {
                 </div>
                 <div className="creator-details sm:col-span-2">
                     <div>
-                        <h1>{name}</h1>
+                        <h1 className="my-auto">{name}</h1>
                         <div className="employer-image">
                             <GatsbyImage image={mainEmployerImage} alt={`employer_image`} />
                         </div>
