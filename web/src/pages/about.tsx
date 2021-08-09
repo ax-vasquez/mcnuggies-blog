@@ -69,13 +69,13 @@ const AboutPage = ({ data }) => {
                         <div className="employer-image">
                             <GatsbyImage image={mainEmployerImage} alt={`employer_image`} />
                         </div>
-                        <div className="flex mb-4">
-                            <h2 className="font-bold">{jobTitle}</h2>
+                        <div className="flex mb-8">
+                            <h2 className="font-bold my-auto">{jobTitle}</h2>
                             <div className="employment-dates ml-4 italic text-gray-400">
                                 <p>{startDate} - {!!employed ? `Present` : endDate}</p>
                             </div>
                         </div>
-                        <div className="italic">
+                        <div className="italic mb-4">
                             <BlockContent className={`job-block-content`} blocks={_rawDescription} serializers={serializers}/>
                         </div>
                     </div>
