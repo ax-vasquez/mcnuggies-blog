@@ -7,6 +7,7 @@
     "gatsby"
   ],
   "scripts": {
+    "cy:open": "yarn run cypress open",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
@@ -35,6 +36,7 @@
     "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
+    "cypress": "^8.2.0",
     "postcss-import": "^14.0.2",
     "typescript": "^4.3.5"
   }

@@ -13,7 +13,7 @@ export const Tile = ({ src, imageData }: { src: string, imageData: IGatsbyImageD
     }
     const image = getImage(imageData)
     return (
-        <Link className="home-tile" to={route}>
+        <Link id={`home-banner-${label}`} className="home-tile" to={route}>
             <GatsbyImage image={image} alt={label} className="home-tile-image"/>
             <div className="home-tile-overlay">
                 <h2>{label}</h2>
