@@ -1,0 +1,11 @@
+{
+    "name": "creators-blog",
+    "version": "1.0.0",
+    "private": true,
+    "description": "sanity-template-creators-blog",
+    "scripts": {
+        "web": "cd web && yarn start",
+        "studio": "cd studio && sanity start"
+    }
+  }
+  

@@ -314,14 +314,14 @@ h1 {
 
 .creator-details-banner {
     @apply mt-8;
-    @apply grid grid-cols-1 sm:grid-cols-3 gap-4;
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-4;
     @apply bg-gray-200 p-6 rounded shadow z-10;
 }
 .creator-badge {
     @apply inline-block text-center;
 }
 .creator-image {
-    @apply rounded-full h-40 w-40 md:h-80 md:w-80;
+    @apply rounded-full h-80 w-80;
     @apply mb-8;
 }
 .employer-image {
@@ -330,6 +330,9 @@ h1 {
 }
 .employment-dates {
     @apply italic;
+}
+.creator-details {
+    @apply sm:col-span-2;
 }
 .creator-details-footer {
     @apply mt-4;
