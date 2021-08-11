@@ -61,9 +61,8 @@ const AboutPage = ({ data }) => {
             <div className="creator-details-banner">
                 <div className="creator-badge">
                     <GatsbyImage image={creatorImage} alt={`creator_image`} className="creator-image"/>
-                    
                 </div>
-                <div className="creator-details sm:col-span-2">
+                <div className="creator-details">
                     <div>
                         <h1 className="my-auto">{name}</h1>
                         <div className="employer-image">
@@ -97,7 +96,7 @@ const AboutPage = ({ data }) => {
                     </div>
                 </div>
             </div>
-            <div className="article-body">
+            <div className="article-body px-8">
                 <BlockContent className={`bio-block-content`} blocks={_rawBio} serializers={serializers}/>
             </div>
         </Layout>
