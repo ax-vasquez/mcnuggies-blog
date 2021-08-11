@@ -38,7 +38,7 @@ const IndexPage = ({ data }) => {
         <div className="hero-image-container">
           <GatsbyImage image={heroImage} alt="stars" className="hero-image"/>
           <div className="hero-image-overlay">
-            <h1 className="hero-image-text">Hello, I'm Armando</h1>
+            <h1 id="hero-image-text" className="hero-image-text">Hello, I'm Armando</h1>
           </div>
         </div>
         
