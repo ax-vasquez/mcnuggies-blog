@@ -24,7 +24,10 @@ export const ArticleRow = (
                     <p className="inline-block">{publishDate}</p>
                 </div>
                 <blockquote>
-                    <BlockContent blocks={previewText} serializers={serializers}/>
+                    <BlockContent blocks={previewText} serializers={{
+                        ...serializers,
+                        marks: {},
+                    }}/>
                 </blockquote>
             </div>
         </Link>
