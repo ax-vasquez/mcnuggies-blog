@@ -71,7 +71,9 @@ const BlogPage = ({ data }) => {
     const categories = []
     articleEdges.forEach(edge => {
       if (!!edge.node.categories) {
-        edge.node.categories.forEach(cat => categories.push(cat.title))
+        edge.node.categories.forEach(cat => {
+          if (!categories.includes(cat.title)) categories.push(cat.title)
+        })
       }
     })
 
