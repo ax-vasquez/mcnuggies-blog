@@ -1,4 +1,4 @@
-# Just another blog starter
+# [Just another blog starter](https://www.sanity.io/create?template=ax-vasquez/sanity-template-gatsby-creators-blog)
 
 This starter is intended to offer a richer starting point as a starter for those looking to create a personal dev or portfolio site.
 
