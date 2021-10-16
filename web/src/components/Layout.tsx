@@ -1,12 +1,13 @@
 import React from 'react'
-import { Navbar } from './Navbar'
+import SidebarContainer from './common/sidebar/SidebarContainer'
+import { SiteNav } from './SiteNav'
 
 export const Layout = (props) => {
     return (
         <div>
-            <Navbar />
+            <SiteNav />
             <div className="layout">
-                <main>
+                <main id="main">
                     {props.children}
                 </main>
             </div>

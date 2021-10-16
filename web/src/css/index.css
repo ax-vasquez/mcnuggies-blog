@@ -32,7 +32,6 @@ li {
     @apply my-1;
 }
 
-/* To make VS code play nice with the @apply directive, install the PostCSS plugin (https://marketplace.visualstudio.com/items?itemName=csstools.postcss) */
 .layout {
     @apply container;
     @apply mx-auto;
@@ -338,3 +337,48 @@ h1 {
     @apply mt-4;
     @apply flex space-x-2;
 }
+
+/* TODO: Refactor the CSS styles ABOVE this line - the stuff below should be in a better state (def not perfect, though)*/
+
+/* Main */
+main {
+    @apply w-auto;
+}
+
+/* Sidebar */
+.sidebar {
+    @apply h-full;
+    @apply w-0;
+    @apply fixed;
+    @apply z-10;
+    @apply top-0 left-0;
+    @apply overflow-clip overflow-hidden;
+    @apply bg-gray-600;
+}
+.sidebar-menu-btn {
+    @apply pl-2;
+    @apply text-white hover:text-gray-300;
+}
+.sidebar-body {
+    @apply pt-14;
+    @apply w-full;
+    @apply text-xl;
+}
+.sidebar-menu-option {
+    @apply py-2 mb-2;
+    @apply hover:bg-gray-800;
+    @apply text-gray-300;
+    @apply block;
+}
+.sidebar-menu-option-label {
+    @apply pl-4;
+    @apply hover:bg-gray-800;
+    @apply inline-block;
+    @apply align-middle;
+}
+.sidebar-menu-option-icon {
+    @apply pl-8;
+    @apply inline-block;
+    @apply align-middle;
+}
+
