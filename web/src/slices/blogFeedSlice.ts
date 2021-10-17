@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const blogFeedSlice = createSlice({
-    name: `blogFeed`,
+    name: 'blogFeed',
     initialState: {
         activeCategories: [],
-        filterText: ``
+        filterText: '',
     },
     reducers: {
         addActiveCategory(state, action: PayloadAction<string>) {
@@ -15,18 +15,18 @@ const blogFeedSlice = createSlice({
             state.activeCategories.splice(index, 1)
         },
         setFilterText(state, action: PayloadAction<string>) {
-            state.filterText = action.payload
+            state.filterText = action.payload // eslint-disable-line no-param-reassign
         },
         clearFilterText(state) {
-            state.filterText = ``
-        }
-    }
+            state.filterText = '' // eslint-disable-line no-param-reassign
+        },
+    },
 })
 
-export const { 
+export const {
     addActiveCategory,
     removeActiveCategory,
     setFilterText,
-    clearFilterText
- } = blogFeedSlice.actions
+    clearFilterText,
+} = blogFeedSlice.actions
 export default blogFeedSlice.reducer

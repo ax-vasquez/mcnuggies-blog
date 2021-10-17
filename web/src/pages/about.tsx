@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import BlockContent from '@sanity/block-content-to-react'
 import serializers from '../serializers'
-import { Layout } from "../components/Layout"
+import Layout from '../components/Layout'
 
 export const query = graphql`
 query{
@@ -38,13 +38,13 @@ query{
 }
 `
 
-const AboutPage = ({ data }) => {
+const AboutPage = ({ data }: { data: any }) => {
     const creatorImage = getImage(data.sanityCreator.image.asset.gatsbyImageData)
     const {
         name,
         linkedInUrl,
         githubUrl,
-        _rawBio
+        _rawBio,
     } = data.sanityCreator
     const mainEmployer = data.allSanityEmployer.edges[0].node
     const mainEmployerImage = getImage(mainEmployer.image.asset.gatsbyImageData)
@@ -52,52 +52,59 @@ const AboutPage = ({ data }) => {
         startDate,
         endDate,
         employed,
-        name: employerName,
         jobTitle,
-        _rawDescription
+        _rawDescription,
     } = mainEmployer
     return (
         <Layout>
             <div className="creator-details-banner">
                 <div className="creator-badge">
-                    <GatsbyImage image={creatorImage} alt={`creator_image`} className="creator-image"/>
+                    <GatsbyImage image={creatorImage} alt="creator_image" className="creator-image" />
                 </div>
                 <div className="creator-details">
                     <div>
                         <h1 className="my-auto">{name}</h1>
                         <div className="employer-image">
-                            <GatsbyImage image={mainEmployerImage} alt={`employer_image`} />
+                            <GatsbyImage image={mainEmployerImage} alt="employer_image" />
                         </div>
                         <div className="flex mb-8">
                             <h2 className="font-bold my-auto">{jobTitle}</h2>
                             <div className="employment-dates ml-4 italic text-gray-400">
-                                <p>{startDate} - {!!employed ? `Present` : endDate}</p>
+                                <p>
+                                    {startDate}
+                                    {' '}
+                                    -
+                                    {' '}
+                                    {employed ? 'Present' : endDate}
+                                </p>
                             </div>
                         </div>
                         <div className="italic mb-4">
-                            <BlockContent className={`job-block-content`} blocks={_rawDescription} serializers={serializers}/>
+                            <BlockContent className="job-block-content" blocks={_rawDescription} serializers={serializers} />
                         </div>
                     </div>
                     <div className="creator-details-footer">
-                        {!!linkedInUrl ? 
+                        {linkedInUrl ? (
                             <div>
-                                <a href={linkedInUrl} target="_blank" >
-                                    <img src={`/linkedin-logo.png`} className="h-8"/>
-                                </a> 
-                            </div>: 
-                            null}
-                        {!!githubUrl ? 
-                            <div>
-                                <a href={githubUrl} target="_blank" >
-                                    <img src={`/octocat-logo.png`} className="h-8"/>
+                                <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                                    <img src="/linkedin-logo.png" className="h-8" alt="linkedin-logo" />
                                 </a>
-                            </div> : 
-                            null}
+                            </div>
+                        )
+                            : null}
+                        {githubUrl ? (
+                            <div>
+                                <a href={githubUrl} target="_blank" rel="noreferrer">
+                                    <img src="/octocat-logo.png" className="h-8" alt="gh-logo" />
+                                </a>
+                            </div>
+                        )
+                            : null}
                     </div>
                 </div>
             </div>
             <div className="article-body px-8">
-                <BlockContent className={`bio-block-content`} blocks={_rawBio} serializers={serializers}/>
+                <BlockContent className="bio-block-content" blocks={_rawBio} serializers={serializers} />
             </div>
         </Layout>
     )

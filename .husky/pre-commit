@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "--- prevent .only() ---"
+
+yarn stop-only
+
+echo "--- linting ---"
+
+yarn lint-web

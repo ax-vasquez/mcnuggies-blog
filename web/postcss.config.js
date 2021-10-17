@@ -7,8 +7,8 @@ module.exports = () => ({
         tailwindcss: {
             configPath: './tailwind.config.js',
             cssPath: './src/css/index.css',
-            exposeConfig: false
+            exposeConfig: false,
         },
-        autoprefixer: {}
+        autoprefixer: {},
     },
 })

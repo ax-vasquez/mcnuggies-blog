@@ -1,7 +1,7 @@
 import React from 'react'
-import { Layout } from '../components/Layout'
-import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { graphql } from 'gatsby'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Layout from '../components/Layout'
 
 export const query = graphql`
 query{
@@ -14,14 +14,18 @@ query{
 }
 `
 
-const NotFoundPage = ({ data }) => {
+const NotFoundPage = ({ data }: { data: any }) => {
     const image = getImage(data.imageSharp)
     return (
         <Layout>
             <div className="not-found-image-container">
-                <GatsbyImage image={image} alt="404" className="not-found-image"/>
+                <GatsbyImage image={image} alt="404" className="not-found-image" />
                 <div className="not-found-image-overlay">
-                    <h2><code>404</code> - page not found</h2>
+                    <h2>
+                        <code>404</code>
+                        {' '}
+                        - page not found
+                    </h2>
                 </div>
             </div>
         </Layout>

@@ -1,16 +1,20 @@
 import React from 'react'
-import SidebarContainer from './common/sidebar/SidebarContainer'
-import { SiteNav } from './SiteNav'
+import SiteNav from './SiteNav'
 
-export const Layout = (props) => {
+const Layout = (props: { children: any }) => {
+
+    const { children } = props
+
     return (
         <div>
             <SiteNav />
             <div className="layout">
                 <main id="main">
-                    {props.children}
+                    {children}
                 </main>
             </div>
         </div>
-    )   
+    )
 }
+
+export default Layout

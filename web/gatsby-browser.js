@@ -1,8 +1,9 @@
-const React = require('react')
-require("./src/css/index.css")
-const {  
-    ReduxProvider
-  } = require('./wrap-root-element')
-  exports.wrapRootElement = (props) => {
+import React from 'react'
+import './src/css/index.css'
+import {
+    ReduxProvider,
+} from './wrap-root-element'
+
+export const wrapRootElement = (props) => {
     return <ReduxProvider {...props} />
-  }
+}
