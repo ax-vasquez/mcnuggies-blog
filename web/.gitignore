@@ -3,3 +3,6 @@ node_modules/
 public
 *.env
 report.*.json
+
+# Cypress-generated stuff
+*.mp4
