@@ -4,8 +4,9 @@
     "private": true,
     "description": "sanity-template-creators-blog",
     "scripts": {
-        "web": "cd web && yarn && yarn start",
-        "studio": "cd studio && sanity start"
+        "cy:open": "cd web && yarn cy:open",
+        "studio": "cd studio && sanity start",
+        "web": "cd web && yarn && yarn start"
     }
   }
   
