@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "cy:open": "yarn run cypress open",
+    "cy:run": "yarn run cypress run",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",

@@ -2,7 +2,7 @@
 describe(`SiteNav`, function () {
     context(`basic functionality`, function () {
         beforeEach(() => {
-            cy.visit(`http://localhost:8000/`)
+            cy.visit(`http://localhost:9000/`)
         })
         it(`can open and close the side bar`, function () {
             cy.get('[data-cy="sidebar"]').should('not.be.visible')
@@ -21,7 +21,7 @@ describe(`SiteNav`, function () {
     context(`root page navigation`, function () {
         context(`from /`, function () {
             beforeEach(() => {
-                cy.visit(`http://localhost:8000/`)
+                cy.visit(`http://localhost:9000/`)
                 cy.get('[data-cy="sidebar-btn"]').should('exist').click()
             })
             it(`can navigate to the about page`, function () {
@@ -35,12 +35,12 @@ describe(`SiteNav`, function () {
         })
         context(`from /blog`, function () {
             beforeEach(() => {
-                cy.visit(`http://localhost:8000/blog`)
+                cy.visit(`http://localhost:9000/blog`)
                 cy.get('[data-cy="sidebar-btn"]').should('exist').click()
             })
             it(`can navigate to the home page`, function () {
                 cy.get('[data-cy="sidebar-menu-option-home"]').click()
-                cy.url().should(`eq`, `http://localhost:8000/`)
+                cy.url().should(`eq`, `http://localhost:9000/`)
             })
             it(`can navigate to the about page`, function () {
                 cy.get('[data-cy="sidebar-menu-option-about"]').click()
@@ -49,12 +49,12 @@ describe(`SiteNav`, function () {
         })
         context(`from /about`, function () {
             beforeEach(() => {
-                cy.visit(`http://localhost:8000/about`)
+                cy.visit(`http://localhost:9000/about`)
                 cy.get('[data-cy="sidebar-btn"]').should('exist').click()
             })
             it(`can navigate to the home page`, function () {
                 cy.get('[data-cy="sidebar-menu-option-home"]').click()
-                cy.url().should(`eq`, `http://localhost:8000/`)
+                cy.url().should(`eq`, `http://localhost:9000/`)
             })
             it(`can navigate to the blog page`, function () {
                 cy.get('[data-cy="sidebar-menu-option-blog"]').click()
