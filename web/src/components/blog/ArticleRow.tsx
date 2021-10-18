@@ -4,17 +4,20 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import serializers from '../../serializers'
 
-export const ArticleRow = (
-    { title, publishDate, image, previewText, slug }: 
-    { 
-        title: string, 
-        publishDate: string, 
-        image: IGatsbyImageData, 
+const ArticleRow = (
+    {
+        title, publishDate, image, previewText, slug,
+    }:
+    {
+        title: string,
+        publishDate: string,
+        image: IGatsbyImageData,
         previewText: string,
         slug: string
-     }) => {
+    },
+) => {
     return (
-        <Link  to={slug} className="article-row">
+        <Link to={slug} className="article-row">
             <div className="article-row-thumbnail-container">
                 <GatsbyImage image={image} alt={`${title}_thumb`} className="article-row-thumbnail" />
             </div>
@@ -24,12 +27,17 @@ export const ArticleRow = (
                     <p className="inline-block">{publishDate}</p>
                 </div>
                 <blockquote>
-                    <BlockContent blocks={previewText} serializers={{
-                        ...serializers,
-                        marks: {},
-                    }}/>
+                    <BlockContent
+                      blocks={previewText}
+                      serializers={{
+                            ...serializers,
+                            marks: {},
+                        }}
+                    />
                 </blockquote>
             </div>
         </Link>
     )
 }
+
+export default ArticleRow

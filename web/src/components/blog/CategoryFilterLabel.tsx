@@ -4,23 +4,25 @@ import { addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSl
 
 /**
  * Category label
- * 
+ *
  * This component is used in the Blog feed filter and on the article rows.
- * 
+ *
  * @param isActive  indicates whether or not to use the "active" version, which is the default for most cases
  *                  except in the blog feed filter, where they are inactive until the user toggles them.
- * @returns 
+ * @returns
  */
-export const CategoryFilterLabel = ({ 
-    label, 
-}: { 
-    label: string, 
+const CategoryFilterLabel = ({
+    label,
+}: {
+    label: string,
 }) => {
     const activeCategories = useSelector((state: any) => state.blog.activeCategories)
     const dispatch = useDispatch()
     return (
-        <button className={activeCategories.includes(label) ? `category-label` : `category-label-inactive` }
-            onClick={() => {
+        <button
+          type="button"
+          className={activeCategories.includes(label) ? 'category-label' : 'category-label-inactive'}
+          onClick={() => {
                 if (activeCategories.includes(label)) {
                     dispatch(removeActiveCategory(label))
                 } else {
@@ -32,3 +34,5 @@ export const CategoryFilterLabel = ({
         </button>
     )
 }
+
+export default CategoryFilterLabel

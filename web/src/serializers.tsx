@@ -8,19 +8,20 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 const serializers = {
     container: ({ children }) => {
         return (
-            children.map(block => {
+            children.map((block) => {
                 return (
-                <div 
-                    key={`${block.key}`}
-                    className="article-block"
-                >
+                    <div
+                      key={`${block.key}`}
+                      className="article-block"
+                    >
                         {block}
-                </div>)
+                    </div>
+                )
             })
         )
     },
     types: {
-        code: props => {
+        code: (props) => {
             const { language, code } = props.node
             return (
                 <SyntaxHighlighter language={language}>{code}</SyntaxHighlighter>
@@ -32,17 +33,17 @@ const serializers = {
         internalLink: ({ mark, children }) => {
             const { slug } = mark.reference
             return <Link to={`/blog/${slug.current}`}>{children}</Link>
-          },
+        },
         link: ({ mark, children }) => {
             return (
-                <a href={mark.url} target="_blank">
+                <a href={mark.url} target="_blank" rel="noreferrer">
                     {children}
                 </a>
             )
-        }
+        },
     },
     // Wrap each list item in a span - allows for greater control in styling
-    listItem: ({ children }) => <li><span>{children}</span></li>
+    listItem: ({ children }) => <li><span>{children}</span></li>,
 }
 
 export default serializers

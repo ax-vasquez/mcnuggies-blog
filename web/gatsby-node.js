@@ -3,7 +3,7 @@ const path = require('path')
 exports.createPages = async ({
     graphql,
     actions,
-    reporter
+    reporter,
 }) => {
     const { createPage } = actions
 
@@ -22,19 +22,19 @@ exports.createPages = async ({
     `)
 
     if (result.errors) {
-        reporter.panicOnBuild(`Error while running GraphQL query to source blog article pages`)
+        reporter.panicOnBuild('Error while running GraphQL query to source blog article pages')
         return
     }
 
-    const blogArticleTemplate = path.resolve(`src/templates/blogArticle.tsx`)
+    const blogArticleTemplate = path.resolve('src/templates/blogArticle.tsx')
     result.data.allSanityArticle.edges.forEach(({ node }) => {
         const slug = node.slug.current
         createPage({
             path: `blog/${slug}`,
             component: blogArticleTemplate,
             context: {
-                slug: slug
-            }
+                slug,
+            },
         })
     })
 }
