@@ -1,9 +1,13 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-    purge: [
-        './src/**/*.tsx',
-      ],
+    purge: {
+        // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
+        enabled: true,
+        content: [
+          'src/**/*.tsx',
+        ]
+    },
     theme: {
     // see https://tailwindcss.com/docs/theme#screens
     // screens: {
