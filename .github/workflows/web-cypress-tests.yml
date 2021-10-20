@@ -15,3 +15,4 @@ jobs:
         env:
           SANITY_PROJECT: ${{ secrets.SANITY_PROJECT }}
           SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          NODE_ENV: 'production'
