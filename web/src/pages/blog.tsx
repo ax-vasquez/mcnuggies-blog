@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
 import FilterModal from '../components/blog/FilterModal'
+import { SanityArticle, SanityCategory } from '../../graphql-types'
 
 export const query = graphql`
 query{
@@ -60,7 +61,22 @@ const getFormattedBannerDateString = (rawDateString: string) => {
     return `${MONTHS[month].toUpperCase()} - ${year}`
 }
 
-const BlogPage = ({ data }: { data: any }) => {
+type SanityArticleNode = {
+    node: SanityArticle
+}
+
+type SanityCategoryNode = {
+    node: SanityCategory
+}
+
+const BlogPage = ({ data }: { data: {
+    allSanityArticle: {
+        edges: SanityArticleNode[]
+    }
+    allSanityCategory: {
+        edges: SanityCategoryNode[]
+    }
+} }) => {
     const [showModal, setShowModal] = useState(false)
     // TODO: Filter blog feed by categories
     const activeCategories = useSelector((state: any) => state.blog.activeCategories)

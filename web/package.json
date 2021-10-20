@@ -22,6 +22,7 @@
     "@types/react-redux": "^7.1.18",
     "autoprefixer": "^10.3.1",
     "gatsby": "^3.10.1",
+    "gatsby-plugin-graphql-codegen": "^3.0.0",
     "gatsby-plugin-image": "^1.10.1",
     "gatsby-plugin-postcss": "^4.10.0",
     "gatsby-plugin-sharp": "^3.10.2",

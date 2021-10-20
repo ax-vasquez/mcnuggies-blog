@@ -16,3 +16,6 @@ web/**/*.js
 
 # Always exclude node_modules (everywhere) from linting; it's pointless since it's not your code
 **/node_modules/*
+
+# exclude generated types
+graphql-types.ts

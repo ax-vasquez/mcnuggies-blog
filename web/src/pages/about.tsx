@@ -4,6 +4,7 @@ import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import BlockContent from '@sanity/block-content-to-react'
 import serializers from '../serializers'
 import Layout from '../components/Layout'
+import { SanityCreator, SanityEmployer } from '../../graphql-types'
 
 export const query = graphql`
 query{
@@ -38,7 +39,16 @@ query{
 }
 `
 
-const AboutPage = ({ data }: { data: any }) => {
+type SanityEmployerNode = {
+    node: SanityEmployer
+}
+
+const AboutPage = ({ data }: { data: {
+    sanityCreator: SanityCreator,
+    allSanityEmployer: {
+        edges: SanityEmployerNode[]
+    }
+} }) => {
     const creatorImage = getImage(data.sanityCreator.image.asset.gatsbyImageData)
     const {
         name,

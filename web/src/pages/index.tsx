@@ -3,6 +3,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
+import { ImageSharp } from '../../graphql-types'
 
 export const query = graphql`
 query{
@@ -25,7 +26,16 @@ query{
 }
 `
 
-const IndexPage = ({ data }: { data: any }) => {
+type ImageSharpNode = {
+  node: ImageSharp
+}
+
+const IndexPage = ({ data }: { data: {
+  imageSharp: any,
+  allImageSharp: {
+    edges: ImageSharpNode[]
+  }
+} }) => {
     const heroImage = getImage(data.imageSharp)
     const tileImagesData = data.allImageSharp.edges.map((tileImageData) => {
         return {

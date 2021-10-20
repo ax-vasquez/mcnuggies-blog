@@ -14,7 +14,10 @@ query{
 }
 `
 
-const NotFoundPage = ({ data }: { data: any }) => {
+const NotFoundPage = ({ data }: { data: {
+    // TODO: find out what the type should be here
+    imageSharp: any
+} }) => {
     const image = getImage(data.imageSharp)
     return (
         <Layout>
