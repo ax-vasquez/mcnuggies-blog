@@ -5,6 +5,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
 import EmbeddedCategoryFilterLabel from '../components/blog/EmbeddedCategoryLabel'
+import { SanityArticle } from '../../graphql-types'
 
 export const query = graphql`
 query($slug: String!){
@@ -24,7 +25,9 @@ query($slug: String!){
 }
 `
 
-const BlogArticle = ({ data }: { data: any }) => {
+const BlogArticle = ({ data }: { data: {
+    sanityArticle: SanityArticle
+} }) => {
     const {
         title,
         image,

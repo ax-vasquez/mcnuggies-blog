@@ -7,6 +7,7 @@ module.exports = {
         title: 'CreatorsBlog',
     },
     plugins: [
+        `gatsby-plugin-graphql-codegen`,
         {
             resolve: 'gatsby-source-sanity',
             options: {
