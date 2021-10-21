@@ -9,14 +9,13 @@ jobs:
       # since there is currently no way to clear the cache between runs
       # see: https://github.community/t/how-to-clear-cache-in-github-actions/129038
       - name: Cache multiple paths
-          uses: actions/cache@v2
-          with:
-            path: |
-              ~/cache
-              !~/cache/exclude
-              **/node_modules
-              
-            key: ${{ runner.os }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/lockfiles') }}
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: ${{ runner.os }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/lockfiles') }}
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
