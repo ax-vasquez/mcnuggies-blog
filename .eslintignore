@@ -12,6 +12,7 @@ web/**/*.js
 *.md
 *.jpg
 *.jpeg
+*.mp4
 *.css
 
 # Always exclude node_modules (everywhere) from linting; it's pointless since it's not your code
