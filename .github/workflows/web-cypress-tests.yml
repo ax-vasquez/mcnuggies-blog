@@ -14,7 +14,7 @@ jobs:
           path: |
             ~/cache
             !~/cache/exclude
-            **/node_modules
+            /usr/local/bin/yarn
           key: ${{ runner.os }}-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/lockfiles') }}
       - name: Cypress run
         uses: cypress-io/github-action@v2
