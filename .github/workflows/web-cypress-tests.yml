@@ -8,7 +8,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          start: yarn start
+          start: yarn test:server
           working-directory: web
         # see https://docs.github.com/en/actions/security-guides/encrypted-secrets
         env:

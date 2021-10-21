@@ -1,4 +1,8 @@
 describe('SiteNav', () => {
+    beforeEach(() => {
+        // TODO: See why this wait is necessary to prevent test flaking
+        cy.wait(500)
+    })
     context('basic functionality', () => {
         beforeEach(() => {
             cy.visit('http://localhost:8000/')

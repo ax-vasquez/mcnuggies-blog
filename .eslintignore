@@ -12,6 +12,7 @@ web/**/*.js
 *.md
 *.jpg
 *.jpeg
+*.png
 *.mp4
 *.css
 

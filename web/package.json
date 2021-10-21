@@ -13,7 +13,9 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "test:server": "start-server-and-test develop http://localhost:8000",
+    "test:e2e": "yarn test:server cy:open"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "cypress": "^8.2.0",
     "postcss-import": "^14.0.2",
+    "start-server-and-test": "^1.14.0",
     "typescript": "^4.3.5"
   }
 }
