@@ -13,9 +13,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test:server": "start-server-and-test develop http://localhost:8000",
-    "test:e2e": "yarn test:server cy:open"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
@@ -37,11 +35,10 @@
     "react-redux": "^7.2.4",
     "react-syntax-highlighter": "^15.4.4",
     "redux": "^4.1.0",
-    "tailwindcss": "^2.2.7",
-    "start-server-and-test": "^1.14.0",
-    "cypress": "^8.2.0"
+    "tailwindcss": "^2.2.7"
   },
   "devDependencies": {
+    "cypress": "^8.2.0",
     "postcss-import": "^14.0.2",
     "typescript": "^4.3.5"
   }
