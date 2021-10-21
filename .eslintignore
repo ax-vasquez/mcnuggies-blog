@@ -15,6 +15,8 @@ web/**/*.js
 *.png
 *.mp4
 *.css
+web/cypress/screenshots
+web/cypress/videos
 
 # Always exclude node_modules (everywhere) from linting; it's pointless since it's not your code
 **/node_modules/*
