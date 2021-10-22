@@ -5,12 +5,15 @@
     "description": "sanity-template-creators-blog",
     "scripts": {
         "cy:open": "cd web && yarn cy:open",
+        "cy:run": "cd web && yarn cy:run",
         "lint-web-dry-run": "yarn run eslint 'web/**/*' --ext .ts,.tsx",
         "lint-web": "yarn run eslint 'web/**/*' --ext .ts,.tsx --fix",
         "prepare": "husky install",
         "stop-only": "stop-only --folder web/cypress",
         "studio": "cd studio && sanity start",
-        "web": "cd web && yarn && yarn start"
+        "web": "cd web && yarn && yarn start",
+        "build-web": "cd web && yarn && yarn build",
+        "serve-web": "cd web && yarn serve"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.0.0",
