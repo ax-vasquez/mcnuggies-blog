@@ -192,7 +192,6 @@ h1 {
     @apply bg-gray-800;
     @apply my-4;
     @apply sticky top-12;
-    @apply z-10;
     @apply w-full;
     @apply block text-center;
 }
@@ -348,12 +347,13 @@ main {
 /* Sidebar */
 .sidebar {
     @apply h-full;
-    @apply w-0;
+    @apply w-80;
     @apply fixed;
     @apply z-10;
     @apply top-0 left-0;
     @apply overflow-clip overflow-hidden;
     @apply bg-gray-600;
+    @apply transition;
 }
 .sidebar-menu-btn {
     @apply pl-2;
@@ -377,7 +377,7 @@ main {
     @apply align-middle;
 }
 .sidebar-menu-option-icon {
-    @apply pl-8;
+    @apply pl-2;
     @apply inline-block;
     @apply align-middle;
 }
