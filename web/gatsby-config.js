@@ -15,7 +15,12 @@ module.exports = {
                 dataset: process.env.SANITY_DATASET,
             },
         },
-        'gatsby-plugin-postcss',
+        {
+            resolve: `gatsby-plugin-postcss`,
+            options: {
+                postCssPlugins: [require("tailwindcss")],
+            },
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {

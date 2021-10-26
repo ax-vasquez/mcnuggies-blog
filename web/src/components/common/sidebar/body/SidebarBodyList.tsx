@@ -2,26 +2,47 @@ import { Link } from 'gatsby'
 import React from 'react'
 import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
 import { SidebarMenuOptions } from '../../../../types'
+import { Location, LocationContext } from '@reach/router';
 
 const SidebarBodyList = ({
     options,
 }: {
     options: SidebarMenuOptions
 }) => {
+
+    const isOnRootPage = (label: string, locationProps: LocationContext) => {
+        const { location } = locationProps
+        switch(label) {
+            case 'Home': {
+                return location.pathname === '/'
+            }
+            case 'About':
+            case 'Blog': {
+                return location.pathname.includes(label.toLowerCase())
+            }
+        }
+        
+    }
+
     return (
-        <div>
-            {Object.keys(options).map((key) => {
-                const { url, label } = options[key]
-                return (
-                    <Link key={key} to={url} className="sidebar-menu-option" data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
-                        <div className="sidebar-menu-option-icon">
-                            <BiRightArrow />
-                        </div>
-                        <div className="sidebar-menu-option-label">{label}</div>
-                    </Link>
-                )
-            })}
-        </div>
+        <Location>
+            {locationProps => (
+                <div>
+                    {Object.keys(options).map((key) => {
+                        const { url, label } = options[key]
+                        const isOnCurrentPage = isOnRootPage(label, locationProps)
+                        return (
+                            <Link key={key} to={url} className="sidebar-menu-option" data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
+                                <div className="sidebar-menu-option-icon">
+                                    <BiRightArrow className={ isOnCurrentPage ? 'root-menu-item-icon-active' : null }/>
+                                </div>
+                                <div className="sidebar-menu-option-label">{label}</div>
+                            </Link>
+                        )
+                    })}
+                </div>
+            )}
+        </Location>
     )
 }
 

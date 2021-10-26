@@ -353,7 +353,7 @@ main {
     @apply top-0 left-0;
     @apply overflow-clip overflow-hidden;
     @apply bg-gray-600;
-    @apply transition;
+    @apply transition ease-out;
 }
 .sidebar-menu-btn {
     @apply pl-2;
@@ -380,5 +380,27 @@ main {
     @apply pl-2;
     @apply inline-block;
     @apply align-middle;
+}
+
+/* 
+    N.B.
+    We are *supposed* to be able to define custom animations within the tailwind.config.js file. However, Gatsby doesn't seem to
+    recognize the custom classes. It's possible there may be further configuration I need to add to fix this, or that there is
+    simply a problem in the Gatsby process that prevents it from working with custom animations.
+*/
+@keyframes bounce-x {
+    0%, 100% {
+        transform: translateX(25%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        
+    }
+    50% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+}
+
+.root-menu-item-icon-active {
+    animation: bounce-x 1s infinite;
 }
 
