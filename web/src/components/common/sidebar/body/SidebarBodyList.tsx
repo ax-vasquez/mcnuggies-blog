@@ -10,7 +10,7 @@ const SidebarBodyList = ({
     options: SidebarMenuOptions
 }) => {
 
-    const isOnRootPage = (label: string, locationProps: LocationContext) => {
+    const isActiveItem = (label: string, locationProps: LocationContext) => {
         const { location } = locationProps
         switch(label) {
             case 'Home': {
@@ -30,11 +30,11 @@ const SidebarBodyList = ({
                 <div>
                     {Object.keys(options).map((key) => {
                         const { url, label } = options[key]
-                        const isOnCurrentPage = isOnRootPage(label, locationProps)
+                        const shouldBounce = isActiveItem(label, locationProps)
                         return (
                             <Link key={key} to={url} className="sidebar-menu-option" data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
                                 <div className="sidebar-menu-option-icon">
-                                    <BiRightArrow className={ isOnCurrentPage ? 'root-menu-item-icon-active' : null }/>
+                                    <BiRightArrow className={ shouldBounce ? 'root-menu-item-icon-active' : null }/>
                                 </div>
                                 <div className="sidebar-menu-option-label">{label}</div>
                             </Link>
