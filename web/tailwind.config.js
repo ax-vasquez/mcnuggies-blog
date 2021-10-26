@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-    // purge: ["./src/**/*.{js,jsx,ts,tsx}"],
+    purge: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
     // see https://tailwindcss.com/docs/theme#screens
     // screens: {
@@ -26,6 +26,22 @@ module.exports = {
             borderRadius: {
                 '4xl': '2rem',
             },
+            // TODO: Investigate why this doesn't work within Gatsby
+            // keyframes: {
+            //     'bounce-x': {
+            //         '0%, 100%': {
+            //             transform: 'translateX(-10em)',
+            //             'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)',
+            //         },
+            //         '50%': {
+            //             transform: 'translateX(0)',
+            //             'animation-timing-function': 'cubic-bezier(0, 0, 0.2, 1)',
+            //         },
+            //     }
+            // },
+            // animation: {
+            //     'bounce-x': 'bounce-x 1s infinte'
+            // },
         },
         // see https://tailwindcss.com/docs/theme#spacing
         spacing: {},
