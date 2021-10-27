@@ -14,7 +14,7 @@ module.exports = {
     // see https://tailwindcss.com/docs/theme#colors
         colors: {
             gray: colors.coolGray,
-            blue: colors.lightBlue,
+            blue: colors.sky,
             red: colors.rose,
             pink: colors.fuchsia,
         },

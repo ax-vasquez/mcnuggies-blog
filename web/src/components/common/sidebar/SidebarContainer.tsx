@@ -1,8 +1,9 @@
 import React from 'react'
-import { SidebarMenuOptions } from '../../../types'
-import SidebarBodyList from './body/SidebarBodyList'
-import SidebarBodyText from './body/SidebarBodyText'
+import { SidebarMenuOptions } from '../../../types/sidebar'
+import SidebarBodyList from './SidebarBodyList'
+import SidebarBodyText from './SidebarBodyText'
 import SidebarBody from './SidebarBody'
+import SidebarFooter from './SidebarFooter'
 
 /**
  * Container component for the sidebar
@@ -25,6 +26,7 @@ const SidebarContainer = ({
             <SidebarBody>
                 <SidebarBodyText />
                 <SidebarBodyList options={options} />
+                <SidebarFooter />
             </SidebarBody>
         </div>
     )

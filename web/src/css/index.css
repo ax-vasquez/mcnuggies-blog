@@ -377,9 +377,17 @@ main {
     @apply align-middle;
 }
 .sidebar-menu-option-icon {
-    @apply pl-2;
+    @apply pl-6;
     @apply inline-block;
     @apply align-middle;
+}
+
+.sidebar-footer {
+    @apply text-sm;
+    @apply absolute;
+    @apply left-1/2;
+    @apply bottom-0;
+    transform: translate(-50% , -50%);
 }
 
 /* 
@@ -401,6 +409,6 @@ main {
 }
 
 .root-menu-item-icon-active {
-    animation: bounce-x 1s infinite;
+    animation: bounce-x .75s infinite;
 }
 

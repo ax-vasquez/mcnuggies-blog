@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
-import { SidebarMenuOptions } from '../../../../types'
+import { SidebarMenuOptions } from '../../../types/sidebar'
 import { Location, LocationContext } from '@reach/router';
 
 const SidebarBodyList = ({
