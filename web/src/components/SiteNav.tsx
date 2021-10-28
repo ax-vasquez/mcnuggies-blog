@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { BiMenu } from '@react-icons/all-files/bi/BiMenu'
 import SidebarContainer from './common/sidebar/SidebarContainer'
+import { ModalData } from '../types/modal'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleShowSidebar } from '../slices/siteNavSlice'
 
 type NavOptionData = {
     [key: string]: {
@@ -31,22 +34,18 @@ const OPTIONS = {
  */
 const SiteNav = () => {
 
-    const [isOpen, setIsOpen] = useState(false)
-
-    const toggleOpenSidebar = () => {
-        if (isOpen) {
-            setIsOpen(false)
-        } else {
-            setIsOpen(true)
-        }
-    }
+    const dispatch = useDispatch()
+    const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
+    const modal = useSelector((state: any) => state.nav.modal)
 
     return (
         <>
             <div id="nav" className="nav">
-                <BiMenu data-cy="sidebar-btn" size={40} className="sidebar-menu-btn" onClick={toggleOpenSidebar} />
+                <BiMenu data-cy="sidebar-btn" size={40} className="sidebar-menu-btn" onClick={() => dispatch(toggleShowSidebar(null))} />
             </div>
-            <SidebarContainer options={OPTIONS} isOpen={isOpen} />
+            <SidebarContainer options={OPTIONS} isOpen={isSidebarOpen} />
+            {/* TODO: Privacy and contact modals */}
+            {!!modal ? <div>MODAL</div> : null}
         </>
     )
 }
