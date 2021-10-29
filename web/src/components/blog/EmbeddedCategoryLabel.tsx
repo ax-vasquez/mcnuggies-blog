@@ -1,6 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSlice'
+import styled from "styled-components"
+import tw from "twin.macro"
+
+const StyledEmbeddedCategoryLabel = styled.div.attrs({
+    className: 'py-1 px-2 border-purple-500 text-purple-500 bg-purple-100'
+})`
+    ${tw`border rounded-full`}
+    ${tw`block align-middle text-center text-xs`}
+`
 
 /**
  * Category label
@@ -19,8 +28,7 @@ const EmbeddedCategoryFilterLabel = ({
     const activeCategories = useSelector((state: any) => state.blog.activeCategories)
     const dispatch = useDispatch()
     return (
-        <div
-          className="embedded-category-label"
+        <StyledEmbeddedCategoryLabel
           onClick={() => {
                 if (activeCategories.includes(label)) {
                     dispatch(removeActiveCategory(label))
@@ -30,7 +38,7 @@ const EmbeddedCategoryFilterLabel = ({
             }}
         >
             <p>{label}</p>
-        </div>
+        </StyledEmbeddedCategoryLabel>
     )
 }
 

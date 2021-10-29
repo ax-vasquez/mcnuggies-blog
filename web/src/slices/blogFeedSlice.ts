@@ -5,6 +5,7 @@ const blogFeedSlice = createSlice({
     initialState: {
         activeCategories: [],
         filterText: '',
+        showModal: false ,
     },
     reducers: {
         addActiveCategory(state, action: PayloadAction<string>) {
@@ -15,10 +16,13 @@ const blogFeedSlice = createSlice({
             state.activeCategories.splice(index, 1)
         },
         setFilterText(state, action: PayloadAction<string>) {
-            state.filterText = action.payload // eslint-disable-line no-param-reassign
+            state.filterText = action.payload
         },
         clearFilterText(state) {
-            state.filterText = '' // eslint-disable-line no-param-reassign
+            state.filterText = ''
+        },
+        toggleShowModal(state, action) {
+            state.showModal = !state.showModal
         },
     },
 })
@@ -28,5 +32,6 @@ export const {
     removeActiveCategory,
     setFilterText,
     clearFilterText,
+    toggleShowModal
 } = blogFeedSlice.actions
 export default blogFeedSlice.reducer

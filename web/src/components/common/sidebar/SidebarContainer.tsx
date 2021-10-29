@@ -18,6 +18,7 @@ const SidebarContainer = ({
 }) => {
 
     return (
+        // Easier to use vanilla CSS here since we conditionally-alter the CSS based on the props
         <div
           className={`sidebar ${(isOpen ? 'transform translate-x-0' : 'transform -translate-x-full')}`}
           id="sidebar"
