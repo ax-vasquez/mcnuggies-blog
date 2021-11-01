@@ -20,21 +20,11 @@ query{
        formats: [AUTO, WEBP, AVIF]
      )
   }
-  allImageSharp(filter: {original: {src: {regex: "/tile/"}}}) {
-    edges {
-      node {
-        original {
-          src
-        }
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-      }
-    }
-  }
 }
 `
 
 const StyledHomeBannerList = styled.div.attrs({
-  className: "my-6 space-y-6"
+  className: "my-6 grid grid-cols-1 md:grid-cols-2"
 })`
   ${tw`mx-auto`}
 `
@@ -52,17 +42,9 @@ type ImageSharpNode = {
 
 const IndexPage = ({ data }: { data: {
   imageSharp: any,
-  allImageSharp: {
-    edges: ImageSharpNode[]
-  }
 } }) => {
     const heroImage = getImage(data.imageSharp)
-    const tileImagesData = data.allImageSharp.edges.map((tileImageData) => {
-        return {
-            src: tileImageData.node.original.src,
-            imageData: tileImageData.node.gatsbyImageData,
-        }
-    }) as { src: string, imageData: IGatsbyImageData }[]
+    const rootItems = ['blog', 'about']
     return (
         <Layout>
             <HeroImageContainer>
@@ -71,11 +53,9 @@ const IndexPage = ({ data }: { data: {
                     <StyledPageHeadingLight id="hero-image-text">Hello, I'm Armando</StyledPageHeadingLight>
                 </HeroImageOverlay>
             </HeroImageContainer>
-            <div>
-                <StyledHomeBannerList>
-                    {tileImagesData.map((img, index) => <Tile key={`home-banner-${index}`} src={img.src} imageData={img.imageData} />)}
-                </StyledHomeBannerList>
-            </div>
+            <StyledHomeBannerList>
+                {rootItems.map((rootItem, index) => <Tile key={`home-banner-${index}`} label={rootItem} />)}
+            </StyledHomeBannerList>
         </Layout>
     )
 }
