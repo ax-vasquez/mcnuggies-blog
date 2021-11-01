@@ -1,51 +1,48 @@
 import React from 'react'
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { FaBook } from '@react-icons/all-files/fa/FaBook'
+import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle'
 import { Link } from 'gatsby'
 import styled from "styled-components"
 import tw from "twin.macro"
 
-const BannerImage = styled(GatsbyImage).attrs({
-    className: "h-32"
-})`
-    ${tw`w-full`}
-    ${tw`block`}
-`
-
-const BannerImageOverlay = styled.div.attrs({
-    className: "bg-black h-32 bottom-0"
-})`
-    ${tw`absolute flex items-center justify-center`}
-    ${tw`bg-opacity-75 hover:bg-opacity-50`}
-    ${tw`w-full`}
-    ${tw`text-gray-300 text-3xl`}
-`
-
 const StyledHomeTile = styled(Link).attrs({
+    className: 'h-64 w-64 inset-0 border-purple-300 hover:border-purple-500 mb-4'
+})`
+    ${tw`border-4 rounded-xl mx-auto flex flex-wrap content-center justify-center`}
+    
+`
+
+const StyledTileContent = styled.div.attrs({
     className: ''
 })`
-    ${tw`relative`}
-    ${tw`flex justify-center`}
-    ${tw`w-full`}
+    ${tw`text-center`}
 `
 
-const Tile = ({ src, imageData }: { src: string, imageData: IGatsbyImageData }) => {
-    let label = ''
-    let route = '/'
-    if (src.includes('blog')) {
-        // eslint-disable-next-line no-multi-assign
-        route = label = 'blog'
+const Tile = (props) => {
+
+    const { 
+        label
+    }: { 
+        label: string 
+    } = props
+
+    let icon: JSX.Element
+    if (label.toLowerCase() === 'blog') {
+        icon = <FaBook className="text-purple-300" size={128} />
     }
-    if (src.includes('about')) {
-        // eslint-disable-next-line no-multi-assign
-        route = label = 'about'
+    if (label.toLowerCase() === 'about') {
+        icon = <FaInfoCircle className="text-purple-300" size={128} />
     }
-    const image = getImage(imageData)
     return (
-        <StyledHomeTile id={`home-banner-${label}`} to={route}>
-            <BannerImage image={image} alt={label} />
-            <BannerImageOverlay>
-                <h2>{label}</h2>
-            </BannerImageOverlay>
+        <StyledHomeTile id={`home-banner-${label}`} to={`/${label}`}>
+            <StyledTileContent>
+                {icon}
+                <h2 className="mt-4">
+                    {label}
+                </h2>
+            </StyledTileContent>
+            
         </StyledHomeTile>
     )
 }

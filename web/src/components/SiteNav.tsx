@@ -54,7 +54,6 @@ const SiteNav = () => {
 
     const dispatch = useDispatch()
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
-    const showModal = useSelector((state: any) => state.nav.showModal)
 
     return (
         <>
