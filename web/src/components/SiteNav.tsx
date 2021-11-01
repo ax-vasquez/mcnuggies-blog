@@ -4,23 +4,28 @@ import SidebarContainer from './common/sidebar/SidebarContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleShowSidebar } from '../slices/siteNavSlice'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { COLORS } from '../style/colors'
 
-const StyledSidebarMenuButton = styled(BiMenu).attrs({
-    className: 'text-white pl-2'
-})`
-    ${tw`hover:text-gray-300`}
+const StyledSidebarMenuButton = styled(BiMenu)`
+    padding-left: 0.5rem;
+    color: ${COLORS.white};
+    &:hover {
+        color: ${COLORS.gray[300]};
+    }
 `
 
-const StyledNavDiv = styled.div.attrs({
-    className: 'bg-gray-800 h-12 top-0'
-})`
-    ${tw`sticky`}
-    ${tw`w-full`}
-    ${tw`z-20`}
-    ${tw`shadow`}
-    ${tw`text-lg`}
-    ${tw`flex items-center`}
+const StyledNavDiv = styled.div`
+    top: 0px;
+    height: 3rem;
+    background-color: ${COLORS.gray[800]};
+    position: sticky;
+    width: 100%;
+    z-index: 20;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    display: flex;
+    align-items: center;
 `
 
 type NavOptionData = {

@@ -1,16 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import BlockContent from '@sanity/block-content-to-react'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
 import EmbeddedCategoryFilterLabel from '../components/blog/EmbeddedCategoryLabel'
 import { SanityArticle } from '../../graphql-types'
 import {
     HeroImage,
-    HeroImageContainer
+    HeroImageContainer,
+    StyledBlockContent
 } from '../components/styled-components/common'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { device } from '../style/devices'
+import { COLORS } from '../style/colors'
 
 export const query = graphql`
 query($slug: String!){
@@ -30,51 +31,62 @@ query($slug: String!){
 }
 `
 
-const StyledArticleDiv = styled.div.attrs({
-    className: 'mt-4 px-4 md:px-0'
-})`
-    ${tw`text-justify`}
-    ${tw`w-full`}
+const StyledArticleDiv = styled.div` 
+    margin-top: 1rem;
+    text-align: justify;
+    width: 100%;
+    @media ${device.mobileL} {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    @media ${device.laptop} {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 `
 
-const StyledArticleTitleDiv = styled.div.attrs({
-    className: ''
-})`
-    ${tw``}
+const StyledArticleTitleDiv = styled.div`
     & {
         h1 {
-            ${tw`text-5xl`}
-            ${tw`font-light`}
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 300;
         }
         p {
-            ${tw`text-gray-500 italic`}
+            font-style: italic;
+            color: ${COLORS.gray[500]};
         }
     }
 `
 
-const StyledArticleBodyDiv = styled.div.attrs({
-    className: ''
-})`
-    ${tw`text-lg`}
+const StyledArticleBodyDiv = styled.div`
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     & {
         h1 {
-            ${tw`text-4xl`}
+            font-size: 2.25rem;
+            line-height: 2.5rem;
         }
         h2 {
-            ${tw`text-3xl`}
+            font-size: 1.875rem;
+            line-height: 2.25rem;
         }
     }
 `
 
-const StyledBlockContent = styled(BlockContent).attrs({
-    className: ''
-})``
-
-const StyledEmbeddedCategoryGrid = styled.div.attrs({
-    className: 'gap-4 mt-4'
-})`
-    ${tw`grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6`}
+const StyledEmbeddedCategoryGrid = styled.div`
+    gap: 1rem;
+    margin-top: 1rem;
+    display: grid;
+    @media ${device.mobileL} {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media ${device.laptop} {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
 `
+
+
 
 const BlogArticle = ({ data }: { data: {
     sanityArticle: SanityArticle
@@ -94,7 +106,7 @@ const BlogArticle = ({ data }: { data: {
             <StyledArticleDiv>
                 <StyledArticleTitleDiv>
                     <h1>{title}</h1>
-                    <p className="mt-2">{publishDate}</p>
+                    <p>{publishDate}</p>
                     {categories.length > 0
                         ? (
                             <StyledEmbeddedCategoryGrid>

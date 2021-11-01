@@ -4,10 +4,32 @@ import SidebarBodyList from './SidebarBodyList'
 import SidebarBodyText from './SidebarBodyText'
 import SidebarBody from './SidebarBody'
 import SidebarFooter from './SidebarFooter'
+import styled from 'styled-components'
+import { COLORS } from '../../../style/colors'
+
+const StyledSidebar = styled('div')<{ isOpen: boolean }>`
+    --translate-x: -100%;
+    padding-top: 4rem;
+    height: 100%;
+    width: 20rem;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    text-overflow: clip;
+    background-color: ${COLORS.gray[600]};
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transform: translateX(var(--translate-x));
+    ${(props) => props.isOpen && `
+        --translate-x: 0px;
+    `}
+`
 
 /**
  * Container component for the sidebar
- *
  */
 const SidebarContainer = ({
     options,
@@ -18,9 +40,8 @@ const SidebarContainer = ({
 }) => {
 
     return (
-        // Easier to use vanilla CSS here since we conditionally-alter the CSS based on the props
-        <div
-          className={`sidebar ${(isOpen ? 'transform translate-x-0' : 'transform -translate-x-full')}`}
+        <StyledSidebar
+            isOpen={isOpen}
           id="sidebar"
           data-cy="sidebar"
         >
@@ -29,7 +50,7 @@ const SidebarContainer = ({
                 <SidebarBodyList options={options} />
                 <SidebarFooter />
             </SidebarBody>
-        </div>
+        </StyledSidebar>
     )
 }
 

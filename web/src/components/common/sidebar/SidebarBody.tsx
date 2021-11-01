@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
-import tw from "twin.macro"
 
-const StyledSidebarBody = styled.div.attrs({
-    className: 'pt-14'
-})`
-    ${tw`text-xl`}
+const StyledSidebarBody = styled.div`
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 `
 
 const SidebarBody = (props: { children: any }) => {

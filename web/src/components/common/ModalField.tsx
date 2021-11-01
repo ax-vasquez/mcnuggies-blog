@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from "styled-components"
-import tw from "twin.macro"
-import PropTypes from 'prop-types';
 
-const StyledModalField = styled.div.attrs({
-    className: 'flex justify-center text-center my-4'
-})`
-    ${tw`block`}
+const StyledModalField = styled.div`
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 `
 
-const StyledModalFieldLabel = styled.div.attrs({
-    className: 'mb-2 text-center'
-})`
+const StyledModalFieldLabel = styled.div`
+    margin-bottom: 0.5rem;
+    text-align: center;
     & {
         h2 {
-            ${tw`text-xl`}
+            font-size: 1.25rem;
+            line-height: 1.75rem;
         }
     }
 `

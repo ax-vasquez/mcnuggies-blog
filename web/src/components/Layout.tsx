@@ -1,11 +1,22 @@
 import React from 'react'
 import SiteNav from './SiteNav'
-import styled from "styled-components"
-import tw from "twin.macro"
+import { StyledRootDiv } from './styled-components/common'
+import styled from 'styled-components'
+import { device } from '../style/devices'
 
 const LayoutContainer = styled.div`
-    ${tw`w-full`}
-    ${tw`h-full`}
+    width: 100%;
+    height: 100%;
+`
+
+const StyledMain = styled.main`
+    margin: auto;
+    @media ${device.mobileL} {
+        width: 100%;
+    }
+    @media ${device.laptop} {
+        width: 50%;
+    }
 `
 
 const Layout = (props: { children: any }) => {
@@ -13,14 +24,14 @@ const Layout = (props: { children: any }) => {
     const { children } = props
 
     return (
-        <div>
+        <StyledRootDiv>
             <SiteNav />
             <LayoutContainer>
-                <main id="main">
+                <StyledMain id="main">
                     {children}
-                </main>
+                </StyledMain>
             </LayoutContainer>
-        </div>
+        </StyledRootDiv>
     )
 }
 

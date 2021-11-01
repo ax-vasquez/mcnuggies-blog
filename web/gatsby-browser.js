@@ -1,5 +1,5 @@
 import React from 'react'
-import './src/css/index.css'
+import './src/global.css'
 
 import {
     ReduxProvider,

@@ -5,5 +5,4 @@ This starter is intended to offer a richer starting point as a starter for those
 ## Technologies
 1. TypeScript
 2. Gatsby
-3. TailwindCSS
 4. Redux
