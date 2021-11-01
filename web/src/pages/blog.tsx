@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux'
 import Layout from '../components/Layout'
 import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
-import FilterModal from '../components/blog/FilterModal'
 import { SanityArticle, SanityCategory } from '../../graphql-types'
+import styled from "styled-components"
+import tw from "twin.macro"
+import BlogFilterModal from '../components/blog/BlogFilterModal'
 
 export const query = graphql`
 query{
@@ -69,6 +71,12 @@ type SanityCategoryNode = {
     node: SanityCategory
 }
 
+const BlogFeed = styled.div.attrs({
+    className: "mx-4"
+})`
+    ${tw`text-justify`}
+`
+
 const BlogPage = ({ data }: { data: {
     allSanityArticle: {
         edges: SanityArticleNode[]
@@ -77,10 +85,9 @@ const BlogPage = ({ data }: { data: {
         edges: SanityCategoryNode[]
     }
 } }) => {
-    const [showModal, setShowModal] = useState(false)
-    // TODO: Filter blog feed by categories
+    // TODO: Fix filter blog feed by categories (adding MORE categories will add more articles; it should lead to fewer results due to finer filtering)
     const activeCategories = useSelector((state: any) => state.blog.activeCategories)
-    // TODO: Filter blog feed by text
+    const showModal = useSelector((state: any) => state.blog.showModal)
     const filterText = useSelector((state: any) => state.blog.filterText)
     const articleEdges = data.allSanityArticle.edges
     const categories = []
@@ -95,70 +102,61 @@ const BlogPage = ({ data }: { data: {
     const filteredByText = filterText !== ''
     const filteredByCategory = activeCategories.length > 0
     return (
-        <Layout>
-            {showModal
-                ? (
-                    <div className="flex justify-center">
-                        <div className="modal-overlay" />
-                        <FilterModal
-                          categories={categories}
-                          setHideFilterModal={() => setShowModal(false)}
-                        />
-                    </div>
-                )
-                : null}
-            <div className="blog-feed">
-                {/* <DateBanner dateString={dateString}/> */}
-                {articleEdges.map((edge, index) => {
-                    let displayArticle = true
-                    if (filteredByCategory) {
-                        if (!edge.node.categories.some((cat) => activeCategories.includes(cat.title))) displayArticle = false
-                    }
-                    if (filteredByText) {
-                        if (displayArticle) {
-                            if (!(edge.node.title).toLowerCase().includes(filterText.toLowerCase())) displayArticle = false
+        <>
+            {showModal ? <BlogFilterModal categories={categories}/> : null}
+            <Layout>
+                <BlogFeed>
+                    {articleEdges.map((edge, index) => {
+                        let displayArticle = true
+                        if (filteredByCategory) {
+                            if (!edge.node.categories.some((cat) => activeCategories.includes(cat.title))) displayArticle = false
                         }
-                    }
-                    let articleJsx: JSX.Element
-                    let dateBannerJsx: JSX.Element
-                    if (displayArticle) {
-                        articleJsx = (
-                            <ArticleRow
-                              title={edge.node.title}
-                              publishDate={edge.node.publishDate}
-                                // Only pass the first paragraph for "preview"
-                              previewText={edge.node._rawBody[0]}
-                              image={edge.node.image.asset.gatsbyImageData}
-                              slug={edge.node.slug.current}
-                            />
-                        )
-                    }
-                    const rowDate = edge.node.publishDate
-                    const currentDateString = getFormattedBannerDateString(rowDate)
-                    let addDateBanner = false
-                    if (index > 0) {
-                        const prevRowDate = articleEdges[index - 1].node.publishDate
-                        const prevDateString = getFormattedBannerDateString(prevRowDate)
-                        if (prevDateString !== currentDateString) {
+                        if (filteredByText) {
+                            if (displayArticle) {
+                                if (!(edge.node.title).toLowerCase().includes(filterText.toLowerCase())) displayArticle = false
+                            }
+                        }
+                        let articleJsx: JSX.Element
+                        let dateBannerJsx: JSX.Element
+                        if (displayArticle) {
+                            articleJsx = (
+                                <ArticleRow
+                                title={edge.node.title}
+                                publishDate={edge.node.publishDate}
+                                // TODO: Show more content and truncate appropriately
+                                previewText={edge.node._rawBody[0]}
+                                image={edge.node.image.asset.gatsbyImageData}
+                                slug={edge.node.slug.current}
+                                />
+                            )
+                        }
+                        const rowDate = edge.node.publishDate
+                        const currentDateString = getFormattedBannerDateString(rowDate)
+                        let addDateBanner = false
+                        if (index > 0) {
+                            const prevRowDate = articleEdges[index - 1].node.publishDate
+                            const prevDateString = getFormattedBannerDateString(prevRowDate)
+                            if (prevDateString !== currentDateString) {
+                                addDateBanner = true
+                            }
+                        } else {
                             addDateBanner = true
                         }
-                    } else {
-                        addDateBanner = true
-                    }
 
-                    if (addDateBanner) {
-                        dateBannerJsx = <DateBanner dateString={currentDateString} setShowFilterModal={() => setShowModal(true)} />
-                    }
+                        if (addDateBanner) {
+                            dateBannerJsx = <DateBanner dateString={currentDateString} />
+                        }
 
-                    return (
-                        <div key={`blog-feed-row-${edge.node.slug.current}`}>
-                            {dateBannerJsx}
-                            {articleJsx}
-                        </div>
-                    )
-                })}
-            </div>
-        </Layout>
+                        return (
+                            <div key={`blog-feed-row-${edge.node.slug.current}`}>
+                                {dateBannerJsx}
+                                {articleJsx}
+                            </div>
+                        )
+                    })}
+                </BlogFeed>
+            </Layout>
+        </>
     )
 }
 

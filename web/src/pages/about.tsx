@@ -5,6 +5,8 @@ import BlockContent from '@sanity/block-content-to-react'
 import serializers from '../serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
+import styled from "styled-components"
+import tw from "twin.macro"
 
 export const query = graphql`
 query{
@@ -39,6 +41,55 @@ query{
 }
 `
 
+const StyledAuthorDetailsContainerDiv = styled.div.attrs({
+    className: 'mt-8'
+})`
+    ${tw`flex`}
+    ${tw`bg-gray-200 rounded shadow z-10`}
+`
+
+const StyledCreatorBadgeDiv = styled.div.attrs({
+    className: 'h-full w-64'
+})`
+    ${tw`flex flex-wrap content-center`}
+`
+
+const StyledCreatorBadgeImage = styled(GatsbyImage).attrs({
+    className: ''
+})`
+    ${tw`rounded`}
+    ${tw`h-full w-full`}
+`
+
+const StyledCreatorDetailsDiv = styled.div.attrs({
+    className: ''
+})`
+    ${tw`h-full w-full`}
+`
+
+const StyledEmployerImageDiv = styled.div.attrs({
+    className: 'h-16 w-40 mt-4'
+})``
+
+const StyledEmploymentDatesDiv = styled.div.attrs({
+    className: 'ml-4'
+})`
+    ${tw`italic`}
+    ${tw`text-gray-400`}
+`
+
+const StyledCreatorDetailsFooter = styled.div.attrs({
+    className: 'mt-4 space-x-2'
+})`
+    ${tw`flex`}
+`
+
+const StyledAboutContentDiv = styled.div.attrs({
+    className: ''
+})`
+    ${tw`text-lg leading-relaxed`}
+`
+
 type SanityEmployerNode = {
     node: SanityEmployer
 }
@@ -67,19 +118,19 @@ const AboutPage = ({ data }: { data: {
     } = mainEmployer
     return (
         <Layout>
-            <div className="creator-details-banner">
-                <div className="creator-badge">
-                    <GatsbyImage image={creatorImage} alt="creator_image" className="creator-image" />
-                </div>
-                <div className="creator-details">
+            <StyledAuthorDetailsContainerDiv>
+                <StyledCreatorBadgeDiv>
+                    <StyledCreatorBadgeImage image={creatorImage} alt="creator_image" />
+                </StyledCreatorBadgeDiv>
+                <StyledCreatorDetailsDiv>
                     <div>
-                        <h1 className="my-auto">{name}</h1>
-                        <div className="employer-image">
+                        <h1>{name}</h1>
+                        <StyledEmployerImageDiv>
                             <GatsbyImage image={mainEmployerImage} alt="employer_image" />
-                        </div>
-                        <div className="flex mb-8">
+                        </StyledEmployerImageDiv>
+                        <div>
                             <h2 className="font-bold my-auto">{jobTitle}</h2>
-                            <div className="employment-dates ml-4 italic text-gray-400">
+                            <StyledEmploymentDatesDiv>
                                 <p>
                                     {startDate}
                                     {' '}
@@ -87,13 +138,13 @@ const AboutPage = ({ data }: { data: {
                                     {' '}
                                     {employed ? 'Present' : endDate}
                                 </p>
-                            </div>
+                            </StyledEmploymentDatesDiv>
                         </div>
-                        <div className="italic mb-4">
-                            <BlockContent className="job-block-content" blocks={_rawDescription} serializers={serializers} />
+                        <div className="italic">
+                            <BlockContent blocks={_rawDescription} serializers={serializers} />
                         </div>
                     </div>
-                    <div className="creator-details-footer">
+                    <StyledCreatorDetailsFooter>
                         {linkedInUrl ? (
                             <div>
                                 <a href={linkedInUrl} target="_blank" rel="noreferrer">
@@ -110,12 +161,12 @@ const AboutPage = ({ data }: { data: {
                             </div>
                         )
                             : null}
-                    </div>
-                </div>
-            </div>
-            <div className="article-body px-8">
-                <BlockContent className="bio-block-content" blocks={_rawBio} serializers={serializers} />
-            </div>
+                    </StyledCreatorDetailsFooter>
+                </StyledCreatorDetailsDiv>
+            </StyledAuthorDetailsContainerDiv>
+            <StyledAboutContentDiv>
+                <BlockContent blocks={_rawBio} serializers={serializers} />
+            </StyledAboutContentDiv>
         </Layout>
     )
 }

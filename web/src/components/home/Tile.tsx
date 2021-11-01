@@ -1,6 +1,32 @@
 import React from 'react'
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
+import styled from "styled-components"
+import tw from "twin.macro"
+
+const BannerImage = styled(GatsbyImage).attrs({
+    className: "h-32"
+})`
+    ${tw`w-full`}
+    ${tw`block`}
+`
+
+const BannerImageOverlay = styled.div.attrs({
+    className: "bg-black h-32 bottom-0"
+})`
+    ${tw`absolute flex items-center justify-center`}
+    ${tw`bg-opacity-75 hover:bg-opacity-50`}
+    ${tw`w-full`}
+    ${tw`text-gray-300 text-3xl`}
+`
+
+const StyledHomeTile = styled(Link).attrs({
+    className: ''
+})`
+    ${tw`relative`}
+    ${tw`flex justify-center`}
+    ${tw`w-full`}
+`
 
 const Tile = ({ src, imageData }: { src: string, imageData: IGatsbyImageData }) => {
     let label = ''
@@ -15,12 +41,12 @@ const Tile = ({ src, imageData }: { src: string, imageData: IGatsbyImageData }) 
     }
     const image = getImage(imageData)
     return (
-        <Link id={`home-banner-${label}`} className="home-tile" to={route}>
-            <GatsbyImage image={image} alt={label} className="home-tile-image" />
-            <div className="home-tile-overlay">
+        <StyledHomeTile id={`home-banner-${label}`} to={route}>
+            <BannerImage image={image} alt={label} />
+            <BannerImageOverlay>
                 <h2>{label}</h2>
-            </div>
-        </Link>
+            </BannerImageOverlay>
+        </StyledHomeTile>
     )
 }
 

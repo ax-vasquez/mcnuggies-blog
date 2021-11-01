@@ -1,9 +1,16 @@
 import * as React from 'react'
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
 import { ImageSharp } from '../../graphql-types'
+import styled from "styled-components"
+import tw from "twin.macro"
+import {
+  HeroImage,
+  HeroImageContainer,
+  HeroImageOverlay,
+} from '../components/styled-components/common'
 
 export const query = graphql`
 query{
@@ -26,6 +33,19 @@ query{
 }
 `
 
+const StyledHomeBannerList = styled.div.attrs({
+  className: "my-6 space-y-6"
+})`
+  ${tw`mx-auto`}
+`
+
+const StyledPageHeadingLight = styled.h1.attrs({
+  className: 'mt-12 mb-6'
+})`
+  ${tw`text-center`}
+  ${tw`text-gray-300`}
+`
+
 type ImageSharpNode = {
   node: ImageSharp
 }
@@ -45,25 +65,17 @@ const IndexPage = ({ data }: { data: {
     }) as { src: string, imageData: IGatsbyImageData }[]
     return (
         <Layout>
-            <div className="hero-image-container">
-                <GatsbyImage image={heroImage} alt="stars" className="hero-image" />
-                <div className="hero-image-overlay">
-                    <h1 id="hero-image-text" className="hero-image-text">Hello, I'm Armando</h1>
-                </div>
+            <HeroImageContainer>
+                <HeroImage image={heroImage} alt="stars" />
+                <HeroImageOverlay>
+                    <StyledPageHeadingLight id="hero-image-text">Hello, I'm Armando</StyledPageHeadingLight>
+                </HeroImageOverlay>
+            </HeroImageContainer>
+            <div>
+                <StyledHomeBannerList>
+                    {tileImagesData.map((img, index) => <Tile key={`home-banner-${index}`} src={img.src} imageData={img.imageData} />)}
+                </StyledHomeBannerList>
             </div>
-
-            <body>
-                <p className="home-greeting">
-                    Welcome to my headspace! I use this site as my personal blog, as well as my professional portfolio. I'll also occasionally
-                    write some guides on a variety of topics I'm interested in, such as coding, 3D modeling (and animating), video games, modding,
-                    and whatever else I may end up dabbling in.
-                </p>
-                <div className="home-banner-list">
-                    {tileImagesData.map((img) => <Tile src={img.src} imageData={img.imageData} />)}
-                </div>
-
-            </body>
-
         </Layout>
     )
 }

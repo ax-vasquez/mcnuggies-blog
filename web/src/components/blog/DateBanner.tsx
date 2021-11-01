@@ -1,5 +1,53 @@
 import React, { useState } from 'react'
 import { RiFilter3Fill } from '@react-icons/all-files/ri/RiFilter3Fill'
+import { useDispatch } from 'react-redux'
+import { toggleShowModal } from '../../slices/blogFeedSlice'
+import styled from 'styled-components'
+import tw from 'twin.macro'
+
+const StyledDateBannerButton = styled.button.attrs({
+    className: 'my-4 top-12'
+})`
+    ${tw`shadow rounded`}
+    ${tw`bg-gray-800`}
+    ${tw`sticky`}
+    ${tw`w-full`}
+    ${tw`block text-center`}
+`
+
+const StyledDateBannerLabelContainer = styled.div.attrs({
+    className: ''
+})`
+    ${tw`block mx-auto`}
+`
+
+const StyledBannerLabelInactive = styled.h3.attrs({
+    className: 'my-1 text-white'
+})`
+    ${tw`text-xl italic font-extralight`}
+    ${tw`inline-block`}
+`
+
+const StyledBannerLabelActive = styled.h3.attrs({
+    className: 'my-1 text-purple-400'
+})`
+    ${tw`text-xl italic font-extralight`}
+    ${tw`inline-block`}
+`
+
+const StyledBannerIconInactive = styled.h3.attrs({
+    className: 'ml-2 text-white'
+})`
+    ${tw`inline-block`}
+    ${tw`stroke-current`}
+`
+
+const StyledBannerIconActive = styled.h3.attrs({
+    className: 'ml-2 text-purple-400'
+})`
+    ${tw`inline-block`}
+    ${tw`stroke-current`}
+`
 
 /**
  * The YearBanner is intended to be a reactive and interactive part of the
@@ -10,30 +58,37 @@ import { RiFilter3Fill } from '@react-icons/all-files/ri/RiFilter3Fill'
  * As the user scrolls, the year (and maybe month) values will be updated, ideally
  * in a scrolling animation (up or down, depending on the scroll direction)
  */
-const DateBanner = ({ dateString, setShowFilterModal }: { dateString: string, setShowFilterModal: () => void}) => {
+const DateBanner = ({ dateString }: { dateString: string }) => {
     const [hovered, setHovered] = useState(false)
+    const dispatch = useDispatch()
+
     return (
-        <button
+        <StyledDateBannerButton
           type="button"
-          className="date-banner"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          onClick={() => setShowFilterModal()}
+          onClick={() => dispatch(toggleShowModal(null))}
         >
-            <div className="block mx-auto">
-                <h3 className={hovered ? 'date-banner-text-active' : 'date-banner-text'}>{dateString}</h3>
-                {/* N.B.
-                    I found out the hard way that not all icons in react-icons can actually be styled (either through
-                    inheriting the color from the parent, setting it manually through the CSS class, or even using
-                    the IconProvider.Context API, as suggested in the react-icons documentation). Fortunately, this
-                    only seems to be limited to Grommet icons (e.g., anything prefixed with "Gr"). Save yourself some
-                    pain and just don't use those <3
-                */}
-                <div className={hovered ? 'date-banner-icon-active' : 'date-banner-icon'}>
-                    <RiFilter3Fill />
-                </div>
-            </div>
-        </button>
+            {hovered ? 
+                <StyledDateBannerLabelContainer>
+                    <StyledBannerLabelActive>
+                        {dateString}
+                    </StyledBannerLabelActive>
+                    <StyledBannerIconActive>
+                        <RiFilter3Fill />
+                    </StyledBannerIconActive>
+                </StyledDateBannerLabelContainer>
+            :
+                <StyledDateBannerLabelContainer>
+                    <StyledBannerLabelInactive>
+                        {dateString}
+                    </StyledBannerLabelInactive>
+                    <StyledBannerIconInactive>
+                        <RiFilter3Fill />
+                    </StyledBannerIconInactive>
+                </StyledDateBannerLabelContainer>
+            }
+        </StyledDateBannerButton>
     )
 }
 
