@@ -1,0 +1,18 @@
+/* 
+    This file is only necessary to prevent the wrapper div that Gatsby (or rather, reach router) 
+    provides, which will result in an unwanted margin around the border of the page. 
+    
+    NO OTHER STYLES SHOULD GO IN THIS FILE - use styled components for everything else.
+*/
+
+html, body, #___gatsby {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
+}

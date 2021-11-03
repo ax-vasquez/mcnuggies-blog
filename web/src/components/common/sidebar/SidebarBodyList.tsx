@@ -3,29 +3,60 @@ import React from 'react'
 import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
 import { SidebarMenuOptions } from '../../../types/sidebar'
 import { Location, LocationContext } from '@reach/router'
-import styled from "styled-components"
-import tw from "twin.macro"
+import styled, { css, keyframes } from "styled-components"
+import { COLORS } from '../../../style/colors'
 
-const StyledSidebarMenuOption = styled(Link).attrs({
-    className: 'py-2 mb-2'
-})`
-    ${tw`text-gray-300 hover:text-gray-300 hover:bg-gray-800`}
-    ${tw`block`}
+// styled-components keyframes doesn't work in React Native - for that, you need to use the ReactNative.Animated API
+// See https://styled-components.com/docs/basics#animations
+const iconBounce = keyframes`
+    0%, 100% {
+        transform: translateX(25%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        
+    }
+    50% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
 `
 
-const StyledSidebarMenuOptionIconHolder = styled.div.attrs({
-    className: 'pl-6'
-})`
-    ${tw`inline-block`}
-    ${tw`align-middle`}
+// Starting in styled-components v4, you must access keyframes via the css helper
+const bounceAnimation = props => css`
+    animation: ${iconBounce} .75s infinite;
 `
 
-const StyledRootMenuOptionLabel = styled.div.attrs({
-    className: 'pl-4'
-})`
-    ${tw`hover:bg-gray-800`}
-    ${tw`inline-block`}
-    ${tw`align-middle`}
+const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: boolean }>`
+    ${(props) => (props.bounce ? bounceAnimation : null )}
+`
+
+const StyledMenuOptionListContainerDiv = styled.div`
+    width: 100%
+`
+
+const StyledSidebarMenuOption = styled(Link)`
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: ${COLORS.gray[300]};
+    display: block;
+    &:hover {
+        background-color: ${COLORS.gray[800]};
+    }
+`
+
+const StyledSidebarMenuOptionIconHolder = styled.div`
+    padding-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+`
+
+const StyledRootMenuOptionLabel = styled.div`
+    padding-left: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+    &:hover {
+        background-color: ${COLORS.gray[800]};
+    }
 `
 
 const SidebarBodyList = ({
@@ -51,21 +82,20 @@ const SidebarBodyList = ({
     return (
         <Location>
             {locationProps => (
-                <div>
+                <StyledMenuOptionListContainerDiv>
                     {Object.keys(options).map((key) => {
                         const { url, label } = options[key]
                         const shouldBounce = isActiveItem(label, locationProps)
                         return (
                             <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
                                 <StyledSidebarMenuOptionIconHolder>
-                                    {/* Easier to use vanilla CSS here since we don't need an "inactive" variant; it's either bouncing, or it's not */}
-                                    <BiRightArrow className={ shouldBounce ? 'root-menu-item-icon-active' : null }/>
+                                    <StyledBouncingIcon bounce={shouldBounce}/>
                                 </StyledSidebarMenuOptionIconHolder>
                                 <StyledRootMenuOptionLabel>{label}</StyledRootMenuOptionLabel>
                             </StyledSidebarMenuOption>
                         )
                     })}
-                </div>
+                </StyledMenuOptionListContainerDiv>
             )}
         </Location>
     )

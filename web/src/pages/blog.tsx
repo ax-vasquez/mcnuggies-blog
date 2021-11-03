@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { useSelector } from 'react-redux'
 import Layout from '../components/Layout'
@@ -6,7 +6,6 @@ import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
 import { SanityArticle, SanityCategory } from '../../graphql-types'
 import styled from "styled-components"
-import tw from "twin.macro"
 import BlogFilterModal from '../components/blog/BlogFilterModal'
 
 export const query = graphql`
@@ -71,10 +70,9 @@ type SanityCategoryNode = {
     node: SanityCategory
 }
 
-const BlogFeed = styled.div.attrs({
-    className: "mx-4"
-})`
-    ${tw`text-justify`}
+const BlogFeed = styled.div`
+    margin-left: 1rem;
+    margin-right: 1rem;
 `
 
 const BlogPage = ({ data }: { data: {
@@ -121,12 +119,12 @@ const BlogPage = ({ data }: { data: {
                         if (displayArticle) {
                             articleJsx = (
                                 <ArticleRow
-                                title={edge.node.title}
-                                publishDate={edge.node.publishDate}
-                                // TODO: Show more content and truncate appropriately
-                                previewText={edge.node._rawBody[0]}
-                                image={edge.node.image.asset.gatsbyImageData}
-                                slug={edge.node.slug.current}
+                                    title={edge.node.title}
+                                    publishDate={edge.node.publishDate}
+                                    // TODO: Show more content and truncate appropriately
+                                    previewText={edge.node._rawBody[0]}
+                                    image={edge.node.image.asset.gatsbyImageData}
+                                    slug={edge.node.slug.current}
                                 />
                             )
                         }

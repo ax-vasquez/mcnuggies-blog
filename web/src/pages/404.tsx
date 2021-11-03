@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import styled from "styled-components"
 import tw from "twin.macro"
+import { COLORS } from '../style/colors'
 
 export const query = graphql`
 query{
@@ -16,25 +17,29 @@ query{
 }
 `
 
-const StyledNotFoundImageContainerDiv = styled.div.attrs({
-    className: ''
-})`
-    ${tw`relative flex justify-center`}
+const StyledNotFoundImageContainerDiv = styled.div`
+    justify-content: center;
+    display: flex;
+    position: relative;
 `
 
 const StyledNotFoundImage = styled(GatsbyImage).attrs({
     className: ''
 })`
-    ${tw`h-auto w-screen`}
+    height: auto;
+    width: 100vw;
 `
 
-const StyledNotFoundImageOverlayDiv = styled.div.attrs({
-    className: 'bg-black bottom-0'
-})`
-    ${tw`absolute flex items-center justify-center`}
-    ${tw`bg-opacity-25`}
-    ${tw`text-gray-300`}
-    ${tw`w-full h-full`}
+const StyledNotFoundImageOverlayDiv = styled.div`
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: ${COLORS.gray[300]};
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    align-items: center;
 `
 
 const NotFoundPage = ({ data }: { data: {

@@ -2,57 +2,63 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleShowModal } from '../../slices/blogFeedSlice'
 import styled from "styled-components"
-import tw from "twin.macro"
 import ModalField from './ModalField'
+import { COLORS } from '../../style/colors'
+import { device } from '../../style/devices'
 
-const StyledModalBackground = styled.div.attrs({
-    className: "bg-black"
-})`
-    ${tw`fixed w-screen h-screen`}
-    ${tw`bg-opacity-50`}
-    ${tw`z-30`}
+const StyledModalBackground = styled.div`
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 30;
 `
 
-const StyledModal = styled.div.attrs({
-    className: "inset-x-0 p-2 bg-white px-4 md:px-20"
-})`
+const StyledModal = styled.div`
     top: 10%;
-    ${tw`absolute m-auto block rounded`}
-    ${tw`w-8/12 h-auto`}
-    ${tw`z-40`}
+    left: 0px;
+    right: 0px;
+    padding: 0.5rem;
+    background-color: ${COLORS.white};
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: absolute;
+    margin: auto;
+    display: block;
+    border-radius: 0.25rem;
+    width: 66.666667%;
+    height: auto;
+    z-index: 40;
+    @media ${device.laptop} {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+    @media ${device.mobileL} {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 `
 
-const StyledModalTitleRow = styled.div.attrs({
-    className: ''
-})`
-    ${tw`text-center`}
+const StyledModalTitleRow = styled.div`
+    text-align: center;
     & {
         h1 {
-            ${tw`text-2xl`}
+            font-size: 1.5rem;
+            line-height: 2rem;
         }
     }
 `
 
-// TODO - need to fine tune
-const StyledSubmitButton = styled.button.attrs({
-    className: ''
-})`
-    ${tw``}
-`
-
-// TODO - need to fine tune
-const StyledCancelButton = styled.button.attrs({
-    className: ''
-})`
-    ${tw``}
-`
-
-const StyledWideSubmitButton = styled.button.attrs({
-    className: 'border-2 rounded border-green-300 bg-green-100 text-green-500 hover:bg-green-200'
-})`
-    ${tw`text-center w-full`}
+const StyledWideSubmitButton = styled.button`
+    text-align: center;
+    width: 100%;
+    border-color: ${COLORS.green[300]}
+    border-width: 2px;
+    border-radius: 0.25rem;
+    color: ${COLORS.green[500]};
+    background-color: ${COLORS.green[100]};
     &:hover {
-        
+        background-color: ${COLORS.green[200]};
     }
 `
 

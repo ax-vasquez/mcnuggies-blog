@@ -1,19 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { COLORS } from '../../../style/colors'
 
-const StyledButtonActive = styled.button.attrs({
-    className: 'py-3 px-6 border-purple-500 text-purple-500 bg-purple-100'
-})`
-    ${tw`border rounded-full`}
-    ${tw`block align-middle text-center text-xs`}
+const StyledButtonActive = styled.button`
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-width: 1px;
+    border-radius: 9999px;
+    border-color: ${COLORS.purple[500]};
+    color: ${COLORS.purple[500]};
+    background-color: ${COLORS.purple[100]};
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1rem;
 `
 
-const StyledButtonInactive = styled.button.attrs({
-    className: 'py-3 px-6 hover:border-purple-500 hover:text-purple-500 hover:bg-purple-100'
-})`
-    ${tw`border border-gray-500 rounded-full`}
-    ${tw`block align-middle text-center text-xs text-gray-400`}
+const StyledButtonInactive = styled.button`
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-width: 1px;
+    border-radius: 9999px;
+    border-color: ${COLORS.gray[500]};
+    color: ${COLORS.gray[400]};
+    background-color: ${COLORS.gray[100]};
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    &:hover {
+        color: ${COLORS.purple[500]};
+        border-color: ${COLORS.purple[500]};
+        background-color: ${COLORS.purple[100]};
+    }
 `
 
 const VariableButton = (props) => {

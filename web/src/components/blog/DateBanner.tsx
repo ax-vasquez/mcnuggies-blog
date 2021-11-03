@@ -3,50 +3,51 @@ import { RiFilter3Fill } from '@react-icons/all-files/ri/RiFilter3Fill'
 import { useDispatch } from 'react-redux'
 import { toggleShowModal } from '../../slices/blogFeedSlice'
 import styled from 'styled-components'
-import tw from 'twin.macro'
+import { COLORS } from '../../style/colors'
 
-const StyledDateBannerButton = styled.button.attrs({
-    className: 'my-4 top-12'
-})`
-    ${tw`shadow rounded`}
-    ${tw`bg-gray-800`}
-    ${tw`sticky`}
-    ${tw`w-full`}
-    ${tw`block text-center`}
+const StyledDateBannerButton = styled.button`
+    top: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+    background-color: ${COLORS.gray[800]};
+    position: sticky;
+    width: 100%;
+    display: block;
+    text-align: center;
 `
 
-const StyledDateBannerLabelContainer = styled.div.attrs({
-    className: ''
-})`
-    ${tw`block mx-auto`}
-`
-
-const StyledBannerLabelInactive = styled.h3.attrs({
-    className: 'my-1 text-white'
-})`
-    ${tw`text-xl italic font-extralight`}
-    ${tw`inline-block`}
-`
-
-const StyledBannerLabelActive = styled.h3.attrs({
-    className: 'my-1 text-purple-400'
-})`
-    ${tw`text-xl italic font-extralight`}
-    ${tw`inline-block`}
-`
-
-const StyledBannerIconInactive = styled.h3.attrs({
-    className: 'ml-2 text-white'
-})`
-    ${tw`inline-block`}
-    ${tw`stroke-current`}
-`
-
-const StyledBannerIconActive = styled.h3.attrs({
-    className: 'ml-2 text-purple-400'
-})`
-    ${tw`inline-block`}
-    ${tw`stroke-current`}
+const StyledDateBannerLabelContainer = styled.div<{ hovered: boolean }>`
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    & {
+        h3 {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-style: italic;
+            font-weight: 200;
+            display: inline-block;
+            ${(props) => (props.hovered ? `
+                color: ${COLORS.purple[400]};
+            ` : `
+                color: ${COLORS.white};
+            ` )}
+        }
+        div {
+            margin-left: 0.5rem;
+            display: inline-block;
+            stroke: currentColor;
+            ${(props) => (props.hovered ? `
+                color: ${COLORS.purple[400]};
+            ` : `
+                color: ${COLORS.white};
+            ` )}
+        }
+    }
 `
 
 /**
@@ -69,25 +70,14 @@ const DateBanner = ({ dateString }: { dateString: string }) => {
           onMouseLeave={() => setHovered(false)}
           onClick={() => dispatch(toggleShowModal(null))}
         >
-            {hovered ? 
-                <StyledDateBannerLabelContainer>
-                    <StyledBannerLabelActive>
-                        {dateString}
-                    </StyledBannerLabelActive>
-                    <StyledBannerIconActive>
-                        <RiFilter3Fill />
-                    </StyledBannerIconActive>
-                </StyledDateBannerLabelContainer>
-            :
-                <StyledDateBannerLabelContainer>
-                    <StyledBannerLabelInactive>
-                        {dateString}
-                    </StyledBannerLabelInactive>
-                    <StyledBannerIconInactive>
-                        <RiFilter3Fill />
-                    </StyledBannerIconInactive>
-                </StyledDateBannerLabelContainer>
-            }
+            <StyledDateBannerLabelContainer hovered={hovered}>
+                <h3>
+                    {dateString}
+                </h3>
+                <div>
+                    <RiFilter3Fill />
+                </div>
+            </StyledDateBannerLabelContainer>
         </StyledDateBannerButton>
     )
 }

@@ -1,21 +1,30 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { COLORS } from '../../../style/colors'
 
-const StyledSidebarFooter = styled.div.attrs({
-    className: 'bottom-0'
-})`
-    ${tw`text-sm`}
-    ${tw`absolute`}
-    ${tw`left-1/2`}
+const StyledSidebarFooter = styled.div`
+    bottom: 0px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    position: absolute;
+    left: 50%;
     transform: translate(-50% , -50%);
 `
 
-const StyledFooterLink = styled(Link).attrs({
-    className: 'hover:text-white'
-})`
-    ${tw`text-gray-300`}
+const StyledFooterLink = styled(Link)`
+    color: ${COLORS.gray[300]};
+    &:hover {
+        color: ${COLORS.white};
+    }
+    & {
+        a {
+            color: ${COLORS.gray[300]};
+            &:hover {
+                color: ${COLORS.white};
+            }
+        }
+    }
 `
 
 const FOOTER_ITEMS = [

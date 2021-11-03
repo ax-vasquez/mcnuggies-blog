@@ -2,13 +2,23 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSlice'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { COLORS } from '../../style/colors'
 
-const StyledEmbeddedCategoryLabel = styled.div.attrs({
-    className: 'py-1 px-2 border-purple-500 text-purple-500 bg-purple-100'
-})`
-    ${tw`border rounded-full`}
-    ${tw`block align-middle text-center text-xs`}
+const StyledEmbeddedCategoryLabel = styled.div`
+    border-color: ${COLORS.purple[500]};
+    text-align: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: ${COLORS.purple[500]};
+    background-color: ${COLORS.purple[100]};
+    border: solid;
+    border-radius: 9999px;
+    display: block;
+    vertical-align: middle;
+    font-size: 0.75rem;
+    line-height: 1rem;
 `
 
 /**

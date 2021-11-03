@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
-import { ImageSharp } from '../../graphql-types'
 import styled from "styled-components"
-import tw from "twin.macro"
 import {
   HeroImage,
   HeroImageContainer,
   HeroImageOverlay,
 } from '../components/styled-components/common'
+import { COLORS } from '../style/colors'
+import { device } from '../style/devices'
 
 export const query = graphql`
 query{
@@ -23,22 +23,26 @@ query{
 }
 `
 
-const StyledHomeBannerList = styled.div.attrs({
-  className: "my-6 grid grid-cols-1 md:grid-cols-2"
-})`
-  ${tw`mx-auto`}
+const StyledHomeBannerList = styled.div`
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  @media ${device.mobileL} {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  @media ${device.laptop} {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `
 
-const StyledPageHeadingLight = styled.h1.attrs({
-  className: 'mt-12 mb-6'
-})`
-  ${tw`text-center`}
-  ${tw`text-gray-300`}
+const StyledPageHeadingLight = styled.h1`
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: ${COLORS.gray[300]};
 `
-
-type ImageSharpNode = {
-  node: ImageSharp
-}
 
 const IndexPage = ({ data }: { data: {
   imageSharp: any,

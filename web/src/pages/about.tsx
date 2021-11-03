@@ -1,12 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
-import BlockContent from '@sanity/block-content-to-react'
 import serializers from '../serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import styled from "styled-components"
-import tw from "twin.macro"
+import { COLORS } from '../style/colors'
+import { StyledBlockContent } from '../components/styled-components/common'
 
 export const query = graphql`
 query{
@@ -41,53 +41,60 @@ query{
 }
 `
 
-const StyledAuthorDetailsContainerDiv = styled.div.attrs({
-    className: 'mt-8'
-})`
-    ${tw`flex`}
-    ${tw`bg-gray-200 rounded shadow z-10`}
+const StyledAuthorDetailsContainerDiv = styled.div`
+    margin-top: 0.5rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    background-color: ${COLORS.gray[200]};
+    z-index: 10;
 `
 
-const StyledCreatorBadgeDiv = styled.div.attrs({
-    className: 'h-full w-64'
-})`
-    ${tw`flex flex-wrap content-center`}
+const StyledCreatorBadgeDiv = styled.div`
+    height: 100%;
+    width: 16rem;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
 `
 
-const StyledCreatorBadgeImage = styled(GatsbyImage).attrs({
-    className: ''
-})`
-    ${tw`rounded`}
-    ${tw`h-full w-full`}
+const StyledCreatorBadgeImage = styled(GatsbyImage)`
+    border-radius: 0.25rem;
+    height: 100%;
+    width: 100%;
 `
 
-const StyledCreatorDetailsDiv = styled.div.attrs({
-    className: ''
-})`
-    ${tw`h-full w-full`}
+const StyledCreatorDetailsDiv = styled.div`
+    height: 100%;
+    weight: 100%;
 `
 
-const StyledEmployerImageDiv = styled.div.attrs({
-    className: 'h-16 w-40 mt-4'
-})``
-
-const StyledEmploymentDatesDiv = styled.div.attrs({
-    className: 'ml-4'
-})`
-    ${tw`italic`}
-    ${tw`text-gray-400`}
+const StyledEmployerImageDiv = styled.div`
+    width: 10rem;
+    height: 4rem;
+    margin-top: 1rem;
 `
 
-const StyledCreatorDetailsFooter = styled.div.attrs({
-    className: 'mt-4 space-x-2'
-})`
-    ${tw`flex`}
+const StyledEmploymentDatesDiv = styled.div`
+    margin-left: 1rem;
+    font-style: italic;
+    color: ${COLORS.gray[400]};
 `
 
-const StyledAboutContentDiv = styled.div.attrs({
-    className: ''
-})`
-    ${tw`text-lg leading-relaxed`}
+const StyledCreatorDetailsFooter = styled.div`
+    margin-right: calc(0.5rem * 0);
+    margin-left: calc(0.5rem * calc(1 - 0));
+    margin-top: 1rem;
+    display: flex;
+`
+
+const StyledAboutContentDiv = styled.div`
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    line-height: 1.625;
+`
+
+const StyledIntegrationImage = styled.img`
+    height: 2rem;
 `
 
 type SanityEmployerNode = {
@@ -129,7 +136,7 @@ const AboutPage = ({ data }: { data: {
                             <GatsbyImage image={mainEmployerImage} alt="employer_image" />
                         </StyledEmployerImageDiv>
                         <div>
-                            <h2 className="font-bold my-auto">{jobTitle}</h2>
+                            <h2>{jobTitle}</h2>
                             <StyledEmploymentDatesDiv>
                                 <p>
                                     {startDate}
@@ -140,15 +147,13 @@ const AboutPage = ({ data }: { data: {
                                 </p>
                             </StyledEmploymentDatesDiv>
                         </div>
-                        <div className="italic">
-                            <BlockContent blocks={_rawDescription} serializers={serializers} />
-                        </div>
+                        <StyledBlockContent blocks={_rawDescription} serializers={serializers} />
                     </div>
                     <StyledCreatorDetailsFooter>
                         {linkedInUrl ? (
                             <div>
                                 <a href={linkedInUrl} target="_blank" rel="noreferrer">
-                                    <img src="/linkedin-logo.png" className="h-8" alt="linkedin-logo" />
+                                    <StyledIntegrationImage src="/linkedin-logo.png" alt="linkedin-logo" />
                                 </a>
                             </div>
                         )
@@ -156,7 +161,7 @@ const AboutPage = ({ data }: { data: {
                         {githubUrl ? (
                             <div>
                                 <a href={githubUrl} target="_blank" rel="noreferrer">
-                                    <img src="/octocat-logo.png" className="h-8" alt="gh-logo" />
+                                    <StyledIntegrationImage src="/octocat-logo.png" alt="gh-logo" />
                                 </a>
                             </div>
                         )
@@ -165,7 +170,7 @@ const AboutPage = ({ data }: { data: {
                 </StyledCreatorDetailsDiv>
             </StyledAuthorDetailsContainerDiv>
             <StyledAboutContentDiv>
-                <BlockContent blocks={_rawBio} serializers={serializers} />
+                <StyledBlockContent blocks={_rawBio} serializers={serializers} />
             </StyledAboutContentDiv>
         </Layout>
     )

@@ -16,12 +16,6 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-postcss`,
-            options: {
-                postCssPlugins: [require("tailwindcss")],
-            },
-        },
-        {
             resolve: 'gatsby-source-filesystem',
             options: {
                 name: 'images',
@@ -48,5 +42,6 @@ module.exports = {
                 allExtensions: true, // defaults to false
             },
         },
+        'gatsby-plugin-styled-components'
     ],
 }
