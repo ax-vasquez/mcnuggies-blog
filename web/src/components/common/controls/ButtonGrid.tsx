@@ -1,19 +1,10 @@
 import React from 'react'
 import { ButtonGridFieldConfig } from '../../../types/common'
 import styled from "styled-components"
-import VariableButton from '../controls/VariableButton'
-import { device } from '../../../style/devices'
+import VariableFilterButton from '../controls/VariableButton'
 
-const StyledButtonGrid = styled.div`
-    width: 100%;
-    display: grid;
-    gap: 1rem;
-    @media ${device.mobileL} {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    @media ${device.laptop} {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
+const StyledButtonGrid = styled.ul`
+    padding-inline-start: 0px;
 `
 
 const ButtonGrid = ({ data }: { data: ButtonGridFieldConfig }) => {
@@ -27,7 +18,7 @@ const ButtonGrid = ({ data }: { data: ButtonGridFieldConfig }) => {
                     onClick
                 } = data.buttons[key]
                 return (
-                    <VariableButton 
+                    <VariableFilterButton 
                         key={`grid-btn-${label.toLowerCase()}`}
                         active={active}
                         label={label}

@@ -14,6 +14,10 @@ const StyledModalBackground = styled.div`
     z-index: 30;
 `
 
+/**
+ * This class needs to have the font-family defined separately from the root div because the Modal
+ * is stored outside of the context of the root div wherever it's used.
+ */
 const StyledModal = styled.div`
     top: 10%;
     left: 0px;
@@ -26,16 +30,18 @@ const StyledModal = styled.div`
     margin: auto;
     display: block;
     border-radius: 0.25rem;
-    width: 66.666667%;
     height: auto;
     z-index: 40;
-    @media ${device.laptop} {
-        padding-left: 5rem;
-        padding-right: 5rem;
-    }
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     @media ${device.mobileL} {
         padding-left: 1rem;
         padding-right: 1rem;
+        width: 66.666667%;
+    }
+    @media ${device.laptop} {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        width: 30%;
     }
 `
 
@@ -43,6 +49,7 @@ const StyledModalTitleRow = styled.div`
     text-align: center;
     & {
         h1 {
+            font-weight: 300;
             font-size: 1.5rem;
             line-height: 2rem;
         }
@@ -52,7 +59,7 @@ const StyledModalTitleRow = styled.div`
 const StyledWideSubmitButton = styled.button`
     text-align: center;
     width: 100%;
-    border-color: ${COLORS.green[300]}
+    border-color: ${COLORS.green[300]};
     border-width: 2px;
     border-radius: 0.25rem;
     color: ${COLORS.green[500]};

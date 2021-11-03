@@ -2,8 +2,6 @@ import React from 'react'
 import styled from "styled-components"
 
 const StyledModalField = styled.div`
-    display: flex;
-    justify-content: center;
     text-align: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -14,6 +12,7 @@ const StyledModalFieldLabel = styled.div`
     text-align: center;
     & {
         h2 {
+            font-weight: 200;
             font-size: 1.25rem;
             line-height: 1.75rem;
         }
