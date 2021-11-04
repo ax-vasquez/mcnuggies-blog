@@ -8,6 +8,13 @@ const size = {
     desktop: '2560px'
 }
 
+/**
+ * Device "min width" CSS values
+ * 
+ * These values are meant to aid in creating responsive design. When using them, think of it like 
+ * "for this screen size **AND UP**, apply the given styles".
+ * 
+ */
 export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
     mobileM: `(min-width: ${size.mobileM})`,
