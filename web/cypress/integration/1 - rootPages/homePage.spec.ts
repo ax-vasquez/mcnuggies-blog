@@ -2,9 +2,6 @@ describe('Home page', () => {
     beforeEach(() => {
         cy.visit('http://localhost:9000/')
     })
-    it('has the correct title content', () => {
-        cy.get('#hero-image-text').contains('Hello, I\'m Armando')
-    })
     it('has the correct banner links', () => {
         cy.get('#home-banner-about').should('be.visible')
         cy.get('#home-banner-blog').should('be.visible')

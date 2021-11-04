@@ -3,7 +3,7 @@ import { RiFilter3Fill } from '@react-icons/all-files/ri/RiFilter3Fill'
 import { useDispatch } from 'react-redux'
 import { toggleShowModal } from '../../slices/blogFeedSlice'
 import styled from 'styled-components'
-import { COLORS } from '../../style/colors'
+import { BG_COLORS, FONT_COLORS } from '../../style/colors'
 
 const StyledDateBannerButton = styled.button`
     top: 3rem;
@@ -11,7 +11,7 @@ const StyledDateBannerButton = styled.button`
     margin-bottom: 1rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 0.25rem;
-    background-color: ${COLORS.gray[800]};
+    background-color: ${BG_COLORS.dateBanner.light};
     position: sticky;
     width: 100%;
     display: block;
@@ -31,21 +31,19 @@ const StyledDateBannerLabelContainer = styled.div<{ hovered: boolean }>`
             font-style: italic;
             font-weight: 200;
             display: inline-block;
+            color: ${FONT_COLORS.dateBanner.light};
             ${(props) => (props.hovered ? `
-                color: ${COLORS.purple[400]};
-            ` : `
-                color: ${COLORS.white};
-            ` )}
+                color: ${FONT_COLORS.dateBanner.lightHovered};
+            ` : null )}
         }
         div {
             margin-left: 0.5rem;
             display: inline-block;
             stroke: currentColor;
+            color: ${FONT_COLORS.dateBanner.light};
             ${(props) => (props.hovered ? `
-                color: ${COLORS.purple[400]};
-            ` : `
-                color: ${COLORS.white};
-            ` )}
+                color: ${FONT_COLORS.dateBanner.lightHovered};
+            ` : null )}
         }
     }
 `

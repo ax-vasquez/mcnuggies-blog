@@ -5,7 +5,7 @@ import serializers from '../serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import styled from "styled-components"
-import { COLORS } from '../style/colors'
+import { BG_COLORS, FONT_COLORS } from '../style/colors'
 import { StyledBlockContent } from '../components/styled-components/common'
 
 export const query = graphql`
@@ -45,7 +45,7 @@ const StyledAuthorDetailsContainerDiv = styled.div`
     margin-top: 0.5rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: flex;
-    background-color: ${COLORS.gray[200]};
+    background-color: ${BG_COLORS.about.detailsCard.light};
     z-index: 10;
 `
 
@@ -77,7 +77,7 @@ const StyledEmployerImageDiv = styled.div`
 const StyledEmploymentDatesDiv = styled.div`
     margin-left: 1rem;
     font-style: italic;
-    color: ${COLORS.gray[400]};
+    color: ${FONT_COLORS.about.detailsCard.employmentDates.light};
 `
 
 const StyledCreatorDetailsFooter = styled.div`

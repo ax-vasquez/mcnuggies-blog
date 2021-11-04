@@ -4,20 +4,20 @@ import SidebarContainer from './common/sidebar/SidebarContainer'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleShowSidebar } from '../slices/siteNavSlice'
 import styled from "styled-components"
-import { COLORS } from '../style/colors'
+import { BG_COLORS, FONT_COLORS } from '../style/colors'
 
 const StyledSidebarMenuButton = styled(BiMenu)`
     padding-left: 0.5rem;
-    color: ${COLORS.white};
+    color: ${FONT_COLORS.nav.light};
     &:hover {
-        color: ${COLORS.gray[300]};
+        color: ${FONT_COLORS.nav.lightHovered};
     }
 `
 
 const StyledNavDiv = styled.div`
     top: 0px;
     height: 3rem;
-    background-color: ${COLORS.gray[800]};
+    background-color: ${BG_COLORS.nav.light};
     position: sticky;
     width: 100%;
     z-index: 20;

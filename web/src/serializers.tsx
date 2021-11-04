@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import styled from 'styled-components'
-import { COLORS } from './style/colors'
+import { BG_COLORS } from './style/colors'
 
 const StyledHighlightSpan = styled.span`
     border-radius: 0.25rem;
     padding: 0.25rem;
-    background-color: ${COLORS.yellow[200]};
+    background-color: ${BG_COLORS.templates.blogArticle.highlight.light};
 `
 
 /**
@@ -32,7 +32,7 @@ const serializers = {
         code: (props) => {
             const { language, code } = props.node
             return (
-                <SyntaxHighlighter language={language}>{code}</SyntaxHighlighter>
+                <SyntaxHighlighter theme="" language={language}>{code}</SyntaxHighlighter>
             )
         },
     },
@@ -50,8 +50,6 @@ const serializers = {
             )
         },
     },
-    // Wrap each list item in a span - allows for greater control in styling
-    listItem: ({ children }) => <li><span>{children}</span></li>,
 }
 
 export default serializers

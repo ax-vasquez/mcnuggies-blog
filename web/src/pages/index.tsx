@@ -9,7 +9,6 @@ import {
   HeroImageContainer,
   HeroImageOverlay,
 } from '../components/styled-components/common'
-import { COLORS } from '../style/colors'
 import { device } from '../style/devices'
 
 export const query = graphql`
@@ -37,13 +36,6 @@ const StyledHomeBannerList = styled.div`
   }
 `
 
-const StyledPageHeadingLight = styled.h1`
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: ${COLORS.gray[300]};
-`
-
 const IndexPage = ({ data }: { data: {
   imageSharp: any,
 } }) => {
@@ -53,9 +45,7 @@ const IndexPage = ({ data }: { data: {
         <Layout>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />
-                <HeroImageOverlay>
-                    <StyledPageHeadingLight id="hero-image-text">Hello, I'm Armando</StyledPageHeadingLight>
-                </HeroImageOverlay>
+                <HeroImageOverlay/>
             </HeroImageContainer>
             <StyledHomeBannerList>
                 {rootItems.map((rootItem, index) => <Tile key={`home-banner-${index}`} label={rootItem} />)}

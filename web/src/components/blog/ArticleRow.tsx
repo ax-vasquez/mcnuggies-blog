@@ -4,7 +4,7 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import serializers from '../../serializers'
 import styled from "styled-components"
-import { COLORS } from '../../style/colors'
+import { BG_COLORS, FONT_COLORS } from '../../style/colors'
 import { device } from '../../style/devices'
 
 const StyledArticleRowLink = styled(Link)`
@@ -14,10 +14,10 @@ const StyledArticleRowLink = styled(Link)`
     padding-right: 1rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: flex;
-    background-color: ${COLORS.gray[100]};
+    background-color: ${BG_COLORS.articleRow.light};
     border-radius: 0.25rem;
     &:hover {
-        background-color: ${COLORS.gray[200]};
+        background-color: ${BG_COLORS.articleRow.lightHovered};
     }
 `
 
@@ -54,11 +54,11 @@ const StyledArticleRowTitleLine = styled.div`
             font-weight: 200;
             font-size: 2.25rem;
             line-height: 2.5rem;
-            color: ${COLORS.purple[700]};
+            color: ${FONT_COLORS.heading.light};
         }
         p {
             font-style: italic;
-            color: ${COLORS.gray[600]};
+            color: ${FONT_COLORS.blockquote.light};
             float: right;
         }
     }
@@ -72,7 +72,7 @@ const StyledBlockContent = styled(BlockContent)`
 const StyledArticleContentPreview = styled.div`
     height: 100%;
     font-style: italic;
-    color: ${COLORS.gray[600]};
+    color: ${FONT_COLORS.blockquote.light};
 `
 
 const StyledArticleTitle = styled.h3`

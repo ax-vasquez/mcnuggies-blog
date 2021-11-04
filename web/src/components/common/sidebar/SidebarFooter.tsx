@@ -1,30 +1,38 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from "styled-components"
-import { COLORS } from '../../../style/colors'
+import { FONT_COLORS } from '../../../style/colors'
 
+/**
+ * The `a` tag colors need to be marked !important because the conflict with the base `a` tag
+ * styles from the StyledRootDiv. I'm not sure why the conflict happens; I'm sure there is 
+ * some reason. With that said, !important shouldn't be used too often. We simply need to use
+ * it here because, without it, the base `a` tag styles will be applied most of the time when
+ * it should be overridden here.
+ */
 const StyledSidebarFooter = styled.div`
-    bottom: 0px;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    position: absolute;
+    position: fixed;
+    width: 100%;
     left: 50%;
+    bottom: 0;
     transform: translate(-50% , -50%);
+    color: ${FONT_COLORS.sidebar.footerItems.p.light};
+    & {
+        a {
+            color: ${FONT_COLORS.sidebar.footerItems.a.light} !important;
+            &:hover {
+                color: ${FONT_COLORS.sidebar.footerItems.a.lightHovered} !important;
+            }
+        }
+        p {
+            margin-bottom: 2rem;
+        }
+    }
 `
 
 const StyledFooterLink = styled(Link)`
-    color: ${COLORS.gray[300]};
-    &:hover {
-        color: ${COLORS.white};
-    }
-    & {
-        a {
-            color: ${COLORS.gray[300]};
-            &:hover {
-                color: ${COLORS.white};
-            }
-        }
-    }
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 `
 
 const FOOTER_ITEMS = [
@@ -39,16 +47,11 @@ const SidebarFooter = () => {
                 textAlign: 'center'
             }}>
                 {FOOTER_ITEMS.map(item => (
-                    <div 
+                    <span 
                         key={`sidebar-footer-link-${item.toLowerCase()}`}
-                        style={{
-                            display: 'inline-block',
-                            marginLeft: '0.5em',
-                            marginRight: '0.5em'
-                        }}
                     >
                         <StyledFooterLink to={'#'} >{item}</StyledFooterLink>
-                    </div>
+                    </span>
                 ))}
             </div>
             <p style={{

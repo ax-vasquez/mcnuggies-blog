@@ -1,8 +1,8 @@
 
 /**
- * Color values are inspired by Tailwind
+ * Tailwind Colors
  */
-export const COLORS = {
+const TW_COLORS = {
     purple: {
         100: `rgba(237, 233, 254, 1)`,
         200: `rgba(221, 214, 254, 1)`,
@@ -40,4 +40,177 @@ export const COLORS = {
     [key: string]: {
         [range: number]: string
     } | string
+}
+
+export const BG_COLORS = {
+    main: {
+        light: `${TW_COLORS.white}`,
+    },
+    about: {
+        detailsCard: {
+            light: `${TW_COLORS.gray[200]}`,
+        }
+    },
+    modal: {
+        light: `${TW_COLORS.white}`,
+        buttons: {
+            submit: {
+                light: `${TW_COLORS.green[100]}`,
+                lightHovered: `${TW_COLORS.green[200]}`
+            }
+        }
+    },
+    code: {
+        light: `${TW_COLORS.gray[200]}`,
+        dark: ``,
+    },
+    categoryLabel: {
+        default: {
+            light: `${TW_COLORS.gray[100]}`,
+            lightHovered: ``,
+        },
+        active: {
+            light: `${TW_COLORS.purple[100]}`,
+            lightHovered: ``,
+        }
+    },
+    dateBanner: {
+        light: `${TW_COLORS.gray[800]}`,
+    },
+    blockquote: {
+        light: `${TW_COLORS.gray[100]}`,
+    },
+    articleRow: {
+        light: `${TW_COLORS.gray[100]}`,
+        lightHovered: `${TW_COLORS.gray[200]}`,
+    },
+    sidebar: {
+        light: `${TW_COLORS.gray[600]}`,
+        rootItems: {
+            lightHovered: `${TW_COLORS.gray[800]}`
+        }
+    },
+    home: {
+        tile: {
+            light: `${TW_COLORS.purple[100]}`,
+            lightHovered: `${TW_COLORS.purple[200]}`
+        }
+    },
+    nav: {
+        light: `${TW_COLORS.gray[800]}`
+    },
+    templates: {
+        blogArticle: {
+            highlight: {
+                light: `${TW_COLORS.yellow[200]}`,
+            }
+        }
+    }
+}
+
+export const FONT_COLORS = {
+    '404': {
+        imageOverlay: `${TW_COLORS.gray[300]}`
+    },
+    about: {
+        detailsCard: {
+            employmentDates: {
+                light: `${TW_COLORS.gray[400]}`,
+            }
+        }
+    },
+    base: {
+        light: `${TW_COLORS.black}`,
+    },
+    heading: {
+        light: `${TW_COLORS.gray[700]}`,
+    },
+    home: {
+        tile: {
+            light: `${TW_COLORS.purple[300]}`,
+            lightHovered: `${TW_COLORS.purple[500]}`
+        }
+    },
+    blockquote: {
+        light: `${TW_COLORS.gray[500]}`,
+    },
+    categoryLabel: {
+        default: {
+            light: `${TW_COLORS.gray[500]}`,
+        },
+        active: {
+            light: `${TW_COLORS.purple[500]}`,
+        }
+    },
+    dateBanner: {
+        light: `${TW_COLORS.white}`,
+        lightHovered: `${TW_COLORS.purple[400]}`,
+        dark: ``,
+        darkHovered: ``
+    },
+    link: {
+        light: `${TW_COLORS.purple[500]}`,
+        lightHovered: `${TW_COLORS.purple[800]}`,
+    },
+    sidebar: {
+        rootItems: {
+            light: `${TW_COLORS.white}`
+        },
+        footerItems: {
+            a: {
+                light: `${TW_COLORS.gray[500]}`,
+                lightHovered: `${TW_COLORS.gray[400]}`,
+            },
+            p: {
+                light: `${TW_COLORS.gray[800]}`,
+            }
+        }
+    },
+    nav: {
+        light: `${TW_COLORS.white}`,
+        lightHovered: `${TW_COLORS.gray[300]}`
+    },
+    templates: {
+        blogArticle: {
+            publishDate: {
+                light: `${TW_COLORS.gray[500]}`,
+            },
+            highlight: {
+                light: `${TW_COLORS.yellow[200]}`,
+            }
+        }
+    },
+    modal: {
+        buttons: {
+            submit: {
+                light: `${TW_COLORS.green[500]}`,
+            }
+        }
+    },
+}
+
+export const BORDER_COLORS = {
+    categoryLabel: {
+        default: {
+            light: `${TW_COLORS.gray[500]}`,
+            lightHovered: ``,
+        },
+        active: {
+            light: `${TW_COLORS.purple[500]}`,
+            lightHovered: ``,
+        }
+    },
+    home: {
+        tile: {
+            light: `${TW_COLORS.purple[300]}`,
+            lightHovered: `${TW_COLORS.purple[500]}`
+        }
+    },
+    modal: {
+        buttons: {
+            submit: {
+                light: `${TW_COLORS.green[300]}`,
+            }
+        }
+    },
 }

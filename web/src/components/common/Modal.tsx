@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'
 import { toggleShowModal } from '../../slices/blogFeedSlice'
 import styled from "styled-components"
 import ModalField from './ModalField'
-import { COLORS } from '../../style/colors'
+import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
 import { device } from '../../style/devices'
+import { FONT } from '../../style/font'
 
 const StyledModalBackground = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
@@ -23,7 +24,7 @@ const StyledModal = styled.div`
     left: 0px;
     right: 0px;
     padding: 0.5rem;
-    background-color: ${COLORS.white};
+    background-color: ${BG_COLORS.modal.light};
     padding-left: 1rem;
     padding-right: 1rem;
     position: absolute;
@@ -32,7 +33,7 @@ const StyledModal = styled.div`
     border-radius: 0.25rem;
     height: auto;
     z-index: 40;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: ${FONT.family};
     @media ${device.mobileL} {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -59,13 +60,13 @@ const StyledModalTitleRow = styled.div`
 const StyledWideSubmitButton = styled.button`
     text-align: center;
     width: 100%;
-    border-color: ${COLORS.green[300]};
+    border-color: ${BORDER_COLORS.modal.buttons.submit.light};
     border-width: 2px;
     border-radius: 0.25rem;
-    color: ${COLORS.green[500]};
-    background-color: ${COLORS.green[100]};
+    color: ${FONT_COLORS.modal.buttons.submit.light};
+    background-color: ${BG_COLORS.modal.buttons.submit.light};
     &:hover {
-        background-color: ${COLORS.green[200]};
+        background-color: ${BG_COLORS.modal.buttons.submit.lightHovered};
     }
 `
 

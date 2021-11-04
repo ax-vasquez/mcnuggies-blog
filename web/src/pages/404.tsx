@@ -3,8 +3,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import styled from "styled-components"
-import tw from "twin.macro"
-import { COLORS } from '../style/colors'
+import { FONT_COLORS } from '../style/colors'
 
 export const query = graphql`
 query{
@@ -33,7 +32,7 @@ const StyledNotFoundImage = styled(GatsbyImage).attrs({
 const StyledNotFoundImageOverlayDiv = styled.div`
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.25);
-    color: ${COLORS.gray[300]};
+    color: ${FONT_COLORS[404].imageOverlay};
     justify-content: center;
     display: flex;
     width: 100%;
