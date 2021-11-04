@@ -5,26 +5,33 @@ import { Link } from 'gatsby'
 import serializers from '../../serializers'
 import styled from "styled-components"
 import { COLORS } from '../../style/colors'
+import { device } from '../../style/devices'
 
 const StyledArticleRowLink = styled(Link)`
     height: 16.666667%;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    padding-right: 0.5rem;
-    margin-right: calc(1rem * 0);
-    margin-left: calc(1rem * calc(1 - 0));
+    padding-right: 1rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     background-color: ${COLORS.gray[100]};
     border-radius: 0.25rem;
+    &:hover {
+        background-color: ${COLORS.gray[200]};
+    }
 `
 
 const StyledArticleThumbnailContainer = styled.div`
     height: 12rem;
     width: 12rem;
     align-content: center;
-    display: flex;
     flex-wrap: wrap;
+    @media ${device.mobileS} {
+        display: none;
+    }
+    @media ${device.laptop} {
+        display: flex;
+    }
 `
 
 const StyledArticleThumbnail = styled(GatsbyImage)`
@@ -36,17 +43,18 @@ const StyledArticleThumbnail = styled(GatsbyImage)`
 const StyledArticleRowDetails = styled.div`
     height: 100%;
     width: 100%;
+    margin-left: 1rem;
 `
 
 const StyledArticleRowTitleLine = styled.div`
     padding-top: 0.25rem;
     width: 100%;
-    color: ${COLORS.purple[700]};
     & {
         h3 {
             font-weight: 200;
             font-size: 2.25rem;
             line-height: 2.5rem;
+            color: ${COLORS.purple[700]};
         }
         p {
             font-style: italic;
@@ -56,12 +64,15 @@ const StyledArticleRowTitleLine = styled.div`
     }
 `
 
+const StyledBlockContent = styled(BlockContent)`
+    display:table-cell;
+    vertical-align:middle;
+`
+
 const StyledArticleContentPreview = styled.div`
-    margin-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    vertical-align: middle;
-    color: ${COLORS.gray[800]};
+    height: 100%;
+    font-style: italic;
+    color: ${COLORS.gray[600]};
 `
 
 const StyledArticleTitle = styled.h3`
@@ -86,6 +97,16 @@ const ArticleRow = (
         slug: string
     },
 ) => {
+
+    // Truncate by word length since truncating by character limits can lead to unintended words being used
+    const truncateTitle = (title: string) => {
+        const parts = title.split(' ')
+        if (parts.length > 6) {
+            return `${parts.slice(0, 5).join(' ')}...`
+        }
+        return title
+    } 
+
     return (
         <StyledArticleRowLink to={slug}>
             <StyledArticleThumbnailContainer>
@@ -93,11 +114,11 @@ const ArticleRow = (
             </StyledArticleThumbnailContainer>
             <StyledArticleRowDetails>
                 <StyledArticleRowTitleLine>
-                    <StyledArticleTitle>{title}</StyledArticleTitle>
+                    <StyledArticleTitle>{truncateTitle(title)}</StyledArticleTitle>
                     <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 </StyledArticleRowTitleLine>
                 <StyledArticleContentPreview>
-                    <BlockContent
+                    <StyledBlockContent
                       blocks={previewText}
                       serializers={{
                             ...serializers,
