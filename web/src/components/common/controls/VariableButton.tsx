@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
-import { COLORS } from '../../../style/colors'
+import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../../style/colors'
 
 const StyledFilterButton = styled.button<{ active: boolean }>`
     padding-left: 1.5rem;
@@ -11,17 +11,17 @@ const StyledFilterButton = styled.button<{ active: boolean }>`
     display: inline-block;
     font-size: 0.75rem;
     ${(props) => (props.active ? `
-        border-color: ${COLORS.purple[500]};
-        color: ${COLORS.purple[500]};
-        background-color: ${COLORS.purple[100]};
+        border-color: ${BORDER_COLORS.categoryLabel.active.light};
+        color: ${FONT_COLORS.categoryLabel.active.light};
+        background-color: ${BG_COLORS.categoryLabel.active.light};
     ` : `
-        border-color: ${COLORS.gray[500]};
-        color: ${COLORS.gray[400]};
-        background-color: ${COLORS.gray[100]};
+        border-color: ${BORDER_COLORS.categoryLabel.default.light};
+        color: ${FONT_COLORS.categoryLabel.default.light};
+        background-color: ${BG_COLORS.categoryLabel.default.light};
         &:hover {
-            color: ${COLORS.purple[500]};
-            border-color: ${COLORS.purple[500]};
-            background-color: ${COLORS.purple[100]};
+            border-color: ${BORDER_COLORS.categoryLabel.active.light};
+            color: ${FONT_COLORS.categoryLabel.active};
+            background-color: ${BG_COLORS.categoryLabel.active.light};
         }
     ` )}
 `

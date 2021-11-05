@@ -2,21 +2,20 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSlice'
 import styled from "styled-components"
-import { COLORS } from '../../style/colors'
+import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
 
 const StyledEmbeddedCategoryLabel = styled.div`
-    border-color: ${COLORS.purple[500]};
+    border-color: ${BORDER_COLORS.categoryLabel.active.light};
     text-align: center;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    color: ${COLORS.purple[500]};
-    background-color: ${COLORS.purple[100]};
+    color: ${FONT_COLORS.categoryLabel.active.light};
+    background-color: ${BG_COLORS.categoryLabel.active.light};
     border: solid;
     border-radius: 9999px;
     display: block;
-    vertical-align: middle;
     font-size: 0.75rem;
     line-height: 1rem;
 `

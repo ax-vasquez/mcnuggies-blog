@@ -4,7 +4,7 @@ import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
 import { SidebarMenuOptions } from '../../../types/sidebar'
 import { Location, LocationContext } from '@reach/router'
 import styled, { css, keyframes } from "styled-components"
-import { COLORS } from '../../../style/colors'
+import { BG_COLORS, FONT_COLORS } from '../../../style/colors'
 
 // styled-components keyframes doesn't work in React Native - for that, you need to use the ReactNative.Animated API
 // See https://styled-components.com/docs/basics#animations
@@ -26,6 +26,8 @@ const bounceAnimation = props => css`
 `
 
 const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: boolean }>`
+    color: ${FONT_COLORS.sidebar.rootItems.light};
+    vertical-align: middle;
     ${(props) => (props.bounce ? bounceAnimation : null )}
 `
 
@@ -37,26 +39,23 @@ const StyledSidebarMenuOption = styled(Link)`
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
-    color: ${COLORS.gray[300]};
+    padding-left: 1rem;
     display: block;
     &:hover {
-        background-color: ${COLORS.gray[800]};
+        background-color: ${BG_COLORS.sidebar.rootItems.lightHovered};
     }
 `
 
 const StyledSidebarMenuOptionIconHolder = styled.div`
     padding-left: 0.5rem;
     display: inline-block;
-    vertical-align: middle;
 `
 
 const StyledRootMenuOptionLabel = styled.div`
     padding-left: 1rem;
     display: inline-block;
     vertical-align: middle;
-    &:hover {
-        background-color: ${COLORS.gray[800]};
-    }
+    color: ${FONT_COLORS.sidebar.rootItems.light};
 `
 
 const SidebarBodyList = ({

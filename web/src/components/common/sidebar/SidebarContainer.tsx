@@ -5,7 +5,7 @@ import SidebarBodyText from './SidebarBodyText'
 import SidebarBody from './SidebarBody'
 import SidebarFooter from './SidebarFooter'
 import styled from 'styled-components'
-import { COLORS } from '../../../style/colors'
+import { BG_COLORS } from '../../../style/colors'
 
 const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     --translate-x: -100%;
@@ -18,7 +18,7 @@ const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     left: 0px;
     overflow: hidden;
     text-overflow: clip;
-    background-color: ${COLORS.gray[600]};
+    background-color: ${BG_COLORS.sidebar.light};
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);

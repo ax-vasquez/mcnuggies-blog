@@ -11,7 +11,7 @@ import {
 } from '../components/styled-components/common'
 import styled from "styled-components"
 import { device } from '../style/devices'
-import { COLORS } from '../style/colors'
+import { FONT_COLORS } from '../style/colors'
 
 export const query = graphql`
 query($slug: String!){
@@ -35,7 +35,7 @@ const StyledArticleDiv = styled.div`
     margin-top: 1rem;
     text-align: justify;
     width: 100%;
-    @media ${device.mobileL} {
+    @media ${device.mobileS} {
         padding-left: 1rem;
         padding-right: 1rem;
     }
@@ -54,7 +54,7 @@ const StyledArticleTitleDiv = styled.div`
         }
         p {
             font-style: italic;
-            color: ${COLORS.gray[500]};
+            color: ${FONT_COLORS.templates.blogArticle.publishDate.light};
         }
     }
 `

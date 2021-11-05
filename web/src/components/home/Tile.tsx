@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaBook } from '@react-icons/all-files/fa/FaBook'
 import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle'
 import { Link } from 'gatsby'
 import styled from "styled-components"
-import { COLORS } from '../../style/colors'
+import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
 
-const StyledHomeTile = styled(Link)`
+const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
@@ -22,12 +22,22 @@ const StyledHomeTile = styled(Link)`
     border: solid;
     border-width: 4px;
     border-radius: 0.75rem;
-    border-color: ${COLORS.purple[300]};
+    border-color: ${BORDER_COLORS.home.tile.light};
     justify-content: center;
-    &:hover {
-        border-color: ${COLORS.purple[500]};
-    }
-    
+    ${(props) => props.hovered ? `
+        background-color: ${BG_COLORS.home.tile.lightHovered};
+    ` 
+    : `
+        background-color: ${BG_COLORS.home.tile.light};
+    `}
+`
+
+const StyledFaBook = styled(FaBook)`
+    color: ${FONT_COLORS.home.tile.light};
+`
+
+const StyledFaInfoCircle = styled(FaInfoCircle)`
+    color: ${FONT_COLORS.home.tile.light};
 `
 
 const StyledTileContent = styled.div`
@@ -46,15 +56,21 @@ const Tile = (props) => {
         label: string 
     } = props
 
+    const [hovered, setHovered] = useState(false)
+
     let icon: JSX.Element
     if (label.toLowerCase() === 'blog') {
-        icon = <FaBook className="text-purple-300" size={128} />
+        icon = <StyledFaBook size={128} />
     }
     if (label.toLowerCase() === 'about') {
-        icon = <FaInfoCircle className="text-purple-300" size={128} />
+        icon = <StyledFaInfoCircle size={128} />
     }
     return (
-        <StyledHomeTile id={`home-banner-${label}`} to={`/${label}`}>
+        <StyledHomeTile 
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            hovered={hovered}
+        id={`home-banner-${label}`} to={`/${label}`}>
             <StyledTileContent>
                 {icon}
                 <StyledTileLabel>
