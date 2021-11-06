@@ -11,10 +11,13 @@ const LayoutContainer = styled.div`
 
 const StyledMain = styled.main`
     margin: auto;
-    @media ${device.mobileL} {
+    padding-bottom: 20rem;
+    @media ${device.mobileS} {
         width: 100%;
+        padding-left: 1rem;
+        padding-right:1rem;
     }
-    @media ${device.laptop} {
+    @media ${device.tablet} {
         width: 50%;
     }
 `
