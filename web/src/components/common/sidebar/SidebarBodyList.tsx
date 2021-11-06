@@ -71,6 +71,7 @@ const SidebarBodyList = ({
                 return location.pathname === '/'
             }
             case 'About':
+            case 'Projects':
             case 'Blog': {
                 return location.pathname.includes(label.toLowerCase())
             }

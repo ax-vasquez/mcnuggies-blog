@@ -25,14 +25,14 @@ query{
 const StyledHomeBannerList = styled.div`
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  @media ${device.mobileL} {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media ${device.mobileS} {
+    display: flex;
   }
-  @media ${device.laptop} {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  @media ${device.tablet} {
+      display: inline-flex;
   }
 `
 
@@ -40,13 +40,16 @@ const IndexPage = ({ data }: { data: {
   imageSharp: any,
 } }) => {
     const heroImage = getImage(data.imageSharp)
-    const rootItems = ['blog', 'about']
+    const rootItems = ['blog', 'about', 'projects']
     return (
         <Layout>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />
                 <HeroImageOverlay/>
             </HeroImageContainer>
+            <h1>
+              Welcome
+            </h1>
             <StyledHomeBannerList>
                 {rootItems.map((rootItem, index) => <Tile key={`home-banner-${index}`} label={rootItem} />)}
             </StyledHomeBannerList>

@@ -48,6 +48,10 @@ const OPTIONS = {
         label: 'About',
         url: '/about',
     },
+    projects: {
+        label: 'Projects',
+        url: '/projects',
+    },
 } as NavOptionData
 
 /**
