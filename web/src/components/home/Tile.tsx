@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBook } from '@react-icons/all-files/fa/FaBook'
 import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle'
+import { FaHardHat } from '@react-icons/all-files/fa/FaHardHat'
 import { Link } from 'gatsby'
 import styled from "styled-components"
 import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
@@ -18,12 +19,9 @@ const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
-    border: solid;
-    border-width: 4px;
     border-radius: 0.75rem;
-    border-color: ${BORDER_COLORS.home.tile.light};
     justify-content: center;
+    box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
     ${(props) => props.hovered ? `
         background-color: ${BG_COLORS.home.tile.lightHovered};
     ` 
@@ -40,12 +38,17 @@ const StyledFaInfoCircle = styled(FaInfoCircle)`
     color: ${FONT_COLORS.home.tile.light};
 `
 
+const StyledFaHardHat = styled(FaHardHat)`
+color: ${FONT_COLORS.home.tile.light};
+`
+
 const StyledTileContent = styled.div`
     text-align: center;
 `
 
 const StyledTileLabel = styled.h2`
     margin-top: 1rem;
+    color: ${FONT_COLORS.home.tile.light} !important;
 `
 
 const Tile = (props) => {
@@ -64,6 +67,9 @@ const Tile = (props) => {
     }
     if (label.toLowerCase() === 'about') {
         icon = <StyledFaInfoCircle size={128} />
+    }
+    if (label.toLowerCase() === 'projects') {
+        icon = <StyledFaHardHat size={128} />
     }
     return (
         <StyledHomeTile 

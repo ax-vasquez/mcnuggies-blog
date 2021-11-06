@@ -92,8 +92,8 @@ export const BG_COLORS = {
     },
     home: {
         tile: {
-            light: `${TW_COLORS.purple[100]}`,
-            lightHovered: `${TW_COLORS.purple[200]}`
+            light: `${TW_COLORS.gray[800]}`,
+            lightHovered: `${TW_COLORS.gray[700]}`
         }
     },
     nav: {
@@ -127,8 +127,8 @@ export const FONT_COLORS = {
     },
     home: {
         tile: {
-            light: `${TW_COLORS.purple[300]}`,
-            lightHovered: `${TW_COLORS.purple[500]}`
+            light: `${TW_COLORS.white}`,
+            lightHovered: `${TW_COLORS.white}`
         }
     },
     blockquote: {
