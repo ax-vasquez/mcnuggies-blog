@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { BG_COLORS, FONT_COLORS } from '../../style/colors'
 import BlockContent from '@sanity/block-content-to-react'
 import { FONT } from '../../style/font'
+import { device } from '../../style/devices'
 
 /**
  * The highest-level styled component

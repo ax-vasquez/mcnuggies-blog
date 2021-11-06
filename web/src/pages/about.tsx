@@ -7,6 +7,7 @@ import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import styled from "styled-components"
 import { BG_COLORS, FONT_COLORS } from '../style/colors'
 import { StyledBlockContent } from '../components/styled-components/common'
+import { device } from '../style/devices'
 
 export const query = graphql`
 query{
@@ -44,40 +45,46 @@ query{
 const StyledAuthorDetailsContainerDiv = styled.div`
     margin-top: 0.5rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    display: flex;
+    display: inline-flex;
     background-color: ${BG_COLORS.about.detailsCard.light};
     z-index: 10;
 `
 
 const StyledCreatorBadgeDiv = styled.div`
-    height: 100%;
-    width: 16rem;
-    align-content: center;
-    display: flex;
     flex-wrap: wrap;
+    @media ${device.mobileS} {
+        display: none;
+    }
+    @media ${device.tablet} {
+        display: flex;
+    }
 `
 
 const StyledCreatorBadgeImage = styled(GatsbyImage)`
     border-radius: 0.25rem;
-    height: 100%;
-    width: 100%;
+    display: flex;
 `
 
 const StyledCreatorDetailsDiv = styled.div`
-    height: 100%;
-    weight: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
 `
 
 const StyledEmployerImageDiv = styled.div`
     width: 10rem;
     height: 4rem;
-    margin-top: 1rem;
 `
 
 const StyledEmploymentDatesDiv = styled.div`
-    margin-left: 1rem;
-    font-style: italic;
-    color: ${FONT_COLORS.about.detailsCard.employmentDates.light};
+    display: flex;
+    & {
+        p {
+            margin-left: 1rem;
+            font-style: italic;
+            color: ${FONT_COLORS.about.detailsCard.employmentDates.light};
+        }
+    }
 `
 
 const StyledCreatorDetailsFooter = styled.div`
@@ -135,18 +142,16 @@ const AboutPage = ({ data }: { data: {
                         <StyledEmployerImageDiv>
                             <GatsbyImage image={mainEmployerImage} alt="employer_image" />
                         </StyledEmployerImageDiv>
-                        <div>
-                            <h2>{jobTitle}</h2>
-                            <StyledEmploymentDatesDiv>
-                                <p>
-                                    {startDate}
-                                    {' '}
-                                    -
-                                    {' '}
-                                    {employed ? 'Present' : endDate}
-                                </p>
-                            </StyledEmploymentDatesDiv>
-                        </div>
+                        <StyledEmploymentDatesDiv>
+                            <h3>{jobTitle}</h3>
+                            <p>
+                                {startDate}
+                                {' '}
+                                -
+                                {' '}
+                                {employed ? 'Present' : endDate}
+                            </p>
+                        </StyledEmploymentDatesDiv>
                         <StyledBlockContent blocks={_rawDescription} serializers={serializers} />
                     </div>
                     <StyledCreatorDetailsFooter>
