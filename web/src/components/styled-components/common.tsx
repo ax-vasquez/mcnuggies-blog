@@ -1,9 +1,8 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
-import { BG_COLORS, FONT_COLORS } from '../../style/colors'
 import BlockContent from '@sanity/block-content-to-react'
+import { THEME } from '../../style/colors'
 import { FONT } from '../../style/font'
-import { device } from '../../style/devices'
 
 /**
  * The highest-level styled component
@@ -12,7 +11,7 @@ export const StyledRootDiv = styled.div`
   height: 100%;
   width: 100%;
   font-family: ${FONT.family};
-  background-color: ${BG_COLORS.main};
+  background-color: ${THEME.light.background.default};
   & {
       ul, ol {
         padding-left: 2rem;
@@ -39,17 +38,17 @@ export const StyledRootDiv = styled.div`
       h1 {
         font-size: 3rem;
         line-height: 1;
-        color: ${FONT_COLORS.heading.light};
+        color: ${THEME.light.font.heading};
       }
       h2 {
         font-size: 1.875rem;
         line-height: 2.25rem;
-        color: ${FONT_COLORS.heading.light};
+        color: ${THEME.light.font.heading};
       }
       h3 {
         font-size: 1.25rem;
         line-height: 1.75rem;
-        color: ${FONT_COLORS.heading.light};
+        color: ${THEME.light.font.heading};
       }
       blockquote {
         padding: 2rem;
@@ -58,20 +57,20 @@ export const StyledRootDiv = styled.div`
         width: 91.666667%;
         margin-left: auto;
         margin-right: auto;
-        background-color: ${BG_COLORS.blockquote.light};
-        color: ${FONT_COLORS.blockquote.light};
+        background-color: ${THEME.light.background.defaultHovered};
+        color: ${THEME.light.font.blockquote};
         font-style: italic;
       }
       a {
-        color: ${FONT_COLORS.link.light};
+        color: ${THEME.light.font.link};
         text-decoration: none;
         &:hover {
-          color: ${FONT_COLORS.link.lightHovered};
+          color: ${THEME.light.font.linkHovered};
         }
       }
       code {
         padding: 0.125rem;
-        background-color: ${BG_COLORS.code.light};
+        background-color: ${THEME.light.background.code};
         border-radius: 0.25rem;
       }
       p {
@@ -87,7 +86,7 @@ export const HeroImageContainer = styled.div`
 `
 
 export const HeroImageOverlay = styled.div.attrs({
-  className: ''
+  className: '',
 })`
   --bg-opacity: 0.75;
   position: absolute;

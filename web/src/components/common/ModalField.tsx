@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const StyledModalField = styled.div`
     text-align: center;
@@ -19,18 +19,23 @@ const StyledModalFieldLabel = styled.div`
     }
 `
 
-const ModalField = (props) => {
-
-    const { children, label } = props
+const ModalField = ({
+    children,
+    label,
+}:{
+    children: any
+    label?: string
+}) => {
 
     return (
         <StyledModalField>
-            {!!label ? 
-            <StyledModalFieldLabel>
-                <h2>
-                    {label}
-                </h2>
-            </StyledModalFieldLabel>
+            {label ? (
+                <StyledModalFieldLabel>
+                    <h2>
+                        {label}
+                    </h2>
+                </StyledModalFieldLabel>
+          )
             : null }
             {children}
         </StyledModalField>

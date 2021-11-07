@@ -2,22 +2,25 @@ import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
+import styled from 'styled-components'
 import serializers from '../../serializers'
-import styled from "styled-components"
-import { BG_COLORS, FONT_COLORS } from '../../style/colors'
+import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
 
 const StyledArticleRowLink = styled(Link)`
-    height: 16.666667%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-right: 1rem;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 1rem;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: ${THEME.light.border.default};
     display: flex;
-    background-color: ${BG_COLORS.articleRow.light};
-    border-radius: 0.25rem;
     &:hover {
-        background-color: ${BG_COLORS.articleRow.lightHovered};
+        background-color: ${THEME.light.background.defaultHovered};
     }
 `
 
@@ -54,11 +57,11 @@ const StyledArticleRowTitleLine = styled.div`
             font-weight: 200;
             font-size: 2.25rem;
             line-height: 2.5rem;
-            color: ${FONT_COLORS.heading.light};
+            color: ${THEME.light.font.heading};
         }
         p {
             font-style: italic;
-            color: ${FONT_COLORS.blockquote.light};
+            color: ${THEME.light.font.accent};
             float: right;
         }
     }
@@ -72,7 +75,7 @@ const StyledBlockContent = styled(BlockContent)`
 const StyledArticleContentPreview = styled.div`
     height: 100%;
     font-style: italic;
-    color: ${FONT_COLORS.blockquote.light};
+    color: ${THEME.light.font.blockquote};
 `
 
 const StyledArticleTitle = styled.h3`
@@ -99,18 +102,18 @@ const ArticleRow = (
 ) => {
 
     // Truncate by word length since truncating by character limits can lead to unintended words being used
-    const truncateTitle = (title: string) => {
-        const parts = title.split(' ')
+    const truncateTitle = (t: string) => {
+        const parts = t.split(' ')
         if (parts.length > 6) {
             return `${parts.slice(0, 5).join(' ')}...`
         }
-        return title
-    } 
+        return t
+    }
 
     return (
         <StyledArticleRowLink to={slug}>
             <StyledArticleThumbnailContainer>
-                <StyledArticleThumbnail image={image} alt={`${title}_thumb`}/>
+                <StyledArticleThumbnail image={image} alt={`${title}_thumb`} />
             </StyledArticleThumbnailContainer>
             <StyledArticleRowDetails>
                 <StyledArticleRowTitleLine>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
-import styled from "styled-components"
-import { FONT_COLORS } from '../style/colors'
+import { THEME } from '../style/colors'
 
 export const query = graphql`
 query{
@@ -23,7 +23,7 @@ const StyledNotFoundImageContainerDiv = styled.div`
 `
 
 const StyledNotFoundImage = styled(GatsbyImage).attrs({
-    className: ''
+    className: '',
 })`
     height: auto;
     width: 100vw;
@@ -32,7 +32,7 @@ const StyledNotFoundImage = styled(GatsbyImage).attrs({
 const StyledNotFoundImageOverlayDiv = styled.div`
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.25);
-    color: ${FONT_COLORS[404].imageOverlay};
+    color: ${THEME.light.font.nav};
     justify-content: center;
     display: flex;
     width: 100%;

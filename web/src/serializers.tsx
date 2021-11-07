@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import styled from 'styled-components'
-import { BG_COLORS } from './style/colors'
+import { THEME } from './style/colors'
 
 const StyledHighlightSpan = styled.span`
     border-radius: 0.25rem;
     padding: 0.25rem;
-    background-color: ${BG_COLORS.templates.blogArticle.highlight.light};
+    background-color: ${THEME.light.background.highlight};
 `
 
 /**

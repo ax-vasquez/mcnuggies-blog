@@ -5,7 +5,7 @@ import siteNavReducer from './siteNavSlice'
 const reduxStore = configureStore({
     reducer: {
         blog: blogFeedReducer,
-        nav: siteNavReducer
+        nav: siteNavReducer,
     },
 })
 

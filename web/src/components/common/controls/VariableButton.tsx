@@ -1,47 +1,52 @@
 import React, { useState } from 'react'
-import styled from "styled-components"
-import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../../style/colors'
+import styled from 'styled-components'
+import { THEME } from '../../../style/colors'
 
 const StyledFilterButton = styled.button<{ active: boolean }>`
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-right: 0.5rem;
-    border-width: 1px;
-    border-radius: 9999px;
-    display: inline-block;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+    border: none;
+    border-radius: 3px;
+    display: inline-flex;
     font-size: 0.75rem;
     ${(props) => (props.active ? `
-        border-color: ${BORDER_COLORS.categoryLabel.active.light};
-        color: ${FONT_COLORS.categoryLabel.active.light};
-        background-color: ${BG_COLORS.categoryLabel.active.light};
-    ` : `
-        border-color: ${BORDER_COLORS.categoryLabel.default.light};
-        color: ${FONT_COLORS.categoryLabel.default.light};
-        background-color: ${BG_COLORS.categoryLabel.default.light};
+        color: ${THEME.light.font.tagActive};
+        background-color: ${THEME.light.background.tagActive};
         &:hover {
-            border-color: ${BORDER_COLORS.categoryLabel.active.light};
-            color: ${FONT_COLORS.categoryLabel.active};
-            background-color: ${BG_COLORS.categoryLabel.active.light};
+            background-color: ${THEME.light.background.tagActiveHovered};
         }
-    ` )}
+    ` : `
+        color: ${THEME.light.font.tag};
+        background-color: ${THEME.light.background.tag};
+        &:hover {
+            background-color: ${THEME.light.background.tagHovered};
+        }
+    `)}
 `
 
-const VariableFilterButton = (props) => {
-
-    const { active, label, onClick }: { active: boolean, label: string, onClick: (e) => void } = props
+const VariableFilterButton = ({
+    active,
+    label,
+    onClick,
+}: {
+    active: boolean
+    label: string
+    onClick: () => void
+}) => {
 
     const [isActive, setIsActive] = useState(active)
 
-    const toggleActive = (e) => {
+    const toggleActive = () => {
         setIsActive(!isActive)
-        onClick(e)
+        onClick()
     }
 
-    return ( 
+    return (
         <StyledFilterButton
-            type="button"
-            onClick={toggleActive}
-            active={isActive}
+          type="button"
+          onClick={toggleActive}
+          active={isActive}
         >
             <p>{label}</p>
         </StyledFilterButton>

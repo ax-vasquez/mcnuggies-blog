@@ -3,8 +3,8 @@ import { FaBook } from '@react-icons/all-files/fa/FaBook'
 import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle'
 import { FaHardHat } from '@react-icons/all-files/fa/FaHardHat'
 import { Link } from 'gatsby'
-import styled from "styled-components"
-import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
+import styled from 'styled-components'
+import { THEME } from '../../style/colors'
 
 const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
     margin-bottom: 1rem;
@@ -22,24 +22,24 @@ const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
     border-radius: 0.75rem;
     justify-content: center;
     box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
-    ${(props) => props.hovered ? `
-        background-color: ${BG_COLORS.home.tile.lightHovered};
-    ` 
+    ${(props) => (props.hovered ? `
+        background-color: ${THEME.light.background.nav};
+    `
     : `
-        background-color: ${BG_COLORS.home.tile.light};
-    `}
+        background-color: ${THEME.light.background.navHovered};
+    `)}
 `
 
 const StyledFaBook = styled(FaBook)`
-    color: ${FONT_COLORS.home.tile.light};
+    color: ${THEME.light.font.nav};
 `
 
 const StyledFaInfoCircle = styled(FaInfoCircle)`
-    color: ${FONT_COLORS.home.tile.light};
+    color: ${THEME.light.font.nav};
 `
 
 const StyledFaHardHat = styled(FaHardHat)`
-color: ${FONT_COLORS.home.tile.light};
+color: ${THEME.light.font.nav};
 `
 
 const StyledTileContent = styled.div`
@@ -48,16 +48,14 @@ const StyledTileContent = styled.div`
 
 const StyledTileLabel = styled.h2`
     margin-top: 1rem;
-    color: ${FONT_COLORS.home.tile.light} !important;
+    color: ${THEME.light.font.nav} !important;
 `
 
-const Tile = (props) => {
-
-    const { 
-        label
-    }: { 
-        label: string 
-    } = props
+const Tile = ({
+    label,
+}: {
+    label: string
+}) => {
 
     const [hovered, setHovered] = useState(false)
 
@@ -72,18 +70,20 @@ const Tile = (props) => {
         icon = <StyledFaHardHat size={128} />
     }
     return (
-        <StyledHomeTile 
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            hovered={hovered}
-        id={`home-banner-${label}`} to={`/${label}`}>
+        <StyledHomeTile
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          hovered={hovered}
+          id={`home-banner-${label}`}
+          to={`/${label}`}
+        >
             <StyledTileContent>
                 {icon}
                 <StyledTileLabel>
                     {label}
                 </StyledTileLabel>
             </StyledTileContent>
-            
+
         </StyledHomeTile>
     )
 }

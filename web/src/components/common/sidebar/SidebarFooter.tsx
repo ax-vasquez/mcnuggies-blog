@@ -1,11 +1,11 @@
 import { Link } from 'gatsby'
 import React from 'react'
-import styled from "styled-components"
-import { FONT_COLORS } from '../../../style/colors'
+import styled from 'styled-components'
+import { THEME } from '../../../style/colors'
 
 /**
  * The `a` tag colors need to be marked !important because the conflict with the base `a` tag
- * styles from the StyledRootDiv. I'm not sure why the conflict happens; I'm sure there is 
+ * styles from the StyledRootDiv. I'm not sure why the conflict happens; I'm sure there is
  * some reason. With that said, !important shouldn't be used too often. We simply need to use
  * it here because, without it, the base `a` tag styles will be applied most of the time when
  * it should be overridden here.
@@ -16,13 +16,10 @@ const StyledSidebarFooter = styled.div`
     left: 50%;
     bottom: 0;
     transform: translate(-50% , -50%);
-    color: ${FONT_COLORS.sidebar.footerItems.p.light};
+    color: ${THEME.light.font.sidebar};
     & {
         a {
-            color: ${FONT_COLORS.sidebar.footerItems.a.light} !important;
-            &:hover {
-                color: ${FONT_COLORS.sidebar.footerItems.a.lightHovered} !important;
-            }
+            color: currentColor !important;
         }
         p {
             margin-bottom: 2rem;
@@ -37,27 +34,32 @@ const StyledFooterLink = styled(Link)`
 
 const FOOTER_ITEMS = [
     'privacy',
-    'contact'
+    'contact',
 ]
 
 const SidebarFooter = () => {
     return (
         <StyledSidebarFooter>
             <div style={{
-                textAlign: 'center'
-            }}>
-                {FOOTER_ITEMS.map(item => (
-                    <span 
-                        key={`sidebar-footer-link-${item.toLowerCase()}`}
+                textAlign: 'center',
+            }}
+            >
+                {FOOTER_ITEMS.map((item) => (
+                    <span
+                      key={`sidebar-footer-link-${item.toLowerCase()}`}
                     >
-                        <StyledFooterLink to={'#'} >{item}</StyledFooterLink>
+                        <StyledFooterLink to="#">{item}</StyledFooterLink>
                     </span>
                 ))}
             </div>
             <p style={{
                 textAlign: 'center',
                 fontSize: '12px',
-            }}>©{new Date().getFullYear()}</p>
+            }}
+            >
+                ©
+                {new Date().getFullYear()}
+            </p>
         </StyledSidebarFooter>
     )
 }

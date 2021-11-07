@@ -1,23 +1,24 @@
 import React from 'react'
 import { BiMenu } from '@react-icons/all-files/bi/BiMenu'
-import SidebarContainer from './common/sidebar/SidebarContainer'
 import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
+import SidebarContainer from './common/sidebar/SidebarContainer'
 import { toggleShowSidebar } from '../slices/siteNavSlice'
-import styled from "styled-components"
-import { BG_COLORS, FONT_COLORS } from '../style/colors'
+import { THEME } from '../style/colors'
 
 const StyledSidebarMenuButton = styled(BiMenu)`
-    padding-left: 0.5rem;
-    color: ${FONT_COLORS.nav.light};
+    margin-left: 0.5rem;
+    border-radius: 3px;
+    color: ${THEME.light.font.nav};
     &:hover {
-        color: ${FONT_COLORS.nav.lightHovered};
+        background-color: ${THEME.light.background.navHovered};
     }
 `
 
 const StyledNavDiv = styled.div`
     top: 0px;
     height: 3rem;
-    background-color: ${BG_COLORS.nav.light};
+    background-color: ${THEME.light.background.nav};
     position: sticky;
     width: 100%;
     z-index: 20;
@@ -67,7 +68,7 @@ const SiteNav = () => {
     return (
         <>
             <StyledNavDiv id="nav">
-                <StyledSidebarMenuButton data-cy="sidebar-btn" size={40} onClick={() => dispatch(toggleShowSidebar(null))} />
+                <StyledSidebarMenuButton data-cy="sidebar-btn" size={40} onClick={() => dispatch(toggleShowSidebar())} />
             </StyledNavDiv>
             <SidebarContainer options={OPTIONS} isOpen={isSidebarOpen} />
         </>
