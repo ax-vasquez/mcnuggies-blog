@@ -7,6 +7,8 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import creator from './documents/creator'
 import article from './documents/article'
 import project from './documents/project'
+import projectLink from './documents/projectLink'
+import projectLinkProvider from './documents/projectLinkProvider'
 import category from './documents/category'
 import employer from './documents/employer'
 import series from './documents/series'
@@ -23,6 +25,8 @@ export default createSchema({
     employer,
     article,
     project,
+    projectLink,
+    projectLinkProvider,
     series
   ]),
 })
