@@ -41,12 +41,17 @@ rules: {
   padded-blocks: ["error", { "classes": "always" }],
   max-len: "off",
   no-underscore-dangle: "off",
-  # TODO: turn these on and fix errors
+  # TODO: turn these on and fix errors, if needed
   jsx-a11y/click-events-have-key-events: "off",
   jsx-a11y/no-static-element-interactions: "off",
   react/no-unescaped-entities: "off",
   import/prefer-default-export: "off",
   react/require-default-props: "off",
+  # We do this because of the Sanity "parts" system; I believe they intend to deprecate this functionality in the future,
+  # since the "workaround" right now is to simply either turn off the rule, or add a workaround that enables the parts
+  # system to work, but with no added benefit from types (all types are "any" from the parts system - may as well turn this
+  # rule off until they have a different system)
+  import/no-unresolved: "off"
 }
 settings: {
   # Enables "local" imports without specifying the file extension

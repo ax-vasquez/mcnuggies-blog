@@ -45,12 +45,6 @@ export default {
         },
       },
       {
-        name: 'jobTitle',
-        title: 'Job Title',
-        type: 'string',
-        validation: (Rule) => Rule.required(),
-      },
-      {
         name: 'description',
         title: 'Description',
         ...richTextFieldConfig,
@@ -60,6 +54,14 @@ export default {
         title: 'Home Page',
         name: 'homePage',
         type: 'url',
+        validation: (Rule) => Rule.required(),
+      },
+      {
+        name: 'jobTitles',
+        title: 'Job Titles',
+        type: 'array',
+        of: [{ type: 'reference', to: [{ type: 'jobTitle' }] }],
+        description: 'The job title(s) you held, or currently hold, at this employer',
         validation: (Rule) => Rule.required(),
       },
     ],

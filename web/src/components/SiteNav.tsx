@@ -21,7 +21,7 @@ const StyledNavDiv = styled.div`
     background-color: ${THEME.light.background.nav};
     position: sticky;
     width: 100%;
-    z-index: 20;
+    z-index: 30;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     font-size: 1.125rem;
     line-height: 1.75rem;

@@ -22,24 +22,37 @@ query{
         githubUrl
         _rawBio
     }
-    allSanityEmployer(filter: {employed: {eq: true}}) {
-        edges {
-          node {
-            startDate(formatString: "YYYY-MM")
-            endDate(formatString: "YYYY-MM")
-            employed
-            name
-            jobTitle
-            homePage
-            image {
-              asset {
+    sanityEmployer(employed: {eq: true}) {
+        name
+        startDate(formatString: "YYYY-MM")
+        endDate(formatString: "YYYY-MM")
+        employed
+        name
+        homePage
+        image {
+            asset {
                 gatsbyImageData
-              }
             }
-            _rawDescription
-          }
         }
-      }
+        jobTitles {
+            title
+            currentJobTitle
+        }
+        _rawDescription
+    }
+    allSanityEmployer {
+        edges {
+            node {
+                name
+                jobTitles {
+                    title
+                    responsibilities
+                    startDate
+                    endDate
+                }
+            }
+        }
+    }
 }
 `
 
@@ -133,6 +146,7 @@ const AboutPage = ({ data }: { data: {
     allSanityEmployer: {
         edges: SanityEmployerNode[]
     }
+    sanityEmployer: SanityEmployer
 } }) => {
     const creatorImage = getImage(data.sanityCreator.image.asset.gatsbyImageData)
     const {
@@ -141,16 +155,19 @@ const AboutPage = ({ data }: { data: {
         githubUrl,
         _rawBio,
     } = data.sanityCreator
-    const mainEmployer = data.allSanityEmployer.edges[0].node
+    const mainEmployer = data.sanityEmployer
     const mainEmployerImage = getImage(mainEmployer.image.asset.gatsbyImageData)
     const {
         startDate,
         endDate,
         employed,
-        jobTitle,
         _rawDescription,
         homePage,
+        jobTitles,
     } = mainEmployer
+
+    const currentJobTitle = jobTitles.filter((title) => title.currentJobTitle === true)[0]
+
     return (
         <Layout>
             <StyledAuthorDetailsContainerDiv>
@@ -164,7 +181,7 @@ const AboutPage = ({ data }: { data: {
                             <StyledEmployerIcon image={mainEmployerImage} alt="employer_image" />
                         </a>
                         <StyledEmploymentTitle>
-                            {jobTitle}
+                            {currentJobTitle.title}
                         </StyledEmploymentTitle>
                         <StyledEmploymentDates>
                             {startDate}
