@@ -7,7 +7,6 @@ import Tile from '../components/home/Tile'
 import {
   HeroImage,
   HeroImageContainer,
-  HeroImageOverlay,
 } from '../components/styled-components/common'
 import { device } from '../style/devices'
 
@@ -45,7 +44,6 @@ const IndexPage = ({ data }: { data: {
         <Layout>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />
-                <HeroImageOverlay />
             </HeroImageContainer>
             <h1>
                 Welcome

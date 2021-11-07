@@ -15,7 +15,6 @@ query{
           current
         }
         repoUrl
-        npmUrl
         title
       }
     }

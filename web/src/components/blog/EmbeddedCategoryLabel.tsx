@@ -5,11 +5,9 @@ import { addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSl
 import { THEME } from '../../style/colors'
 
 const StyledEmbeddedCategoryLabel = styled.div`
-    border-color: ${THEME.light.border.tagActive};
     text-align: center;
     color: ${THEME.light.font.tagActive};
     background-color: ${THEME.light.background.tagActive};
-    border: solid;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
