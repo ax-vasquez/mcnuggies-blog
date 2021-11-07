@@ -33,7 +33,6 @@ query($slug: String!){
 
 const StyledArticleDiv = styled.div` 
     margin-top: 1rem;
-    text-align: justify;
     width: 100%;
     @media ${device.mobileS} {
         padding-left: 1rem;

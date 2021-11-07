@@ -27,14 +27,10 @@ export default {
         type: 'url'
       },
       {
-        title: 'NPM URL',
-        name: 'npmUrl',
-        type: 'url'
-      },
-      {
-        title: 'Steam URL',
-        name: 'steamUrl',
-        type: 'url'
+        name: `link`,
+        title: `Links`,
+        type: `array`,
+        of: [{ type: `reference`, to: [{type: `projectLink`}] }]
       },
       {
         name: `description`,

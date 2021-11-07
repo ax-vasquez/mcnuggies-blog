@@ -44,13 +44,13 @@ const OPTIONS = {
         label: 'Blog',
         url: '/blog',
     },
-    about: {
-        label: 'About',
-        url: '/about',
-    },
     projects: {
         label: 'Projects',
         url: '/projects',
+    },
+    about: {
+        label: 'About',
+        url: '/about',
     },
 } as NavOptionData
 

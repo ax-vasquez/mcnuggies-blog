@@ -74,6 +74,9 @@ export const StyledRootDiv = styled.div`
         background-color: ${BG_COLORS.code.light};
         border-radius: 0.25rem;
       }
+      p {
+        text-align: justify;
+      }
   }
 `
 
