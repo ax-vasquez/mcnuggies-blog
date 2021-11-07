@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
-import styled from "styled-components"
 import {
   HeroImage,
   HeroImageContainer,
@@ -45,13 +45,13 @@ const IndexPage = ({ data }: { data: {
         <Layout>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />
-                <HeroImageOverlay/>
+                <HeroImageOverlay />
             </HeroImageContainer>
             <h1>
-              Welcome
+                Welcome
             </h1>
             <StyledHomeBannerList>
-                {rootItems.map((rootItem, index) => <Tile key={`home-banner-${index}`} label={rootItem} />)}
+                {rootItems.map((rootItem) => <Tile key={`home-banner-${rootItem.toLowerCase()}`} label={rootItem} />)}
             </StyledHomeBannerList>
         </Layout>
     )

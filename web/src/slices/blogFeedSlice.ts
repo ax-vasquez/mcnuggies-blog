@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const blogFeedSlice = createSlice({
@@ -5,7 +6,7 @@ const blogFeedSlice = createSlice({
     initialState: {
         activeCategories: [],
         filterText: '',
-        showModal: false ,
+        showModal: false,
     },
     reducers: {
         addActiveCategory(state, action: PayloadAction<string>) {
@@ -21,7 +22,7 @@ const blogFeedSlice = createSlice({
         clearFilterText(state) {
             state.filterText = ''
         },
-        toggleShowModal(state, action) {
+        toggleShowModal(state) {
             state.showModal = !state.showModal
         },
     },
@@ -32,6 +33,6 @@ export const {
     removeActiveCategory,
     setFilterText,
     clearFilterText,
-    toggleShowModal
+    toggleShowModal,
 } = blogFeedSlice.actions
 export default blogFeedSlice.reducer

@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit'
 
 const siteNavSlice = createSlice({
     name: 'siteNav',
@@ -6,7 +7,7 @@ const siteNavSlice = createSlice({
         showSidebar: false,
     },
     reducers: {
-        toggleShowSidebar(state, action) {
+        toggleShowSidebar(state) {
             state.showSidebar = !state.showSidebar
         },
     },

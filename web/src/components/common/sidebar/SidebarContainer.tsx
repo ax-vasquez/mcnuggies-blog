@@ -1,11 +1,11 @@
 import React from 'react'
+import styled from 'styled-components'
 import { SidebarMenuOptions } from '../../../types/sidebar'
 import SidebarBodyList from './SidebarBodyList'
 import SidebarBodyText from './SidebarBodyText'
 import SidebarBody from './SidebarBody'
 import SidebarFooter from './SidebarFooter'
-import styled from 'styled-components'
-import { BG_COLORS } from '../../../style/colors'
+import { THEME } from '../../../style/colors'
 
 const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     --translate-x: -100%;
@@ -18,7 +18,7 @@ const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     left: 0px;
     overflow: hidden;
     text-overflow: clip;
-    background-color: ${BG_COLORS.sidebar.light};
+    background-color: ${THEME.light.background.sidebar};
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -41,7 +41,7 @@ const SidebarContainer = ({
 
     return (
         <StyledSidebar
-            isOpen={isOpen}
+          isOpen={isOpen}
           id="sidebar"
           data-cy="sidebar"
         >

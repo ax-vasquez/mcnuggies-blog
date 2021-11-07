@@ -1,27 +1,33 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { RiFilter3Fill } from '@react-icons/all-files/ri/RiFilter3Fill'
 import { useDispatch } from 'react-redux'
-import { toggleShowModal } from '../../slices/blogFeedSlice'
 import styled from 'styled-components'
-import { BG_COLORS, FONT_COLORS } from '../../style/colors'
+import { toggleShowModal } from '../../slices/blogFeedSlice'
+import { THEME } from '../../style/colors'
 
 const StyledDateBannerButton = styled.button`
-    top: 3rem;
+    top: 3.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border: none;
     border-radius: 0.25rem;
-    background-color: ${BG_COLORS.dateBanner.light};
+    background-color: ${THEME.light.background.dateBanner};
     position: sticky;
     width: 100%;
     display: block;
     text-align: center;
+    z-index: 10;
+    &:hover {
+        background-color: ${THEME.light.background.dateBannerHovered};
+    }
 `
 
-const StyledDateBannerLabelContainer = styled.div<{ hovered: boolean }>`
+const StyledDateBannerLabelContainer = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
+    color: ${THEME.light.font.dateBanner};
     & {
         h3 {
             margin-top: 0.25rem;
@@ -31,19 +37,12 @@ const StyledDateBannerLabelContainer = styled.div<{ hovered: boolean }>`
             font-style: italic;
             font-weight: 200;
             display: inline-block;
-            color: ${FONT_COLORS.dateBanner.light};
-            ${(props) => (props.hovered ? `
-                color: ${FONT_COLORS.dateBanner.lightHovered};
-            ` : null )}
+            color: currentColor;
         }
         div {
             margin-left: 0.5rem;
             display: inline-block;
             stroke: currentColor;
-            color: ${FONT_COLORS.dateBanner.light};
-            ${(props) => (props.hovered ? `
-                color: ${FONT_COLORS.dateBanner.lightHovered};
-            ` : null )}
         }
     }
 `
@@ -58,17 +57,14 @@ const StyledDateBannerLabelContainer = styled.div<{ hovered: boolean }>`
  * in a scrolling animation (up or down, depending on the scroll direction)
  */
 const DateBanner = ({ dateString }: { dateString: string }) => {
-    const [hovered, setHovered] = useState(false)
     const dispatch = useDispatch()
 
     return (
         <StyledDateBannerButton
           type="button"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onClick={() => dispatch(toggleShowModal(null))}
+          onClick={() => dispatch(toggleShowModal())}
         >
-            <StyledDateBannerLabelContainer hovered={hovered}>
+            <StyledDateBannerLabelContainer>
                 <h3>
                     {dateString}
                 </h3>

@@ -1,10 +1,12 @@
+// @reach/router comes from Gatsby and is not an actual dependency of this site (will result in linting error)
+// eslint-disable-next-line import/no-unresolved
+import { Location, LocationContext } from '@reach/router'
 import { Link } from 'gatsby'
 import React from 'react'
 import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
+import styled, { css, keyframes } from 'styled-components'
 import { SidebarMenuOptions } from '../../../types/sidebar'
-import { Location, LocationContext } from '@reach/router'
-import styled, { css, keyframes } from "styled-components"
-import { BG_COLORS, FONT_COLORS } from '../../../style/colors'
+import { THEME } from '../../../style/colors'
 
 // styled-components keyframes doesn't work in React Native - for that, you need to use the ReactNative.Animated API
 // See https://styled-components.com/docs/basics#animations
@@ -21,14 +23,14 @@ const iconBounce = keyframes`
 `
 
 // Starting in styled-components v4, you must access keyframes via the css helper
-const bounceAnimation = props => css`
+const bounceAnimation = () => css`
     animation: ${iconBounce} .75s infinite;
 `
 
 const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: boolean }>`
-    color: ${FONT_COLORS.sidebar.rootItems.light};
+    color: ${THEME.light.font.sidebar};
     vertical-align: middle;
-    ${(props) => (props.bounce ? bounceAnimation : null )}
+    ${(props) => (props.bounce ? bounceAnimation : null)}
 `
 
 const StyledMenuOptionListContainerDiv = styled.div`
@@ -42,7 +44,7 @@ const StyledSidebarMenuOption = styled(Link)`
     padding-left: 1rem;
     display: block;
     &:hover {
-        background-color: ${BG_COLORS.sidebar.rootItems.lightHovered};
+        background-color: ${THEME.light.background.sidebarHovered};
     }
 `
 
@@ -55,7 +57,7 @@ const StyledRootMenuOptionLabel = styled.div`
     padding-left: 1rem;
     display: inline-block;
     vertical-align: middle;
-    color: ${FONT_COLORS.sidebar.rootItems.light};
+    color: ${THEME.light.font.sidebar};
 `
 
 const SidebarBodyList = ({
@@ -66,7 +68,7 @@ const SidebarBodyList = ({
 
     const isActiveItem = (label: string, locationProps: LocationContext) => {
         const { location } = locationProps
-        switch(label) {
+        switch (label) {
             case 'Home': {
                 return location.pathname === '/'
             }
@@ -75,13 +77,14 @@ const SidebarBodyList = ({
             case 'Blog': {
                 return location.pathname.includes(label.toLowerCase())
             }
+            default: return false
         }
-        
+
     }
 
     return (
         <Location>
-            {locationProps => (
+            {(locationProps) => (
                 <StyledMenuOptionListContainerDiv>
                     {Object.keys(options).map((key) => {
                         const { url, label } = options[key]
@@ -89,7 +92,7 @@ const SidebarBodyList = ({
                         return (
                             <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
                                 <StyledSidebarMenuOptionIconHolder>
-                                    <StyledBouncingIcon bounce={shouldBounce}/>
+                                    <StyledBouncingIcon bounce={shouldBounce} />
                                 </StyledSidebarMenuOptionIconHolder>
                                 <StyledRootMenuOptionLabel>{label}</StyledRootMenuOptionLabel>
                             </StyledSidebarMenuOption>

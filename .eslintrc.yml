@@ -44,7 +44,9 @@ rules: {
   # TODO: turn these on and fix errors
   jsx-a11y/click-events-have-key-events: "off",
   jsx-a11y/no-static-element-interactions: "off",
-  react/no-unescaped-entities: "off"
+  react/no-unescaped-entities: "off",
+  import/prefer-default-export: "off",
+  react/require-default-props: "off",
 }
 settings: {
   # Enables "local" imports without specifying the file extension

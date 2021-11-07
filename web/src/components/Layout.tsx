@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import SiteNav from './SiteNav'
 import { StyledRootDiv } from './styled-components/common'
-import styled from 'styled-components'
 import { device } from '../style/devices'
 
 const LayoutContainer = styled.div`

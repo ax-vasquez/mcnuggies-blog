@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useSelector } from 'react-redux'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
 import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
 import { SanityArticle, SanityCategory } from '../../graphql-types'
-import styled from "styled-components"
 import BlogFilterModal from '../components/blog/BlogFilterModal'
 
 export const query = graphql`
@@ -101,8 +101,9 @@ const BlogPage = ({ data }: { data: {
     const filteredByCategory = activeCategories.length > 0
     return (
         <>
-            {showModal ? <BlogFilterModal categories={categories}/> : null}
+            {showModal ? <BlogFilterModal categories={categories} /> : null}
             <Layout>
+                <h1>Blog</h1>
                 <BlogFeed>
                     {articleEdges.map((edge, index) => {
                         let displayArticle = true
@@ -119,12 +120,12 @@ const BlogPage = ({ data }: { data: {
                         if (displayArticle) {
                             articleJsx = (
                                 <ArticleRow
-                                    title={edge.node.title}
-                                    publishDate={edge.node.publishDate}
+                                  title={edge.node.title}
+                                  publishDate={edge.node.publishDate}
                                     // TODO: Show more content and truncate appropriately
-                                    previewText={edge.node._rawBody[0]}
-                                    image={edge.node.image.asset.gatsbyImageData}
-                                    slug={edge.node.slug.current}
+                                  previewText={edge.node._rawBody[0]}
+                                  image={edge.node.image.asset.gatsbyImageData}
+                                  slug={edge.node.slug.current}
                                 />
                             )
                         }

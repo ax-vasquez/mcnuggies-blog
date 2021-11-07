@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import styled from 'styled-components'
 import { toggleShowModal } from '../../slices/blogFeedSlice'
-import styled from "styled-components"
 import ModalField from './ModalField'
-import { BG_COLORS, BORDER_COLORS, FONT_COLORS } from '../../style/colors'
+import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
 import { FONT } from '../../style/font'
 
@@ -24,7 +24,7 @@ const StyledModal = styled.div`
     left: 0px;
     right: 0px;
     padding: 0.5rem;
-    background-color: ${BG_COLORS.modal.light};
+    background-color: ${THEME.light.background.default}};
     padding-left: 1rem;
     padding-right: 1rem;
     position: absolute;
@@ -60,25 +60,23 @@ const StyledModalTitleRow = styled.div`
 const StyledWideSubmitButton = styled.button`
     text-align: center;
     width: 100%;
-    border-color: ${BORDER_COLORS.modal.buttons.submit.light};
-    border-width: 2px;
+    border: none;
     border-radius: 0.25rem;
-    color: ${FONT_COLORS.modal.buttons.submit.light};
-    background-color: ${BG_COLORS.modal.buttons.submit.light};
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: ${THEME.light.font.accept};
+    background-color: ${THEME.light.background.accept};
     &:hover {
-        background-color: ${BG_COLORS.modal.buttons.submit.lightHovered};
+        background-color: ${THEME.light.background.acceptHovered};
     }
 `
 
-const Modal = (props) => {
-
-    const {
-        title,
-        fields
-    }: {
-        title: string
-        fields: JSX.Element[]
-    } = props
+const Modal = ({
+    title,
+    fields,
+}:{
+    title: string
+    fields: JSX.Element[]
+}) => {
 
     const dispatch = useDispatch()
 
@@ -89,9 +87,9 @@ const Modal = (props) => {
                 <StyledModalTitleRow>
                     <h1>{title}</h1>
                 </StyledModalTitleRow>
-                {fields.map(field => field)}
+                {fields.map((field) => field)}
                 <ModalField>
-                    <StyledWideSubmitButton onClick={(e) => dispatch(toggleShowModal(null))}>
+                    <StyledWideSubmitButton onClick={() => dispatch(toggleShowModal())}>
                         OK
                     </StyledWideSubmitButton>
                 </ModalField>

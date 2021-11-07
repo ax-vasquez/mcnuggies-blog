@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
 import serializers from '../serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
-import styled from "styled-components"
-import { BG_COLORS, FONT_COLORS } from '../style/colors'
+import { THEME } from '../style/colors'
 import { StyledBlockContent } from '../components/styled-components/common'
 import { device } from '../style/devices'
 
@@ -43,11 +43,13 @@ query{
 `
 
 const StyledAuthorDetailsContainerDiv = styled.div`
-    margin-top: 0.5rem;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    padding: 2rem;
     display: inline-flex;
-    background-color: ${BG_COLORS.about.detailsCard.light};
     z-index: 10;
+    border-top: solid 2px;
+    border-bottom: solid 2px;
+    border-color: ${THEME.light.border.default};
 `
 
 const StyledCreatorBadgeDiv = styled.div`
@@ -82,7 +84,7 @@ const StyledEmploymentDatesDiv = styled.div`
         p {
             margin-left: 1rem;
             font-style: italic;
-            color: ${FONT_COLORS.about.detailsCard.employmentDates.light};
+            color: ${THEME.light.font.accent};
         }
     }
 `

@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
 import EmbeddedCategoryFilterLabel from '../components/blog/EmbeddedCategoryLabel'
@@ -7,11 +8,10 @@ import { SanityArticle } from '../../graphql-types'
 import {
     HeroImage,
     HeroImageContainer,
-    StyledBlockContent
+    StyledBlockContent,
 } from '../components/styled-components/common'
-import styled from "styled-components"
 import { device } from '../style/devices'
-import { FONT_COLORS } from '../style/colors'
+import { THEME } from '../style/colors'
 
 export const query = graphql`
 query($slug: String!){
@@ -53,7 +53,7 @@ const StyledArticleTitleDiv = styled.div`
         }
         p {
             font-style: italic;
-            color: ${FONT_COLORS.templates.blogArticle.publishDate.light};
+            color: ${THEME.light.font.accent};
         }
     }
 `
@@ -85,8 +85,6 @@ const StyledEmbeddedCategoryGrid = styled.div`
     }
 `
 
-
-
 const BlogArticle = ({ data }: { data: {
     sanityArticle: SanityArticle
 } }) => {
@@ -100,7 +98,7 @@ const BlogArticle = ({ data }: { data: {
     return (
         <Layout>
             <HeroImageContainer>
-                <HeroImage image={image.asset.gatsbyImageData} alt={`article-hero-image`} />
+                <HeroImage image={image.asset.gatsbyImageData} alt="article-hero-image" />
             </HeroImageContainer>
             <StyledArticleDiv>
                 <StyledArticleTitleDiv>

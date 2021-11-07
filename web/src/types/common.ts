@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 type GenericField = {
     name: string
     required: boolean
@@ -11,7 +13,7 @@ export type TextAreaFieldConfig = GenericField & {
     /**
      * The input handler
      */
-     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+     onChange: () => void
 }
 
 /**

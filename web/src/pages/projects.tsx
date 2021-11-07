@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import Layout from '../components/Layout'
+import React from 'react'
 import { graphql } from 'gatsby'
-import { SanityProject } from '../../graphql-types'
 import styled from 'styled-components'
+import Layout from '../components/Layout'
+import { SanityProject } from '../../graphql-types'
 import ProjectRow from '../components/projects/ProjectRow'
 
 export const query = graphql`
@@ -43,18 +43,18 @@ const projects = ({ data }: { data: {
         <Layout>
             <h1>Projects</h1>
             <StyledProjectsUnorderedList>
-                {projectEdges.map((projectEdge, index) => {
+                {projectEdges.map((projectEdge) => {
                     const {
                         title,
                         repoUrl,
-                        _rawDescription
+                        _rawDescription,
                     } = projectEdge.node
                     return (
-                        <ProjectRow 
-                            key={`project-row-${index}`}
-                            title={title}
-                            repoUrl={repoUrl}
-                            _rawDescription={_rawDescription}
+                        <ProjectRow
+                          key={`project-row-${title.toLowerCase().replace(' ', '-')}`}
+                          title={title}
+                          repoUrl={repoUrl}
+                          _rawDescription={_rawDescription}
                         />
                     )
                 })}
