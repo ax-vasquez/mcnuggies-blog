@@ -85,19 +85,6 @@ export const HeroImageContainer = styled.div`
   justify-content: center;
 `
 
-export const HeroImageOverlay = styled.div.attrs({
-  className: '',
-})`
-  --bg-opacity: 0.75;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, var(--bg-opacity));
-`
-
 export const HeroImage = styled(GatsbyImage)`
   display: block;
   margin-left: auto;

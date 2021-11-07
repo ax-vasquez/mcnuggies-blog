@@ -30,6 +30,7 @@ query{
             employed
             name
             jobTitle
+            homePage
             image {
               asset {
                 gatsbyImageData
@@ -50,6 +51,13 @@ const StyledAuthorDetailsContainerDiv = styled.div`
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-color: ${THEME.light.border.default};
+    width: 100%;
+    & {
+        h1 {
+            padding-top: 0;
+            margin: 0;
+        }
+    }
 `
 
 const StyledCreatorBadgeDiv = styled.div`
@@ -64,29 +72,14 @@ const StyledCreatorBadgeDiv = styled.div`
 
 const StyledCreatorBadgeImage = styled(GatsbyImage)`
     border-radius: 0.25rem;
-    display: flex;
+    height: 15rem;
+    width: 15rem;
 `
 
 const StyledCreatorDetailsDiv = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-`
-
-const StyledEmployerImageDiv = styled.div`
-    width: 10rem;
-    height: 4rem;
-`
-
-const StyledEmploymentDatesDiv = styled.div`
-    display: flex;
-    & {
-        p {
-            margin-left: 1rem;
-            font-style: italic;
-            color: ${THEME.light.font.accent};
-        }
-    }
 `
 
 const StyledCreatorDetailsFooter = styled.div`
@@ -104,6 +97,31 @@ const StyledAboutContentDiv = styled.div`
 
 const StyledIntegrationImage = styled.img`
     height: 2rem;
+`
+
+const StyledJobTitleRow = styled.div`
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+`
+
+const StyledEmployerIcon = styled(GatsbyImage)`
+    width: 2rem;
+    height: 2rem;
+`
+
+const StyledEmploymentTitle = styled.h3`
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0.25rem;
+`
+
+const StyledEmploymentDates = styled.p`
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    font-style: italic;
+    color: ${THEME.light.font.accent};
 `
 
 type SanityEmployerNode = {
@@ -131,6 +149,7 @@ const AboutPage = ({ data }: { data: {
         employed,
         jobTitle,
         _rawDescription,
+        homePage,
     } = mainEmployer
     return (
         <Layout>
@@ -139,36 +158,36 @@ const AboutPage = ({ data }: { data: {
                     <StyledCreatorBadgeImage image={creatorImage} alt="creator_image" />
                 </StyledCreatorBadgeDiv>
                 <StyledCreatorDetailsDiv>
-                    <div>
-                        <h1>{name}</h1>
-                        <StyledEmployerImageDiv>
-                            <GatsbyImage image={mainEmployerImage} alt="employer_image" />
-                        </StyledEmployerImageDiv>
-                        <StyledEmploymentDatesDiv>
-                            <h3>{jobTitle}</h3>
-                            <p>
-                                {startDate}
-                                {' '}
-                                -
-                                {' '}
-                                {employed ? 'Present' : endDate}
-                            </p>
-                        </StyledEmploymentDatesDiv>
-                        <StyledBlockContent blocks={_rawDescription} serializers={serializers} />
-                    </div>
+                    <h1>{name}</h1>
+                    <StyledJobTitleRow>
+                        <a href={homePage} target="_blank" rel="noreferrer">
+                            <StyledEmployerIcon image={mainEmployerImage} alt="employer_image" />
+                        </a>
+                        <StyledEmploymentTitle>
+                            {jobTitle}
+                        </StyledEmploymentTitle>
+                        <StyledEmploymentDates>
+                            {startDate}
+                            {' '}
+                            -
+                            {' '}
+                            {employed ? 'Present' : endDate}
+                        </StyledEmploymentDates>
+                    </StyledJobTitleRow>
+                    <StyledBlockContent blocks={_rawDescription} serializers={serializers} />
                     <StyledCreatorDetailsFooter>
-                        {linkedInUrl ? (
-                            <div>
-                                <a href={linkedInUrl} target="_blank" rel="noreferrer">
-                                    <StyledIntegrationImage src="/linkedin-logo.png" alt="linkedin-logo" />
-                                </a>
-                            </div>
-                        )
-                            : null}
                         {githubUrl ? (
                             <div>
                                 <a href={githubUrl} target="_blank" rel="noreferrer">
                                     <StyledIntegrationImage src="/octocat-logo.png" alt="gh-logo" />
+                                </a>
+                            </div>
+                        )
+                            : null}
+                        {linkedInUrl ? (
+                            <div>
+                                <a href={linkedInUrl} target="_blank" rel="noreferrer">
+                                    <StyledIntegrationImage src="/linkedin-logo.png" alt="linkedin-logo" />
                                 </a>
                             </div>
                         )

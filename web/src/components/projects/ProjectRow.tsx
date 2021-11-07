@@ -9,6 +9,7 @@ const StyledProjectsListItem = styled.li<{ hovered: boolean }>`
     border-top: solid;
     border-bottom: solid;
     border-width: 2px;
+    border-color: ${THEME.light.border.default};
     ${(props) => (props.hovered ? `
         background-color: ${THEME.light.background.defaultHovered};
     ` : '')}
