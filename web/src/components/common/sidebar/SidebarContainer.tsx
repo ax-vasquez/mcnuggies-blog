@@ -23,6 +23,7 @@ const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
     transform: translateX(var(--translate-x));
+    z-index: 20;
     ${(props) => props.isOpen && `
         --translate-x: 0px;
     `}
