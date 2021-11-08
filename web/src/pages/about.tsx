@@ -8,6 +8,7 @@ import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import { THEME } from '../style/colors'
 import { StyledBlockContent } from '../components/styled-components/common'
 import { device } from '../style/devices'
+import EmploymentHistoryList from '../components/about/EmploymentHistoryList'
 
 export const query = graphql`
 query{
@@ -46,9 +47,10 @@ query{
                 name
                 jobTitles {
                     title
+                    currentJobTitle
                     responsibilities
-                    startDate
-                    endDate
+                    startDate(formatString: "YYYY-MM")
+                    endDate(formatString: "YYYY-MM")
                 }
             }
         }
@@ -166,6 +168,8 @@ const AboutPage = ({ data }: { data: {
         jobTitles,
     } = mainEmployer
 
+    const employers = data.allSanityEmployer.edges.map((edge) => edge.node)
+
     const currentJobTitle = jobTitles.filter((title) => title.currentJobTitle === true)[0]
 
     return (
@@ -212,6 +216,7 @@ const AboutPage = ({ data }: { data: {
                     </StyledCreatorDetailsFooter>
                 </StyledCreatorDetailsDiv>
             </StyledAuthorDetailsContainerDiv>
+            <EmploymentHistoryList employers={employers} />
             <StyledAboutContentDiv>
                 <StyledBlockContent blocks={_rawBio} serializers={serializers} />
             </StyledAboutContentDiv>
