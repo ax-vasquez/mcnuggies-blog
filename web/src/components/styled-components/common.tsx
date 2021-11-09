@@ -24,7 +24,7 @@ export const StyledRootDiv = styled.div`
         list-style-type: disc;
       }
       ul ul {
-        list-style-type: circle
+        list-style-type: circle;
       }
       ul ul ul {
         list-style-type: square;

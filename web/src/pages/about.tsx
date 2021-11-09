@@ -52,6 +52,12 @@ query{
                     startDate(formatString: "YYYY-MM")
                     endDate(formatString: "YYYY-MM")
                 }
+                image {
+                    asset {
+                        gatsbyImageData
+                    }
+                }
+                homePage
             }
         }
     }
@@ -66,7 +72,6 @@ const StyledAuthorDetailsContainerDiv = styled.div`
     border-top: solid 2px;
     border-bottom: solid 2px;
     border-color: ${THEME.light.border.default};
-    width: 100%;
     & {
         h1 {
             padding-top: 0;
