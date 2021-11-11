@@ -1,7 +1,7 @@
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { SanityEmployer } from '../../../graphql-types'
+import { SanityEmployer, SanityJobTitle } from '../../../graphql-types'
 import { THEME } from '../../style/colors'
 import EmploymentHistoryJobTitle from './EmploymentHistoryJobTitle'
 
@@ -19,13 +19,13 @@ const StyledEmployerRow = styled.div`
 const StyledEmploymentHistoryList = styled.ul`
     list-style-type: none !important;
     padding-left: 0px !important;
-`
-
-const StyledEmploymentHistoryListItem = styled.li`
     border-top: solid;
     border-bottom: solid;
     border-width: 2px;
     border-color: ${THEME.light.border.default};
+`
+
+const StyledEmploymentHistoryListItem = styled.li`
     padding-bottom: 2rem;
     padding-left: 0 !important;
     & {
@@ -45,6 +45,20 @@ const StyledEmployerIcon = styled(GatsbyImage)`
     height: 2rem;
 `
 
+/**
+ * Helper method to sort job titles by start date, to ensure the latest-held position
+ * is at the top of the list
+ */
+const sortJobTitles = (firstEl: SanityJobTitle, secondEl: SanityJobTitle) => {
+    if (firstEl.startDate < secondEl.startDate) {
+        return 1
+    }
+    if (firstEl.startDate > secondEl.startDate) {
+        return -1
+    }
+    return 0
+}
+
 const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) => {
     return (
         <div>
@@ -62,7 +76,7 @@ const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) =
                                     <h3>{employer.name}</h3>
                                 </StyledEmployerRow>
                                 <ul>
-                                    {employer.jobTitles.map((jobTitle) => {
+                                    {employer.jobTitles.sort(sortJobTitles).map((jobTitle) => {
                                         return (
                                             <StyledJobTitleListItem>
                                                 <EmploymentHistoryJobTitle jobTitle={jobTitle} />
