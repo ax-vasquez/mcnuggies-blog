@@ -40,19 +40,19 @@ query{
 }
 `
 
-const MONTHS = {
-    '01': 'january',
-    '02': 'february',
-    '03': 'march',
-    '04': 'april',
-    '05': 'may',
-    '06': 'june',
-    '07': 'july',
-    '08': 'august',
-    '09': 'september',
-    10: 'october',
-    11: 'november',
-    12: 'december',
+export const MONTHS = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    10: 'October',
+    11: 'November',
+    12: 'December',
 }
 
 const getFormattedBannerDateString = (rawDateString: string) => {

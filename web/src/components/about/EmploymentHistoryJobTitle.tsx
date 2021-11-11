@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { SanityJobTitle } from '../../../graphql-types'
+import { MONTHS } from '../../pages/blog'
 import { THEME } from '../../style/colors'
 
 const StyledJobTitleDiv = styled.div`
@@ -43,20 +44,38 @@ const StyledResponsibilitiesListItem = styled.li`
 `
 
 const EmploymentHistoryJobTitle = ({ jobTitle }: { jobTitle: SanityJobTitle }) => {
+    const {
+        title,
+        startDate,
+        endDate,
+        currentJobTitle,
+        responsibilities,
+    } = jobTitle
+
+    const startDateParts = startDate.split('-')
+    const startDateString = `${MONTHS[startDateParts[1]]}, ${startDateParts[0]}`
+    let endDateParts = []
+    let endDateString = ''
+
+    if (endDate) {
+        endDateParts = endDate.split('-')
+        endDateString = `${MONTHS[endDateParts[1]]}, ${endDateParts[0]}`
+    }
+
     return (
         <StyledJobTitleDiv>
             <StyledJobTitleSpan>
-                <h4>{jobTitle.title}</h4>
+                <h4>{title}</h4>
                 <p>
-                    {jobTitle.startDate}
+                    {startDateString}
                     {' '}
                     -
                     {' '}
-                    {(jobTitle.currentJobTitle) ? 'Present' : jobTitle.endDate}
+                    {(currentJobTitle) ? 'Present' : endDateString}
                 </p>
             </StyledJobTitleSpan>
             <StlyedResponsibilitiesList>
-                {jobTitle.responsibilities.map((responsibility) => (
+                {responsibilities.map((responsibility) => (
                     <StyledResponsibilitiesListItem>
                         {responsibility}
                     </StyledResponsibilitiesListItem>
