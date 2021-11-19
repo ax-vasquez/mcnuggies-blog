@@ -1,22 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { THEME } from '../../style/colors'
 import { StyledBlockContent } from '../styled-components/common'
 
-const StyledProjectsListItem = styled.li<{ hovered: boolean }>`
+const StyledProjectsListItem = styled.li`
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    padding: 1rem;
     border-top: solid;
     border-bottom: solid;
     border-width: 2px;
     border-color: ${THEME.light.border.default};
-    ${(props) => (props.hovered ? `
-        background-color: ${THEME.light.background.defaultHovered};
-    ` : '')}
 `
 
 const StyledIntegrationImage = styled.img`
-    height: 2rem;
+    height: 1.5rem;
+`
+
+const StyledProjectHeaderRow = styled.div`
+    display: inline-flex;
+    align-items: center;
+    & {
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+        a {
+            margin-right: 1rem;
+            background: none;
+            padding: 0.25rem;
+            border-radius: 2px;
+            &:hover {
+                background: #DFDFDF;
+            }
+        }
+    }
 `
 
 const ProjectRow = ({
@@ -29,18 +46,16 @@ const ProjectRow = ({
     _rawDescription: any // TODO: Find out what the type should be here
 }) => {
 
-    const [hovered, setHovered] = useState(false)
-
     return (
-        <StyledProjectsListItem hovered={hovered} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+        <StyledProjectsListItem>
             <div>
-                <h2>{title}</h2>
-                <StyledBlockContent blocks={_rawDescription} />
-                <div>
+                <StyledProjectHeaderRow>
                     <a href={repoUrl} target="_blank" rel="noreferrer">
                         <StyledIntegrationImage src="/GitHub-Mark-64px.png" alt="gh-logo" />
                     </a>
-                </div>
+                    <h2>{title}</h2>
+                </StyledProjectHeaderRow>
+                <StyledBlockContent blocks={_rawDescription} />
             </div>
         </StyledProjectsListItem>
     )
