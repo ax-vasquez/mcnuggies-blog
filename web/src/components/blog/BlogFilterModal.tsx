@@ -1,7 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Modal from '../common/Modal'
-import { setFilterText, addActiveCategory, removeActiveCategory } from '../../slices/blogFeedSlice'
+import {
+ setFilterText, addActiveCategory, removeActiveCategory, toggleShowModal,
+} from '../../slices/blogFeedSlice'
 import { ButtonConfig, ButtonGridFieldConfig, TextInputFieldConfig } from '../../types/common'
 import ModalField from '../common/ModalField'
 import TextInput from '../common/controls/TextInput'
@@ -61,6 +63,7 @@ const BlogFilterModal = ({
         <Modal
           title="Blog feed filters"
           fields={fields}
+          closeHandler={() => dispatch(toggleShowModal())}
         />
     )
 }
