@@ -1,32 +1,32 @@
 import { richTextFieldConfig } from '../../shared'
 
 export default {
-    name: `creator`,
-    title: `Creator`,
-    type: `document`,
+    name: 'creator',
+    title: 'Creator',
+    type: 'document',
     fields: [
       {
-        name: `name`,
-        validation: Rule => Rule.required(),
-        title: `Name`,
-        type: `string`,
+        name: 'name',
+        validation: (Rule) => Rule.required(),
+        title: 'Name',
+        type: 'string',
       },
       {
-        name: `slug`,
-        title: `Slug`,
-        type: `slug`,
+        name: 'slug',
+        title: 'Slug',
+        type: 'slug',
         options: {
-          source: `name`,
+          source: 'name',
           slugify: (input: string) => input
                            .toLowerCase()
                            .replace(/\s+/g, '-')
-                           .slice(0, 200)
+                           .slice(0, 200),
         },
       },
       {
-        name: `image`,
-        title: `Image`,
-        type: `image`,
+        name: 'image',
+        title: 'Image',
+        type: 'image',
         options: {
           hotspot: true,
         },
@@ -34,24 +34,24 @@ export default {
       {
         title: 'Github',
         name: 'githubUrl',
-        type: 'url'
+        type: 'url',
       },
       {
         title: 'LinkedIn',
         name: 'linkedInUrl',
-        type: 'url'
+        type: 'url',
       },
       {
-        name: `bio`,
-        title: `Bio`,
-        validation: Rule => Rule.required(),
+        name: 'bio',
+        title: 'Bio',
+        validation: (Rule) => Rule.required(),
         ...richTextFieldConfig,
       },
     ],
     preview: {
       select: {
-        title: `name`,
-        media: `image`,
+        title: 'name',
+        media: 'image',
       },
     },
   }

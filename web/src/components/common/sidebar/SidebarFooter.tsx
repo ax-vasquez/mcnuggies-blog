@@ -1,7 +1,8 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { THEME } from '../../../style/colors'
+import { toggleShowPrivacyModal } from '../../../slices/rootSlice'
 
 /**
  * The `a` tag colors need to be marked !important because the conflict with the base `a` tag
@@ -27,9 +28,16 @@ const StyledSidebarFooter = styled.div`
     }
 `
 
-const StyledFooterLink = styled(Link)`
+const StyledFooterLink = styled.button`
+    background: none;
+    border: none;
+    color: ${THEME.light.font.accent};
+    font-weight: bold;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+    &:hover {
+        color: ${THEME.light.font.sidebar};
+    }
 `
 
 const FOOTER_ITEMS = [
@@ -38,6 +46,9 @@ const FOOTER_ITEMS = [
 ]
 
 const SidebarFooter = () => {
+
+    const dispatch = useDispatch()
+
     return (
         <StyledSidebarFooter>
             <div style={{
@@ -48,7 +59,13 @@ const SidebarFooter = () => {
                     <span
                       key={`sidebar-footer-link-${item.toLowerCase()}`}
                     >
-                        <StyledFooterLink to="#">{item}</StyledFooterLink>
+                        <StyledFooterLink
+                          onClick={() => {
+                              if (item === 'privacy') dispatch(toggleShowPrivacyModal())
+                          }}
+                        >
+                            {item}
+                        </StyledFooterLink>
                     </span>
                 ))}
             </div>

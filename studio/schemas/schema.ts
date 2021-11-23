@@ -13,6 +13,7 @@ import category from './documents/category'
 import employer from './documents/employer'
 import series from './documents/series'
 import jobTitle from './documents/jobTitle'
+import privacyPolicy from './documents/privacyPolicy'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -26,6 +27,7 @@ export default createSchema({
     employer,
     jobTitle,
     article,
+    privacyPolicy,
     project,
     projectLink,
     projectLinkProvider,

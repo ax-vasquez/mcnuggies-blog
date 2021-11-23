@@ -1,7 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { toggleShowModal } from '../../slices/blogFeedSlice'
 import ModalField from './ModalField'
 import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
@@ -20,15 +18,15 @@ const StyledModalBackground = styled.div`
  * is stored outside of the context of the root div wherever it's used.
  */
 const StyledModal = styled.div`
-    top: 10%;
-    left: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     right: 0px;
     padding: 0.5rem;
     background-color: ${THEME.light.background.default}};
     padding-left: 1rem;
     padding-right: 1rem;
-    position: absolute;
-    margin: auto;
+    position: fixed;
     display: block;
     border-radius: 0.25rem;
     height: auto;
@@ -70,15 +68,20 @@ const StyledWideSubmitButton = styled.button`
     }
 `
 
+const StyledScrollingFieldsList = styled.div`
+    max-height: 50vh;
+    overflow-y:auto;
+`
+
 const Modal = ({
     title,
     fields,
+    closeHandler,
 }:{
     title: string
     fields: JSX.Element[]
+    closeHandler: () => void
 }) => {
-
-    const dispatch = useDispatch()
 
     return (
         <>
@@ -87,9 +90,11 @@ const Modal = ({
                 <StyledModalTitleRow>
                     <h1>{title}</h1>
                 </StyledModalTitleRow>
-                {fields.map((field) => field)}
+                <StyledScrollingFieldsList>
+                    {fields.map((field) => field)}
+                </StyledScrollingFieldsList>
                 <ModalField>
-                    <StyledWideSubmitButton onClick={() => dispatch(toggleShowModal())}>
+                    <StyledWideSubmitButton onClick={() => closeHandler()}>
                         OK
                     </StyledWideSubmitButton>
                 </ModalField>
