@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import { SanityProject } from '../../graphql-types'
 import ProjectRow from '../components/projects/ProjectRow'
@@ -40,6 +41,10 @@ const projects = ({ data }: { data: {
     const projectEdges = data.allSanityProject.edges
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Projects</title>
+            </Helmet>
             <h1>Projects</h1>
             <StyledProjectsUnorderedList>
                 {projectEdges.map((projectEdge) => {

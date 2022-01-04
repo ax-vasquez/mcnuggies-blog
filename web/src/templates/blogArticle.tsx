@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
 import EmbeddedCategoryFilterLabel from '../components/blog/EmbeddedCategoryLabel'
@@ -97,6 +98,10 @@ const BlogArticle = ({ data }: { data: {
     } = data.sanityArticle
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{`Blog | ${title}`}</title>
+            </Helmet>
             <HeroImageContainer>
                 <HeroImage image={image.asset.gatsbyImageData} alt="article-hero-image" />
             </HeroImageContainer>

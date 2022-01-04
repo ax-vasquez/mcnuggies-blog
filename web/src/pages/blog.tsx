@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
@@ -103,6 +104,10 @@ const BlogPage = ({ data }: { data: {
         <>
             {showModal ? <BlogFilterModal categories={categories} /> : null}
             <Layout>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Blog</title>
+                </Helmet>
                 <h1>Blog</h1>
                 <BlogFeed>
                     {articleEdges.map((edge, index) => {

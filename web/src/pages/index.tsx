@@ -2,6 +2,7 @@ import * as React from 'react'
 import { getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
 import {
@@ -42,6 +43,10 @@ const IndexPage = ({ data }: { data: {
     const rootItems = ['blog', 'projects', 'about']
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Home</title>
+            </Helmet>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />
             </HeroImageContainer>

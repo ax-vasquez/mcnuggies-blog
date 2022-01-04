@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import { THEME } from '../style/colors'
 
@@ -48,6 +49,10 @@ const NotFoundPage = ({ data }: { data: {
     const image = getImage(data.imageSharp)
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Not Found</title>
+            </Helmet>
             <StyledNotFoundImageContainerDiv>
                 <StyledNotFoundImage image={image} alt="404-image" />
                 <StyledNotFoundImageOverlayDiv>
