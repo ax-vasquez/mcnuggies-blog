@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { THEME } from '../../../style/colors'
-import { toggleShowPrivacyModal } from '../../../slices/rootSlice'
+// import { toggleShowPrivacyModal } from '../../../slices/rootSlice'
 
 /**
  * The `a` tag colors need to be marked !important because the conflict with the base `a` tag
@@ -28,26 +28,26 @@ const StyledSidebarFooter = styled.div`
     }
 `
 
-const StyledFooterLink = styled.button`
-    background: none;
-    border: none;
-    color: ${THEME.light.font.accent};
-    font-weight: bold;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    &:hover {
-        color: ${THEME.light.font.sidebar};
-    }
-`
+// const StyledFooterLink = styled.button`
+//     background: none;
+//     border: none;
+//     color: ${THEME.light.font.accent};
+//     font-weight: bold;
+//     margin-left: 0.5rem;
+//     margin-right: 0.5rem;
+//     &:hover {
+//         color: ${THEME.light.font.sidebar};
+//     }
+// `
 
-const FOOTER_ITEMS = [
-    'privacy',
-    'contact',
-]
+// const FOOTER_ITEMS = [
+//     'privacy',
+//     'contact',
+// ]
 
 const SidebarFooter = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     return (
         <StyledSidebarFooter>
@@ -55,7 +55,7 @@ const SidebarFooter = () => {
                 textAlign: 'center',
             }}
             >
-                {FOOTER_ITEMS.map((item) => (
+                {/* {FOOTER_ITEMS.map((item) => (
                     <span
                       key={`sidebar-footer-link-${item.toLowerCase()}`}
                     >
@@ -67,7 +67,7 @@ const SidebarFooter = () => {
                             {item}
                         </StyledFooterLink>
                     </span>
-                ))}
+                ))} */}
             </div>
             <p style={{
                 textAlign: 'center',
