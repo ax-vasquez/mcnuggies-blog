@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 import serializers from '../serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
@@ -179,6 +180,10 @@ const AboutPage = ({ data }: { data: {
 
     return (
         <Layout>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>About</title>
+            </Helmet>
             <StyledAuthorDetailsContainerDiv>
                 <StyledCreatorBadgeDiv>
                     <StyledCreatorBadgeImage image={creatorImage} alt="creator_image" />
