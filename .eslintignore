@@ -2,6 +2,7 @@
 web/static/*
 web/public/*
 web/.cache/*
+web/src/images
 
 # Don't lint config files; not much reason to
 web/**/*.js
