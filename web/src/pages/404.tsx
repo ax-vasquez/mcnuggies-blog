@@ -51,7 +51,7 @@ const NotFoundPage = ({ data }: { data: {
         <Layout>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Not Found</title>
+                <title>404</title>
             </Helmet>
             <StyledNotFoundImageContainerDiv>
                 <StyledNotFoundImage image={image} alt="404-image" />

@@ -43,7 +43,7 @@ const projects = ({ data }: { data: {
         <Layout>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Projects</title>
+                <title>mcnuggies | Projects</title>
             </Helmet>
             <h1>Projects</h1>
             <StyledProjectsUnorderedList>

@@ -106,7 +106,7 @@ const BlogPage = ({ data }: { data: {
             <Layout>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Blog</title>
+                    <title>mcnuggies | Blog</title>
                 </Helmet>
                 <h1>Blog</h1>
                 <BlogFeed>

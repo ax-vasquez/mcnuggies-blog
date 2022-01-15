@@ -100,7 +100,7 @@ const BlogArticle = ({ data }: { data: {
         <Layout>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>{`Blog | ${title}`}</title>
+                <title>{`mcnuggies | ${title}`}</title>
             </Helmet>
             <HeroImageContainer>
                 <HeroImage image={image.asset.gatsbyImageData} alt="article-hero-image" />
