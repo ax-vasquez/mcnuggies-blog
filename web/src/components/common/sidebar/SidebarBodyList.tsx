@@ -27,10 +27,10 @@ const bounceAnimation = () => css`
     animation: ${iconBounce} .75s infinite;
 `
 
-const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: boolean }>`
+const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: string }>`
     color: ${THEME.light.font.sidebar};
     vertical-align: middle;
-    ${(props) => (props.bounce ? bounceAnimation : null)}
+    ${(props) => ((props.bounce === 'true') ? bounceAnimation : undefined)}
 `
 
 const StyledMenuOptionListContainerDiv = styled.div`
@@ -92,7 +92,7 @@ const SidebarBodyList = ({
                         return (
                             <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
                                 <StyledSidebarMenuOptionIconHolder>
-                                    <StyledBouncingIcon bounce={shouldBounce} />
+                                    <StyledBouncingIcon bounce={shouldBounce ? 'true' : 'false'} />
                                 </StyledSidebarMenuOptionIconHolder>
                                 <StyledRootMenuOptionLabel>{label}</StyledRootMenuOptionLabel>
                             </StyledSidebarMenuOption>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { BiMenu } from '@react-icons/all-files/bi/BiMenu'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
@@ -64,11 +64,12 @@ const SiteNav = () => {
 
     const dispatch = useDispatch()
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
+    const parentNavRef = useRef(null)
 
     return (
         <>
-            <StyledNavDiv id="nav">
-                <StyledSidebarMenuButton data-cy="sidebar-btn" size={40} onClick={() => dispatch(toggleShowSidebar())} />
+            <StyledNavDiv id="nav" ref={parentNavRef}>
+                <StyledSidebarMenuButton id="sidebar-btn" data-cy="sidebar-btn" size={40} onClick={() => dispatch(toggleShowSidebar())} />
             </StyledNavDiv>
             <SidebarContainer options={OPTIONS} isOpen={isSidebarOpen} />
         </>
