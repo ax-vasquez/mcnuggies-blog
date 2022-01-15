@@ -76,7 +76,7 @@ const EmploymentHistoryJobTitle = ({ jobTitle }: { jobTitle: SanityJobTitle }) =
             </StyledJobTitleSpan>
             <StlyedResponsibilitiesList>
                 {responsibilities.map((responsibility) => (
-                    <StyledResponsibilitiesListItem>
+                    <StyledResponsibilitiesListItem key={`responsibility-${responsibility}`}>
                         {responsibility}
                     </StyledResponsibilitiesListItem>
                   ))}

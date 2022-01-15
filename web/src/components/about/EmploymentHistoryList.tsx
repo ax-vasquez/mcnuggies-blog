@@ -68,7 +68,9 @@ const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) =
                     ? employers.map((employer) => {
                         const employerIcon = getImage(employer.image.asset.gatsbyImageData)
                         return (
-                            <StyledEmploymentHistoryListItem>
+                            // TODO: Explore the purpose of this rule and appropriate alternatives
+                            // eslint-disable-next-line react/no-array-index-key
+                            <StyledEmploymentHistoryListItem key={`${employer.name}`}>
                                 <StyledEmployerRow>
                                     <a href={employer.homePage} target="_blank" rel="noreferrer">
                                         <StyledEmployerIcon image={employerIcon} alt="employer_image" />
@@ -78,7 +80,7 @@ const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) =
                                 <ul>
                                     {employer.jobTitles.sort(sortJobTitles).map((jobTitle) => {
                                         return (
-                                            <StyledJobTitleListItem>
+                                            <StyledJobTitleListItem key={`${employer.name}-${jobTitle.title}`}>
                                                 <EmploymentHistoryJobTitle jobTitle={jobTitle} />
                                             </StyledJobTitleListItem>
                                         )

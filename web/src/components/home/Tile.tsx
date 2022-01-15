@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { THEME } from '../../style/colors'
 
-const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
+const StyledHomeTile = styled(Link)<{ hovered: string }>`
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
@@ -22,7 +22,7 @@ const StyledHomeTile = styled(Link)<{ hovered: boolean }>`
     border-radius: 0.75rem;
     justify-content: center;
     box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
-    ${(props) => (props.hovered ? `
+    ${(props) => ((props.hovered === 'true') ? `
         background-color: ${THEME.light.background.nav};
     `
     : `
@@ -73,7 +73,7 @@ const Tile = ({
         <StyledHomeTile
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
-          hovered={hovered}
+          hovered={hovered ? 'true' : 'false'}
           id={`home-banner-${label}`}
           to={`/${label}`}
         >

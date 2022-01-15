@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 import { SidebarMenuOptions } from '../../../types/sidebar'
 import SidebarBodyList from './SidebarBodyList'
 import SidebarBodyText from './SidebarBodyText'
 import SidebarBody from './SidebarBody'
 import SidebarFooter from './SidebarFooter'
 import { THEME } from '../../../style/colors'
+import { toggleShowSidebar } from '../../../slices/siteNavSlice'
 
 const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     --translate-x: -100%;
@@ -40,11 +42,37 @@ const SidebarContainer = ({
     isOpen: boolean
 }) => {
 
+    const dispatch = useDispatch()
+    const navRef = useRef(null)
+    const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            const excludedIds = [
+                'nav',
+                'sidebar-btn',
+            ]
+            if (navRef.current && !navRef.current.contains(event.target) && !excludedIds.includes(event.target.id)) {
+                if (isSidebarOpen) {
+                    dispatch(toggleShowSidebar())
+                }
+            }
+        }
+
+        // Bind the event listener
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [navRef, isSidebarOpen])
+
     return (
         <StyledSidebar
           isOpen={isOpen}
           id="sidebar"
           data-cy="sidebar"
+          ref={navRef}
         >
             <SidebarBody>
                 <SidebarBodyText />

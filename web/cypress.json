@@ -1,5 +1,5 @@
 {
     "projectId": "ce2f4z",
-    "retries": 5,
+    "retries": 3,
     "baseUrl": "http://localhost:9000/"
 }
