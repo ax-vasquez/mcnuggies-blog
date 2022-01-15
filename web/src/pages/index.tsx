@@ -45,7 +45,7 @@ const IndexPage = ({ data }: { data: {
         <Layout>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Home</title>
+                <title>mcnuggies | Home</title>
             </Helmet>
             <HeroImageContainer>
                 <HeroImage image={heroImage} alt="stars" />

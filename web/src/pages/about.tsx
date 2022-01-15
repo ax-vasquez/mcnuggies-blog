@@ -182,7 +182,7 @@ const AboutPage = ({ data }: { data: {
         <Layout>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>About</title>
+                <title>mcnuggies | About</title>
             </Helmet>
             <StyledAuthorDetailsContainerDiv>
                 <StyledCreatorBadgeDiv>
