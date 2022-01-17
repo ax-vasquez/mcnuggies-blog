@@ -34,10 +34,10 @@ query($slug: String!){
 
 const StyledArticleDiv = styled.div` 
     margin-top: 1rem;
+    margin: auto;
     width: 100%;
     @media ${device.mobileS} {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        width: 90%;
     }
     @media ${device.laptop} {
         padding-left: 0px;

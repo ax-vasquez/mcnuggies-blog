@@ -8,12 +8,12 @@ import SidebarBody from './SidebarBody'
 import SidebarFooter from './SidebarFooter'
 import { THEME } from '../../../style/colors'
 import { toggleShowSidebar } from '../../../slices/siteNavSlice'
+import { device } from '../../../style/devices'
 
 const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     --translate-x: -100%;
     padding-top: 4rem;
     height: 100%;
-    width: 20rem;
     position: fixed;
     z-index: 10;
     top: 0px;
@@ -29,6 +29,12 @@ const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     ${(props) => props.isOpen && `
         --translate-x: 0px;
     `}
+    @media ${device.mobileS} {
+        width: 50%;
+    }
+    @media ${device.tablet} {
+        width: 20rem;
+    }
 `
 
 /**
