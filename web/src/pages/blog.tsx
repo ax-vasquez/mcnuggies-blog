@@ -71,7 +71,7 @@ type SanityCategoryNode = {
     node: SanityCategory
 }
 
-const BlogFeed = styled.div`
+const StyledBlogFeed = styled.div`
     margin-left: 1rem;
     margin-right: 1rem;
 `
@@ -109,7 +109,7 @@ const BlogPage = ({ data }: { data: {
                     <title>mcnuggies | Blog</title>
                 </Helmet>
                 <h1>Blog</h1>
-                <BlogFeed>
+                <StyledBlogFeed>
                     {articleEdges.map((edge, index) => {
                         let displayArticle = true
                         if (filteredByCategory) {
@@ -158,7 +158,7 @@ const BlogPage = ({ data }: { data: {
                             </div>
                         )
                     })}
-                </BlogFeed>
+                </StyledBlogFeed>
             </Layout>
         </>
     )

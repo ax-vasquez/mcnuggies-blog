@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react'
 import { THEME } from '../../style/colors'
 import { FONT } from '../../style/font'
+import { device } from '../../style/devices'
 
 /**
  * The highest-level styled component
@@ -38,6 +39,7 @@ export const StyledRootDiv = styled.div`
       h1 {
         font-size: 3rem;
         line-height: 1;
+        text-align: center;
         color: ${THEME.light.font.heading};
       }
       h2 {
@@ -52,14 +54,17 @@ export const StyledRootDiv = styled.div`
       }
       blockquote {
         padding: 2rem;
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-        width: 91.666667%;
         margin-left: auto;
         margin-right: auto;
         background-color: ${THEME.light.background.defaultHovered};
         color: ${THEME.light.font.blockquote};
         font-style: italic;
+        @media ${device.mobileS} {
+          width: 80%;
+        }
+        @media ${device.tablet} {
+          width: 91.666667%;
+        }
       }
       a {
         color: ${THEME.light.font.link};
