@@ -3,9 +3,15 @@ import styled from 'styled-components'
 import { SanityJobTitle } from '../../../graphql-types'
 import { MONTHS } from '../../pages/blog'
 import { THEME } from '../../style/colors'
+import { device } from '../../style/devices'
 
 const StyledJobTitleDiv = styled.div`
-    margin-left: 4rem;
+    @media ${device.mobileS} {
+        margin-left: 1rem;
+    }
+    @media ${device.tablet} {
+        margin-left: 4rem;
+    }
 `
 
 const StyledJobTitleSpan = styled.span`
