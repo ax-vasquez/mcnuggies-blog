@@ -42,7 +42,7 @@ query{
         }
         _rawDescription
     }
-    allSanityEmployer {
+    allSanityEmployer(sort: {fields: jobTitles___startDate, order: DESC}) {
         edges {
             node {
                 name
@@ -70,9 +70,6 @@ const StyledAuthorDetailsContainerDiv = styled.div`
     padding: 2rem;
     display: inline-flex;
     z-index: 10;
-    border-top: solid 2px;
-    border-bottom: solid 2px;
-    border-color: ${THEME.light.border.default};
     & {
         h1 {
             padding-top: 0;
@@ -114,6 +111,13 @@ const StyledAboutContentDiv = styled.div`
     font-size: 1.125rem;
     line-height: 1.75rem;
     line-height: 1.625;
+    margin: auto;
+    @media ${device.mobileS} {
+        width: 90%;
+    }
+    @media ${device.tablet} {
+        width: 100%;
+    }
 `
 
 const StyledIntegrationImage = styled.img`

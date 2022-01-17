@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { SanityEmployer, SanityJobTitle } from '../../../graphql-types'
 import { THEME } from '../../style/colors'
+import { device } from '../../style/devices'
 import EmploymentHistoryJobTitle from './EmploymentHistoryJobTitle'
 
 const StyledEmployerRow = styled.div`
@@ -16,13 +17,20 @@ const StyledEmployerRow = styled.div`
     }
 `
 
+const StyledEmploymentHistoryListContainer = styled.div`
+    margin: auto;
+    @media ${device.mobileS} {
+        width: 90%;
+    }
+    @media ${device.tablet} {
+        width: 100%;
+    }
+`
+
 const StyledEmploymentHistoryList = styled.ul`
     list-style-type: none !important;
-    padding-left: 0px !important;
-    border-top: solid;
-    border-bottom: solid;
-    border-width: 2px;
     border-color: ${THEME.light.border.default};
+    padding-left: 0 !important;
 `
 
 const StyledEmploymentHistoryListItem = styled.li`
@@ -61,7 +69,7 @@ const sortJobTitles = (firstEl: SanityJobTitle, secondEl: SanityJobTitle) => {
 
 const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) => {
     return (
-        <div>
+        <StyledEmploymentHistoryListContainer>
             <h2>Employment History</h2>
             <StyledEmploymentHistoryList>
                 {employers.length > 0
@@ -91,7 +99,7 @@ const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) =
                     })
                 : null}
             </StyledEmploymentHistoryList>
-        </div>
+        </StyledEmploymentHistoryListContainer>
     )
 }
 
