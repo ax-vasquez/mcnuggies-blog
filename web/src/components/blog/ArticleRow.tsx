@@ -59,11 +59,6 @@ const StyledArticleRowTitleLine = styled.div`
             line-height: 2.5rem;
             color: ${THEME.light.font.heading};
         }
-        p {
-            font-style: italic;
-            color: ${THEME.light.font.accent};
-            float: right;
-        }
     }
 `
 
@@ -85,7 +80,10 @@ const StyledArticleTitle = styled.h3`
 `
 
 const StyledArticlePublishDate = styled.p`
-    display: inline-block;
+display: block;
+    font-style: italic;
+    color: ${THEME.light.font.accent};
+    float: right;
 `
 
 const ArticleRow = (
@@ -116,9 +114,9 @@ const ArticleRow = (
                 <StyledArticleThumbnail image={image} alt={`${title}_thumb`} />
             </StyledArticleThumbnailContainer>
             <StyledArticleRowDetails>
+                <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 <StyledArticleRowTitleLine>
                     <StyledArticleTitle>{truncateTitle(title)}</StyledArticleTitle>
-                    <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 </StyledArticleRowTitleLine>
                 <StyledArticleContentPreview>
                     <StyledBlockContent
