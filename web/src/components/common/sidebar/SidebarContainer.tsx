@@ -15,7 +15,7 @@ const StyledSidebar = styled('div')<{ isOpen: boolean }>`
     padding-top: 4rem;
     height: 100%;
     position: fixed;
-    z-index: 10;
+    z-index: 30;
     top: 0px;
     left: 0px;
     overflow: hidden;
