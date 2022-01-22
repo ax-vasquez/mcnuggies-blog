@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { THEME } from '../../../style/colors'
 
 const StyledFilterButton = styled.button<{ active: boolean }>`
     margin-left: 0.25rem;
     margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     border: none;
     border-radius: 3px;
     display: inline-flex;
@@ -35,18 +35,11 @@ const VariableFilterButton = ({
     onClick: () => void
 }) => {
 
-    const [isActive, setIsActive] = useState(active)
-
-    const toggleActive = () => {
-        setIsActive(!isActive)
-        onClick()
-    }
-
     return (
         <StyledFilterButton
           type="button"
-          onClick={toggleActive}
-          active={isActive}
+          onClick={onClick}
+          active={active}
         >
             <p>{label}</p>
         </StyledFilterButton>

@@ -5,9 +5,8 @@ import VariableFilterButton from './VariableButton'
 
 const StyledCategoryList = styled.ul`
     padding-inline-start: 0px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 80%;
+    margin: auto;
 `
 
 const TagList = ({ data }: { data: ButtonGridFieldConfig }) => {

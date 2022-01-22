@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { THEME } from '../../../style/colors'
+import { device } from '../../../style/devices'
 import { TextInputFieldConfig } from '../../../types/common'
 
 const StyledInput = styled.input`
@@ -11,12 +12,18 @@ const StyledInput = styled.input`
     border-color: ${THEME.light.border.default};
     padding-bottom: 0.25rem;
     font-size: 1.1rem;
-    width: 75%;
+    width: 90%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     &:focus {
         outline: none;
+    }
+    @media ${device.mobileS} {
+        
+    }
+    @media ${device.tablet} {
+        
     }
 `
 

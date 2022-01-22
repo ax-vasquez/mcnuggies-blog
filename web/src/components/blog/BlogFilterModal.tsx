@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { RiRefreshFill } from '@react-icons/all-files/ri/RiRefreshFill'
 import Modal from '../common/Modal'
 import {
- setFilterText, addActiveCategory, removeActiveCategory, toggleShowModal,
+ setFilterText, addActiveCategory, resetActiveCategories, removeActiveCategory, toggleShowModal,
 } from '../../slices/blogFeedSlice'
 import { ButtonConfig, ButtonGridFieldConfig, TextInputFieldConfig } from '../../types/common'
 import ModalField from '../common/ModalField'
@@ -54,7 +55,7 @@ const BlogFilterModal = ({
     })
 
     fields.push(
-        <ModalField label="Categories" key="category-grid">
+        <ModalField label="Categories" key="category-grid" ButtonIcon={RiRefreshFill} buttonClickHandler={() => dispatch(resetActiveCategories())}>
             <TagList data={buttonGridConfig} />
         </ModalField>,
     )

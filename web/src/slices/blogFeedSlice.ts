@@ -16,6 +16,9 @@ const blogFeedSlice = createSlice({
             const index = state.activeCategories.indexOf(action.payload)
             state.activeCategories.splice(index, 1)
         },
+        resetActiveCategories(state) {
+            state.activeCategories = []
+        },
         setFilterText(state, action: PayloadAction<string>) {
             state.filterText = action.payload
         },
@@ -31,6 +34,7 @@ const blogFeedSlice = createSlice({
 export const {
     addActiveCategory,
     removeActiveCategory,
+    resetActiveCategories,
     setFilterText,
     clearFilterText,
     toggleShowModal,
