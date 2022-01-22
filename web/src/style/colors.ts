@@ -107,11 +107,6 @@ type ThemeConfig = {
          * The active variant font color to use for generic tags, such as category labels
          */
         tagActive: string
-        /**
-         * The font color for the "accept"-logic buttons (such as the "OK" button on the
-         * blog feed modal)
-         */
-        accept: string
     },
     background: {
         /**
@@ -160,16 +155,6 @@ type ThemeConfig = {
          */
         dateBannerHovered: string
         /**
-         * The background color for the "accept"-logic buttons (such as the "OK" button on the
-         * blog feed modal)
-         */
-        accept: string
-        /**
-         * The background color for the "accept"-logic buttons (such as the "OK" button on the
-         * blog feed modal) when hovered
-         */
-        acceptHovered: string
-        /**
          * The background color to use for generic tags, such as category labels
          */
         tag: string
@@ -216,7 +201,6 @@ export const THEME = {
             accent: `${TW_COLORS.gray[700]}`,
             tag: `${TW_COLORS.gray[700]}`,
             tagActive: `${TW_COLORS.indigo[500]}`,
-            accept: `${TW_COLORS.white}`,
         },
         background: {
             highlight: `${TW_COLORS.yellow[200]}`,
@@ -230,8 +214,6 @@ export const THEME = {
             sidebarHovered: `${TW_COLORS.gray[800]}`,
             dateBanner: `${TW_COLORS.gray[800]}`,
             dateBannerHovered: `${TW_COLORS.gray[700]}`,
-            accept: `${TW_COLORS.green[300]}`,
-            acceptHovered: `${TW_COLORS.green[500]}`,
             tag: `${TW_COLORS.gray[100]}`,
             tagHovered: `${TW_COLORS.gray[200]}`,
             tagActive: `${TW_COLORS.indigo[100]}`,
