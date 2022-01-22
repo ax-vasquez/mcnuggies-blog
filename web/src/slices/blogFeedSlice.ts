@@ -2,10 +2,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const blogFeedSlice = createSlice({
-    name: 'blogFeed',
+    name: `blogFeed`,
     initialState: {
         activeCategories: [],
-        filterText: '',
+        filterText: ``,
         showModal: false,
     },
     reducers: {
@@ -20,7 +20,7 @@ const blogFeedSlice = createSlice({
             state.filterText = action.payload
         },
         clearFilterText(state) {
-            state.filterText = ''
+            state.filterText = ``
         },
         toggleShowModal(state) {
             state.showModal = !state.showModal

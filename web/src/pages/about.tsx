@@ -203,10 +203,10 @@ const AboutPage = ({ data }: { data: {
                         </StyledEmploymentTitle>
                         <StyledEmploymentDates>
                             {startDate}
-                            {' '}
+                            {` `}
                             -
-                            {' '}
-                            {employed ? 'Present' : endDate}
+                            {` `}
+                            {employed ? `Present` : endDate}
                         </StyledEmploymentDates>
                     </StyledJobTitleRow>
                     <StyledBlockContent blocks={_rawDescription} serializers={serializers} />

@@ -101,9 +101,9 @@ const ArticleRow = (
 
     // Truncate by word length since truncating by character limits can lead to unintended words being used
     const truncateTitle = (t: string) => {
-        const parts = t.split(' ')
+        const parts = t.split(` `)
         if (parts.length > 6) {
-            return `${parts.slice(0, 5).join(' ')}...`
+            return `${parts.slice(0, 5).join(` `)}...`
         }
         return t
     }

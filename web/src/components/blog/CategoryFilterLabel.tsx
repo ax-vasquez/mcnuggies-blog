@@ -21,7 +21,7 @@ const CategoryFilterLabel = ({
     return (
         <button
           type="button"
-          className={activeCategories.includes(label) ? 'category-label' : 'category-label-inactive'}
+          className={activeCategories.includes(label) ? `category-label` : `category-label-inactive`}
           onClick={() => {
                 if (activeCategories.includes(label)) {
                     dispatch(removeActiveCategory(label))

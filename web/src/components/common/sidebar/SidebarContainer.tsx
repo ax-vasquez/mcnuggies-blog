@@ -10,7 +10,7 @@ import { THEME } from '../../../style/colors'
 import { toggleShowSidebar } from '../../../slices/siteNavSlice'
 import { device } from '../../../style/devices'
 
-const StyledSidebar = styled('div')<{ isOpen: boolean }>`
+const StyledSidebar = styled(`div`)<{ isOpen: boolean }>`
     --translate-x: -100%;
     padding-top: 4rem;
     height: 100%;
@@ -55,8 +55,8 @@ const SidebarContainer = ({
     useEffect(() => {
         function handleClickOutside(event) {
             const excludedIds = [
-                'nav',
-                'sidebar-btn',
+                `nav`,
+                `sidebar-btn`,
             ]
             if (navRef.current && !navRef.current.contains(event.target) && !excludedIds.includes(event.target.id)) {
                 if (isSidebarOpen) {
@@ -66,10 +66,10 @@ const SidebarContainer = ({
         }
 
         // Bind the event listener
-        document.addEventListener('mousedown', handleClickOutside)
+        document.addEventListener(`mousedown`, handleClickOutside)
         return () => {
             // Unbind the event listener on clean up
-            document.removeEventListener('mousedown', handleClickOutside)
+            document.removeEventListener(`mousedown`, handleClickOutside)
         }
     }, [navRef, isSidebarOpen])
 

@@ -9,7 +9,7 @@ export default {
         name: `title`,
         title: `Title`,
         type: `string`,
-        validation: Rule => Rule.required()
+        validation: (Rule) => Rule.required(),
       },
       {
         name: `slug`,
@@ -20,7 +20,7 @@ export default {
           slugify: (input: string) => input
                            .toLowerCase()
                            .replace(/\s+/g, `-`)
-                           .slice(0, 200)
+                           .slice(0, 200),
         },
       },
       {
@@ -29,16 +29,16 @@ export default {
         type: `date`,
         options: {
           dateFormat: `YYYY-MM-DD`,
-          calendarTodayLabel: `Today`
+          calendarTodayLabel: `Today`,
         },
-        validation: Rule => Rule.required()
+        validation: (Rule) => Rule.required(),
       },
       {
         title: `Author`,
         name: `author`,
         type: `reference`,
         to: [{ type: `creator` }],
-        validation: Rule => Rule.required()
+        validation: (Rule) => Rule.required(),
       },
       {
         name: `image`,
@@ -52,25 +52,25 @@ export default {
         name: `body`,
         title: `Body`,
         ...richTextFieldConfig,
-        validation: Rule => Rule.required(),
+        validation: (Rule) => Rule.required(),
       },
       {
         name: `categories`,
         title: `Categories`,
         type: `array`,
-        of: [{ type: `reference`, to: [{type: `category`}] }]
+        of: [{ type: `reference`, to: [{ type: `category` }] }],
       },
       {
         name: `series`,
         title: `Series`,
         type: `reference`,
-        to: [{type: `series`}]
+        to: [{ type: `series` }],
       },
       {
         name: `seriesIndex`,
         title: `Series Index`,
         type: `number`,
-      }
+      },
     ],
     preview: {
       select: {

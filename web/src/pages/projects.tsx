@@ -55,7 +55,7 @@ const projects = ({ data }: { data: {
                     } = projectEdge.node
                     return (
                         <ProjectRow
-                          key={`project-row-${title.toLowerCase().replace(' ', '-')}`}
+                          key={`project-row-${title.toLowerCase().replace(` `, `-`)}`}
                           title={title}
                           repoUrl={repoUrl}
                           _rawDescription={_rawDescription}

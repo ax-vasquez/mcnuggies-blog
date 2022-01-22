@@ -21,7 +21,7 @@ const BlogFilterModal = ({
     const filterText = useSelector((state: any) => state.blog.filterText)
 
     const inputConfig = {
-        placeholder: 'Filter articles by title text',
+        placeholder: `Filter articles by title text`,
         value: filterText,
         onChange: (e) => {
             dispatch(setFilterText(e.target.value))
@@ -35,7 +35,7 @@ const BlogFilterModal = ({
     )
 
     const buttonGridConfig = {
-        name: 'Categories',
+        name: `Categories`,
         buttons: {},
     } as ButtonGridFieldConfig
 
