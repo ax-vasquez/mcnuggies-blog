@@ -42,22 +42,22 @@ query{
 `
 
 export const MONTHS = {
-    '01': 'January',
-    '02': 'February',
-    '03': 'March',
-    '04': 'April',
-    '05': 'May',
-    '06': 'June',
-    '07': 'July',
-    '08': 'August',
-    '09': 'September',
-    10: 'October',
-    11: 'November',
-    12: 'December',
+    '01': `January`,
+    '02': `February`,
+    '03': `March`,
+    '04': `April`,
+    '05': `May`,
+    '06': `June`,
+    '07': `July`,
+    '08': `August`,
+    '09': `September`,
+    10: `October`,
+    11: `November`,
+    12: `December`,
 }
 
 const getFormattedBannerDateString = (rawDateString: string) => {
-    const parts = rawDateString.split('-')
+    const parts = rawDateString.split(`-`)
     const year = parts[0]
     const month = parts[1]
     return `${MONTHS[month].toUpperCase()} - ${year}`
@@ -98,7 +98,7 @@ const BlogPage = ({ data }: { data: {
         }
     })
 
-    const filteredByText = filterText !== ''
+    const filteredByText = filterText !== ``
     const filteredByCategory = activeCategories.length > 0
     return (
         <>

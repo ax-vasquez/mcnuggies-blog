@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const rootSlice = createSlice({
-    name: 'rootSlice',
+    name: `rootSlice`,
     initialState: {
         showPrivacyModal: false,
     },

@@ -4,7 +4,7 @@ import { FaPaperclip } from 'react-icons/fa'
 const highlightIcon = () => (
     <span style={{ fontWeight: `bold` }}>H</span>
 )
-const highlightRender = props => (
+const highlightRender = (props) => (
     <span style={{ backgroundColor: `yellow` }}>{props.children}</span>
 )
 
@@ -16,21 +16,25 @@ export const richTextFieldConfig = {
           type: `block`,
           styles: [
               { title: `Normal`, value: `normal` },
-              {title: `H1`, value: `h1`},
-              {title: `H2`, value: `h2`},
-              {title: 'Quote', value: 'blockquote'}
+              { title: `H1`, value: `h1` },
+              { title: `H2`, value: `h2` },
+              { title: `H3`, value: `h3` },
+              { title: `H4`, value: `h4` },
+              { title: `Quote`, value: `blockquote` },
           ],
           marks: {
               decorators: [
                 { title: `Strong`, value: `strong` },
                 { title: `Emphasis`, value: `em` },
-                { title: `Highlight`, value: `highlight`, 
+                {
+ title: `Highlight`,
+value: `highlight`,
                   blockEditor: {
                     icon: highlightIcon,
-                    render: highlightRender
-                  }
+                    render: highlightRender,
+                  },
                 },
-                { title: `Inline-code`, value: `code` }
+                { title: `Inline-code`, value: `code` },
               ],
               annotations: [
                 {
@@ -40,36 +44,39 @@ export const richTextFieldConfig = {
                   fields: [
                     {
                       name: `url`,
-                      type: `url`
-                    }
-                  ]
+                      type: `url`,
+                    },
+                  ],
                 },
                 {
                   name: `internalLink`,
                   type: `object`,
                   title: `Internal link`,
                   blockEditor: {
-                    icon: FaPaperclip
+                    icon: FaPaperclip,
                   },
                   fields: [
                     {
                       name: `reference`,
                       type: `reference`,
                       to: [
-                        { type: `article` }
-                      ]
-                    }
-                  ]
+                        { type: `article` },
+                      ],
+                    },
+                  ],
                 },
               ],
           },
           lists: [
-            {title: 'Bullet', value: 'bullet'},
-            {title: 'Number', value: 'number'},
+            { title: `Bullet`, value: `bullet` },
+            { title: `Number`, value: `number` },
           ],
         },
         {
-          type: `code`
-        }
+          type: `code`,
+        },
+        {
+          type: `image`,
+        },
       ],
 }

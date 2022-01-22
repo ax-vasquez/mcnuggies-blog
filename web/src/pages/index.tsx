@@ -40,7 +40,7 @@ const IndexPage = ({ data }: { data: {
   imageSharp: any,
 } }) => {
     const heroImage = getImage(data.imageSharp)
-    const rootItems = ['blog', 'projects', 'about']
+    const rootItems = [`blog`, `projects`, `about`]
     return (
         <Layout>
             <Helmet>

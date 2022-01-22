@@ -52,7 +52,7 @@ const SidebarFooter = () => {
     return (
         <StyledSidebarFooter>
             <div style={{
-                textAlign: 'center',
+                textAlign: `center`,
             }}
             >
                 {/* {FOOTER_ITEMS.map((item) => (
@@ -70,8 +70,8 @@ const SidebarFooter = () => {
                 ))} */}
             </div>
             <p style={{
-                textAlign: 'center',
-                fontSize: '12px',
+                textAlign: `center`,
+                fontSize: `12px`,
             }}
             >
                 ©

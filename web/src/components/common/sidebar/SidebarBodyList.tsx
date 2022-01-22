@@ -30,7 +30,7 @@ const bounceAnimation = () => css`
 const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: string }>`
     color: ${THEME.light.font.sidebar};
     vertical-align: middle;
-    ${(props) => ((props.bounce === 'true') ? bounceAnimation : undefined)}
+    ${(props) => ((props.bounce === `true`) ? bounceAnimation : undefined)}
 `
 
 const StyledMenuOptionListContainerDiv = styled.div`
@@ -69,12 +69,12 @@ const SidebarBodyList = ({
     const isActiveItem = (label: string, locationProps: LocationContext) => {
         const { location } = locationProps
         switch (label) {
-            case 'Home': {
-                return location.pathname === '/'
+            case `Home`: {
+                return location.pathname === `/`
             }
-            case 'About':
-            case 'Projects':
-            case 'Blog': {
+            case `About`:
+            case `Projects`:
+            case `Blog`: {
                 return location.pathname.includes(label.toLowerCase())
             }
             default: return false
@@ -90,9 +90,9 @@ const SidebarBodyList = ({
                         const { url, label } = options[key]
                         const shouldBounce = isActiveItem(label, locationProps)
                         return (
-                            <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(' ', '-')}`}>
+                            <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(` `, `-`)}`}>
                                 <StyledSidebarMenuOptionIconHolder>
-                                    <StyledBouncingIcon bounce={shouldBounce ? 'true' : 'false'} />
+                                    <StyledBouncingIcon bounce={shouldBounce ? `true` : `false`} />
                                 </StyledSidebarMenuOptionIconHolder>
                                 <StyledRootMenuOptionLabel>{label}</StyledRootMenuOptionLabel>
                             </StyledSidebarMenuOption>

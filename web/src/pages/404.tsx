@@ -24,7 +24,7 @@ const StyledNotFoundImageContainerDiv = styled.div`
 `
 
 const StyledNotFoundImage = styled(GatsbyImage).attrs({
-    className: '',
+    className: ``,
 })`
     height: auto;
     width: 100vw;
@@ -58,7 +58,7 @@ const NotFoundPage = ({ data }: { data: {
                 <StyledNotFoundImageOverlayDiv>
                     <h2>
                         <code>404</code>
-                        {' '}
+                        {` `}
                         - page not found
                     </h2>
                 </StyledNotFoundImageOverlayDiv>

@@ -58,13 +58,13 @@ const EmploymentHistoryJobTitle = ({ jobTitle }: { jobTitle: SanityJobTitle }) =
         responsibilities,
     } = jobTitle
 
-    const startDateParts = startDate.split('-')
+    const startDateParts = startDate.split(`-`)
     const startDateString = `${MONTHS[startDateParts[1]]}, ${startDateParts[0]}`
     let endDateParts = []
-    let endDateString = ''
+    let endDateString = ``
 
     if (endDate) {
-        endDateParts = endDate.split('-')
+        endDateParts = endDate.split(`-`)
         endDateString = `${MONTHS[endDateParts[1]]}, ${endDateParts[0]}`
     }
 
@@ -74,10 +74,10 @@ const EmploymentHistoryJobTitle = ({ jobTitle }: { jobTitle: SanityJobTitle }) =
                 <h4>{title}</h4>
                 <p>
                     {startDateString}
-                    {' '}
+                    {` `}
                     -
-                    {' '}
-                    {(currentJobTitle) ? 'Present' : endDateString}
+                    {` `}
+                    {(currentJobTitle) ? `Present` : endDateString}
                 </p>
             </StyledJobTitleSpan>
             <StlyedResponsibilitiesList>

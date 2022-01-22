@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const siteNavSlice = createSlice({
-    name: 'siteNav',
+    name: `siteNav`,
     initialState: {
         showSidebar: false,
     },

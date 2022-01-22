@@ -30,7 +30,7 @@ const StyledNavDiv = styled.div`
     align-items: center;
 `
 
-const StyledSidebarBackground = styled('div')<{ isOpen: boolean }>`
+const StyledSidebarBackground = styled(`div`)<{ isOpen: boolean }>`
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
@@ -57,20 +57,20 @@ type NavOptionData = {
 
 const OPTIONS = {
     home: {
-        label: 'Home',
-        url: '/',
+        label: `Home`,
+        url: `/`,
     },
     blog: {
-        label: 'Blog',
-        url: '/blog',
+        label: `Blog`,
+        url: `/blog`,
     },
     projects: {
-        label: 'Projects',
-        url: '/projects',
+        label: `Projects`,
+        url: `/projects`,
     },
     about: {
-        label: 'About',
-        url: '/about',
+        label: `About`,
+        url: `/about`,
     },
 } as NavOptionData
 
