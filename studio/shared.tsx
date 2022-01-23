@@ -27,8 +27,8 @@ export const richTextFieldConfig = {
                 { title: `Strong`, value: `strong` },
                 { title: `Emphasis`, value: `em` },
                 {
- title: `Highlight`,
-value: `highlight`,
+                  title: `Highlight`,
+                  value: `highlight`,
                   blockEditor: {
                     icon: highlightIcon,
                     render: highlightRender,
@@ -79,4 +79,58 @@ value: `highlight`,
           type: `image`,
         },
       ],
+}
+
+/**
+ * A simplified version of the rich text field config
+ */
+export const summaryRichTextFieldConfig = {
+  type: `array`,
+  of: [
+      {
+        title: `Block`,
+        type: `block`,
+        styles: [
+            { title: `Normal`, value: `normal` },
+        ],
+        marks: {
+            decorators: [
+              { title: `Strong`, value: `strong` },
+              { title: `Emphasis`, value: `em` },
+              { title: `Inline-code`, value: `code` },
+            ],
+            annotations: [
+              {
+                name: `link`,
+                type: `object`,
+                title: `link`,
+                fields: [
+                  {
+                    name: `url`,
+                    type: `url`,
+                  },
+                ],
+              },
+              {
+                name: `internalLink`,
+                type: `object`,
+                title: `Internal link`,
+                blockEditor: {
+                  icon: FaPaperclip,
+                },
+                fields: [
+                  {
+                    name: `reference`,
+                    type: `reference`,
+                    to: [
+                      { type: `article` },
+                    ],
+                  },
+                ],
+              },
+            ],
+        },
+        lists: [],
+      },
+    ],
 }
