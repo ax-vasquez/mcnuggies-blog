@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
-import EmbeddedCategoryFilterLabel from '../components/blog/EmbeddedCategoryLabel'
 import { SanityArticle } from '../../graphql-types'
 import {
     HeroImage,
@@ -13,6 +12,7 @@ import {
 } from '../components/styled-components/common'
 import { device } from '../style/devices'
 import { THEME } from '../style/colors'
+import { CategoryList } from '../components/common/CategoryList'
 
 export const query = graphql`
 query($slug: String!){
@@ -74,18 +74,6 @@ const StyledArticleBodyDiv = styled.div`
     }
 `
 
-const StyledEmbeddedCategoryGrid = styled.div`
-    gap: 1rem;
-    margin-top: 1rem;
-    display: grid;
-    @media ${device.mobileL} {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    @media ${device.laptop} {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-`
-
 const BlogArticle = ({ data }: { data: {
     sanityArticle: SanityArticle
 } }) => {
@@ -109,17 +97,7 @@ const BlogArticle = ({ data }: { data: {
                 <StyledArticleTitleDiv>
                     <h1>{title}</h1>
                     <p>{publishDate}</p>
-                    {categories.length > 0
-                        ? (
-                            <StyledEmbeddedCategoryGrid>
-                                {categories.map((cat) => (
-                                    <div key={`embedded-category-${cat.title}`}>
-                                        <EmbeddedCategoryFilterLabel label={cat.title} />
-                                    </div>
-                                ))}
-                            </StyledEmbeddedCategoryGrid>
-                        )
-                        : null }
+                    <CategoryList categories={categories} />
                 </StyledArticleTitleDiv>
                 <StyledArticleBodyDiv>
                     <StyledBlockContent blocks={_rawBody} serializers={serializers} />

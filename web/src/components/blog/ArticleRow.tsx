@@ -7,7 +7,7 @@ import serializers from '../../serializers'
 import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
 import { SanityCategory } from '../../../graphql-types'
-import { CategoryBadge } from '../common/CategoryBadge'
+import { CategoryList } from '../common/CategoryList'
 
 const StyledArticleRowLink = styled(Link)`
     margin-top: 1rem;
@@ -85,17 +85,6 @@ const StyledArticlePublishDate = styled.p`
     margin-bottom: 2rem;
 `
 
-const StyledCategoryList = styled.ul`
-    padding-left: 0 !important;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    & {
-        li:first-child {
-            margin-left: 0;
-        }
-    }
-`
-
 const ArticleRow = (
     {
         title, publishDate, image, previewText, slug, categories,
@@ -120,9 +109,7 @@ const ArticleRow = (
                     <StyledArticleTitle>{title}</StyledArticleTitle>
                     <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 </StyledArticleRowTitleLine>
-                <StyledCategoryList>
-                    {categories.map((category) => <CategoryBadge category={category} />)}
-                </StyledCategoryList>
+                <CategoryList categories={categories} />
                 <StyledArticleContentPreview>
                     <StyledBlockContent
                       blocks={previewText}
