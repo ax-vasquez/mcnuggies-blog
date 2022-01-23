@@ -32,12 +32,12 @@ const StyledModal = styled.div`
     height: auto;
     z-index: 40;
     font-family: ${FONT.family};
-    @media ${device.mobileL} {
+    @media ${device.mobileS} {
         padding-left: 1rem;
         padding-right: 1rem;
-        width: 66.666667%;
+        width: 80%;
     }
-    @media ${device.laptop} {
+    @media ${device.tablet} {
         padding-left: 5rem;
         padding-right: 5rem;
         width: 30%;
@@ -57,14 +57,14 @@ const StyledModalTitleRow = styled.div`
 
 const StyledWideSubmitButton = styled.button`
     text-align: center;
-    width: 100%;
+    width: 90%;
     border: none;
     border-radius: 0.25rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    color: ${THEME.light.font.accept};
-    background-color: ${THEME.light.background.accept};
+    color: ${THEME.light.font.dateBanner};
+    background-color: ${THEME.light.background.dateBanner};
     &:hover {
-        background-color: ${THEME.light.background.acceptHovered};
+        background-color: ${THEME.light.background.dateBannerHovered};
     }
 `
 

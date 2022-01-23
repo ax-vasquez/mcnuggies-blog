@@ -42,6 +42,7 @@ rules: {
   max-len: "off",
   no-underscore-dangle: "off",
   quotes: [2, "backtick"],
+  no-trailing-spaces: ["error", { "ignoreComments": true }],
   # TODO: turn these on and fix errors, if needed
   jsx-a11y/click-events-have-key-events: "off",
   jsx-a11y/no-static-element-interactions: "off",

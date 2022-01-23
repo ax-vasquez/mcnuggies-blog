@@ -76,6 +76,23 @@ const StyledBlogFeed = styled.div`
     margin-right: 1rem;
 `
 
+/**
+ * Helper method to make the filtering logic a little more readable
+ * 
+ * This works by checking that the given article is only displayed if it has every
+ * active category. This ensures that enabling more categories makes the filtering
+ * more restrictive as a user would expect.
+ * 
+ * @param article                   the article to potentially display in the blog feed list
+ * @param activeCategories          the currently-active categories (e.g., the ones the user currently has enabled on the blog feed)
+ * @returns                         true if the article should be displayed, otherwise false
+ */
+const shouldDisplayArticle = (article: SanityArticle, activeCategories: string[]) => {
+    const categoryNameArray = article.categories.map((cat) => cat.title)
+    if (activeCategories.every((category) => categoryNameArray.includes(category))) return true
+    return false
+}
+
 const BlogPage = ({ data }: { data: {
     allSanityArticle: {
         edges: SanityArticleNode[]
@@ -84,7 +101,6 @@ const BlogPage = ({ data }: { data: {
         edges: SanityCategoryNode[]
     }
 } }) => {
-    // TODO: Fix filter blog feed by categories (adding MORE categories will add more articles; it should lead to fewer results due to finer filtering)
     const activeCategories = useSelector((state: any) => state.blog.activeCategories)
     const showModal = useSelector((state: any) => state.blog.showModal)
     const filterText = useSelector((state: any) => state.blog.filterText)
@@ -113,7 +129,7 @@ const BlogPage = ({ data }: { data: {
                     {articleEdges.map((edge, index) => {
                         let displayArticle = true
                         if (filteredByCategory) {
-                            if (!edge.node.categories.some((cat) => activeCategories.includes(cat.title))) displayArticle = false
+                            if (!shouldDisplayArticle(edge.node, activeCategories)) displayArticle = false
                         }
                         if (filteredByText) {
                             if (displayArticle) {
