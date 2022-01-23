@@ -25,6 +25,7 @@ query{
             }
             publishDate
             _rawBody
+            _rawSummary
             categories {
               title
             }
@@ -143,8 +144,8 @@ const BlogPage = ({ data }: { data: {
                                 <ArticleRow
                                   title={edge.node.title}
                                   publishDate={edge.node.publishDate}
-                                    // TODO: Show more content and truncate appropriately
-                                  previewText={edge.node._rawBody[0]}
+                                  categories={edge.node.categories}
+                                  previewText={edge.node._rawSummary}
                                   image={edge.node.image.asset.gatsbyImageData}
                                   slug={edge.node.slug.current}
                                 />
