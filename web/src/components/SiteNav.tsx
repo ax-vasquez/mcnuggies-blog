@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import { BiMenu } from '@react-icons/all-files/bi/BiMenu'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { StaticImage } from 'gatsby-plugin-image'
+import { navigate } from "gatsby"
 import SidebarContainer from './common/sidebar/SidebarContainer'
 import { toggleShowSidebar } from '../slices/siteNavSlice'
 import { THEME } from '../style/colors'
@@ -18,7 +20,7 @@ const StyledSidebarMenuButton = styled(BiMenu)`
 
 const StyledNavDiv = styled.div`
     top: 0px;
-    height: 3rem;
+    height: auto;
     background-color: ${THEME.light.background.nav};
     position: sticky;
     width: 100%;
@@ -46,6 +48,14 @@ const StyledSidebarBackground = styled(`div`)<{ isOpen: boolean }>`
         transition: opacity 150ms;
         opacity: 0.5;
     `}
+`
+
+const StyledAppIcon = styled.div`
+    margin-left: auto;
+    margin-right: .5rem;
+    right: 0;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
 `
 
 type NavOptionData = {
@@ -89,6 +99,9 @@ const SiteNav = () => {
         <>
             <StyledNavDiv id="nav" ref={parentNavRef}>
                 <StyledSidebarMenuButton id="sidebar-btn" data-cy="sidebar-btn" size={40} onClick={() => dispatch(toggleShowSidebar())} />
+                <StyledAppIcon>
+                    <StaticImage src="../images/mcnuggies.png" alt="app-icon" height={40} width={40} onClick={() => navigate(`/`)} />
+                </StyledAppIcon>
             </StyledNavDiv>
             <SidebarContainer options={OPTIONS} isOpen={isSidebarOpen} />
             <StyledSidebarBackground isOpen={isSidebarOpen} />
