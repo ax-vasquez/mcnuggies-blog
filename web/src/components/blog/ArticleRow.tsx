@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import serializers from '../../serializers'
 import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
+import { SanityCategory } from '../../../graphql-types'
+import { CategoryBadge } from '../common/CategoryBadge'
 
 const StyledArticleRowLink = styled(Link)`
     margin-top: 1rem;
@@ -52,14 +54,6 @@ const StyledArticleRowDetails = styled.div`
 const StyledArticleRowTitleLine = styled.div`
     padding-top: 0.25rem;
     width: 100%;
-    & {
-        h3 {
-            font-weight: 200;
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-            color: ${THEME.light.font.heading};
-        }
-    }
 `
 
 const StyledBlockContent = styled(BlockContent)`
@@ -68,45 +62,53 @@ const StyledBlockContent = styled(BlockContent)`
 `
 
 const StyledArticleContentPreview = styled.div`
-    height: 100%;
+    bottom: 1rem;
+    margin-right: 1rem;
     font-style: italic;
     color: ${THEME.light.font.blockquote};
 `
 
 const StyledArticleTitle = styled.h3`
     display: inline-block;
+    font-weight: 300;
+    font-size: 2.25rem;
+    color: ${THEME.light.font.heading};
     margin-top: auto;
     margin-bottom: auto;
 `
 
 const StyledArticlePublishDate = styled.p`
-display: block;
+    display: block;
     font-style: italic;
     color: ${THEME.light.font.accent};
-    float: right;
+    margin-top: 0;
+    margin-bottom: 2rem;
+`
+
+const StyledCategoryList = styled.ul`
+    padding-left: 0 !important;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    & {
+        li:first-child {
+            margin-left: 0;
+        }
+    }
 `
 
 const ArticleRow = (
     {
-        title, publishDate, image, previewText, slug,
+        title, publishDate, image, previewText, slug, categories,
     }:
     {
         title: string,
         publishDate: string,
         image: IGatsbyImageData,
         previewText: string,
-        slug: string
+        slug: string,
+        categories: SanityCategory[]
     },
 ) => {
-
-    // Truncate by word length since truncating by character limits can lead to unintended words being used
-    const truncateTitle = (t: string) => {
-        const parts = t.split(` `)
-        if (parts.length > 6) {
-            return `${parts.slice(0, 5).join(` `)}...`
-        }
-        return t
-    }
 
     return (
         <StyledArticleRowLink to={slug}>
@@ -114,10 +116,13 @@ const ArticleRow = (
                 <StyledArticleThumbnail image={image} alt={`${title}_thumb`} />
             </StyledArticleThumbnailContainer>
             <StyledArticleRowDetails>
-                <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 <StyledArticleRowTitleLine>
-                    <StyledArticleTitle>{truncateTitle(title)}</StyledArticleTitle>
+                    <StyledArticleTitle>{title}</StyledArticleTitle>
+                    <StyledArticlePublishDate>{publishDate}</StyledArticlePublishDate>
                 </StyledArticleRowTitleLine>
+                <StyledCategoryList>
+                    {categories.map((category) => <CategoryBadge category={category} />)}
+                </StyledCategoryList>
                 <StyledArticleContentPreview>
                     <StyledBlockContent
                       blocks={previewText}

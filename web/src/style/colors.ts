@@ -198,7 +198,7 @@ export const THEME = {
             sidebar: `${TW_COLORS.white}`,
             link: `${TW_COLORS.indigo[600]}`,
             linkHovered: `${TW_COLORS.indigo[400]}`,
-            accent: `${TW_COLORS.gray[700]}`,
+            accent: `${TW_COLORS.gray[400]}`,
             tag: `${TW_COLORS.gray[700]}`,
             tagActive: `${TW_COLORS.indigo[500]}`,
         },
