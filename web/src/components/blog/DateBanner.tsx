@@ -6,7 +6,7 @@ import { toggleShowModal } from '../../slices/blogFeedSlice'
 import { THEME } from '../../style/colors'
 
 const StyledDateBannerButton = styled.button`
-    top: 3.5rem;
+    top: 4rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -18,7 +18,9 @@ const StyledDateBannerButton = styled.button`
     display: block;
     text-align: center;
     z-index: 10;
+    transition: 0.3s ease;
     &:hover {
+        transition: 0.3s ease;
         background-color: ${THEME.light.background.dateBannerHovered};
     }
 `
