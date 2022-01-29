@@ -43,7 +43,9 @@ const StyledSidebarMenuOption = styled(Link)`
     margin-bottom: 0.5rem;
     padding-left: 1rem;
     display: block;
+    transition: 0.3s ease;
     &:hover {
+        transition: 0.3s ease;
         background-color: ${THEME.light.background.sidebarHovered};
     }
 `
