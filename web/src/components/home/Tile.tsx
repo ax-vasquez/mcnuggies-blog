@@ -23,9 +23,11 @@ const StyledHomeTile = styled(Link)<{ hovered: string }>`
     justify-content: center;
     box-shadow: 4px 4px 4px 2px rgba(0, 0, 0, 0.2);
     ${(props) => ((props.hovered === `true`) ? `
+        transition: 0.3s ease;
         background-color: ${THEME.light.background.nav};
     `
     : `
+        transition: 0.3s ease;
         background-color: ${THEME.light.background.navHovered};
     `)}
 `

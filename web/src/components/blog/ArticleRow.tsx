@@ -21,7 +21,9 @@ const StyledArticleRowLink = styled(Link)`
     border-width: 2px;
     border-color: ${THEME.light.border.default};
     display: flex;
+    transition: 0.3s ease;
     &:hover {
+        transition: 0.3s ease;
         background-color: ${THEME.light.background.defaultHovered};
     }
 `
