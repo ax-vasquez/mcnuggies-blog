@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import ModalField from './ModalField'
 import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
-import { FONT } from '../../style/font'
 
 const StyledModalBackground = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
@@ -31,7 +30,6 @@ const StyledModal = styled.div`
     border-radius: 0.25rem;
     height: auto;
     z-index: 40;
-    font-family: ${FONT.family};
     @media ${device.mobileS} {
         padding-left: 1rem;
         padding-right: 1rem;

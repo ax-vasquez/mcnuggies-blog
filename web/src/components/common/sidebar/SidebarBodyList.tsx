@@ -4,63 +4,8 @@ import { Location, LocationContext } from '@reach/router'
 import { Link } from 'gatsby'
 import React from 'react'
 import { BiRightArrow } from '@react-icons/all-files/bi/BiRightArrow'
-import styled, { css, keyframes } from 'styled-components'
 import { SidebarMenuOptions } from '../../../types/sidebar'
-import { THEME } from '../../../style/colors'
-
-// styled-components keyframes doesn't work in React Native - for that, you need to use the ReactNative.Animated API
-// See https://styled-components.com/docs/basics#animations
-const iconBounce = keyframes`
-    0%, 100% {
-        transform: translateX(25%);
-        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-        
-    }
-    50% {
-        transform: translateX(0);
-        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    }
-`
-
-// Starting in styled-components v4, you must access keyframes via the css helper
-const bounceAnimation = () => css`
-    animation: ${iconBounce} .75s infinite;
-`
-
-const StyledBouncingIcon = styled(BiRightArrow)<{ bounce: string }>`
-    color: ${THEME.light.font.sidebar};
-    vertical-align: middle;
-    ${(props) => ((props.bounce === `true`) ? bounceAnimation : undefined)}
-`
-
-const StyledMenuOptionListContainerDiv = styled.div`
-    width: 100%
-`
-
-const StyledSidebarMenuOption = styled(Link)`
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
-    display: block;
-    transition: 0.3s ease;
-    &:hover {
-        transition: 0.3s ease;
-        background-color: ${THEME.light.background.sidebarHovered};
-    }
-`
-
-const StyledSidebarMenuOptionIconHolder = styled.div`
-    padding-left: 0.5rem;
-    display: inline-block;
-`
-
-const StyledRootMenuOptionLabel = styled.div`
-    padding-left: 1rem;
-    display: inline-block;
-    vertical-align: middle;
-    color: ${THEME.light.font.sidebar};
-`
+import * as styles from './Sidebar.module.scss'
 
 const SidebarBodyList = ({
     options,
@@ -87,20 +32,20 @@ const SidebarBodyList = ({
     return (
         <Location>
             {(locationProps) => (
-                <StyledMenuOptionListContainerDiv>
+                <div>
                     {Object.keys(options).map((key) => {
                         const { url, label } = options[key]
                         const shouldBounce = isActiveItem(label, locationProps)
                         return (
-                            <StyledSidebarMenuOption key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(` `, `-`)}`}>
-                                <StyledSidebarMenuOptionIconHolder>
-                                    <StyledBouncingIcon bounce={shouldBounce ? `true` : `false`} />
-                                </StyledSidebarMenuOptionIconHolder>
-                                <StyledRootMenuOptionLabel>{label}</StyledRootMenuOptionLabel>
-                            </StyledSidebarMenuOption>
+                            <Link className={styles.menuLink} key={key} to={url} data-cy={`sidebar-menu-option-${label.toLowerCase().replace(` `, `-`)}`}>
+                                <div className={styles.menuLinkIconHolder}>
+                                    <BiRightArrow className={`${styles.icon} ${shouldBounce ? styles.bounce : undefined}`} />
+                                </div>
+                                <div className={styles.menuLinkLabelHolder}>{label}</div>
+                            </Link>
                         )
                     })}
-                </StyledMenuOptionListContainerDiv>
+                </div>
             )}
         </Location>
     )

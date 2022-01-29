@@ -57,6 +57,7 @@ module.exports = {
                 icon: `src/images/mcnuggies.png`, // This path is relative to the root of the site.
             },
         },
-        `gatsby-plugin-react-helmet`
+        `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-sass`
     ],
 }

@@ -2,7 +2,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react'
 import { THEME } from '../../style/colors'
-import { FONT } from '../../style/font'
 import { device } from '../../style/devices'
 
 /**
@@ -11,7 +10,6 @@ import { device } from '../../style/devices'
 export const StyledRootDiv = styled.div`
   height: 100%;
   width: 100%;
-  font-family: ${FONT.family};
   background-color: ${THEME.light.background.default};
   & {
       ul, ol {
