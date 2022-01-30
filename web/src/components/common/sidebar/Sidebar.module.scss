@@ -67,7 +67,7 @@
     margin-bottom: 0.5rem;
     padding-left: 1rem;
     display: block;
-    @include base.hoverTransition($bg-hovered: base.$gray-800)
+    @include base.hoverTransition($bg-hovered: base.$gray-800);
 }
 .menuLinkIconHolder {
     padding-left: 0.5rem;
