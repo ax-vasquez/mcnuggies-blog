@@ -8,8 +8,8 @@ import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import EmploymentHistoryList from '../components/about/EmploymentHistoryList'
 import * as styles from './about.module.scss'
-import ghLogo from './octocat-logo.png'
-import linkedInLogo from './linkedin-logo.png'
+import ghLogo from '../images/octocat-logo.png'
+import linkedInLogo from '../images/linkedin-logo.png'
 
 export const query = graphql`
 query{

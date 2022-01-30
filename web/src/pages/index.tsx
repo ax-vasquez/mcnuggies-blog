@@ -1,15 +1,10 @@
 import * as React from 'react'
-import { getImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import Tile from '../components/home/Tile'
-import {
-  HeroImage,
-  HeroImageContainer,
-} from '../components/styled-components/common'
-import { device } from '../style/devices'
+import * as styles from './index.module.scss'
 
 export const query = graphql`
 query{
@@ -20,20 +15,6 @@ query{
      )
   }
 }
-`
-
-const StyledHomeBannerList = styled.div`
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  width: 100%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  @media ${device.mobileS} {
-    display: flex;
-  }
-  @media ${device.tablet} {
-      display: inline-flex;
-  }
 `
 
 const IndexPage = ({ data }: { data: {
@@ -47,15 +28,15 @@ const IndexPage = ({ data }: { data: {
                 <meta charSet="utf-8" />
                 <title>mcnuggies | Home</title>
             </Helmet>
-            <HeroImageContainer>
-                <HeroImage image={heroImage} alt="stars" />
-            </HeroImageContainer>
+            <div className={styles.heroImage}>
+                <GatsbyImage image={heroImage} alt="stars" />
+            </div>
             <h1>
                 Welcome
             </h1>
-            <StyledHomeBannerList>
+            <div className={styles.homeTileListContainer}>
                 {rootItems.map((rootItem) => <Tile key={`home-banner-${rootItem.toLowerCase()}`} label={rootItem} />)}
-            </StyledHomeBannerList>
+            </div>
         </Layout>
     )
 }

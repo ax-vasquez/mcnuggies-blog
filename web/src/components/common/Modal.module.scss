@@ -1,0 +1,85 @@
+@use 'src/base' as base;
+
+.background {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 30;
+}
+
+.modal {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: 0px;
+    padding: 0.5rem;
+    background-color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: fixed;
+    display: block;
+    border-radius: 0.25rem;
+    height: auto;
+    z-index: 40;
+    @media (min-width: base.$mobileS) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: 80%;
+    }
+    @media (min-width: base.$tablet) {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        width: 30%;
+    }
+}
+
+.titleRow {
+    text-align: center;
+    h1 {
+        font-weight: 300;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+.scrollingFieldsList {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.submitButton {
+    text-align: center;
+    width: 90%;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: base.$gray-800;
+    &:hover {
+        background-color: base.$gray-600;
+    }
+}
+
+.modalField {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.modalFieldLabel {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    h2 {
+        display: inline-block;
+        font-weight: 200;
+        font-size: 1.25rem;
+    }
+    svg {
+        margin-left: 1rem;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
