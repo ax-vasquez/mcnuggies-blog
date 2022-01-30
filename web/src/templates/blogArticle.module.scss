@@ -37,3 +37,7 @@
         line-height: 2.25rem;
     }
 }
+
+.heroImage {
+    @include base.heroImageStyle;
+}

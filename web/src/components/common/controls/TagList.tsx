@@ -1,18 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import { ButtonGridFieldConfig } from '../../../types/common'
 import VariableFilterButton from './VariableButton'
-
-const StyledCategoryList = styled.ul`
-    padding-inline-start: 0px;
-    width: 80%;
-    margin: auto;
-`
+import * as styles from './TagList.module.scss'
 
 const TagList = ({ data }: { data: ButtonGridFieldConfig }) => {
 
     return (
-        <StyledCategoryList>
+        <div className={styles.tagList}>
             {Object.keys(data.buttons).map((key) => {
                 const {
                     label,
@@ -28,7 +22,7 @@ const TagList = ({ data }: { data: ButtonGridFieldConfig }) => {
                     />
                 )
             })}
-        </StyledCategoryList>
+        </div>
     )
 }
 

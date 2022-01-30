@@ -2,13 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import BlockContent from '@sanity/block-content-to-react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import Layout from '../components/Layout'
 import serializers from '../serializers'
 import { SanityArticle } from '../../graphql-types'
-import {
-    HeroImage,
-    HeroImageContainer,
-} from '../components/styled-components/common'
 import { CategoryList } from '../components/common/CategoryList'
 import * as styles from './blogArticle.module.scss'
 
@@ -46,9 +43,9 @@ const BlogArticle = ({ data }: { data: {
                 <meta charSet="utf-8" />
                 <title>{`mcnuggies | ${title}`}</title>
             </Helmet>
-            <HeroImageContainer>
-                <HeroImage image={image.asset.gatsbyImageData} alt="article-hero-image" />
-            </HeroImageContainer>
+            <div className={styles.heroImage}>
+                <GatsbyImage image={image.asset.gatsbyImageData} alt="article-hero-image" />
+            </div>
             <div className={styles.container}>
                 <div className={styles.titleRow}>
                     <h1>{title}</h1>

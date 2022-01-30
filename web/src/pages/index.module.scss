@@ -1,0 +1,19 @@
+@use 'src/base' as base;
+
+.heroImage {
+    @include base.heroImageStyle
+}
+
+.homeTileListContainer {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @media (min-width: base.$mobileS) {
+        display: flex;
+    }
+    @media (min-width: base.$tablet) {
+        display: inline-flex;
+    }
+}
