@@ -23,7 +23,7 @@
     @media (min-width: base.$mobileS) {
         display: none;
     }
-    @media (min-width: base.$laptop) {
+    @media (min-width: base.$tablet) {
         display: flex;
     }
     // This div corresponds to a GatsbyImage, which is an img component, but wrapped in a div - styles should be applied to this div
