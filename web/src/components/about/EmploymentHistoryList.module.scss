@@ -1,0 +1,44 @@
+@use 'src/base' as base;
+
+.employerRow {
+    display: inline-flex;
+    vertical-align: middle;
+    margin: 1rem 0 1rem 0;
+    h3 {
+        margin: 0 0 0 0.5rem; 
+    }
+}
+
+.container {
+    margin: auto;
+    @media (min-width: base.$mobileS) {
+        width: 90%;
+    }
+    @media (min-width: base.$tablet) {
+        width: 100%;
+    }
+}
+
+.employmentHistoryList {
+    list-style-type: none !important;
+    border-color: base.$gray-200;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    li {
+        padding-bottom: 1rem;
+        ul {
+            padding-left: 0;
+            li {
+                list-style-type: none;
+            }
+        }
+    }
+    :last-child {
+        padding-bottom: 0;
+    }
+}
+
+.employerIcon {
+    width: 2rem;
+    height: 2rem;
+}

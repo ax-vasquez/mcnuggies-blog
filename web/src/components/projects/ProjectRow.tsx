@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import BlockContent from '@sanity/block-content-to-react'
 import { THEME } from '../../style/colors'
-import { StyledBlockContent } from '../styled-components/common'
 
 const StyledProjectsListItem = styled.li`
     margin-bottom: 1rem;
@@ -55,7 +55,7 @@ const ProjectRow = ({
                     </a>
                     <h2>{title}</h2>
                 </StyledProjectHeaderRow>
-                <StyledBlockContent blocks={_rawDescription} />
+                <BlockContent blocks={_rawDescription} />
             </div>
         </StyledProjectsListItem>
     )
