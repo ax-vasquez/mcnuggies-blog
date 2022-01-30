@@ -1,0 +1,43 @@
+@use 'src/base' as base;
+
+.container {
+    margin-top: 1rem;
+    margin: auto;
+    width: 100%;
+    @media (min-width: base.$mobileS) {
+        width: 90%;
+    }
+    @media (min-width: base.$laptop) {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+.titleRow {
+    h1 {
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 300;
+    }
+    p {
+        font-style: italic;
+        color: base.$gray-400;
+    }
+}
+
+.article {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    h1 {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+    h2 {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+    .article-body {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
