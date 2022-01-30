@@ -1,6 +1,5 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
-import BlockContent from '@sanity/block-content-to-react'
 import { THEME } from '../../style/colors'
 import { device } from '../../style/devices'
 
@@ -94,10 +93,4 @@ export const HeroImage = styled(GatsbyImage)`
   marging-right: auto;
   width: 100%;
   height: 24rem;
-`
-
-// TODO: get text justification working
-export const StyledBlockContent = styled(BlockContent)`
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 `
