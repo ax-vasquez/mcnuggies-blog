@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import { SanityProject } from '../../graphql-types'
 import ProjectRow from '../components/projects/ProjectRow'
+import * as styles from './project.module.scss'
 
 export const query = graphql`
 query{
@@ -21,12 +21,6 @@ query{
     }
   }
 }
-`
-
-// Need !important to "override" styles that are also defined for the root ul and ol (doesn't work without it)
-const StyledProjectsUnorderedList = styled.ul`
-    list-style-type: none !important;
-    padding-left: 0px !important;
 `
 
 type SanityProjectNode = {
@@ -46,7 +40,7 @@ const projects = ({ data }: { data: {
                 <title>mcnuggies | Projects</title>
             </Helmet>
             <h1>Projects</h1>
-            <StyledProjectsUnorderedList>
+            <ul className={styles.projectsList}>
                 {projectEdges.map((projectEdge) => {
                     const {
                         title,
@@ -62,7 +56,7 @@ const projects = ({ data }: { data: {
                         />
                     )
                 })}
-            </StyledProjectsUnorderedList>
+            </ul>
         </Layout>
     )
 }

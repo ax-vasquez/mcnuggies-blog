@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import styled from 'styled-components'
-import { THEME } from './style/colors'
-
-const StyledHighlightSpan = styled.span`
-    border-radius: 0.25rem;
-    padding: 0.25rem;
-    background-color: ${THEME.light.background.highlight};
-`
+import * as styles from './serializers.module.scss'
 
 /**
  * @see https://www.sanity.io/docs/portable-text-to-react#proptypes
@@ -37,7 +30,7 @@ const serializers = {
         },
     },
     marks: {
-        highlight: ({ children }) => <StyledHighlightSpan>{children}</StyledHighlightSpan>,
+        highlight: ({ children }) => <span className={styles.highlight}>{children}</span>,
         internalLink: ({ mark, children }) => {
             const { slug } = mark.reference
             return <Link to={`/blog/${slug.current}`}>{children}</Link>

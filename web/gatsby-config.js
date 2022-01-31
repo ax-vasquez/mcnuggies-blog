@@ -42,7 +42,6 @@ module.exports = {
                 allExtensions: true, // defaults to false
             },
         },
-        'gatsby-plugin-styled-components',
         {
             resolve: `gatsby-plugin-manifest`,
             options: {

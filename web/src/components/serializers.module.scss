@@ -1,0 +1,7 @@
+@use 'src/base' as base;
+
+.highlight {
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background-color: base.$highlight;
+}
