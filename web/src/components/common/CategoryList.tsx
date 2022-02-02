@@ -17,7 +17,7 @@ const StyledCategoryList = styled.ul`
 export const CategoryList = ({ categories }: { categories: SanityCategory[] }) => {
     return (
         <StyledCategoryList>
-            {categories.map((category) => <CategoryBadge category={category} />)}
+            {categories.map((category) => <CategoryBadge key={category.title} category={category} />)}
         </StyledCategoryList>
     )
 }

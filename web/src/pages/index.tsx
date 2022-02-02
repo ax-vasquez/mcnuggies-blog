@@ -10,6 +10,7 @@ import {
   HeroImageContainer,
 } from '../components/styled-components/common'
 import { device } from '../style/devices'
+import { PlausibleClient } from '../analytics/plausibleClient'
 
 export const query = graphql`
 query{
@@ -41,6 +42,15 @@ const IndexPage = ({ data }: { data: {
 } }) => {
     const heroImage = getImage(data.imageSharp)
     const rootItems = [`blog`, `projects`, `about`]
+
+    const client = PlausibleClient({
+      token: process.env.PLAUSIBLE_API_KEY,
+      domain: `mcnuggies.dev`,
+    })
+
+    client.getViewsForPage({ page: `/` }).then((viewCount) => {
+      console.log(`VIEWS FOR PAGE: `, viewCount)
+    })
     return (
         <Layout>
             <Helmet>
