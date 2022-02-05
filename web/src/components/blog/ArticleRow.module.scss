@@ -1,0 +1,71 @@
+@use 'src/base' as base;
+
+.container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: base.$gray-100;
+    display: flex;
+    @include base.hoverTransition($bg-hovered: base.$gray-100);
+}
+
+.thumbnailContainer {
+    height: 12rem;
+    width: 12rem;
+    align-content: center;
+    flex-wrap: wrap;
+    @media (min-width: base.$mobileS) {
+        display: none;
+    }
+    @media (min-width: base.$tablet) {
+        display: flex;
+    }
+    // This div corresponds to a GatsbyImage, which is an img component, but wrapped in a div - styles should be applied to this div
+    div {
+        height: 100%;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+}
+
+.articleDetailsContainer {
+    height: 100%;
+    width: 100%;
+    margin-left: 1rem;
+    .titleLine {
+        padding-top: 0.25rem;
+        width: 100%;
+        h3 {
+            display: inline-block;
+            font-weight: 300;
+            font-size: 2.25rem;
+            color: base.$gray-700;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        p {
+            display: block;
+            font-style: italic;
+            color: base.$gray-400;
+            margin-top: 0;
+            margin-bottom: 2rem;
+        }
+    }
+    .articlePreview {
+        bottom: 1rem;
+        margin-right: 1rem;
+        font-style: italic;
+        color: base.$gray-500;
+        // This class name comes from Sanity's BlockContent component; this is why it follows a different name convention
+        .article-block {
+            display:table-cell;
+            vertical-align:middle;
+        }
+    }
+}

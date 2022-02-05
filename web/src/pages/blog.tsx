@@ -1,13 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { useSelector } from 'react-redux'
-import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 import Layout from '../components/Layout'
 import DateBanner from '../components/blog/DateBanner'
 import ArticleRow from '../components/blog/ArticleRow'
 import { SanityArticle, SanityCategory } from '../../graphql-types'
 import BlogFilterModal from '../components/blog/BlogFilterModal'
+import * as styles from './blog.module.scss'
 
 export const query = graphql`
 query{
@@ -72,11 +72,6 @@ type SanityCategoryNode = {
     node: SanityCategory
 }
 
-const StyledBlogFeed = styled.div`
-    margin-left: 1rem;
-    margin-right: 1rem;
-`
-
 /**
  * Helper method to make the filtering logic a little more readable
  * 
@@ -126,7 +121,7 @@ const BlogPage = ({ data }: { data: {
                     <title>mcnuggies | Blog</title>
                 </Helmet>
                 <h1>Blog</h1>
-                <StyledBlogFeed>
+                <div className={styles.container}>
                     {articleEdges.map((edge, index) => {
                         let displayArticle = true
                         if (filteredByCategory) {
@@ -175,7 +170,7 @@ const BlogPage = ({ data }: { data: {
                             </div>
                         )
                     })}
-                </StyledBlogFeed>
+                </div>
             </Layout>
         </>
     )

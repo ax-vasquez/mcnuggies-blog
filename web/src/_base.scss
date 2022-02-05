@@ -1,0 +1,192 @@
+// * * * * * * * * * * * * * * * * * * * * 
+// Variables
+// * * * * * * * * * * * * * * * * * * * * 
+$font-stack: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// Colors
+$indigo-100: #E0E7FF;
+$indigo-200: #C7D2FE;
+$indigo-300: #A5B4FC;
+$indigo-400: #818CF8;
+$indigo-500: #6366F1;
+$indigo-600: #4F46E5;
+$indigo-700: #4338CA;
+$indigo-800: #3730A3;
+$indigo-900: #312E81;
+
+$gray-100: #F3F4F6;
+$gray-200: #E5E7EB;
+$gray-300: #D1D5DB;
+$gray-400: #9CA3AF;
+$gray-500: #6B7280;
+$gray-600: #4B5563;
+$gray-700: #374151;
+$gray-800: #1F2937;
+$gray-900: #111827;
+
+$highlight: rgba(253, 230, 138, 1);
+
+// Screen widths
+$mobileS: 320px;
+$mobileM: 375px;
+$mobileL: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$laptopL: 1440px;
+$desktop: 2560px;
+
+// * * * * * * * * * * * * * * * * * * * * 
+// Gatsby root component styles
+// * * * * * * * * * * * * * * * * * * * * 
+html, body, #___gatsby {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+
+body {
+    font: 100% $font-stack;
+    margin: 0px;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
+}
+
+// * * * * * * * * * * * * * * * * * * * * 
+// Global
+// * * * * * * * * * * * * * * * * * * * * 
+
+// Shared hover transition logic
+@mixin hoverTransition(
+    $fg: inherit,
+    $fg-hovered: inherit,
+    $bg: inherit,
+    $bg-hovered: inherit,
+) {
+    color: $fg;
+    background-color: $bg;
+    transition: 0.3s ease;
+    &:hover {
+        color: $fg-hovered;
+        background-color: $bg-hovered;
+        transition: 0.3s ease;
+    }
+}
+
+@mixin heroImageStyle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    div {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 24rem;
+    }
+}
+
+// Sanity class (from BlockContent component)
+.article-body {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+main {
+    margin: auto;
+    padding-bottom: 20rem;
+    @media (min-width: $mobileS) {
+        width: 100%;
+    }
+    @media (min-width: $tablet) {
+        width: 50%;
+    }
+}
+
+ul, ol {
+    padding-left: 2rem;
+    list-style-position: outside;
+}
+li {
+    padding-left: 1rem;
+}
+ul {
+    list-style-type: disc;
+}
+ul ul {
+    list-style-type: circle;
+}
+ul ul ul {
+    list-style-type: square;
+}
+ol {
+    list-style-type: decimal;
+}
+ol ol {
+    list-style-type: lower-roman;
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1;
+    text-align: center;
+    color: $gray-700;
+}
+h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: $gray-700;
+}
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: $gray-700;
+}
+
+blockquote {
+    padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $gray-100;
+    color: $gray-500;
+    font-style: italic;
+    @media (min-width: $mobileS) {
+        width: 80%;
+    }
+    @media (min-width: $tablet) {
+        width: 91.666667%;
+    }
+}
+a {
+    color: $indigo-600;
+    text-decoration: none;
+    &:hover {
+        color: $indigo-400;
+    }
+}
+code {
+    padding: 0.125rem;
+    background-color: $gray-200;
+    border-radius: 0.25rem;
+}
+p {
+    text-align: justify;
+}
+
+input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 2px;
+    border-color: $gray-200;
+    padding-bottom: 0.25rem;
+    font-size: 1.1rem;
+    width: 90%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    &:focus {
+        outline: none;
+    }
+}

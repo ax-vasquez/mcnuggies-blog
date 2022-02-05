@@ -1,57 +1,8 @@
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import React from 'react'
-import styled from 'styled-components'
 import { SanityEmployer, SanityJobTitle } from '../../../graphql-types'
-import { THEME } from '../../style/colors'
-import { device } from '../../style/devices'
 import EmploymentHistoryJobTitle from './EmploymentHistoryJobTitle'
-
-const StyledEmployerRow = styled.div`
-    display: inline-flex;
-    vertical-align: middle;
-    margin: 1rem 0 1rem 0;
-    & {
-        h3 {
-            margin: 0 0 0 0.5rem; 
-        }
-    }
-`
-
-const StyledEmploymentHistoryListContainer = styled.div`
-    margin: auto;
-    @media ${device.mobileS} {
-        width: 90%;
-    }
-    @media ${device.tablet} {
-        width: 100%;
-    }
-`
-
-const StyledEmploymentHistoryList = styled.ul`
-    list-style-type: none !important;
-    border-color: ${THEME.light.border.default};
-    padding-left: 0 !important;
-`
-
-const StyledEmploymentHistoryListItem = styled.li`
-    padding-bottom: 2rem;
-    padding-left: 0 !important;
-    & {
-        ul {
-            padding-left: 0;
-        }
-    }
-`
-
-const StyledJobTitleListItem = styled.li`
-    list-style-type: none;
-    padding-left: 0 !important;
-`
-
-const StyledEmployerIcon = styled(GatsbyImage)`
-    width: 2rem;
-    height: 2rem;
-`
+import * as styles from './EmploymentHistoryList.module.scss'
 
 /**
  * Helper method to sort job titles by start date, to ensure the latest-held position
@@ -69,37 +20,35 @@ const sortJobTitles = (firstEl: SanityJobTitle, secondEl: SanityJobTitle) => {
 
 const EmploymentHistoryList = ({ employers }: { employers: SanityEmployer[] }) => {
     return (
-        <StyledEmploymentHistoryListContainer>
+        <div className={styles.container}>
             <h2>Employment History</h2>
-            <StyledEmploymentHistoryList>
+            <div className={styles.employmentHistoryList}>
                 {employers.length > 0
                     ? employers.map((employer) => {
                         const employerIcon = getImage(employer.image.asset.gatsbyImageData)
                         return (
-                            // TODO: Explore the purpose of this rule and appropriate alternatives
-                            // eslint-disable-next-line react/no-array-index-key
-                            <StyledEmploymentHistoryListItem key={`${employer.name}`}>
-                                <StyledEmployerRow>
+                            <li key={`${employer.name}`}>
+                                <div className={styles.employerRow}>
                                     <a href={employer.homePage} target="_blank" rel="noreferrer">
-                                        <StyledEmployerIcon image={employerIcon} alt="employer_image" />
+                                        <GatsbyImage className={styles.employerIcon} image={employerIcon} alt="employer_image" />
                                     </a>
                                     <h3>{employer.name}</h3>
-                                </StyledEmployerRow>
+                                </div>
                                 <ul>
                                     {employer.jobTitles.sort(sortJobTitles).map((jobTitle) => {
                                         return (
-                                            <StyledJobTitleListItem key={`${employer.name}-${jobTitle.title}`}>
+                                            <li key={`${employer.name}-${jobTitle.title}`}>
                                                 <EmploymentHistoryJobTitle jobTitle={jobTitle} />
-                                            </StyledJobTitleListItem>
+                                            </li>
                                         )
                                     })}
                                 </ul>
-                            </StyledEmploymentHistoryListItem>
+                            </li>
                         )
                     })
                 : null}
-            </StyledEmploymentHistoryList>
-        </StyledEmploymentHistoryListContainer>
+            </div>
+        </div>
     )
 }
 

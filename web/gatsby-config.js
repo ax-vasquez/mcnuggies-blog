@@ -42,7 +42,6 @@ module.exports = {
                 allExtensions: true, // defaults to false
             },
         },
-        'gatsby-plugin-styled-components',
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
@@ -57,6 +56,7 @@ module.exports = {
                 icon: `src/images/mcnuggies.png`, // This path is relative to the root of the site.
             },
         },
-        `gatsby-plugin-react-helmet`
+        `gatsby-plugin-react-helmet`,
+        `gatsby-plugin-sass`,
     ],
 }

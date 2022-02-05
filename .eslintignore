@@ -13,7 +13,8 @@ web/**/*.js
 *.md
 *.jpg
 *.jpeg
-*.css
+*.png
+*.scss
 
 web/cypress/screenshots
 web/cypress/videos
