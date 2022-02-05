@@ -33,9 +33,9 @@ const Tile = ({
         >
             <div className={styles.tileContent}>
                 {icon}
-                <div className={styles.tileLabel}>
+                <h2 className={styles.tileLabel}>
                     {label}
-                </div>
+                </h2>
             </div>
 
         </Link>
