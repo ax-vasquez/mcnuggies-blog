@@ -1,7 +1,0 @@
-{
-  "include": ["./src/**/*.ts", "src/serializers.tsx", "../declarations.d.ts"],
-  "compilerOptions": {
-    "jsx": "react",
-    "esModuleInterop": true
-  }
-}
