@@ -3,13 +3,13 @@ import { graphql } from 'gatsby'
 import { getImage, GatsbyImage } from 'gatsby-plugin-image'
 import { Helmet } from 'react-helmet'
 import BlockContent from '@sanity/block-content-to-react'
-import serializers from '../components/serializers'
 import Layout from '../components/Layout'
 import { SanityCreator, SanityEmployer } from '../../graphql-types'
 import EmploymentHistoryList from '../components/about/EmploymentHistoryList'
-import * as styles from './about.module.scss'
+import serializers from '../components/serializers'
 import ghLogo from '../images/octocat-logo.png'
 import linkedInLogo from '../images/linkedin-logo.png'
+import * as styles from './about.module.scss'
 
 export const query = graphql`
 query{
