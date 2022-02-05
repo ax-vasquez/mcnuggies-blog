@@ -1,0 +1,11 @@
+{
+  "include": ["./web/src/**/*.ts", "./web/src/**/*.tsx"],
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "noImplicitAny": false,
+  }
+}
