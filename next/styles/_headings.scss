@@ -1,0 +1,24 @@
+@use 'variables' as vars;
+
+$heading-primary: vars.$gray-700;
+$heading-secondary: vars.$gray-600;
+
+// Monospace font stack
+$font-stack: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+h1 {
+    font-family: $font-stack;
+    color: $heading-primary;
+}
+h2 {
+    font-family: $font-stack;
+    color: $heading-secondary;
+}
+h3 {
+    font-family: $font-stack;
+    color: $heading-secondary;
+}
+h4 {
+    font-family: $font-stack;
+    color: $heading-secondary;
+}
