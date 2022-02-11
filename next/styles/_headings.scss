@@ -1,0 +1,21 @@
+@use 'variables' as base;
+
+$heading-primary: base.$gray-700;
+$heading-secondary: base.$gray-600;
+
+h1 {
+    font: base.$font-stack;
+    color: $heading-primary;
+}
+h2 {
+    font: base.$font-stack;
+    color: $heading-secondary;
+}
+h3 {
+    font: base.$font-stack;
+    color: $heading-secondary;
+}
+h4 {
+    font: base.$font-stack;
+    color: $heading-secondary;
+}
