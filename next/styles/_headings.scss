@@ -3,19 +3,22 @@
 $heading-primary: base.$gray-700;
 $heading-secondary: base.$gray-600;
 
+// Monospace font stack
+$font-stack: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
 h1 {
-    font: base.$font-stack;
+    font-family: $font-stack;
     color: $heading-primary;
 }
 h2 {
-    font: base.$font-stack;
+    font-family: $font-stack;
     color: $heading-secondary;
 }
 h3 {
-    font: base.$font-stack;
+    font-family: $font-stack;
     color: $heading-secondary;
 }
 h4 {
-    font: base.$font-stack;
+    font-family: $font-stack;
     color: $heading-secondary;
 }
