@@ -1,12 +1,13 @@
 import { NextComponentType } from "next";
-import { Card } from "react-bootstrap";
-import styles from './DemoHeadings.module.scss'
+import TitledCard from "../layout/TitledCard";
 
 export const DemoHeadings: NextComponentType = ({
 
 }) => {
     return (
-        <Card className={styles.container}>
+        <TitledCard
+            title="Headings"
+        >
             <h1>
                 Heading 1
             </h1>
@@ -14,11 +15,11 @@ export const DemoHeadings: NextComponentType = ({
                 Heading 2
             </h2>
             <h3>
-                Heading 2
+                Heading 3
             </h3>
             <h4>
-                Heading 2
+                Heading 4
             </h4>
-        </Card>
+        </TitledCard>
     )
 }

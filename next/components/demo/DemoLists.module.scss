@@ -1,0 +1,12 @@
+
+.section-header {
+    width: 100%;
+    display: flex;
+    div {
+        right: 0;
+        margin-left: auto;
+        input {
+            margin-left: 1rem;
+        }
+    }
+}

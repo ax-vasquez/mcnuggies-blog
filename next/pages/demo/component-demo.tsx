@@ -1,7 +1,8 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import { DemoHeadings } from "../../components/demo/DemoHeadings";
-import { PageLayout } from "../../components/util/PageLayout";
+import DemoLists from "../../components/demo/DemoLists";
+import { PageLayout } from "../../components/layout/PageLayout";
 
 const ComponentDemoPage: NextPage = () => {
     return (
@@ -12,6 +13,7 @@ const ComponentDemoPage: NextPage = () => {
                 <a>Home</a>
             </Link>
             <DemoHeadings />
+            <DemoLists />
         </PageLayout>
     )
 }
