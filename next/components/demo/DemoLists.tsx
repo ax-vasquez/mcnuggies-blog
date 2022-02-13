@@ -1,6 +1,6 @@
 import { useState } from "react"
 import TitledCard from "../layout/TitledCard"
-import styles from './DemoLists.module.scss'
+import SectionHeader from "./common/SectionHeader"
 
 const LIST_ITEMS = [
     'item 1',
@@ -68,24 +68,25 @@ const DemoLists = ({}) => {
             title="Lists"
         >
             <div>
-                <div className={styles['section-header']}>
-                    <h2>Ordered lists</h2>
+                <SectionHeader
+                    sectionTitle="Ordered lists"
+                >
                     <div className="number-input-container">
                         ol nesting level:
                         <input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
                     </div>
-                    
-                </div>
+                </SectionHeader>
                 {listGenerator(olNestLevel, 'ol')}
             </div>
             <div>
-                <div className={styles['section-header']}>
-                    <h2>Unordered lists</h2>
+                <SectionHeader
+                    sectionTitle="Unordered lists"
+                >
                     <div>
                         ul nesting level:
                         <input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
                     </div>
-                </div>
+                </SectionHeader>
                 {listGenerator(ulNestLevel, 'ul')}
             </div>
         </TitledCard>

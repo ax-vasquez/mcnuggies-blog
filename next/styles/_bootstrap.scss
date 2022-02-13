@@ -4,4 +4,17 @@
     padding: 1rem;
     margin: 0 0 1rem 0;
     border-radius: 1rem !important; // !important - overrides the default border-radius of 0.25rem set in react-bootstrap
+
+    // Our custom classes
+    .section-header {
+        width: 100%;
+        display: flex;
+        div {
+            right: 0;
+            margin-left: auto;
+            input {
+                margin-left: 1rem;
+            }
+        }
+    }
 }
