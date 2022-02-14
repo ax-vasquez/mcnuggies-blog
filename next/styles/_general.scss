@@ -1,3 +1,22 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
 input {
-    margin: 1rem;
+    color: vars.$indigo-400 !important;
+    padding: 0.5rem;
+    border: 1px solid vars.$card-border;
+    border-radius: 6px;
+    @include mixins.ease-transition-border-and-glow(
+        $default-border-color: vars.$card-border,
+        $default-box-shadow: none,
+        $border-color: vars.$indigo-400,
+        $glow-color: vars.$indigo-200,
+        $glow-range: 3px,
+        $duration: 1s,  // TODO: figure out what I did wrong here - timing doesn't seem to be working
+    );
+    &:focus {
+        outline: none;
+        border-color: vars.$indigo-400;
+        box-shadow: 0px 0px 3px 3px vars.$indigo-200;
+    }
 }

@@ -3,6 +3,7 @@
 .card {
     padding: 1rem;
     margin: 0 0 1rem 0;
+    // TODO: What's the "ideal" way to do this in react-bootstrap? (e.g. without !important)
     border-radius: 1rem !important; // !important - overrides the default border-radius of 0.25rem set in react-bootstrap
 
     // Our custom classes

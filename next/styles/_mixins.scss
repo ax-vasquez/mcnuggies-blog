@@ -1,0 +1,17 @@
+@mixin ease-transition-border-and-glow(
+    $default-box-shadow: inherit,
+    $default-border-color: inherit,
+    $hover-border-color: transparent,
+    $glow-color: transparent,
+    $glow-range: 0px,
+    $duration: 0.1s
+) {
+    transition: $duration ease !important;
+    box-shadow: $default-box-shadow !important;
+    border-color: $default-border-color !important;
+    &:hover {
+        border-color: $border-color !important;
+        box-shadow: 0px 0px $glow-range $glow-range $glow-color !important;
+        transition: $duration ease !important;
+    }
+}

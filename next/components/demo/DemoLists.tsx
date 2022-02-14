@@ -53,7 +53,7 @@ const listGenerator = (nestingLevel: number, type: 'ol' | 'ul') => {
         :
         (
             <ListElement type={type}>
-                {LIST_ITEMS.map(item => <li>{item}</li>)}
+                {LIST_ITEMS.map(item => <li key={`${item}-nestLevel-${nestingLevel}`}>{item}</li>)}
             </ListElement>
         )
     )

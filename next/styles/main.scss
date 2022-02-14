@@ -1,3 +1,23 @@
 @use 'headings';
 @use 'bootstrap';
 @use 'general';
+
+// * * * * * * * * * * * * * * * *
+// Custom control styles
+// * * * * * * * * * * * * * * * *
+.control-labeled-right {
+    display: flex;
+    align-items: baseline;
+    input {
+        margin-right: 0.5rem;
+    }
+}
+
+.control-labeled-left {
+    display: flex;
+    align-items: baseline;
+    input {
+        margin-left: 0.5rem;
+    }
+}
+// End custom control styles

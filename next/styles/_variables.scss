@@ -30,3 +30,7 @@ $tablet: 768px;
 $laptop: 1024px;
 $laptopL: 1440px;
 $desktop: 2560px;
+
+// Colors from react-bootstrap
+// These colors were pulled from react-bootstrap by either reading their docs, or simply inspecting the DOM
+$card-border: rgba(0,0,0,.125);
