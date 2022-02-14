@@ -9,10 +9,10 @@ input {
     @include mixins.ease-transition-border-and-glow(
         $default-border-color: vars.$card-border,
         $default-box-shadow: none,
-        $border-color: vars.$indigo-400,
+        $hover-border-color: vars.$indigo-400,
         $glow-color: vars.$indigo-200,
         $glow-range: 3px,
-        $duration: 1s,  // TODO: figure out what I did wrong here - timing doesn't seem to be working
+        $duration: 0.1s,  // TODO: figure out what I did wrong here - timing doesn't seem to be working
     );
     &:focus {
         outline: none;

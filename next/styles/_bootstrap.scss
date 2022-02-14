@@ -1,3 +1,4 @@
+@use 'variables' as vars;
 // The styles in this partial SCSS file override/modify classes from react-bootstrap
 
 .card {
@@ -17,5 +18,18 @@
                 margin-left: 1rem;
             }
         }
+    }
+}
+
+.input-group {
+    border-color: vars.$card-border;
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .input-group-text {
+        background-color: vars.$indigo-100;
+        color: vars.$indigo-500;
     }
 }

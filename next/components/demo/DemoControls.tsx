@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import TitledCard from "../layout/TitledCard"
 import Checkbox from '../util/controls/Checkbox'
+import Input from '../util/controls/Input'
 import Radio from '../util/controls/Radio'
 import LabeledControl from '../util/fields/LabeledControl'
 import SectionHeader from "./common/SectionHeader"
@@ -72,8 +73,31 @@ const DemoControls = ({}) => {
                     />
                 )}
             />
-            <SectionHeader sectionTitle="Input"/>
-            <input placeholder='Input placeholder' type="text" value={inputText} onChange={onInputChange}/>
+            <SectionHeader sectionTitle="Inputs"/>
+            <Input 
+                placeholder='Demo input 1'
+                ariaLabel='Demo input 1'
+                ariaDescribedBy='controls-demo'
+            />
+            <Input 
+                placeholder='Demo input 2'
+                ariaLabel='Demo input 2'
+                ariaDescribedBy='controls-demo'
+                preSegment='Some label'
+            />
+            <Input 
+                placeholder='Demo input 3'
+                ariaLabel='Demo input 3'
+                ariaDescribedBy='controls-demo'
+                postSegment='Some label'
+            />
+            <Input 
+                placeholder='Demo input 4'
+                ariaLabel='Demo input 4'
+                ariaDescribedBy='controls-demo'
+                preSegment='Some label'
+                postSegment='Some label'
+            />
         </TitledCard>
     )
 }

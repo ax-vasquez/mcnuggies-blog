@@ -10,7 +10,7 @@
     box-shadow: $default-box-shadow !important;
     border-color: $default-border-color !important;
     &:hover {
-        border-color: $border-color !important;
+        border-color: $hover-border-color !important;
         box-shadow: 0px 0px $glow-range $glow-range $glow-color !important;
         transition: $duration ease !important;
     }
