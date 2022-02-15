@@ -33,3 +33,21 @@
         color: vars.$indigo-500;
     }
 }
+
+.navbar {
+    padding: 0 !important;
+    margin: 0;
+    .container {
+        margin: 0;
+        background-color: vars.$gray-700;
+    }
+    img {
+        opacity: 1;
+        border-radius: 50%;
+        transition: 0.2s ease;
+        &:hover {
+            opacity: .5;
+            transition: 0.2s ease;
+        }
+    }
+}
