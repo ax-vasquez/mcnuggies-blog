@@ -35,19 +35,19 @@
 }
 
 .navbar {
-    padding: 0 !important;
-    margin: 0;
-    .container {
-        margin: 0;
-        background-color: vars.$gray-700;
-    }
-    img {
-        opacity: 1;
-        border-radius: 50%;
-        transition: 0.2s ease;
-        &:hover {
-            opacity: .5;
+    background-color: vars.$gray-800;
+    padding-left: 1rem;
+    .navbar-brand {
+        right: 0;
+        margin-left: auto;
+        img {
+            opacity: 1;
             transition: 0.2s ease;
+            &:hover {
+                opacity: .5;
+                transition: 0.2s ease;
+            }
         }
     }
+    
 }

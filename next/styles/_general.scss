@@ -12,11 +12,11 @@ input {
         $hover-border-color: vars.$indigo-400,
         $glow-color: vars.$indigo-200,
         $glow-range: 3px,
-        $duration: 0.1s,  // TODO: figure out what I did wrong here - timing doesn't seem to be working
+        $duration: 0.1s,
     );
     &:focus {
-        outline: none;
-        border-color: vars.$indigo-400;
-        box-shadow: 0px 0px 3px 3px vars.$indigo-200;
+        outline: none !important;
+        border-color: vars.$indigo-400 !important;
+        box-shadow: 0px 0px 2px 2px vars.$indigo-200 !important;
     }
 }

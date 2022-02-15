@@ -10,9 +10,11 @@ const ComponentDemoPage: NextPage = () => {
         <PageLayout
             pageTitle="Component Demo"
         >
-            <Link href='/'>
-                <a>Home</a>
-            </Link>
+            <br />
+            <h1>
+                Components demo
+            </h1>
+            <br />
             <DemoHeadings />
             <DemoLists />
             <DemoControls />
