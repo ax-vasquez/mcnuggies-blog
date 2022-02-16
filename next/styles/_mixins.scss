@@ -15,3 +15,12 @@
         transition: $duration ease !important;
     }
 }
+
+@mixin nav-icon-hover-transition {
+    opacity: 1;
+    transition: 0.2s ease;
+    &:hover {
+        opacity: .5;
+        transition: 0.2s ease;
+    }
+}

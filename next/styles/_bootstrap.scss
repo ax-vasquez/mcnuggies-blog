@@ -1,4 +1,5 @@
 @use 'variables' as vars;
+@use 'mixins' as mixins;
 // The styles in this partial SCSS file override/modify classes from react-bootstrap
 
 .card {
@@ -37,16 +38,19 @@
 .navbar {
     background-color: vars.$gray-800;
     padding-left: 1rem;
-    .navbar-brand {
+    color: vars.$gray-100;
+    .menu-icon {
+        left: 0;
+        margin-right: auto;
+        svg {
+            @include mixins.nav-icon-hover-transition();
+        }
+    }
+    .app-icon {
         right: 0;
         margin-left: auto;
         img {
-            opacity: 1;
-            transition: 0.2s ease;
-            &:hover {
-                opacity: .5;
-                transition: 0.2s ease;
-            }
+            @include mixins.nav-icon-hover-transition();
         }
     }
     
