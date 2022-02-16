@@ -27,7 +27,8 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
     height,
     width,
     className,
-    alt
+    alt,
+    ...props
 }) => {
     return (
         <SVG 
@@ -38,6 +39,7 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
             title={alt}
             // Report any errors loading an SVG to the console
             onError={console.log}
+            {...props}
         />
     )
 }
