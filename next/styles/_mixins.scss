@@ -24,3 +24,28 @@
         transition: 0.2s ease;
     }
 }
+
+@mixin orderedListNesting {
+    ol {
+        list-style: upper-roman;
+        ol {
+            list-style: lower-roman;
+            ol {
+                list-style: upper-alpha;
+                ol {
+                    list-style: lower-alpha;
+                }
+            }
+        }
+    }
+}
+
+@mixin unorderedListNesting {
+    ul {
+        list-style: circle;
+        ul {
+            list-style: square;
+
+        }
+    }
+}

@@ -1,10 +1,14 @@
-import { Container, Navbar } from "react-bootstrap"
+import { Navbar } from "react-bootstrap"
+import { useDispatch } from "react-redux"
+import { toggleShowSidebar } from "../../../redux/sidebarSlice"
 import CustomIcon from "../../util/CustomIcon"
 
 const SiteNavigation = ({}) => {
+    const dispatch = useDispatch()
+
     return (
         <Navbar variant="dark" sticky="top">
-            <Navbar.Brand className="menu-icon" href='/'>
+            <Navbar.Brand className="menu-icon" onClick={() => dispatch(toggleShowSidebar())}>
                 <CustomIcon 
                     fileName="bootstrap-list"
                     height={32}

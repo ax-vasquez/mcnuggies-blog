@@ -7,10 +7,7 @@ const Home: NextPage = () => {
     <PageLayout
       pageTitle='Home'
     >
-      <Link href='/demo/component-demo'>
-        <a>Component Demo</a>
-      </Link>
-      
+      <h1>Creator's Blog Starter</h1>
     </PageLayout>
   )
 }

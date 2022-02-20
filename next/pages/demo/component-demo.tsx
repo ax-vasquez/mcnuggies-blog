@@ -10,7 +10,6 @@ const ComponentDemoPage: NextPage = () => {
         <PageLayout
             pageTitle="Component Demo"
         >
-            <br />
             <h1>
                 Components demo
             </h1>

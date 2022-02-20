@@ -1,4 +1,11 @@
+@use 'variables' as vars;
 
-.title-row {
+.titleRow {
     text-align: center;
+}
+
+.description {
+    margin: 2rem 0 2rem 0;
+    font-size: 20px;
+    color: vars.$gray-500;
 }

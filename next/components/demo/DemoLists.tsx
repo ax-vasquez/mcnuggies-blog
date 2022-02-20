@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { FunctionComponent, useState } from "react"
 import TitledCard from "../layout/TitledCard"
 import SectionHeader from "./common/SectionHeader"
 
@@ -59,37 +59,42 @@ const listGenerator = (nestingLevel: number, type: 'ol' | 'ul') => {
     )
 }
 
-const DemoLists = ({}) => {
+const DemoLists: FunctionComponent = ({}) => {
     const [ulNestLevel, setUlNestLevel] = useState(0)
     const [olNestLevel, setOlNestLevel] = useState(0)
 
     return (
-        <TitledCard
-            title="Lists"
+        <section
+            id="demo-lists"
         >
-            <div>
-                <SectionHeader
-                    sectionTitle="Ordered lists"
-                >
-                    <div className="number-input-container">
-                        ol nesting level:
-                        <input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
-                    </div>
-                </SectionHeader>
-                {listGenerator(olNestLevel, 'ol')}
-            </div>
-            <div>
-                <SectionHeader
-                    sectionTitle="Unordered lists"
-                >
-                    <div>
-                        ul nesting level:
-                        <input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
-                    </div>
-                </SectionHeader>
-                {listGenerator(ulNestLevel, 'ul')}
-            </div>
-        </TitledCard>
+            <TitledCard
+                title="Lists"
+            >
+                <div>
+                    <SectionHeader
+                        sectionTitle="Ordered lists"
+                    >
+                        <div className="number-input-container">
+                            ol nesting level:
+                            <input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
+                        </div>
+                    </SectionHeader>
+                    {listGenerator(olNestLevel, 'ol')}
+                </div>
+                <div>
+                    <SectionHeader
+                        sectionTitle="Unordered lists"
+                    >
+                        <div>
+                            ul nesting level:
+                            <input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
+                        </div>
+                    </SectionHeader>
+                    {listGenerator(ulNestLevel, 'ul')}
+                </div>
+            </TitledCard>
+        </section>
+        
     )
 }
 
