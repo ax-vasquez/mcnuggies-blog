@@ -13,6 +13,11 @@ const ComponentDemoPage: NextPage = () => {
             <h1>
                 Components demo
             </h1>
+            <div>
+                This page contains all commonly-used components throughout the site. It's meant as a both a testing area for developers looking to tweak styles to their liking, or
+                for those simply browsing for a site starter and want to take inventory of what this site template offers. Each section card can be expanded and collapsed. Just click
+                on the title row for whichever card you want to review.
+            </div>
             <br />
             <DemoHeadings />
             <DemoLists />

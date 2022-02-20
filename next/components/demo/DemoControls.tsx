@@ -31,9 +31,8 @@ const DemoControls: FunctionComponent = ({}) => {
                 description={
                     <>
                         Styles for controls are located in two places - one is within <code>./next/styles/_general.scss</code>, and the other is in <code>./next/styles/_bootstrap.scss</code>. The reason for this 
-                        difference because <b>not all control types can are fully-customizable.</b> Specifically, radio buttons and checkboxes offer very limited customization options out-of-the-box. This is the 
-                        reason for the bootstrap-specific stylesheet; we use <code>react-bootstrap</code> under the hood for many components, including the radio and checkbox inputs. Text inputs, however, are styled
-                        with "vanilla" CSS.
+                        difference because <b>not all control types are fully-customizable with vanilla CSS.</b> Specifically, radio buttons and checkboxes offer very limited customization options out-of-the-box. 
+                        We use <code>react-bootstrap</code> under the hood for many components, including the radio and checkbox inputs. Text inputs, however, are styled with "vanilla" CSS.
                     </>
                 }
             >

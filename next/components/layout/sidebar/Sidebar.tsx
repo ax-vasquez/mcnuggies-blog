@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { useSelector } from 'react-redux'
+import kebabCase from '../../../util/kebabCase'
 import styles from './Sidebar.module.scss'
 import SidebarOption, { SidebarOptionConfig } from './SidebarOption'
 
@@ -31,8 +32,10 @@ const Sidebar: FunctionComponent<SidebarProps> = ({
     return (
         <div className={`${styles.sidebarContainer} ${isSidebarOpen ? undefined : styles.closed}`}>
             {SIDEBAR_OPTIONS.map(option => {
+                const key = kebabCase(option.option.label)
                 return (
                     <SidebarOption
+                        key={`option-${key}`}
                         option={option.option}
                     />
                 )

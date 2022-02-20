@@ -3,7 +3,6 @@
 // The styles in this partial SCSS file override/modify classes from react-bootstrap
 
 .card {
-    padding: 1rem;
     margin: 0 0 1rem 0;
     // TODO: What's the "ideal" way to do this in react-bootstrap? (e.g. without !important)
     border-radius: 1rem !important; // !important - overrides the default border-radius of 0.25rem set in react-bootstrap
@@ -11,7 +10,7 @@
     // Our custom classes
     .section-header {
         width: 100%;
-        display: flex;
+        // display: flex;
         div {
             right: 0;
             margin-left: auto;
