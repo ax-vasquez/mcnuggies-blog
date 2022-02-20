@@ -69,6 +69,12 @@ const DemoLists: FunctionComponent = ({}) => {
         >
             <TitledCard
                 title="Lists"
+                description={
+                    <>
+                        List styles are defined in <code>./next/styles/_general.scss</code>. If you have special use-cases, such as style for a specific
+                        type of component, you can override the style in the components corresponding <code>*.module.scss</code> file.
+                    </>
+                }
             >
                 <div>
                     <SectionHeader

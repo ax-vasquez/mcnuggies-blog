@@ -23,6 +23,9 @@ input {
 
 main {
     margin-top: 1rem;
+    font-size: 20px;
+    color: vars.$gray-600;
+    text-align: justify;
 }
 
 // Style for ALL list items (in all levels of both ordered lists and unordered lists)

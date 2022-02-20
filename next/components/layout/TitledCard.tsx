@@ -1,3 +1,4 @@
+import { FunctionComponent, useState } from "react"
 import { Card } from "react-bootstrap"
 import styles from './TitledCard.module.scss'
 
@@ -7,11 +8,14 @@ interface TitledCardProps {
     description?: string | React.ReactNode
 }
 
-const TitledCard = ({
+const TitledCard: FunctionComponent<TitledCardProps> = ({
     title,
     children,
     description
-}: TitledCardProps) => {
+}) => {
+
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <Card>
             <div className={styles.titleRow}>
