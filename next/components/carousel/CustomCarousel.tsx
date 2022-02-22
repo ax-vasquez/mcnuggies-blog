@@ -17,10 +17,10 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
 }) => {
     return (
         <div
-            className={styles.carousel}
+            className={styles.customCarousel}
         >
             {title ? <span>{title}</span> : undefined}
-            <Carousel>
+            <Carousel className={styles.customCarouselInner}>
                 {slides.map(slide => {
                     const { id, content, caption } = slide
                     return (
@@ -32,6 +32,7 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
                                 </Carousel.Caption>
                             : undefined }
                         </Carousel.Item>
+                        
                     )
                 })}
             </Carousel>

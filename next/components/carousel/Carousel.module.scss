@@ -1,5 +1,19 @@
 
-.carousel {
+.customCarousel {
     width: 100%;
+}
+
+.customCarouselInner {
+    // height: 500px;
+    
+    :global(.carousel-inner) {
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+        margin: auto !important;
+    }
+    img {
+        height: 400px;
+    }
 }
 
