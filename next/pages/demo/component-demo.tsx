@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
+import DemoCarousel from "../../components/demo/DemoCarousel";
 import DemoControls from "../../components/demo/DemoControls";
 import { DemoHeadings } from "../../components/demo/DemoHeadings";
 import DemoLists from "../../components/demo/DemoLists";
@@ -22,6 +23,7 @@ const ComponentDemoPage: NextPage = () => {
             <DemoHeadings />
             <DemoLists />
             <DemoControls />
+            <DemoCarousel />
         </PageLayout>
     )
 }

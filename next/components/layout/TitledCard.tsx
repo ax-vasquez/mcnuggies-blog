@@ -18,7 +18,7 @@ const TitledCard: FunctionComponent<TitledCardProps> = ({
     const [isOpen, setIsOpen] = useState(false)
 
     return (
-        <Card>
+        <Card className={styles.container}>
             <div className={styles.titleRow} onClick={() => setIsOpen(!isOpen)}>
                 <h1>{title}</h1>
             </div>
