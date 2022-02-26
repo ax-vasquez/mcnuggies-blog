@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import CustomIcon from '../util/CustomIcon'
 import styles from './Carousel.module.scss'
 
 interface SlideConfig {
@@ -16,74 +17,59 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
     title,
     slides
 }) => {
-    // Defaults to the first slide as the "active" slide on first load
-    const [activeSlideId, setActiveSlideId] = useState(slides[0].id)
-    const [prevSlide, setPrevSlide] = useState(null as unknown as SlideConfig)
-    const [currentSlide, setCurrentSlide] = useState(null as unknown as SlideConfig)
-    const [nextSlide, setNextSlide] = useState(null as unknown as SlideConfig)
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0)
 
-    useEffect(() => {
-        if (slides.length === 1) {
-            setPrevSlide(slides[0])
-            setCurrentSlide(slides[0])
-            setNextSlide(slides[0])
-        } else if (slides.length === 2) {
-            setPrevSlide(slides[1])
-            setCurrentSlide(slides[0])
-            setNextSlide(slides[1])
-        } else {
-            setPrevSlide(slides[(slides.length - 1)])
-            setCurrentSlide(slides[0])
-            setNextSlide(slides[1])
-        }
-    })
-
-    const getCurrentSlideIndex = () => {
-        const currentSlide = slides.filter(slide => slide.id === activeSlideId)[0]
-        return slides.indexOf(currentSlide)
+    const incrementIndex = (indexValue: number) => {
+        return (indexValue < (slides.length - 1)) ? 
+            ++indexValue
+            :
+            0
     }
 
-    const getNextSlideIndex = () => {
-        const currentSlideIndex = getCurrentSlideIndex()
-        let nextSlideIndex = -1
-        if (currentSlideIndex === (slides.length - 1)) {
-            // set to first in slides array
-            nextSlideIndex = 0
-        } else {
-            nextSlideIndex = currentSlideIndex + 1
-        }
-        return nextSlideIndex
-    }
-
-    const getPrevSlideIndex = () => {
-        const currentSlideIndex = getCurrentSlideIndex()
-        let prevSlideIndex = -1
-        if (currentSlideIndex === 0) {
-            // set to last in slides array
-            prevSlideIndex = (slides.length - 1)
-        } else {
-            prevSlideIndex = currentSlideIndex - 1
-        }
-        return prevSlideIndex
-    }
-
-    const handleScrollNext = () => {
-        
-    }
-
-    const handleScrollPrev = () => {
-        
+    const decrementIndex = (indexValue: number) => {
+        return (indexValue > 0) ? 
+            --indexValue
+            :
+            slides.length - 1
     }
 
     return (
-        <div
-            className={styles.customCarousel}
-        >
+        <div>
             {title ? <span>{title}</span> : undefined}
-            <div className={styles.customCarouselInner}>
-                
+            <div
+                className={styles.customCarousel}
+            >
+                <div className={styles.customCarouselInner} style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}>
+                    {slides.map((slide, index) => {
+                        return (
+                            <div key={slide.id} className={styles.slide}>
+                                {slide.content}
+                            </div>
+                        )
+                    })}
+                </div>
+                <div className={styles.controls}>
+                    <button onClick={() => setActiveSlideIndex(decrementIndex(activeSlideIndex))}>
+                        <CustomIcon 
+                            fileName='bootstrap-chevron-left'
+                            height={32}
+                            width={32}
+                        />
+                    </button>
+                    <ul className={styles.pageIndicators}>
+                        {slides.map((slide, index) => <li key={`indicator-slide-${slide.id}`} className={`${(activeSlideIndex === index) ? styles.activeIndicator : undefined}`} >{index}</li>)}
+                    </ul>
+                    <button onClick={() => setActiveSlideIndex(incrementIndex(activeSlideIndex))}>
+                        <CustomIcon 
+                            fileName='bootstrap-chevron-right'
+                            height={32}
+                            width={32}
+                        />
+                    </button>
+                </div>
             </div>
         </div>
+        
     )
 }
 
