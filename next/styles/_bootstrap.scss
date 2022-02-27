@@ -54,3 +54,29 @@
     }
     
 }
+
+.carousel {
+    .carousel-control-prev,
+    .carousel-control-next {
+        span {
+            margin-bottom: 1rem;
+            margin-top: auto;
+        }
+    }
+    .carousel-inner {
+        h1,h2,h3,h4 {
+            color: vars.$gray-50;
+            margin: 0 0 1rem 0;
+        }
+        padding: 0 1rem 4rem 1rem;
+        border-radius: 4px;
+        background-color: vars.$gray-600;
+        color: vars.$gray-50;
+        img {
+            margin: auto;
+            max-height: 400px;
+            width: auto;
+        }
+    }
+}
+
