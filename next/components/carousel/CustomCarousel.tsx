@@ -9,12 +9,10 @@ interface SlideConfig {
 }
 
 interface CustomCarouselProps {
-    title?: string
     slides: SlideConfig[]
 }
 
 const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
-    title,
     slides
 }) => {
     const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -35,7 +33,6 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
 
     return (
         <div>
-            {title ? <span>{title}</span> : undefined}
             <div
                 className={styles.customCarousel}
             >
@@ -57,7 +54,7 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
                         />
                     </button>
                     <ul className={styles.pageIndicators}>
-                        {slides.map((slide, index) => <li key={`indicator-slide-${slide.id}`} className={`${(activeSlideIndex === index) ? styles.activeIndicator : undefined}`} >{index}</li>)}
+                        {slides.map((slide, index) => <li key={`indicator-slide-${slide.id}`} className={`${(activeSlideIndex === index) ? styles.activeIndicator : undefined}`} onClick={() => setActiveSlideIndex(index)} >{index}</li>)}
                     </ul>
                     <button onClick={() => setActiveSlideIndex(incrementIndex(activeSlideIndex))}>
                         <CustomIcon 

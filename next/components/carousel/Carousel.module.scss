@@ -13,6 +13,9 @@
             li {
                 color: vars.$gray-400;
                 transition: 0.3s ease;
+                &:hover {
+                    cursor: pointer;
+                }
             }
             .activeIndicator {
                 font-weight: 900;
@@ -45,11 +48,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 400px;
-    width: 100%;
     background-color: vars.$gray-100;
     color: white;
-    img {
+    height: 400px;
+    width: 100%;
+    // These styles only apply when an image is an immediate child in the slide - more-dynamic content should be unaffected
+    >img {
         max-height: 400px;
+        max-width: 100%;
     }
 }

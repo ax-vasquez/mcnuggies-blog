@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Carousel } from 'react-bootstrap'
 import CustomCarousel from '../carousel/CustomCarousel'
 import TitledCard from '../layout/TitledCard'
+import SectionHeader from './common/SectionHeader'
 
 interface DemoCarouselProps {
 
@@ -27,13 +28,14 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
             <TitledCard
                 title='Carousels'
             >
+                <SectionHeader sectionTitle="Carousel with images"/>
                 <CustomCarousel 
-                    title='Carousel Test'
                     slides={slideImages.map(imagePath => {
                         return {
                             id: imagePath,
                             content: (
                                 <img src={`${imagePath}.jpg`} />
+                                
                             ),
                             caption: (
                                 <span>Test caption</span>
