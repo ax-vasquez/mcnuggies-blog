@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react'
 import CustomIcon from '../util/CustomIcon'
 import styles from './Carousel.module.scss'
 
@@ -15,8 +15,6 @@ interface CustomCarouselProps {
 const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
     slides
 }) => {
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-
     const incrementIndex = (indexValue: number) => {
         return (indexValue < (slides.length - 1)) ? 
             ++indexValue
@@ -30,20 +28,44 @@ const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
             :
             slides.length - 1
     }
+    
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+
+    const prevSlide = useMemo<React.ReactNode>(() => {
+        const prevIndex = decrementIndex(activeSlideIndex)
+        return (
+            <div className={`${styles.slide} ${styles.slideLeft}`}>
+                {slides[prevIndex].content}
+            </div>
+        )
+    }, [activeSlideIndex])
+
+    const activeSlide = useMemo<React.ReactNode>(() => {
+        return (
+            <div className={`${styles.slide} ${styles.slideLeft}`}>
+                {slides[activeSlideIndex].content}
+            </div>
+        )
+    }, [activeSlideIndex])
+
+    const nextSlide = useMemo<React.ReactNode>(() => {
+        const nextIndex = incrementIndex(activeSlideIndex)
+        return (
+            <div className={`${styles.slide} ${styles.slideLeft}`}>
+                {slides[nextIndex].content}
+            </div>
+        )
+    }, [activeSlideIndex])
 
     return (
         <div>
             <div
                 className={styles.customCarousel}
             >
-                <div className={styles.customCarouselInner} style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}>
-                    {slides.map((slide, index) => {
-                        return (
-                            <div key={slide.id} className={styles.slide}>
-                                {slide.content}
-                            </div>
-                        )
-                    })}
+                <div className={styles.customCarouselInner}>
+                    {prevSlide}
+                    {activeSlide}
+                    {nextSlide}
                 </div>
                 <div className={styles.controls}>
                     <button onClick={() => setActiveSlideIndex(decrementIndex(activeSlideIndex))}>

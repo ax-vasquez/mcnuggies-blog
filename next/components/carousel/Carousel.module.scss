@@ -42,6 +42,7 @@
 .customCarouselInner {
     white-space: nowrap;
     transition: transform 0.5s;
+    transform: translateX(-100%);
 }
 
 .slide {
@@ -49,12 +50,16 @@
     align-items: center;
     justify-content: center;
     background-color: vars.$gray-100;
-    color: white;
+    color: green;
     height: 400px;
     width: 100%;
-    // These styles only apply when an image is an immediate child in the slide - more-dynamic content should be unaffected
-    >img {
-        max-height: 400px;
-        max-width: 100%;
+    .slideActive {
+
+    }
+    .slideLeft {
+
+    }
+    .slideRight {
+
     }
 }

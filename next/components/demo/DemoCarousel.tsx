@@ -30,11 +30,13 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
             >
                 <SectionHeader sectionTitle="Carousel with images"/>
                 <CustomCarousel 
-                    slides={slideImages.map(imagePath => {
+                    slides={slideImages.map((imagePath, i) => {
                         return {
                             id: imagePath,
                             content: (
-                                <img src={`${imagePath}.jpg`} />
+                                <div>
+                                    Slide {i}
+                                </div>
                                 
                             ),
                             caption: (
