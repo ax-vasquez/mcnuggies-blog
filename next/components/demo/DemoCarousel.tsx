@@ -98,6 +98,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         }}>
                             <img src={`${slideImages[0]}.jpg`} />
                         </div>
+                        <Carousel.Caption>
+                            This is a carousel
+                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
@@ -105,6 +108,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         }}>
                             <img src={`${slideImages[1]}.jpg`} />
                         </div>
+                        <Carousel.Caption>
+                            This is also a carousel
+                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
@@ -112,6 +118,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         }}>
                             <img src={`${slideImages[2]}.jpg`} />
                         </div>
+                        <Carousel.Caption>
+                            This is also a carousel
+                        </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
@@ -119,6 +128,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         }}>
                             <img src={`${slideImages[3]}.jpg`} />
                         </div>
+                        <Carousel.Caption>
+                            This is also dfa carousel
+                        </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
             </TitledCard>
