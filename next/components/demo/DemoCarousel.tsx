@@ -26,6 +26,14 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
         >
             <TitledCard
                 title='Carousels'
+                description={
+                    <>
+                        Carousel styles are defined in <code>./next/styles/_bootstrap.scss</code>. This site simply uses the 
+                        {' '}<a href="https://react-bootstrap.github.io/components/carousel/" target="_blank">React Bootstrap Carousel</a>, so
+                        most of it is the same. The only difference is that the indicators are shifted down by default so that text in the slide isn't covered
+                        inadvertently. Otherwise, all implementation details are more-or-less the same.
+                    </>
+                }
             >
                 <SectionHeader sectionTitle='Generic Carousel' />
                 <Carousel>
