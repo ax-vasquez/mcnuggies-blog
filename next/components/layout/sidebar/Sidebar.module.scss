@@ -1,0 +1,42 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
+.sidebarContainer {
+    z-index: 1000;
+    position: fixed;
+    background-color: vars.$gray-600;
+    height: 100%;
+    overflow: hidden;
+    width: 20%;
+    transition: 0.5s ease;
+
+    >:first-child {
+        margin-top: 1rem;
+    }
+
+    :global(.sidebar-option-row) {
+        padding-left: 1rem;
+        line-height: 40px;
+        font-size: 20px;
+        font-weight: 400;
+        span {
+            color: vars.$gray-100;
+        }
+        background-color: inherit;
+        transition: 0.3s ease;
+        &:hover {
+            cursor: pointer;
+            background-color: vars.$gray-800;
+            transition: 0.3s ease;
+        }
+    }
+
+    :global(.sidebar-option-row):not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    &.closed {
+        transform: translateX(-100%);
+    }
+
+}
