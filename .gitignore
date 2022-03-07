@@ -1,6 +1,7 @@
 .DS_Store
 .env.development
 .env.production
+.env.local
 node_modules
 
 # exclude generated types
