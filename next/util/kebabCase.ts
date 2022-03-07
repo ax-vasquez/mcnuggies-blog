@@ -5,7 +5,10 @@
  * For example, the side bar options each have a unique `key` - this key is set by converting
  * the string from something like `Components Demo` to `components-demo`.
  */
-const kebabCase = (str: string) => {
+const kebabCase = (str?: string) => {
+    if (!str) {
+      return ``
+    }
     return str.split('').map((letter, idx) => {
       return letter.toUpperCase() === letter
        ? `${idx !== 0 ? '-' : ''}${letter.toLowerCase()}`

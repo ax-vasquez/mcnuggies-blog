@@ -3,19 +3,22 @@ import Head from "next/head"
 import { Container } from "react-bootstrap"
 import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
+import Image from 'next/image'
 
 interface PageLayoutProps {
     pageTitle: string
     metaDescription?: string
     metaContent?: string
     children: any
+    imgSrc?: string
 }
 
 export const PageLayout = ({
     pageTitle,
     metaDescription,
     metaContent,
-    children
+    children,
+    imgSrc
 }: PageLayoutProps) => {
     return (
         <>
@@ -23,17 +26,32 @@ export const PageLayout = ({
             <Sidebar 
                 options={[]}
             />
-            <Container>
-                <Head>
-                    <title>{pageTitle}</title>
-                    <meta name={metaDescription} content={metaContent} />
-                    <link rel="icon" href="/mcnuggies.ico" />
-                </Head>
-                <main>
-                    {children}
-                </main>
-            </Container>
-        </>
-        
+            <div className='site-content'>
+                {!!imgSrc && (
+                    <div className='hero-image-container'>
+                        <div className='hero-image-overlay'>
+                            <h1>{pageTitle}</h1>
+                        </div>
+                        <div className='hero-image'>
+                            <Image 
+                                src={imgSrc}
+                                height={1080}
+                                width={1920}
+                            />
+                        </div>
+                    </div>
+                )}
+                <Container>
+                    <Head>
+                        <title>{pageTitle}</title>
+                        <meta name={metaDescription} content={metaContent} />
+                        <link rel="icon" href="/mcnuggies.ico" />
+                    </Head>
+                    <main>
+                        {children}
+                    </main>
+                </Container>
+            </div>
+        </> 
     )
 }

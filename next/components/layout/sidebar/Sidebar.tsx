@@ -17,6 +17,12 @@ const SIDEBAR_OPTIONS = [
     },
     {
         option: {
+            label: `Blog`,
+            to: `/blog-feed`
+        }
+    },
+    {
+        option: {
             label: `Components Demo`,
             to: `/demo/component-demo`
         }
