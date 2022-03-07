@@ -4,7 +4,6 @@ import client from "../sanity/client"
 import { Article } from "../types/sanity"
 import kebabCase from "../util/kebabCase"
 import {PortableText} from '@portabletext/react'
-import groq from 'groq'
 import FeedItem from "../components/feedItem/FeedItem"
 
 interface NextPageProps {
@@ -51,7 +50,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
  * dig into and get a better idea of.
  */
 export async function getStaticProps(context: any) {
-    const allArticles = await client.fetch(groq`
+    const allArticles = await client.fetch(`
       *[_type == "article"]{
           title,
           slug,
