@@ -20,14 +20,17 @@ const SIDEBAR_OPTIONS = [
             label: `Blog`,
             to: `/blog-feed`
         }
-    },
-    {
+    }
+] as SidebarOptionConfig[]
+
+if (process.env.NODE_ENV === `development`) {
+    SIDEBAR_OPTIONS.push({
         option: {
             label: `Components Demo`,
             to: `/demo/component-demo`
         }
-    }
-] as SidebarOptionConfig[]
+    })
+}
 
 const Sidebar: FunctionComponent<SidebarProps> = ({
     options
