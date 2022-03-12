@@ -14,7 +14,7 @@ const Checkbox = ({
     onClick
 }: CheckboxProps) => {
     return (
-        <Form.Check 
+        <Form.Check
             type={`checkbox`}
             id={id}
             label={label}

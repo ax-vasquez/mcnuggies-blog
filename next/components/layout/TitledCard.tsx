@@ -22,7 +22,7 @@ const TitledCard: FunctionComponent<TitledCardProps> = ({
             <div className={styles.titleRow} onClick={() => setIsOpen(!isOpen)}>
                 <h1>{title}</h1>
             </div>
-            {description ? 
+            {description ?
                 <div className={`${styles.description}`}>
                     {description}
                 </div>
@@ -31,7 +31,7 @@ const TitledCard: FunctionComponent<TitledCardProps> = ({
                 {children}
             </div>
             <div className={styles.cardFooter}>
-                <CustomIcon 
+                <CustomIcon
                     fileName="bootstrap-three-dots"
                     height={32}
                     width={32}

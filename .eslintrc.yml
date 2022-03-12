@@ -6,9 +6,7 @@ env:
   'cypress/globals': true
 globals:
   JSX: true
-extends:
-  - 'plugin:react/recommended'
-  - airbnb
+root: true
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
@@ -16,7 +14,6 @@ parserOptions:
   ecmaVersion: 13
   sourceType: module
 plugins:
-  - react
   - '@typescript-eslint'
   - cypress
 rules: {
@@ -26,10 +23,6 @@ rules: {
   'react/jsx-indent': ["error", 4],
   # never error when semicolon is missing from the end of a line
   semi: ["error", "never"],
-  'import/extensions': [
-      "error",
-      "never"
-   ],
   # required for importing React without error
   'no-use-before-define': "off",
   # required for importing React without error
@@ -48,19 +41,20 @@ rules: {
   jsx-a11y/no-static-element-interactions: "off",
   react/no-unescaped-entities: "off",
   import/prefer-default-export: "off",
+  import/extensions: "off",
   react/require-default-props: "off",
   # We do this because of the Sanity "parts" system; I believe they intend to deprecate this functionality in the future,
   # since the "workaround" right now is to simply either turn off the rule, or add a workaround that enables the parts
   # system to work, but with no added benefit from types (all types are "any" from the parts system - may as well turn this
   # rule off until they have a different system)
-  import/no-unresolved: "off"
+  import/no-unresolved: "off",
 }
 settings: {
   # Enables "local" imports without specifying the file extension
   'import/resolver': [
       node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
-          moduleDirectory: ['node_modules', 'web/src/'],
+          moduleDirectory: ['node_modules', 'next/'],
       },
   ],
 }

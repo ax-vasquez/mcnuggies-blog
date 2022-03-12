@@ -28,8 +28,8 @@ const FeedItem: FunctionComponent<FeedItemProps> = ({
                 </div>
             </Link>
         </div>
-        
-        
+
+
     )
 }
 

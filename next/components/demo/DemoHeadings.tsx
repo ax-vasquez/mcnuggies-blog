@@ -1,6 +1,6 @@
 
-import { FunctionComponent } from "react";
-import TitledCard from "../layout/TitledCard";
+import { FunctionComponent } from "react"
+import TitledCard from "../layout/TitledCard"
 
 export const DemoHeadings: FunctionComponent = ({
 
@@ -18,7 +18,7 @@ export const DemoHeadings: FunctionComponent = ({
                     </>
                 }
             >
-                
+
                 <h1>
                     Heading 1
                 </h1>
@@ -33,6 +33,6 @@ export const DemoHeadings: FunctionComponent = ({
                 </h4>
             </TitledCard>
         </section>
-        
+
     )
 }

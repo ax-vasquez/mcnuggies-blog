@@ -10,7 +10,7 @@ interface OptionConfig {
 export interface SidebarOptionConfig {
     option: OptionConfig
     children?: {
-        [child: number]: OptionConfig 
+        [child: number]: OptionConfig
     }
 }
 
