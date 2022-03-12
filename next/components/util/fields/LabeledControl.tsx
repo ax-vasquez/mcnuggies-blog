@@ -1,14 +1,14 @@
 
 interface LabeledFieldProps {
     label: string
-    labelPos: 'left' | 'right'
+    labelPos: `left` | `right`
     component: any
 }
 
 const LabeledControl = ({ label, labelPos, component }: LabeledFieldProps) => {
     return (
         <div className={`control-labeled-${labelPos}`}>
-            {labelPos === 'right' ?
+            {labelPos === `right` ?
                 (
                     <>
                         {component}
@@ -23,7 +23,7 @@ const LabeledControl = ({ label, labelPos, component }: LabeledFieldProps) => {
                     </>
                 )
             }
-            
+
         </div>
     )
 }

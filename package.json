@@ -4,16 +4,14 @@
     "private": true,
     "description": "sanity-template-creators-blog",
     "scripts": {
-        "cy:open": "cd web && yarn cy:open",
-        "cy:run": "cd web && yarn cy:run",
-        "lint-web-dry-run": "yarn run eslint 'web/**/*' --ext .ts,.tsx",
-        "lint-web": "yarn run eslint 'web/**/*' --ext .ts,.tsx --fix",
+        "cy:open": "cd next && yarn cy:open",
+        "cy:run": "cd next && yarn cy:run",
+        "lint-next-dry-run": "yarn run eslint 'next/**/*' --ext .ts,.tsx",
+        "lint-next": "yarn run eslint 'next/**/*' --ext .ts,.tsx --fix",
         "prepare": "husky install",
-        "stop-only": "stop-only --folder web/cypress",
+        "stop-only": "stop-only --folder next/cypress",
         "studio": "cd studio && sanity start",
-        "web": "cd web && yarn && yarn start",
-        "build-web": "cd web && yarn && yarn build",
-        "serve-web": "cd web && yarn serve"
+        "web": "cd next && yarn && yarn dev"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -29,5 +27,7 @@
         "stop-only": "^3.1.2",
         "typescript": "^4.4.4"
     },
-    "dependencies": {}
+    "dependencies": {
+        "eslint-config-next": "^12.1.0"
+    }
 }

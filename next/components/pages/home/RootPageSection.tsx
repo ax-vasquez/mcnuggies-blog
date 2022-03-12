@@ -22,7 +22,7 @@ export const RootPageSection: FunctionComponent<RootPageSectionProps> = ({
                 href={href}
             >
                 <div className={styles.sectionContentWrapper}>
-                    <CustomIcon 
+                    <CustomIcon
                         fileName={iconFileName}
                         height={128}
                         width={128}
@@ -38,6 +38,6 @@ export const RootPageSection: FunctionComponent<RootPageSectionProps> = ({
                 </div>
             </Link>
         </div>
-        
+
     )
 }

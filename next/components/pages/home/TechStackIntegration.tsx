@@ -17,10 +17,10 @@ export const TechStackIntegration: FunctionComponent<TechStackIntegrationProps> 
 }) => {
     return (
         <div className={styles.techStackIntegration}
-            onClick={() => window.open(homePage, '_blank')}
+            onClick={() => window.open(homePage, `_blank`)}
         >
             <div className={styles.integrationTitle}>
-                <CustomIcon 
+                <CustomIcon
                     fileName={iconFileName}
                     height={32}
                     width={32}

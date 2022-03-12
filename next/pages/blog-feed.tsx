@@ -21,10 +21,10 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
                 {allArticles.map(article => {
                     const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
                     return (
-                        <FeedItem 
+                        <FeedItem
                             title={article.title!}
-                            href={`/blog/${article.slug!.current.toLowerCase()}`} 
-                            key={rowKey} 
+                            href={`/blog/${article.slug!.current.toLowerCase()}`}
+                            key={rowKey}
                             textContent={(
                                 <PortableText
                                     value={article.summary!}
@@ -65,6 +65,6 @@ export async function getStaticProps(context: any) {
       }
     }
 }
-  
+
 
 export default BlogFeed

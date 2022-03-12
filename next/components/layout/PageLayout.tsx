@@ -23,7 +23,7 @@ export const PageLayout = ({
     return (
         <>
             <SiteNavigation />
-            <Sidebar 
+            <Sidebar
                 options={[]}
             />
             <div className='site-content'>
@@ -33,7 +33,7 @@ export const PageLayout = ({
                             <h1>{pageTitle}</h1>
                         </div>
                         <div className='hero-image'>
-                            <Image 
+                            <Image
                                 src={imgSrc}
                                 height={1080}
                                 width={1920}
@@ -52,6 +52,6 @@ export const PageLayout = ({
                     </main>
                 </Container>
             </div>
-        </> 
+        </>
     )
 }

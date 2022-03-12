@@ -9,7 +9,7 @@ const SiteNavigation = ({}) => {
     return (
         <Navbar variant="dark" sticky="top">
             <Navbar.Brand className="menu-icon" onClick={() => dispatch(toggleShowSidebar())}>
-                <CustomIcon 
+                <CustomIcon
                     fileName="bootstrap-list"
                     height={32}
                     width={32}

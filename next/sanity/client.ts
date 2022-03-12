@@ -4,5 +4,5 @@ export default client({
     projectId: process.env.SANITY_PROJECT,
     dataset: process.env.SANITY_DATASET,
     useCdn: true, // `false` if you want to ensure fresh data
-    apiVersion: 'v2021-10-21'
+    apiVersion: `v2021-10-21`
 })

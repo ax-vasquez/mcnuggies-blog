@@ -14,7 +14,7 @@ const Radio = ({
     onClick
 }: RadioProps) => {
     return (
-        <Form.Check 
+        <Form.Check
             type={`radio`}
             id={id}
             label={label}
