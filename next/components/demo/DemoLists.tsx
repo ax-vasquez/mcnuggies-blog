@@ -3,9 +3,9 @@ import TitledCard from "../layout/TitledCard"
 import SectionHeader from "./common/SectionHeader"
 
 const LIST_ITEMS = [
-    'item 1',
-    'item 2',
-    'item 3',
+    `item 1`,
+    `item 2`,
+    `item 3`,
 ]
 
 interface ListElementProps {
@@ -21,7 +21,7 @@ interface ListElementProps {
  */
 const ListElement = ({type, children}: ListElementProps) => {
     return (
-        type === 'ol' ?
+        type === `ol` ?
             <ol>
                 {children}
             </ol>
@@ -37,13 +37,13 @@ const ListElement = ({type, children}: ListElementProps) => {
  * 
  * When the nesting level is 0, it will generate a list with no child items (the base case)
  */
-const listGenerator = (nestingLevel: number, type: 'ol' | 'ul') => {
+const listGenerator = (nestingLevel: number, type: `ol` | `ul`) => {
     return (
         (nestingLevel > 0) ?
         (
             <ListElement type={type}>
-                {LIST_ITEMS.map(item => (
-                    <li>
+                {LIST_ITEMS.map((item, i) => (
+                    <li key={`${type}-${i}`}>
                         {item}
                         {listGenerator((nestingLevel - 1), type)}
                     </li>
@@ -85,7 +85,7 @@ const DemoLists: FunctionComponent = ({}) => {
                             <input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
                         </div>
                     </SectionHeader>
-                    {listGenerator(olNestLevel, 'ol')}
+                    {listGenerator(olNestLevel, `ol`)}
                 </div>
                 <div>
                     <SectionHeader
@@ -96,11 +96,11 @@ const DemoLists: FunctionComponent = ({}) => {
                             <input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
                         </div>
                     </SectionHeader>
-                    {listGenerator(ulNestLevel, 'ul')}
+                    {listGenerator(ulNestLevel, `ul`)}
                 </div>
             </TitledCard>
         </section>
-        
+
     )
 }
 

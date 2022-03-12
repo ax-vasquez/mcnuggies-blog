@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React, { FunctionComponent } from 'react'
 import { Carousel } from 'react-bootstrap'
 import TitledCard from '../layout/TitledCard'
@@ -35,13 +36,13 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         </h2>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                             do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                             Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                             irure dolor in reprehenderit in voluptate velit esse cillum 
-                             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                             non proident, sunt in culpa qui officia deserunt mollit anim id 
-                             est laborum.
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id
+                            est laborum.
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -50,13 +51,13 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         </h2>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                             do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                             Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                             irure dolor in reprehenderit in voluptate velit esse cillum 
-                             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                             non proident, sunt in culpa qui officia deserunt mollit anim id 
-                             est laborum.
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id
+                            est laborum.
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -65,13 +66,13 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         </h2>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                             do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                             Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                             irure dolor in reprehenderit in voluptate velit esse cillum 
-                             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                             non proident, sunt in culpa qui officia deserunt mollit anim id 
-                             est laborum.
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id
+                            est laborum.
                         </div>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -80,13 +81,13 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                         </h2>
                         <div>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                             do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                             Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                             laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                             irure dolor in reprehenderit in voluptate velit esse cillum 
-                             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
-                             non proident, sunt in culpa qui officia deserunt mollit anim id 
-                             est laborum.
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                            irure dolor in reprehenderit in voluptate velit esse cillum
+                            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                            non proident, sunt in culpa qui officia deserunt mollit anim id
+                            est laborum.
                         </div>
                     </Carousel.Item>
                 </Carousel>
@@ -94,9 +95,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                 <Carousel>
                     <Carousel.Item >
                         <div style={{
-                            display: 'flex'
+                            display: `flex`
                         }}>
-                            <img src={`${slideImages[0]}.jpg`} />
+                            <Image src={`${slideImages[0]}.jpg`} alt={`${slideImages[0]}`}/>
                         </div>
                         <Carousel.Caption>
                             This is a carousel
@@ -104,9 +105,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
-                            display: 'flex'
+                            display: `flex`
                         }}>
-                            <img src={`${slideImages[1]}.jpg`} />
+                            <Image src={`${slideImages[1]}.jpg`} alt={`${slideImages[1]}`}/>
                         </div>
                         <Carousel.Caption>
                             This is also a carousel
@@ -114,9 +115,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
-                            display: 'flex'
+                            display: `flex`
                         }}>
-                            <img src={`${slideImages[2]}.jpg`} />
+                            <Image src={`${slideImages[2]}.jpg`} alt={`${slideImages[2]}`}/>
                         </div>
                         <Carousel.Caption>
                             This is also a carousel
@@ -124,9 +125,9 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = ({}) => {
                     </Carousel.Item>
                     <Carousel.Item>
                         <div style={{
-                            display: 'flex'
+                            display: `flex`
                         }}>
-                            <img src={`${slideImages[3]}.jpg`} />
+                            <Image src={`${slideImages[3]}.jpg`} alt={`${slideImages[3]}`}/>
                         </div>
                         <Carousel.Caption>
                             This is also dfa carousel

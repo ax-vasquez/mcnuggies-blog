@@ -31,7 +31,7 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
     ...props
 }) => {
     return (
-        <SVG 
+        <SVG
             className={className}
             src={`../icons/${fileName}.svg`}
             height={height}

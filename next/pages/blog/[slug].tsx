@@ -44,10 +44,10 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
       pageTitle={article.title!}
       imgSrc={article.imageUrl}
     >
-      {!!article && (
+        {!!article && (
         <>
-          <br />
-          <PortableText 
+            <br />
+            <PortableText
             value={article.body}
             components={blogPostComponents}
           />
@@ -55,7 +55,7 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
       )}
     </PageLayout>
     )
-    
+
   )
 }
 
@@ -72,7 +72,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: any) {
   // It's important to default the slug so that it doesn't return "undefined"
-  const { slug = "" } = context.params
+  const { slug = `` } = context.params
   /**
    * Because the generated slug is lower case, the query also needs to pass a slug that's all lower-case.
    * Othwerise, no match will be found; in other words, this query syntax is case-sensitive
