@@ -20,7 +20,6 @@
         }
         .sectionTitle {
             font-weight: 800;
-            
             @media (min-width: vars.$mobileS) {
                 font-size: 24px;
             }
@@ -29,7 +28,7 @@
             }
         }
         .sectionDescription {
-            font-weight: 200;
+            font-weight: 300;
             @media (min-width: vars.$mobileS) {
                 font-size: 16px;
             }

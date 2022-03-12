@@ -57,6 +57,12 @@ const Home: NextPage = () => {
           And was developed using these fine tools and packages
         </div>
         <TechStackIntegration 
+          provider='Cypress'
+          homePage='https://www.cypress.io/'
+          iconFileName='logo-cypress'
+          description='Fast, easy and reliable testing for anything that runs in a browser.'
+        />
+        <TechStackIntegration 
           provider='React Bootstrap'
           homePage='https://react-bootstrap.github.io/'
           iconFileName='logo-react-bootstrap'
