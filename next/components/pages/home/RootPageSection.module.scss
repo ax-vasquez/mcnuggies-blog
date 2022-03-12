@@ -1,0 +1,52 @@
+@use 'variables' as vars;
+
+.sectionContainer {
+    transition: 0.2s ease;
+    border-radius: 6px;
+    border: 1px solid vars.$gray-300;
+    .sectionContentWrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            margin-right: 2rem;
+            color: vars.$indigo-500;
+            @media (min-width: vars.$mobileS) {
+                display: none;
+            }
+            @media (min-width: vars.$tablet) {
+                display: inherit;
+            }
+        }
+        .sectionTitle {
+            font-weight: 800;
+            
+            @media (min-width: vars.$mobileS) {
+                font-size: 24px;
+            }
+            @media (min-width: vars.$tablet) {
+                font-size: 48px;
+            }
+        }
+        .sectionDescription {
+            font-weight: 200;
+            @media (min-width: vars.$mobileS) {
+                font-size: 16px;
+            }
+            @media (min-width: vars.$tablet) {
+                font-size: 32px;
+            }
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        transition: 0.2s ease;
+        box-shadow: 0 0 4px 4px vars.$indigo-100;
+    }
+    @media (min-width: vars.$mobileS) {
+        padding: 0.5rem 1rem 0.5rem 1rem;
+    }
+    @media (min-width: vars.$tablet) {
+        padding: 2rem;
+    }
+}
