@@ -58,7 +58,7 @@ settings: {
   'import/resolver': [
       node: {
           extensions: ['.js', '.jsx', '.ts', '.tsx'],
-          moduleDirectory: ['node_modules', 'next/'],
+          moduleDirectory: ['node_modules', 'next/', 'studio/'],
       },
   ],
 }
