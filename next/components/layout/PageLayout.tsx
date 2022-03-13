@@ -21,37 +21,38 @@ export const PageLayout = ({
     imgSrc
 }: PageLayoutProps) => {
     return (
-        <>
-            <SiteNavigation />
-            <Sidebar
+	<>
+		<SiteNavigation />
+		<Sidebar
                 options={[]}
             />
-            <div className='site-content'>
-                {!!imgSrc && (
-                    <div className='hero-image-container'>
-                        <div className='hero-image-overlay'>
-                            <h1>{pageTitle}</h1>
-                        </div>
-                        <div className='hero-image'>
-                            <Image
+		<div className='site-content'>
+			{!!imgSrc && (
+				<div className='hero-image-container'>
+					<div className='hero-image-overlay'>
+						<h1>{pageTitle}</h1>
+					</div>
+					<div className='hero-image'>
+						<Image
                                 src={imgSrc}
                                 height={1080}
                                 width={1920}
+								alt='hero-image'
                             />
-                        </div>
-                    </div>
+					</div>
+				</div>
                 )}
-                <Container>
-                    <Head>
-                        <title>{pageTitle}</title>
-                        <meta name={metaDescription} content={metaContent} />
-                        <link rel="icon" href="/mcnuggies.ico" />
-                    </Head>
-                    <main>
-                        {children}
-                    </main>
-                </Container>
-            </div>
-        </>
+			<Container>
+				<Head>
+					<title>{pageTitle}</title>
+					<meta name={metaDescription} content={metaContent} />
+					<link rel="icon" href="/mcnuggies.ico" />
+				</Head>
+				<main>
+					{children}
+				</main>
+			</Container>
+		</div>
+	</>
     )
 }

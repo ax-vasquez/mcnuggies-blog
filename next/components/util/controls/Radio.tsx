@@ -4,7 +4,7 @@ interface RadioProps {
     id: string
     label?: string
     checked: boolean
-    onClick: (e: any) => void
+    onClick: () => void
 }
 
 const Radio = ({
@@ -14,7 +14,7 @@ const Radio = ({
     onClick
 }: RadioProps) => {
     return (
-        <Form.Check
+	<Form.Check
             type={`radio`}
             id={id}
             label={label}

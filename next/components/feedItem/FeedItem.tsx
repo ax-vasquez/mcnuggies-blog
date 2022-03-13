@@ -13,21 +13,22 @@ interface FeedItemProps {
 const FeedItem: FunctionComponent<FeedItemProps> = ({
     title,
     href,
-    image,
-    subtitle,
+    // image,
+    // subtitle,
     textContent
 }) => {
     return (
-        <div className={styles.container}>
-            <Link
+	<div className={styles.container}>
+		<Link
                 href={href}
+                passHref
             >
-                <div>
-                    <h2>{title}</h2>
-                    {textContent}
-                </div>
-            </Link>
-        </div>
+			<div>
+				<h2>{title}</h2>
+				{textContent}
+			</div>
+		</Link>
+	</div>
 
 
     )

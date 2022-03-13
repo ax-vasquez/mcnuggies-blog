@@ -7,10 +7,10 @@ interface SectionHeaderProps {
 
 const SectionHeader = ({ sectionTitle, children }: SectionHeaderProps) => {
     return (
-        <div className='section-header'>
-            <h2>{sectionTitle}</h2>
-            {children}
-        </div>
+	<div className='section-header'>
+		<h2>{sectionTitle}</h2>
+		{children}
+	</div>
     )
 }
 

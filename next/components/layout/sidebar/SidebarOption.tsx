@@ -18,15 +18,15 @@ const SidebarOption: FunctionComponent<SidebarOptionConfig> = ({
     option
 }) => {
     return (
-        <div className='sidebar-option-row'>
-            <Link href={option.to!}>
-                <div className='sidebar-option-row-content'>
-                    <span>
-                        {option.label}
-                    </span>
-                </div>
-            </Link>
-        </div>
+	<div className='sidebar-option-row'>
+		<Link href={option.to!} passHref>
+			<div className='sidebar-option-row-content'>
+				<span>
+					{option.label}
+				</span>
+			</div>
+		</Link>
+	</div>
     )
 }
 

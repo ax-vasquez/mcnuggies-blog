@@ -22,13 +22,13 @@ interface ListElementProps {
 const ListElement = ({type, children}: ListElementProps) => {
     return (
         type === `ol` ?
-            <ol>
-                {children}
-            </ol>
+	<ol>
+		{children}
+	</ol>
         :
-            <ul>
-                {children}
-            </ul>
+	<ul>
+		{children}
+	</ul>
     )
 }
 
@@ -41,65 +41,65 @@ const listGenerator = (nestingLevel: number, type: `ol` | `ul`) => {
     return (
         (nestingLevel > 0) ?
         (
-            <ListElement type={type}>
-                {LIST_ITEMS.map((item, i) => (
-                    <li key={`${type}-${i}`}>
-                        {item}
-                        {listGenerator((nestingLevel - 1), type)}
-                    </li>
+	<ListElement type={type}>
+		{LIST_ITEMS.map((item, i) => (
+			<li key={`${type}-${i}`}>
+				{item}
+				{listGenerator((nestingLevel - 1), type)}
+			</li>
                 ))}
-            </ListElement>
+	</ListElement>
         )
         :
         (
-            <ListElement type={type}>
-                {LIST_ITEMS.map(item => <li key={`${item}-nestLevel-${nestingLevel}`}>{item}</li>)}
-            </ListElement>
+	<ListElement type={type}>
+		{LIST_ITEMS.map(item => <li key={`${item}-nestLevel-${nestingLevel}`}>{item}</li>)}
+	</ListElement>
         )
     )
 }
 
-const DemoLists: FunctionComponent = ({}) => {
+const DemoLists: FunctionComponent = () => {
     const [ulNestLevel, setUlNestLevel] = useState(0)
     const [olNestLevel, setOlNestLevel] = useState(0)
 
     return (
-        <section
+	<section
             id="demo-lists"
         >
-            <TitledCard
+		<TitledCard
                 title="Lists"
                 description={
-                    <>
-                        List styles are defined in <code>./next/styles/_general.scss</code>. If you have special use-cases, such as style for a specific
-                        type of component, you can override the style in the components corresponding <code>*.module.scss</code> file.
-                    </>
+	<>
+		List styles are defined in <code>./next/styles/_general.scss</code>. If you have special use-cases, such as style for a specific
+		type of component, you can override the style in the components corresponding <code>*.module.scss</code> file.
+	</>
                 }
             >
-                <div>
-                    <SectionHeader
+			<div>
+				<SectionHeader
                         sectionTitle="Ordered lists"
                     >
-                        <div className="number-input-container">
-                            ol nesting level:
-                            <input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
-                        </div>
-                    </SectionHeader>
-                    {listGenerator(olNestLevel, `ol`)}
-                </div>
-                <div>
-                    <SectionHeader
+					<div className="number-input-container">
+						ol nesting level:
+						<input type='number' max={5} min={0} defaultValue={olNestLevel} onChange={e => setOlNestLevel(parseInt(e.target.value))}/>
+					</div>
+				</SectionHeader>
+				{listGenerator(olNestLevel, `ol`)}
+			</div>
+			<div>
+				<SectionHeader
                         sectionTitle="Unordered lists"
                     >
-                        <div>
-                            ul nesting level:
-                            <input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
-                        </div>
-                    </SectionHeader>
-                    {listGenerator(ulNestLevel, `ul`)}
-                </div>
-            </TitledCard>
-        </section>
+					<div>
+						ul nesting level:
+						<input type='number' max={5} min={0} defaultValue={ulNestLevel} onChange={e => setUlNestLevel(parseInt(e.target.value))}/>
+					</div>
+				</SectionHeader>
+				{listGenerator(ulNestLevel, `ul`)}
+			</div>
+		</TitledCard>
+	</section>
 
     )
 }
