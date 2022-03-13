@@ -4,7 +4,7 @@ interface CheckboxProps {
     id: string
     label?: string
     checked: boolean
-    onClick: (e: any) => void
+    onClick: () => void
 }
 
 const Checkbox = ({
@@ -14,7 +14,7 @@ const Checkbox = ({
     onClick
 }: CheckboxProps) => {
     return (
-        <Form.Check
+	<Form.Check
             type={`checkbox`}
             id={id}
             label={label}
