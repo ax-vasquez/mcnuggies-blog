@@ -8,6 +8,7 @@
         "cy:run": "cd next && yarn cy:run",
         "lint-next-dry-run": "yarn run eslint 'next/**/*' --ext .ts,.tsx",
         "lint-next": "yarn run eslint 'next/**/*' --ext .ts,.tsx --fix",
+        "lint-studio": "yarn run eslint 'studio/**/*' --ext .ts --fix",
         "prepare": "husky install",
         "stop-only": "stop-only --folder next/cypress",
         "studio": "cd studio && sanity start",

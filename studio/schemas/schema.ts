@@ -13,12 +13,11 @@ import category from './documents/category'
 import employer from './documents/employer'
 import series from './documents/series'
 import jobTitle from './documents/jobTitle'
-import privacyPolicy from './documents/privacyPolicy'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
-  name: 'default',
+  name: `default`,
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
@@ -27,7 +26,6 @@ export default createSchema({
     employer,
     jobTitle,
     article,
-    privacyPolicy,
     project,
     projectLink,
     projectLinkProvider,
