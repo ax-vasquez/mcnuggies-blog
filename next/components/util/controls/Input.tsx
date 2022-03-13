@@ -24,23 +24,23 @@ const Input = ({
     ariaDescribedBy,
 }: InputProps) => {
     return (
-        <InputGroup>
-            {preSegment ?
-                <InputGroup.Text>{preSegment}</InputGroup.Text>
+	<InputGroup>
+		{preSegment ?
+			<InputGroup.Text>{preSegment}</InputGroup.Text>
             :
                 null
             }
-            <FormControl
+		<FormControl
                 placeholder={placeholder}
                 aria-label={ariaLabel}
                 aria-describedby={ariaDescribedBy}
             />
-            {postSegment ?
-                <InputGroup.Text>{postSegment}</InputGroup.Text>
+		{postSegment ?
+			<InputGroup.Text>{postSegment}</InputGroup.Text>
             :
                 null
             }
-        </InputGroup>
+	</InputGroup>
     )
 }
 

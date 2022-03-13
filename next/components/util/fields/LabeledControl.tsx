@@ -7,24 +7,24 @@ interface LabeledFieldProps {
 
 const LabeledControl = ({ label, labelPos, component }: LabeledFieldProps) => {
     return (
-        <div className={`control-labeled-${labelPos}`}>
-            {labelPos === `right` ?
+	<div className={`control-labeled-${labelPos}`}>
+		{labelPos === `right` ?
                 (
-                    <>
-                        {component}
-                        <p>{label}</p>
-                    </>
+	<>
+		{component}
+		<p>{label}</p>
+	</>
                 )
             :
                 (
-                    <>
-                        <p>{label}</p>
-                        {component}
-                    </>
+	<>
+		<p>{label}</p>
+		{component}
+	</>
                 )
             }
 
-        </div>
+	</div>
     )
 }
 

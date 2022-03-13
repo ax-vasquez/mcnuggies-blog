@@ -32,24 +32,22 @@ if (process.env.NODE_ENV === `development`) {
     })
 }
 
-const Sidebar: FunctionComponent<SidebarProps> = ({
-    options
-}) => {
+const Sidebar: FunctionComponent<SidebarProps> = () => {
 
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
 
     return (
-        <div className={`${styles.sidebarContainer} ${isSidebarOpen ? undefined : styles.closed}`}>
-            {SIDEBAR_OPTIONS.map(option => {
+	<div className={`${styles.sidebarContainer} ${isSidebarOpen ? undefined : styles.closed}`}>
+		{SIDEBAR_OPTIONS.map(option => {
                 const key = kebabCase(option.option.label)
                 return (
-                    <SidebarOption
+	<SidebarOption
                         key={`option-${key}`}
                         option={option.option}
                     />
                 )
             })}
-        </div>
+	</div>
     )
 }
 

@@ -1,4 +1,4 @@
-import react, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import SVG from 'react-inlinesvg'
 
 interface CustomIconProps {
@@ -31,7 +31,7 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
     ...props
 }) => {
     return (
-        <SVG
+	<SVG
             className={className}
             src={`../icons/${fileName}.svg`}
             height={height}

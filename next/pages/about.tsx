@@ -4,11 +4,11 @@ import { PageLayout } from '../components/layout/PageLayout'
 
 const About: NextPage = () => {
     return (
-        <PageLayout
+	<PageLayout
             pageTitle='About'
         >
 
-        </PageLayout>
+	</PageLayout>
     )
 }
 

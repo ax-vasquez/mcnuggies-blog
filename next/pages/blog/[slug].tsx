@@ -17,7 +17,7 @@ const blogPostComponents = {
     code: (props) => {
       const { language, code } = props.value
       return (
-          <SyntaxHighlighter theme="" language={language}>{code}</SyntaxHighlighter>
+	<SyntaxHighlighter theme="" language={language}>{code}</SyntaxHighlighter>
       )
   },
   },
@@ -29,9 +29,9 @@ const blogPostComponents = {
     },
     link: ({ value, children }) => {
         return (
-            <a href={value.url} target="_blank" rel="noreferrer">
-                {children}
-            </a>
+	<a href={value.url} target="_blank" rel="noreferrer">
+		{children}
+	</a>
         )
     },
   }
@@ -40,20 +40,20 @@ const blogPostComponents = {
 const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
   return (
     !!article && (
-    <PageLayout
+	<PageLayout
       pageTitle={article.title!}
       imgSrc={article.imageUrl}
     >
-        {!!article && (
-        <>
-            <br />
-            <PortableText
+		{!!article && (
+			<>
+				<br />
+				<PortableText
             value={article.body}
             components={blogPostComponents}
           />
-        </>
+			</>
       )}
-    </PageLayout>
+	</PageLayout>
     )
 
   )

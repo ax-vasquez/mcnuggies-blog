@@ -13,28 +13,28 @@ interface NextPageProps {
 const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
     return (
-        <PageLayout
+	<PageLayout
             pageTitle="Blog"
             imgSrc="/generic-blog.jpeg"
         >
-            <div className="blog-feed">
-                {allArticles.map(article => {
+		<div className="blog-feed">
+			{allArticles.map(article => {
                     const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
                     return (
-                        <FeedItem
+	<FeedItem
                             title={article.title!}
                             href={`/blog/${article.slug!.current.toLowerCase()}`}
                             key={rowKey}
                             textContent={(
-                                <PortableText
+	<PortableText
                                     value={article.summary!}
                                 />
                             )}
                         />
                     )
                 })}
-            </div>
-        </PageLayout>
+		</div>
+	</PageLayout>
     )
 }
 
@@ -49,7 +49,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
  * This seems like something related to how Next.js does caching - this is something I need to
  * dig into and get a better idea of.
  */
-export async function getStaticProps(context: any) {
+export async function getStaticProps() {
     const allArticles = await client.fetch(`
       *[_type == "article"]{
           title,

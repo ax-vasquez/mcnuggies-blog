@@ -16,20 +16,20 @@ export const TechStackIntegration: FunctionComponent<TechStackIntegrationProps> 
     homePage
 }) => {
     return (
-        <div className={styles.techStackIntegration}
+	<div className={styles.techStackIntegration}
             onClick={() => window.open(homePage, `_blank`)}
         >
-            <div className={styles.integrationTitle}>
-                <CustomIcon
+		<div className={styles.integrationTitle}>
+			<CustomIcon
                     fileName={iconFileName}
                     height={32}
                     width={32}
                 />
-                {provider}
-            </div>
-            <div className={styles.integrationDescription}>
-                {description}
-            </div>
-        </div>
+			{provider}
+		</div>
+		<div className={styles.integrationDescription}>
+			{description}
+		</div>
+	</div>
     )
 }

@@ -6,6 +6,9 @@ env:
   'cypress/globals': true
 globals:
   JSX: true
+extends:
+  # Enables basic rules such as no-unused-vars
+  - eslint:recommended
 root: true
 parser: '@typescript-eslint/parser'
 parserOptions:
@@ -20,7 +23,7 @@ rules: {
   # "default" indent must ignore all things JSX (otherwise weird behavior can happen)
   indent: "off",
   # JSX-only indentation rule
-  'react/jsx-indent': ["error", 4],
+  # 'react/jsx-indent': ["error", 4],
   # never error when semicolon is missing from the end of a line
   semi: ["error", "never"],
   # required for importing React without error
@@ -48,6 +51,7 @@ rules: {
   # system to work, but with no added benefit from types (all types are "any" from the parts system - may as well turn this
   # rule off until they have a different system)
   import/no-unresolved: "off",
+  react/jsx-indent: [2, 'tab', { checkAttributes: true }]
 }
 settings: {
   # Enables "local" imports without specifying the file extension
