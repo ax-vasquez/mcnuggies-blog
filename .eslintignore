@@ -11,6 +11,9 @@
 */**/*.ico
 */**/*.js
 
+*/**/dist/*
+*/**/*.config.ts
+
 next/cypress/screenshots
 next/cypress/videos
 

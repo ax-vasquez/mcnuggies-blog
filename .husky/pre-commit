@@ -8,3 +8,4 @@ yarn stop-only
 echo "--- linting ---"
 
 yarn lint-next
+yarn lint-studio
