@@ -22,120 +22,120 @@ const DemoCarousel: FunctionComponent<DemoCarouselProps> = () => {
     ]
 
     return (
-	<section
+      <section
             id="demo-carousel"
         >
-		<TitledCard
+        <TitledCard
                 title='Carousels'
             >
-			<SectionHeader sectionTitle='Generic Carousel' />
-			<Carousel>
-				<Carousel.Item>
-					<h2>
-						Slide 1
-					</h2>
-					<div>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id
-						est laborum.
-					</div>
-				</Carousel.Item>
-				<Carousel.Item>
-					<h2>
-						Slide 2
-					</h2>
-					<div>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id
-						est laborum.
-					</div>
-				</Carousel.Item>
-				<Carousel.Item>
-					<h2>
-						Slide 3
-					</h2>
-					<div>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id
-						est laborum.
-					</div>
-				</Carousel.Item>
-				<Carousel.Item>
-					<h2>
-						Slide 4
-					</h2>
-					<div>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-						do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-						irure dolor in reprehenderit in voluptate velit esse cillum
-						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id
-						est laborum.
-					</div>
-				</Carousel.Item>
-			</Carousel>
-			<SectionHeader sectionTitle='Image Carousel' />
-			<Carousel>
-				<Carousel.Item >
-					<div style={{
+          <SectionHeader sectionTitle='Generic Carousel' />
+          <Carousel>
+            <Carousel.Item>
+              <h2>
+                Slide 1
+              </h2>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id
+                est laborum.
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <h2>
+                Slide 2
+              </h2>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id
+                est laborum.
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <h2>
+                Slide 3
+              </h2>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id
+                est laborum.
+              </div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <h2>
+                Slide 4
+              </h2>
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id
+                est laborum.
+              </div>
+            </Carousel.Item>
+          </Carousel>
+          <SectionHeader sectionTitle='Image Carousel' />
+          <Carousel>
+            <Carousel.Item >
+              <div style={{
                             display: `flex`
-					}}>
-						<Image src={`${slideImages[0]}.jpg`} alt={`${slideImages[0]}`}/>
-					</div>
-					<Carousel.Caption>
-						This is a carousel
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<div style={{
+              }}>
+                <Image src={`${slideImages[0]}.jpg`} alt={`${slideImages[0]}`} width={1920} height={1080}/>
+              </div>
+              <Carousel.Caption>
+                This is a carousel
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <div style={{
                             display: `flex`
-					}}>
-						<Image src={`${slideImages[1]}.jpg`} alt={`${slideImages[1]}`}/>
-					</div>
-					<Carousel.Caption>
-						This is also a carousel
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<div style={{
+              }}>
+                <Image src={`${slideImages[1]}.jpg`} alt={`${slideImages[1]}`} width={1920} height={1080}/>
+              </div>
+              <Carousel.Caption>
+                This is also a carousel
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <div style={{
                             display: `flex`
-					}}>
-						<Image src={`${slideImages[2]}.jpg`} alt={`${slideImages[2]}`}/>
-					</div>
-					<Carousel.Caption>
-						This is also a carousel
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item>
-					<div style={{
+              }}>
+                <Image src={`${slideImages[2]}.jpg`} alt={`${slideImages[2]}`} width={1920} height={1080}/>
+              </div>
+              <Carousel.Caption>
+                This is also a carousel
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+              <div style={{
                             display: `flex`
-					}}>
-						<Image src={`${slideImages[3]}.jpg`} alt={`${slideImages[3]}`}/>
-					</div>
-					<Carousel.Caption>
-						This is also dfa carousel
-					</Carousel.Caption>
-				</Carousel.Item>
-			</Carousel>
-		</TitledCard>
-	</section>
+              }}>
+                <Image src={`${slideImages[3]}.jpg`} alt={`${slideImages[3]}`} width={1920} height={1080}/>
+              </div>
+              <Carousel.Caption>
+                This is also a carousel
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </TitledCard>
+      </section>
     )
 }
 

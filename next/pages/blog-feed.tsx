@@ -13,28 +13,28 @@ interface NextPageProps {
 const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
     return (
-	<PageLayout
+      <PageLayout
             pageTitle="Blog"
             imgSrc="/generic-blog.jpeg"
         >
-		<div className="blog-feed">
-			{allArticles.map(article => {
+        <div className="blog-feed">
+          {allArticles.map(article => {
                     const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
                     return (
-	<FeedItem
+                      <FeedItem
                             title={article.title!}
                             href={`/blog/${article.slug!.current.toLowerCase()}`}
                             key={rowKey}
                             textContent={(
-	<PortableText
+                              <PortableText
                                     value={article.summary!}
                                 />
                             )}
                         />
                     )
                 })}
-		</div>
-	</PageLayout>
+        </div>
+      </PageLayout>
     )
 }
 

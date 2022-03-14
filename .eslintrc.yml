@@ -51,7 +51,7 @@ rules: {
   # system to work, but with no added benefit from types (all types are "any" from the parts system - may as well turn this
   # rule off until they have a different system)
   import/no-unresolved: "off",
-  react/jsx-indent: [2, 'tab', { checkAttributes: true }]
+  react/jsx-indent: [2, 2, { checkAttributes: true, indentLogicalExpressions: true }]
 }
 settings: {
   # Enables "local" imports without specifying the file extension

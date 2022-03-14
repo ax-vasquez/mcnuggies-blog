@@ -1,0 +1,95 @@
+@use 'variables' as vars;
+
+.employerContainer {
+    .employerTitle {
+        
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+        border-radius: 4px;
+        .employerLogo {
+            display: flex;
+            margin: 0 1rem 0 0;
+        }
+        .employerNameAndDates {
+            .employerName {
+                font-weight: 600;
+                
+                @media (min-width: vars.$mobileS) {
+                    margin: none;
+                    font-size: 22px;
+                }
+                @media (min-width: vars.$tablet) {
+                    margin: 0 1rem 0 0;
+                    font-size: 28px;
+                }
+            }
+            .employerDates {
+                color: vars.$indigo-400;
+                font-style: italic;
+                @media (min-width: vars.$mobileS) {
+                    padding: 0;
+                    display: none;
+                }
+                @media (min-width: vars.$tablet) {
+                    padding: 0.25rem;
+                    display: inline-flex;
+                }
+            }
+        }
+        @media (min-width: vars.$mobileS) {
+            padding: 0;
+        }
+        @media (min-width: vars.$tablet) {
+            padding: 0.25rem;
+        }
+    }
+    ul {
+        list-style-type: none;
+        @media (min-width: vars.$mobileS) {
+            padding: 0;
+        }
+        @media (min-width: vars.$tablet) {
+            padding: 0.25rem;
+        }
+    }
+    .jobTitleContainer {
+        .jobTitleAndDates {
+            font-size: 18px;
+            .jobTitle {
+                margin-right: 1rem;
+                font-weight: 600;
+            }
+            .jobTitleDates {
+                color: vars.$indigo-400;
+                font-style: italic;
+            }
+        }
+        ul {
+            list-style-type: none;
+            font-size: 16px;
+            font-style: italic;
+            color: vars.$gray-400;
+            margin: 1rem 0 1rem 0;
+            >:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+            li {
+                transition: 0.2s ease;
+                &:hover {
+                    color: vars.$indigo-600;
+                    transition: 0.2s ease;
+                }
+            }
+        }
+    }
+}
+
+.linkedEmployer {
+    cursor: pointer;
+    transition: 0.2s ease;
+    &:hover {
+        transition: 0.2s ease;
+        background-color: vars.$indigo-200;
+    }
+}
