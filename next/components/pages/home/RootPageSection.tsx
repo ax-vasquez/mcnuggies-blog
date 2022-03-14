@@ -17,28 +17,28 @@ export const RootPageSection: FunctionComponent<RootPageSectionProps> = ({
     iconFileName
 }) => {
     return (
-	<div className={styles.sectionContainer}>
-		<Link
+      <div className={styles.sectionContainer}>
+        <Link
                 href={href}
                 passHref
             >
-			<div className={styles.sectionContentWrapper}>
-				<CustomIcon
+          <div className={styles.sectionContentWrapper}>
+            <CustomIcon
                         fileName={iconFileName}
                         height={128}
                         width={128}
                     />
-				<div>
-					<div className={styles.sectionTitle}>
-						{title}
-					</div>
-					<div className={styles.sectionDescription}>
-						{description}
-					</div>
-				</div>
-			</div>
-		</Link>
-	</div>
+            <div>
+              <div className={styles.sectionTitle}>
+                {title}
+              </div>
+              <div className={styles.sectionDescription}>
+                {description}
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
 
     )
 }

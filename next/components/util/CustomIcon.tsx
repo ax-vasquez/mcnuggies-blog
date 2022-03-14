@@ -12,6 +12,7 @@ interface CustomIconProps {
     width: number
     className?: string
     alt?: string
+    onClick?: () => void
 }
 
 /**
@@ -28,10 +29,11 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
     width,
     className,
     alt,
+    onClick,
     ...props
 }) => {
     return (
-	<SVG
+      <SVG
             className={className}
             src={`../icons/${fileName}.svg`}
             height={height}
@@ -39,6 +41,7 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
             title={alt}
             // Report any errors loading an SVG to the console
             onError={console.log}
+            onClick={onClick ? () => onClick() : undefined}
             {...props}
         />
     )

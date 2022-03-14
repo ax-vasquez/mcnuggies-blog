@@ -1,0 +1,32 @@
+@use 'variables' as vars;
+
+.jobTitleContainer {
+    .jobTitleAndDates {
+        font-size: 18px;
+        .jobTitle {
+            margin-right: 1rem;
+            font-weight: 600;
+        }
+        .jobTitleDates {
+            color: vars.$indigo-400;
+            font-style: italic;
+        }
+    }
+    ul {
+        list-style-type: none;
+        font-size: 16px;
+        font-style: italic;
+        color: vars.$gray-400;
+        margin: 1rem 0 1rem 0;
+        >:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        li {
+            transition: 0.2s ease;
+            &:hover {
+                color: vars.$indigo-600;
+                transition: 0.2s ease;
+            }
+        }
+    }
+}
