@@ -2,6 +2,7 @@
 @use 'bootstrap';
 @use 'general';
 @use 'page_home';
+@use 'page_about';
 @use 'variables' as vars;
 
 .site-content {
@@ -51,6 +52,10 @@ main {
     }
     @media (min-width: vars.$tablet) {
         margin-bottom: 400px;
+    }
+
+    .linkedin-logo {
+        color: vars.$linkedin;
     }
 }
 

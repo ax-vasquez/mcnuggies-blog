@@ -1,22 +1,100 @@
+import { PortableText } from '@portabletext/react'
 import { NextPage } from 'next'
+import Image from 'next/image'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
+import { EmployerDetails } from '../components/pages/about/EmployerDetails'
+import CustomIcon from '../components/util/CustomIcon'
 import client from '../sanity/client'
+import { Creator, Employer, JobTitle } from '../types/sanity'
+import kebabCase from '../util/kebabCase'
 
-const About: NextPage = () => {
-    return (
-	<PageLayout
-            pageTitle='About'
-            imgSrc='/about.jpg'
-        >
+type EmployerProps = Employer & {
+  imageUrl: string
+  jobs: JobTitle[]
+}
 
-	</PageLayout>
+type CreatorProps = Creator & {
+  imageUrl: string
+}
+interface AboutPageProps {
+  creators: CreatorProps[]
+  employers: EmployerProps[]
+}
+
+const About: NextPage<AboutPageProps> = (props) => {
+  const { creators, employers } = props
+
+  const creator = creators[0]
+
+    return (!!creator &&
+      <PageLayout
+                pageTitle='About'
+                imgSrc='/about.jpg'
+            >
+        <br />
+        <div className='creator-bio'>
+          <div className='creator-image-container'>
+            <Image
+            src={creator.imageUrl}
+            layout='fill'
+            alt='creator-image'
+          />
+          </div>
+          <div className='creator-details'>
+            <div className='creator-name'>
+              {creator.name!}
+            </div>
+            <PortableText
+              value={creator.bio!}
+            />
+            <div className='creator-socials'>
+              {!!creator.githubUrl && (
+                <CustomIcon
+              fileName='logo-github'
+              height={32}
+              width={32}
+              className='github-logo'
+              onClick={() => window.open(creator.githubUrl!, `_blank`)}
+            />
+          )}
+              {!!creator.linkedInUrl && (
+                <CustomIcon
+              fileName='logo-linkedin'
+              height={32}
+              width={32}
+              className='linkedin-logo'
+              onClick={() => window.open(creator.linkedInUrl!, `_blank`)}
+            />
+          )}
+            </div>
+          </div>
+        </div>
+        <div className='work-history'>
+          <div className='section-title'>
+            <h2>Work history</h2>
+          </div>
+          {employers.map(employer => {
+              return (
+                <EmployerDetails
+                  key={`employer-${kebabCase(employer.name!.toLowerCase())}`}
+                  name={employer.name!}
+                  homePage={employer.homePage!}
+                  startDate={employer.startDate!}
+                  endDate={employer.endDate}
+                  imageUrl={employer.imageUrl}
+                  jobs={employer.jobs}
+                />
+              )
+            })}
+        </div>
+      </PageLayout>
     )
 }
 
 export async function getStaticProps() {
-    const allArticles = await client.fetch(`
-      *[_type == "creator"]{
+    const creators = await client.fetch(`
+      *[_type == "creator" && name == "Armando Vasquez"]{
           name,
           "imageUrl": image.asset->url,
           githubUrl,
@@ -25,9 +103,19 @@ export async function getStaticProps() {
       }
     `)
 
+      const employers = await client.fetch(`*[_type == "employer"]{
+        name,
+        endDate,
+        startDate,
+        homePage,
+        "imageUrl": image.asset->url,
+        "jobs": jobTitles[]->
+      } | order(startDate desc)`)
+
     return {
       props: {
-        allArticles
+        creators,
+        employers
       }
     }
 }

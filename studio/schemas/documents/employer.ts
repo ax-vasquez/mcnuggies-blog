@@ -54,7 +54,6 @@ export default {
       title: `Home Page`,
       name: `homePage`,
       type: `url`,
-      validation: (Rule) => Rule.required(),
     },
     {
       name: `jobTitles`,
