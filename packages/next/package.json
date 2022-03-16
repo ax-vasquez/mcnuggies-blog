@@ -1,7 +1,8 @@
 {
-  "name": "next",
+  "name": "@mcnuggies-blog/next",
   "private": true,
   "scripts": {
+    "tsc": "tsc",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

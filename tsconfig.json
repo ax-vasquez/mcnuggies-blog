@@ -1,5 +1,5 @@
 {
-  "include": ["./next/**/*.tsx","./next/**/*.tsx"],
+  "include": ["packages/next/**/*.ts","packages/next/**/*.tsx", "./packages/**/*.ts"],
   "compilerOptions": {
     "jsx": "react",
     "esModuleInterop": true,
@@ -7,5 +7,5 @@
     "module": "commonjs",
     "strict": true,
     "noImplicitAny": false,
-  }
+  },
 }

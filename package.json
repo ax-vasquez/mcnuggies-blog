@@ -1,34 +1,13 @@
 {
-    "name": "creators-blog",
-    "version": "0.1.1-alpha",
-    "private": true,
-    "description": "sanity-template-creators-blog",
-    "scripts": {
-        "cy:open": "cd next && yarn cy:open",
-        "cy:run": "cd next && yarn cy:run",
-        "lint-next-dry-run": "yarn run eslint 'next/**/*' --ext .ts,.tsx",
-        "lint-next": "yarn run eslint 'next/**/*' --ext .ts,.tsx --fix",
-        "lint-studio": "yarn run eslint 'studio/**/*' --ext .ts --fix",
-        "prepare": "husky install",
-        "stop-only": "stop-only --folder next/cypress",
-        "studio": "cd studio && sanity start",
-        "web": "cd next && yarn && yarn dev"
-    },
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.0.0",
-        "@typescript-eslint/parser": "^5.0.0",
-        "eslint": "^7.32.0",
-        "eslint-config-airbnb": "^18.2.1",
-        "eslint-plugin-cypress": "^2.12.1",
-        "eslint-plugin-import": "^2.25.2",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-react": "^7.26.1",
-        "eslint-plugin-react-hooks": "^4.2.0",
-        "husky": "^7.0.2",
-        "stop-only": "^3.1.2",
-        "typescript": "^4.4.4"
-    },
-    "dependencies": {
-        "eslint-config-next": "^12.1.0"
-    }
+  "name": "mcnuggies-blog",
+  "version": "0.0.0",
+  "repository": "git@github.com:ax-vasquez/mcnuggies-blog.git",
+  "author": "Armando Vasquez <mando@mcnuggies.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "husky": "^7.0.4",
+    "lerna": "^4.0.0",
+    "typescript": "^4.6.2"
+  }
 }
