@@ -11,7 +11,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
   },
   "include": ["**/*.ts", "**/*.tsx" ],
   "exclude": ["node_modules"]
