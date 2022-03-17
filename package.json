@@ -4,6 +4,18 @@
   "repository": "git@github.com:ax-vasquez/mcnuggies-blog.git",
   "author": "Armando Vasquez <mando@mcnuggies.dev>",
   "license": "MIT",
+  "scripts": {
+    "clean": "yarn clean-lerna && yarn clean-root && yarn clean-next && yarn clean-studio",
+    "clean-lerna": "yarn lerna clean",
+    "clean-next": "cd web/next && rm -rf node_modules",
+    "clean-root": "rm -rf node_modules",
+    "clean-studio": "cd web/studio && rm -rf node_modules",
+    "setup": "yarn && yarn setup-lerna && yarn setup-next && yarn setup-studio",
+    "setup-lerna": "yarn lerna bootstrap",
+    "setup-next": "cd web/next && yarn",
+    "setup-studio": "cd web/next && yarn",
+    "web": "cd web/next && yarn && yarn dev"
+  },
   "devDependencies": {
     "@types/node": "^17.0.21",
     "husky": "^7.0.4",
