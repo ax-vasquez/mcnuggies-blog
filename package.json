@@ -13,8 +13,9 @@
     "setup": "yarn && yarn setup-lerna && yarn setup-next && yarn setup-studio",
     "setup-lerna": "yarn lerna bootstrap",
     "setup-next": "cd web/next && yarn",
-    "setup-studio": "cd web/next && yarn",
-    "web": "cd web/next && yarn && yarn dev"
+    "setup-studio": "cd web/studio && yarn && sanity install",
+    "web": "cd web/next && yarn dev",
+    "studio": "cd web/studio && yarn start"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
