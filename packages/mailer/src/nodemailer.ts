@@ -1,3 +1,4 @@
+
 import nodemailer from 'nodemailer'
 
 export async function sendEmail(
@@ -5,6 +6,9 @@ export async function sendEmail(
     subject: string,
     message: string
 ) {
+
+    console.log(process.env.MAILGUN_USER)
+    console.log(process.env.MAILGUN_PASS)
 
     /**
      * If you don't want to use Mailgun, you can configure this for other supported providers,
@@ -17,8 +21,8 @@ export async function sendEmail(
     const transporter = nodemailer.createTransport({
         service: 'Mailgun',
         auth: {
-            user: process.env.MAILGUN_USER,
-            pass: process.env.MAILGUN_PASS,
+            user: 'api',
+            pass: process.env.MAILGUN_API_KEY,
         }
     })
 

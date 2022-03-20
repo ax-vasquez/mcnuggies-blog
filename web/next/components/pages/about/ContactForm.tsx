@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 import styles from './ContactForm.module.scss'
 
 // TODO: 
-const FORM_ENDPONT = ``
+const FORM_ENDPONT = `http://localhost:3001/submit`
 
 export const ContactForm: FunctionComponent = () => {
     const [submitted, setSubmitted] = useState(false)
@@ -28,7 +28,7 @@ export const ContactForm: FunctionComponent = () => {
         action={FORM_ENDPONT}
         onSubmit={handleSubmit}
         method='POST'
-        target='_blank'
+        target='_parent'
         className={styles.contactForm}
       >
         <div className={styles.inlineInput}>
