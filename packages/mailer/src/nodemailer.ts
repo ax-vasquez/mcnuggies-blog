@@ -7,7 +7,7 @@ export async function sendEmail(
 ) {
 
     /**
-     * If you don't want to use Mailgun, you can configure this for other support providers,
+     * If you don't want to use Mailgun, you can configure this for other supported providers,
      * or use an unlisted provider; you just need a service that provides an SMTP server so
      * you can send emails.
      * 

@@ -1,8 +1,8 @@
-const { parallel } = require('gulp')
+import { execSync } from "child_process"
 
-const startMailer = (cb) => {
-    
+function startMailer(cb) {
+    execSync('cd packages/mailer && yarn start', { stdio: 'inherit' })
     cb()
 }
 
-exports.default = parallel(startMailer)
+exports.default = startMailer

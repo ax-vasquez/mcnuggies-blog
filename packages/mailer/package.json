@@ -5,7 +5,8 @@
   "author": "Armando Vasquez",
   "license": "MIT",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start": "ts-node src/index.ts"
   },
   "compilerOptions": {
     "esModuleInterop": true
