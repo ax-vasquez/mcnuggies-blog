@@ -10,6 +10,7 @@
     "clean-next": "cd web/next && rm -rf node_modules",
     "clean-root": "rm -rf node_modules",
     "clean-studio": "cd web/studio && rm -rf node_modules",
+    "dev": "yarn gulp",
     "setup": "yarn && yarn setup-lerna && yarn setup-next && yarn setup-studio",
     "setup-lerna": "yarn lerna bootstrap",
     "setup-next": "cd web/next && yarn",
@@ -19,8 +20,12 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
+    "gulp": "^4.0.2",
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.7.0"
   }
 }
