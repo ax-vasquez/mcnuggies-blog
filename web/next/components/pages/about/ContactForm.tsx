@@ -28,12 +28,13 @@ export const ContactForm: FunctionComponent = () => {
         action={FORM_ENDPONT}
         onSubmit={handleSubmit}
         method='POST'
-        target='_parent'
+        target='_blank'
         className={styles.contactForm}
       >
         <div className={styles.inlineInput}>
           <span>Name:</span>
           <input
+                id='name'
                 type='text'
                 name='name'
                 className=''
@@ -43,6 +44,7 @@ export const ContactForm: FunctionComponent = () => {
         <div className={styles.inlineInput}>
           <span>email:</span>
           <input
+                id='email'
                 type='text'
                 name='email'
                 className=''
@@ -51,6 +53,7 @@ export const ContactForm: FunctionComponent = () => {
         </div>
         <div className={styles.textArea}>
           <textarea
+                id='message'
                 placeholder='Message'
                 name='message'
                 className=''

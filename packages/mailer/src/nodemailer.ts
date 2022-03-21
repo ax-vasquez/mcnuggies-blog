@@ -1,38 +1,26 @@
 
 import nodemailer from 'nodemailer'
+import sendgridTransport from 'nodemailer-sendgrid-transport'
 
-export async function sendEmail(
-    sender: string,
-    subject: string,
+export async function sendContactEmail(
+    name: string,
+    email: string,
     message: string
 ) {
 
-    console.log(process.env.MAILGUN_USER)
-    console.log(process.env.MAILGUN_PASS)
-
-    /**
-     * If you don't want to use Mailgun, you can configure this for other supported providers,
-     * or use an unlisted provider; you just need a service that provides an SMTP server so
-     * you can send emails.
-     * 
-     * Click the link to see the list of well-known providers with built-in support with nodemailer
-     * @see https://nodemailer.com/smtp/well-known/
-     */
-    const transporter = nodemailer.createTransport({
-        service: 'Mailgun',
+    const options = {
         auth: {
-            user: 'api',
-            pass: process.env.MAILGUN_API_KEY,
+            api_key: process.env.SENDGRID_API_KEY
         }
-    })
+    }
+
+    const transporter = nodemailer.createTransport(sendgridTransport(options))
 
     const sendInfo = await transporter.sendMail({
-        from: sender,
+        from: process.env.SENDER_EMAIL,
         to: process.env.CONTACT_EMAIL,
-        subject: subject,
+        subject: `CONTACT - ${name} - ${email}`,
         text: message,
         html: `<b>${message}</b>`
     })
-
-    console.log("Message sent: %s", sendInfo.messageId)
 }
