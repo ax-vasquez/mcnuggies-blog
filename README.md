@@ -1,14 +1,7 @@
 # README
 
-## Developing locally
+Monorepo for packages that support mcnuggies.dev
 
-Follow these steps to start the application stack locally:
-1. Run `yarn lerna bootstrap` to install all package dependencies
+## Getting started
 
-### Running the front end
-
-
-
-### Running the studio
-
-
+1. Refer to the [`monorepo-first-time-setup`](00_monorepo-first-time-setup.md) doc

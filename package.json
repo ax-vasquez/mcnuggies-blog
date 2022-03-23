@@ -15,8 +15,8 @@
     "setup-lerna": "yarn lerna bootstrap",
     "setup-next": "cd web/next && yarn",
     "setup-studio": "cd web/studio && yarn && sanity install",
-    "web": "cd web/next && yarn dev",
-    "studio": "cd web/studio && yarn start"
+    "web": "cd web/next && yarn && yarn dev",
+    "studio": "cd web/studio && yarn && yarn start"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.9",
