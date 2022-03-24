@@ -1,5 +1,5 @@
 {
-  "name": "mycreatorsblog",
+  "name": "@mcnuggies-blog/mycreatorsblog",
   "private": true,
   "version": "1.0.0",
   "description": "",
@@ -7,6 +7,7 @@
   "author": "Armando Vasquez <ar.xa.vasquez@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "tsc": "tsc",
     "start": "sanity start",
     "build": "sanity build"
   },

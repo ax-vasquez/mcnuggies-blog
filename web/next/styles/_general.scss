@@ -1,8 +1,9 @@
 @use 'variables' as vars;
 @use 'mixins' as mixins;
 
+textarea,
 input {
-    color: vars.$indigo-400 !important;
+    color: vars.$gray-700 !important;
     padding: 0.5rem;
     border: 1px solid vars.$card-border;
     border-radius: 6px;
