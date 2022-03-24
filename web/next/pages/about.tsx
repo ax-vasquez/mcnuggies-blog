@@ -3,6 +3,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
+import { ContactForm } from '../components/pages/about/ContactForm'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import CustomIcon from '../components/util/CustomIcon'
 import client from '../sanity/client'
@@ -87,6 +88,12 @@ const About: NextPage<AboutPageProps> = (props) => {
                 />
               )
             })}
+        </div>
+        <div className='contact'>
+          <div className='section-title'>
+            <h2>Contact</h2>
+          </div>
+          <ContactForm />
         </div>
       </PageLayout>
     )

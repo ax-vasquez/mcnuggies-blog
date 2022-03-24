@@ -1,8 +1,9 @@
 .DS_Store
+.env
 .env.development
 .env.production
 .env.local
-node_modules
+**/node_modules
 
 # exclude generated types
 graphql-types.ts
