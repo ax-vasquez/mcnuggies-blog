@@ -2,6 +2,7 @@
 
 Monorepo for packages that support mcnuggies.dev
 
-## Getting started
+## Development
 
-1. Refer to the [`monorepo-first-time-setup`](docs/guides/00_monorepo-first-time-setup.md) doc
+1. [Perform first time setup](docs/guides/00_monorepo-first-time-setup.md)
+2. [Run the stack locally](docs/guides/01_running-the-stack-locally.md)
