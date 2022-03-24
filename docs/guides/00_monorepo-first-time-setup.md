@@ -6,11 +6,8 @@
 2. Run `yarn lerna bootstrap` - this installs all dependendencies for all packages in the `/packages` directory
     * _This does not include things in the `/web` directory_
 
-> ### _"I installed lerna globally - why did I do that?"_
-> Odds are, you followed `lerna`'s docs. They recommend installing it globally, which is viable. However, you don't
-have to install it globally. When you run `yarn` at the root of this repo, it will install a _local_ copy of `lerna`. If you have `lerna` installed globally, _both `yarn lerna bootstrap` and `lerna bootstrap` will do the same thing_.
+## Running the front end
 
-## Running the next app ("front end") and Sanity Studio
-
-You can run both the `next` app and Studio by running `yarn web` and `yarn studio`, respectively, from the root.
-* Both commands will install all dependencies before starting the corresponding application
+Before you can test the front end, you'll need a Sanity project. Refer to the [Studio README](../../web/studio/README.md) for steps on how to get your project setup. Once
+you have your Sanity studio, create some data in it, then follow the steps in the [Next app's README](../../web/next/README.md) for info on configuring it before starting
+it up.
