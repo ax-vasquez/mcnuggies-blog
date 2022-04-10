@@ -123,7 +123,15 @@ const generateMockArticleBody = ({ sectionCount }: {
     return bodyArray
 }
 
-// TODO: Add linting rule/CI check to ensure that there is a key for each type in this mock object
+/**
+ * Generate an arbitrary mock Creator bio
+ * 
+ * @returns an array of block text objects containing the mock bio
+ */
+const generateMockCreatorBio = () => {
+    return [generateMockTextBlock({ textSegments: [`Some bio`], style: `normal` })]
+}
+
 export const MOCK_GENERATOR = () => {
 
     return {
@@ -157,10 +165,20 @@ export const MOCK_GENERATOR = () => {
                 // seriesIndex - TODO
             }
         },
-        'creator': (): Creator => {
+        'creator': ({ name, githubUrl, linkedInUrl }: { name: string, githubUrl: string, linkedInUrl: string }): Creator => {
             return {
                 _type: `creator`,
                 ...generateMockInternalData(),
+                name,
+                slug: {
+                    _type: `slug`,
+                    current: kebabCase(name)
+                },
+                // TODO: Figure out how to get an image mocked through Sanity
+                image: undefined,
+                githubUrl,
+                linkedInUrl,
+                bio: generateMockCreatorBio()
             }
         },
         'employer': (): Employer => {
