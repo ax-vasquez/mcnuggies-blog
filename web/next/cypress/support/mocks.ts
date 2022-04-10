@@ -140,7 +140,7 @@ export const MOCK_GENERATOR = () => {
          * 
          * @param title         The title of the mocked article
          * @param publishDate   The publish date to use for the mocked article
-         * @returns 
+         * @returns             A mocked article
          */
         'article': ({ title, publishDate }: { title: string, publishDate: string }): Article => {
             return {
@@ -165,6 +165,17 @@ export const MOCK_GENERATOR = () => {
                 // seriesIndex - TODO
             }
         },
+        /**
+         * Generate a mocked creator
+         * 
+         * In a single-user site setup, there will typically only ever be one Creator for the whole site. Although the schema does support multiple
+         * creators, the site isn't currently set up in a way to consume such a setup (the "extra" creators are simply not used)
+         * 
+         * @param name          The name of the creator
+         * @param githubUrl     The address of the mock creator's GitHub page
+         * @param linkedInUrl   The address of the mock creator's LinkedIn page
+         * @returns             A mocked creator
+         */
         'creator': ({ name, githubUrl, linkedInUrl }: { name: string, githubUrl: string, linkedInUrl: string }): Creator => {
             return {
                 _type: `creator`,
@@ -181,10 +192,27 @@ export const MOCK_GENERATOR = () => {
                 bio: generateMockCreatorBio()
             }
         },
-        'employer': (): Employer => {
+        /**
+         * Generate a mock employer
+         * 
+         * @param name      The name of the employer
+         * @param employed  If the mock user is employed at this mock employer
+         * @param startDate The start date at the mock employer
+         * @param endDate   The end date at the mock employer
+         * @param homePage  (Optional) The home page of the mock employer - the About page should be able to handle both with and without a homePage set for the employer
+         * @returns         A mocked Employer
+         */
+        'employer': ({ name, employed, startDate, endDate, homePage }: { name: string, employed: boolean, startDate: string, endDate: string, homePage?: string }): Employer => {
             return {
                 _type: `employer`,
                 ...generateMockInternalData(),
+                // TODO: Figure out how to get an image mocked through Sanity
+                image: undefined,
+                // TODO: Remove description from the schema - the About page no longer uses the employer description (just lists JobTitles for each employer)
+                description: undefined,
+                homePage,
+                // TODO
+                jobTitles: undefined
             }
         },
         'jobTitle': (): JobTitle => {
