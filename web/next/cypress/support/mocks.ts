@@ -206,6 +206,10 @@ export const MOCK_GENERATOR = () => {
             return {
                 _type: `employer`,
                 ...generateMockInternalData(),
+                name,
+                employed,
+                startDate,
+                endDate,
                 // TODO: Figure out how to get an image mocked through Sanity
                 image: undefined,
                 // TODO: Remove description from the schema - the About page no longer uses the employer description (just lists JobTitles for each employer)
