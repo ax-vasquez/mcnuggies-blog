@@ -123,6 +123,19 @@ const generateMockArticleBody = ({ sectionCount }: {
     return bodyArray
 }
 
+const generateMockResponsibilities = ({ responsibilityCount }: { responsibilityCount: number }) => {
+    let i = 0
+    const responsibilities = [] as string[]
+    while (i < responsibilityCount) {
+        responsibilities.push(`
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua`
+        )
+    }
+    return responsibilities
+}
+
 /**
  * Generate an arbitrary mock Creator bio
  * 
@@ -219,30 +232,39 @@ export const MOCK_GENERATOR = () => {
                 jobTitles: undefined
             }
         },
-        'jobTitle': (): JobTitle => {
+        'jobTitle': ({ title, startDate, endDate, currentJobTitle, responsibilityCount }: { title: string, startDate: string, endDate: string, currentJobTitle: boolean, responsibilityCount: number }): JobTitle => {
             return {
                 _type: `jobTitle`,
                 ...generateMockInternalData(),
+                title,
+                startDate,
+                endDate,
+                currentJobTitle,
+                responsibilities: generateMockResponsibilities({ responsibilityCount })
             }
         },
+        // TODO: Implement this more completely once it's actually used in the site
         'project': (): Project => {
             return {
                 _type: `project`,
                 ...generateMockInternalData(),
             }
         },
+        // TODO: Implement this more completely once it's actually used in the site
         'projectLink': (): ProjectLink => {
             return {
                 _type: `projectLink`,
                 ...generateMockInternalData(),
             }
         },
+        // TODO: Implement this more completely once it's actually used in the site
         'projectLinkProvider': (): ProjectLinkProvider => {
             return {
                 _type: `projectLinkProvider`,
                 ...generateMockInternalData(),
             }
         },
+        // TODO: Implement this more completely once it's actually used in the site
         'series': (): Series => {
             return {
                 _type: `series`,
