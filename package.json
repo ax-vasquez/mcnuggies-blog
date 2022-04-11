@@ -16,6 +16,7 @@
     "setup-next": "cd web/next && yarn",
     "setup-studio": "cd web/studio && yarn && sanity install",
     "web": "cd web/next && yarn && yarn dev",
+    "cy:open": "cd web/next && yarn && yarn cy:open",
     "studio": "cd web/studio && yarn && yarn start"
   },
   "devDependencies": {
