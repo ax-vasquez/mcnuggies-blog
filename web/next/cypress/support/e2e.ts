@@ -16,5 +16,9 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+/**
+ * Global beforeEach that runs before every (e2e) spec file
+ */
+beforeEach(() => {
+    cy.visit(`http://localhost:3000`)
+})

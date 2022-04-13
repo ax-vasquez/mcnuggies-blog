@@ -53,7 +53,7 @@ const Home: NextPage = () => {
           description='Sanity.io is the unified content platform that powers better digital experiences'
         />
         <TechStackIntegration
-          provider='Nelify'
+          provider='Netlify'
           homePage='https://www.netlify.com/'
           iconFileName='logo-netlify-light'
           description='Netlify unites an entire ecosystem of modern tools and services into a

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
+import kebabCase from '../../../util/kebabCase'
 import CustomIcon from '../../util/CustomIcon'
 import styles from './RootPageSection.module.scss'
 
@@ -17,7 +18,9 @@ export const RootPageSection: FunctionComponent<RootPageSectionProps> = ({
     iconFileName
 }) => {
     return (
-      <div className={styles.sectionContainer}>
+      <div className={styles.sectionContainer}
+        data-cy={`root-page-item-${kebabCase(title)}`}
+      >
         <Link
                 href={href}
                 passHref
