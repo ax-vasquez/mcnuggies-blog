@@ -38,17 +38,6 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     )
 }
 
-/**
- * IMPORTANT - Regarding Sanity.io order logic
- * 
- * When the request is ordered in this method (getStaticProps()), it seems that the data can be 
- * unexpectedly cached. If you run `yarn dev` and don't see changes to the sort order, doing
- * something like adding a console.log statement to this method body seems to "force" it to run,
- * thereby updating the sort order.
- * 
- * This seems like something related to how Next.js does caching - this is something I need to
- * dig into and get a better idea of.
- */
 export async function getStaticProps() {
     const allArticles = await client.fetch(`
       *[_type == "article"]{
