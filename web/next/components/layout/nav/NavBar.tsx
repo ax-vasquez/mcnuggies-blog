@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Navbar } from "react-bootstrap"
 import { useDispatch } from "react-redux"
 import { toggleShowSidebar } from "../../../redux/sidebarSlice"
-import CustomIcon from "../../util/CustomIcon"
+import CustomIcon from "../../shared/CustomIcon"
 
 const SiteNavigation = () => {
     const dispatch = useDispatch()

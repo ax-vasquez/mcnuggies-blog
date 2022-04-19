@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import { Card } from "react-bootstrap"
-import CustomIcon from "../util/CustomIcon"
+import CustomIcon from "../shared/CustomIcon"
 import styles from './TitledCard.module.scss'
 
 interface TitledCardProps {

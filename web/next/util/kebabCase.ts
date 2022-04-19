@@ -9,11 +9,11 @@ const kebabCase = (str?: string) => {
     if (!str) {
       return ``
     }
-    return str.split(``).map((letter, idx) => {
+    return str.split(/[\s-_.]+/).map((letter, idx) => {
       return letter.toUpperCase() === letter
        ? `${idx !== 0 ? `-` : ``}${letter.toLowerCase()}`
        : letter
-    }).join(``)
+    }).join(`-`).toLowerCase()
 }
 
 export default kebabCase

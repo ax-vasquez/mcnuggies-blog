@@ -1,0 +1,14 @@
+@use 'variables' as vars;
+
+@mixin baseCategoryStyles {
+    border: 1px solid vars.$gray-100;
+    border-radius: 4px;
+}
+
+.categoryDefault {
+    @include baseCategoryStyles();
+}
+
+.categoryActive {
+    @include baseCategoryStyles();
+}
