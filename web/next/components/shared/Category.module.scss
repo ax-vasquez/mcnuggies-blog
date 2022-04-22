@@ -1,14 +1,30 @@
 @use 'variables' as vars;
 
 @mixin baseCategoryStyles {
-    border: 1px solid vars.$gray-100;
-    border-radius: 4px;
+    padding: 4px;
+    border-radius: 6px;
+    min-width: 120px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .categoryDefault {
     @include baseCategoryStyles();
+    border: 1px solid vars.$gray-200;
+    outline: 2px solid transparent;
+    transition: 0.3s ease;
+    &:hover {
+        outline: 2px solid vars.$indigo-100;
+        border: 1px solid vars.$indigo-200;
+        transition: 0.3s ease;
+    }
 }
 
 .categoryActive {
     @include baseCategoryStyles();
+    background-color: vars.$indigo-100;
+    color: vars.$indigo-500;
+    outline: 2px solid vars.$indigo-200;
+    border: 1px solid vars.$indigo-300;
 }

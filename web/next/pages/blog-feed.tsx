@@ -24,7 +24,18 @@ interface NextPageProps {
 
 const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
-    const [activeArticles, setActiveArticles] = useState([] as string[])
+    const [activeCategories, setActiveCategories] = useState([] as string[])
+
+    const categoryFilterHandler = (category: string) => {
+      if (activeCategories.includes(category)) {
+        const copy = [...activeCategories]
+        const i = copy.indexOf(category)
+        copy.splice(i, 1)
+        setActiveCategories(copy)
+      } else {
+        setActiveCategories([...activeCategories, category])
+      }
+    }
 
     const allCategories = useMemo(() => {
       const obj = {}
@@ -32,22 +43,30 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       return Object.keys(obj).sort()
     }, [allArticles])
 
+    const shownArticles = useMemo(() => {
+      if (activeCategories.length === 0) {
+        return allArticles
+      }
+
+      const shownArticles = [] as ArticleResponse[]
+      allArticles.forEach((article) => {
+        if (article.categories.every(cat => activeCategories.includes(cat.title))) {
+          shownArticles.push(article)
+        }
+      })
+      return shownArticles
+    }, [activeCategories, allArticles])
+
     return (
       <PageLayout
             pageTitle="Blog"
             imgSrc="/generic-blog.jpeg"
         >
         <div className='blog-controls'>
-          <ul className='categories-filter'>{allCategories.map(category => (<Category key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
+          <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
         </div>
         <div className="blog-feed">
-          {allArticles
-            .filter(article => {
-              if (activeArticles.length > 0) {
-                return article.categories.filter(category => activeArticles.includes(category.title))
-              }
-              return true
-            })
+          {shownArticles
           .map(article => {
                     const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
                     return (
