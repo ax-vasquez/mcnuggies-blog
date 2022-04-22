@@ -1,9 +1,9 @@
 import { FunctionComponent, useState } from 'react'
 import TitledCard from "../layout/TitledCard"
-import Checkbox from '../util/controls/Checkbox'
-import Input from '../util/controls/Input'
-import Radio from '../util/controls/Radio'
-import LabeledControl from '../util/fields/LabeledControl'
+import Checkbox from '../shared/controls/Checkbox'
+import Input from '../shared/controls/Input'
+import Radio from '../shared/controls/Radio'
+import LabeledControl from '../shared/fields/LabeledControl'
 import SectionHeader from "./common/SectionHeader"
 
 const DemoControls: FunctionComponent = () => {

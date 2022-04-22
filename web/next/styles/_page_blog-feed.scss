@@ -1,0 +1,16 @@
+@use 'variables' as vars;
+
+.blog-controls {
+    display: flex;
+    .categories-filter {
+        padding-left: 0 !important;
+        display: flex;
+        flex-wrap: wrap;
+        >:not(:last-child) {
+            margin-right: 1rem;
+        }
+        > * {
+            margin-bottom: 1rem !important;
+        }
+    }
+}
