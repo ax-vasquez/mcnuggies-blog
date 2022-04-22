@@ -7,12 +7,12 @@ describe(`home page`, () => {
         })
         it(`integration items are visible`, () => {
             [
-                `next-.js`,
+                `next-js`,
                 `sanity`,
                 `netlify`,
                 `cypress`,
-                `e-s-lint`,
-                `react- -bootstrap`,    // TODO: fix kebabCase so that spaces are stripped
+                `eslint`,
+                `react-bootstrap`,
                 `redux`,
                 `sass`
             ].forEach(identifier => {
