@@ -50,7 +50,18 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
       const shownArticles = [] as ArticleResponse[]
       allArticles.forEach((article) => {
-        if (article.categories.every(cat => activeCategories.includes(cat.title))) {
+        if (activeCategories.every(activeCat => {
+          const obj = {}
+          article.categories.forEach(cat => obj[cat.title] = 0)
+          const categoriesForArticle = Object.keys(obj)
+          console.log(`IS ${activeCat} IN: `, categoriesForArticle)
+          if (categoriesForArticle.includes(activeCat)) {
+            console.log(`YES`)
+            return true
+          }
+          console.log(`NO`)
+          return false
+        })) {
           shownArticles.push(article)
         }
       })
