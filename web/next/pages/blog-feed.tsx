@@ -27,6 +27,13 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     const [activeCategories, setActiveCategories] = useState([] as string[])
     const [searchText, setSearchText] = useState(``)
 
+    /**
+     * Handler to add/remove active categories to the stateful array
+     * 
+     * If the `activeCategories` list already contains the given category string,
+     * then it's removed from the array. Otherwise, the string is added to the 
+     * `activeCategories` stateful array.
+     */
     const categoryFilterHandler = (category: string) => {
       if (activeCategories.includes(category)) {
         const copy = [...activeCategories]
@@ -57,12 +64,27 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       return false
     }
 
+    /**
+     * Memoized list of all *distinct* categories, extracted from the current list of articles.
+     */
     const allCategories = useMemo(() => {
       const obj = {}
       allArticles.forEach(article => article.categories.forEach(cat => obj[cat.title] = 0))
       return Object.keys(obj).sort()
     }, [allArticles])
 
+    /**
+     * Memoized list of articles to show
+     * 
+     * If no active categories are selected **and** there is no search text, all articles are displayed ("unfiltered view").
+     * 
+     * If active categories are selected:
+     * * The only articles shown are those who:
+     *    * Have every active category listed in their categories and...
+     *    * ARE NOT missing any active categories (in other words, if 4 categories are active, but a given article only has 3 of them, then that article won't be shown)
+     * * Searching by text should further-filter the **subset** of articles (meaning, it should only search the articles whose categories are
+     *    currently active)
+     */
     const shownArticles = useMemo(() => {
       if (activeCategories.length === 0 && searchText.length === 0) {
         return allArticles
@@ -83,7 +105,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       return shownArticles
     }, [activeCategories, allArticles, searchText])
 
-    console.log(searchText)
+
 
     return (
       <PageLayout
