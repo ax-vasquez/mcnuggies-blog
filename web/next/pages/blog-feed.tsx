@@ -57,7 +57,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
             return Object.keys(articleCategoriesObj).includes(activeCat)
           })) {
-            shownArticles.splice(shownArticles.indexOf(article), 1)
+            shownArticles.splice(shownArticles.map(art => art.title).indexOf(article.title), 1)
           }
         })
       }
