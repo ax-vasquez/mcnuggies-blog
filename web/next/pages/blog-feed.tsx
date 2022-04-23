@@ -25,6 +25,7 @@ interface NextPageProps {
 const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
     const [activeCategories, setActiveCategories] = useState([] as string[])
+    const [searchText, setSearchText] = useState(``)
 
     const categoryFilterHandler = (category: string) => {
       if (activeCategories.includes(category)) {
@@ -53,14 +54,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
         if (activeCategories.every(activeCat => {
           const obj = {}
           article.categories.forEach(cat => obj[cat.title] = 0)
-          const categoriesForArticle = Object.keys(obj)
-          console.log(`IS ${activeCat} IN: `, categoriesForArticle)
-          if (categoriesForArticle.includes(activeCat)) {
-            console.log(`YES`)
-            return true
-          }
-          console.log(`NO`)
-          return false
+          return Object.keys(obj).includes(activeCat)
         })) {
           shownArticles.push(article)
         }
@@ -74,6 +68,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             imgSrc="/generic-blog.jpeg"
         >
         <div className='blog-controls'>
+          <input placeholder='Search...'/>
           <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
         </div>
         <div className="blog-feed">
