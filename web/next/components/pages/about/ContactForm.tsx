@@ -8,10 +8,23 @@ const FORM_ENDPONT = `http://localhost:3001/submit`
 export const ContactForm: FunctionComponent = () => {
     const [submitted, setSubmitted] = useState(false)
 
-    const handleSubmit = () => {
-        setTimeout(() => {
-            setSubmitted(true)
-        }, 100)
+    const handleSubmit = (e: any) => {
+      const formData = JSON.stringify({
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value
+      })
+      e.preventDefault()
+      return fetch(FORM_ENDPONT, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: formData
+      })
+      .then(() => setSubmitted(true))
+      .catch(e => console.error(e))
     }
 
     if (submitted) {
@@ -25,10 +38,7 @@ export const ContactForm: FunctionComponent = () => {
 
     return (
       <form
-        action={FORM_ENDPONT}
         onSubmit={handleSubmit}
-        method='POST'
-        target='_blank'
         className={styles.contactForm}
       >
         <div className={styles.inlineInput}>
