@@ -55,9 +55,9 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
           if (activeCategories.every(activeCat => {
             const articleCategoriesObj = {}
             article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
-            return Object.keys(articleCategoriesObj).includes(activeCat)
+            return !Object.keys(articleCategoriesObj).includes(activeCat)
           })) {
-            shownArticles.splice(shownArticles.map(art => art.title).indexOf(article.title), 1)
+            shownArticles.splice(shownArticles.indexOf(shownArticles.filter(art => art.title === article.title)[0]), 1)
           }
         })
       }
