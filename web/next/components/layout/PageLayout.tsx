@@ -21,7 +21,7 @@ export const PageLayout = ({
     imgSrc
 }: PageLayoutProps) => {
     return (
-      <>
+      <div>
         <SiteNavigation />
         <Sidebar
                 options={[]}
@@ -53,6 +53,6 @@ export const PageLayout = ({
             </main>
           </Container>
         </div>
-      </>
+      </div>
     )
 }
