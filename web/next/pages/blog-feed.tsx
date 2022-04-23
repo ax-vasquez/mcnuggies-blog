@@ -45,22 +45,30 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     }, [allArticles])
 
     const shownArticles = useMemo(() => {
-      if (activeCategories.length === 0) {
+      if (activeCategories.length === 0 && searchText.length === 0) {
         return allArticles
       }
 
-      const shownArticles = [] as ArticleResponse[]
-      allArticles.forEach((article) => {
-        if (activeCategories.every(activeCat => {
-          const articleCategoriesObj = {}
-          article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
-          return Object.keys(articleCategoriesObj).includes(activeCat)
-        })) {
-          shownArticles.push(article)
-        }
-      })
+      const shownArticles = [...allArticles] as ArticleResponse[]
+      if (activeCategories.length > 0) {
+        allArticles.forEach((article) => {
+          if (activeCategories.every(activeCat => {
+            const articleCategoriesObj = {}
+            article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
+            return Object.keys(articleCategoriesObj).includes(activeCat)
+          })) {
+            shownArticles.splice(shownArticles.indexOf(article), 1)
+          }
+        })
+      }
+      if (searchText.length > 0) {
+        return shownArticles.filter(article => article.title.toLowerCase().includes(searchText.toLowerCase()))
+      }
+      
       return shownArticles
-    }, [activeCategories, allArticles])
+    }, [activeCategories, allArticles, searchText])
+
+    console.log(searchText)
 
     return (
       <PageLayout
