@@ -7,6 +7,7 @@ import {PortableText} from '@portabletext/react'
 import FeedItem from "../components/feedItem/FeedItem"
 import { SanityBlock, SanityKeyed } from 'sanity-codegen'
 import { Category } from '../components/shared/Category'
+import { NoMatchFound } from '../components/pages/blog-feed/NoMatchFound'
 
 type ArticleResponse = {
   title: string
@@ -118,7 +119,9 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
               <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
             </div>
             <div className="blog-feed">
-              {shownArticles
+              { shownArticles.length > 0 ?
+              
+              shownArticles
               .map(article => {
                         const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
                         return (
@@ -133,7 +136,10 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
                                 )}
                             />
                         )
-                    })}
+                })  
+            :
+                <NoMatchFound query={searchText}/>
+            }
             </div>
           </div>
         
