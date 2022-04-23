@@ -52,9 +52,9 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       const shownArticles = [] as ArticleResponse[]
       allArticles.forEach((article) => {
         if (activeCategories.every(activeCat => {
-          const obj = {}
-          article.categories.forEach(cat => obj[cat.title] = 0)
-          return Object.keys(obj).includes(activeCat)
+          const articleCategoriesObj = {}
+          article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
+          return Object.keys(articleCategoriesObj).includes(activeCat)
         })) {
           shownArticles.push(article)
         }
@@ -67,28 +67,31 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             pageTitle="Blog"
             imgSrc="/generic-blog.jpeg"
         >
-        <div className='blog-controls'>
-          <input placeholder='Search...'/>
-          <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
-        </div>
-        <div className="blog-feed">
-          {shownArticles
-          .map(article => {
-                    const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
-                    return (
-                      <FeedItem
-                            title={article.title!}
-                            href={`/blog/${article.slug!.current.toLowerCase()}`}
-                            key={rowKey}
-                            textContent={(
-                              <PortableText
-                                    value={article.summary!}
-                                />
-                            )}
-                        />
-                    )
-                })}
-        </div>
+          <div className='blog-feed-container'>
+            <div className='blog-controls'>
+              <input placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+              <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
+            </div>
+            <div className="blog-feed">
+              {shownArticles
+              .map(article => {
+                        const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
+                        return (
+                          <FeedItem
+                                title={article.title!}
+                                href={`/blog/${article.slug!.current.toLowerCase()}`}
+                                key={rowKey}
+                                textContent={(
+                                  <PortableText
+                                        value={article.summary!}
+                                    />
+                                )}
+                            />
+                        )
+                    })}
+            </div>
+          </div>
+        
       </PageLayout>
     )
 }
