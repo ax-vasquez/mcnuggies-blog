@@ -29,15 +29,6 @@ const SIDEBAR_OPTIONS = [
     }
 ] as SidebarOptionConfig[]
 
-if (process.env.NODE_ENV === `development`) {
-    SIDEBAR_OPTIONS.push({
-        option: {
-            label: `Components Demo`,
-            to: `/demo/component-demo`
-        }
-    })
-}
-
 const Sidebar: FunctionComponent<SidebarProps> = () => {
 
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
