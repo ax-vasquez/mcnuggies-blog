@@ -38,6 +38,25 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       }
     }
 
+    /**
+     * Helper method to grab all categories belonging to the given article
+     */
+    const categoriesForArticle = (article: ArticleResponse) => {
+      const articleCategoriesObj = {}
+      article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
+      return Object.keys(articleCategoriesObj)
+    }
+
+    /**
+     * Helper method to determine if an article should be shown, based on the currently-selected active
+     * categories.
+     */
+    const articleShouldBeVisible = (article: ArticleResponse) => {
+      const articleCategories = categoriesForArticle(article)
+      if (activeCategories.every(activeCategory => articleCategories.includes(activeCategory))) return true
+      return false
+    }
+
     const allCategories = useMemo(() => {
       const obj = {}
       allArticles.forEach(article => article.categories.forEach(cat => obj[cat.title] = 0))
@@ -52,11 +71,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       const shownArticles = [...allArticles] as ArticleResponse[]
       if (activeCategories.length > 0) {
         allArticles.forEach((article) => {
-          if (activeCategories.every(activeCat => {
-            const articleCategoriesObj = {}
-            article.categories.forEach(cat => articleCategoriesObj[cat.title] = 0)
-            return !Object.keys(articleCategoriesObj).includes(activeCat)
-          })) {
+          if (!articleShouldBeVisible(article)) {
             shownArticles.splice(shownArticles.indexOf(shownArticles.filter(art => art.title === article.title)[0]), 1)
           }
         })
