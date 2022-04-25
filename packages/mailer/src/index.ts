@@ -3,11 +3,22 @@ import express from 'express'
 import { sendContactEmail } from './nodemailer'
 import cors from 'cors'
 import parser from 'body-parser'
+import 'dotenv/config'
 
 const app = express()
 const port = process.env.PORT || 3001
 
-app.use(cors())
+const allowedDomains = ['http://localhost:3000', 'http://www.mcnuggies.dev']
+const corsOptions = {
+    origin: function (origin, callback) {
+      if (allowedDomains.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+app.use(cors(corsOptions))
 
 // Required so you can extract body info from form data
 app.use(express.urlencoded({
