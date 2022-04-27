@@ -106,8 +106,6 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       return shownArticles
     }, [activeCategories, allArticles, searchText])
 
-
-
     return (
       <PageLayout
             pageTitle="Blog"
