@@ -9,6 +9,10 @@
     "lint": "next lint",
     "cy:open": "yarn cypress open"
   },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
+  },
   "dependencies": {
     "@portabletext/react": "^1.0.3",
     "@reduxjs/toolkit": "^1.7.2",

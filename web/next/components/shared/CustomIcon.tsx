@@ -33,17 +33,20 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
     ...props
 }) => {
     return (
-      <SVG
-            className={className}
-            src={`../icons/${fileName}.svg`}
-            height={height}
-            width={width}
-            title={alt}
-            // Report any errors loading an SVG to the console
-            onError={console.log}
-            onClick={onClick ? () => onClick() : undefined}
-            {...props}
-        />
+        <div>
+            <SVG
+                className={className}
+                src={`../icons/${fileName}.svg`}
+                height={height}
+                width={width}
+                title={alt}
+                // Report any errors loading an SVG to the console
+                onError={console.log}
+                onClick={onClick ? () => onClick() : undefined}
+                {...props}
+            />
+        </div>
+      
     )
 }
 
