@@ -10,7 +10,6 @@
     "clean-next": "cd web/next && rm -rf node_modules",
     "clean-root": "rm -rf node_modules",
     "clean-studio": "cd web/studio && rm -rf node_modules",
-    "dev": "yarn gulp",
     "setup": "yarn && yarn setup-lerna && yarn setup-next && yarn setup-studio",
     "setup-lerna": "yarn lerna bootstrap",
     "setup-next": "cd web/next && yarn",

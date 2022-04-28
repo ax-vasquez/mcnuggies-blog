@@ -47,17 +47,16 @@ const Home: NextPage = () => {
           and more. No config needed.'
         />
         <TechStackIntegration
+          provider='Vercel'
+          homePage='https://vercel.com/'
+          iconFileName='logo-vercel'
+          description='Vercel combines the best developer experience with an obsessive focus on end-user performance.'
+        />
+        <TechStackIntegration
           provider='Sanity'
           homePage='https://www.sanity.io/'
           iconFileName='logo-sanity'
           description='Sanity.io is the unified content platform that powers better digital experiences'
-        />
-        <TechStackIntegration
-          provider='Netlify'
-          homePage='https://www.netlify.com/'
-          iconFileName='logo-netlify-light'
-          description='Netlify unites an entire ecosystem of modern tools and services into a
-          single, simple workflow for building high performance sites and apps.'
         />
         <br />
         <div className='title-container'>
