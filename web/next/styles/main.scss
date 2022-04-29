@@ -1,0 +1,103 @@
+@use 'headings';
+@use 'bootstrap';
+@use 'general';
+@use 'page_home';
+@use 'page_about';
+@use 'page_blog-feed';
+@use 'variables' as vars;
+
+.site-content {
+    .hero-image-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: vars.$gray-100;
+        .hero-image {
+            object-fit: cover;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .hero-image-overlay {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: rgba(0,0,0,0.8);
+            text-align: center;
+            h1 {
+                color: vars.$gray-300;
+                padding: 0;
+                margin: 0;
+                font-size: 5rem;
+            }
+        }
+        @media (min-width: vars.$mobileS) {
+            height: auto;
+        }
+        @media (min-width: vars.$tablet) {
+            height: 500px;
+        }
+    }
+}
+
+main {
+    
+    @media (min-width: vars.$mobileS) {
+        margin-bottom: 100px;
+    }
+    @media (min-width: vars.$tablet) {
+        margin-bottom: 400px;
+    }
+
+    .linkedin-logo {
+        color: vars.$linkedin;
+    }
+}
+
+.highlighted-text {
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+    background-color: vars.$highlight;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * *
+// Custom control styles
+// * * * * * * * * * * * * * * * * * * * * * * *
+.control-labeled-right {
+    display: flex;
+    align-items: baseline;
+    input {
+        margin-right: 0.5rem;
+    }
+}
+
+.control-labeled-left {
+    display: flex;
+    align-items: baseline;
+    input {
+        margin-left: 0.5rem;
+    }
+}
+// End custom control styles
+
+// * * * * * * * * * * * * * * * * * * * * * * *
+// Blog feed styles
+// ----------------
+// Note that these styles are mainly
+// only for the blog feed itself -
+// the individual items within it
+// are styled within FeedItem.module.scss
+// * * * * * * * * * * * * * * * * * * * * * * *
+.blog-feed {
+    >:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+// End blog feed styles

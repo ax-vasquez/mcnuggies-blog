@@ -1,11 +1,11 @@
 {
-  "include": ["./web/src/**/*.ts", "./web/src/**/*.tsx"],
+  "include": ["web/next/**/*.ts","web/next/**/*.tsx"],
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "target": "es5",
     "module": "commonjs",
     "strict": true,
     "noImplicitAny": false,
-  }
+  },
 }

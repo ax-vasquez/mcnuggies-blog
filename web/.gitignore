@@ -1,8 +1,0 @@
-node_modules/
-.cache/
-public
-*.env
-report.*.json
-
-# Cypress-generated stuff
-*.mp4

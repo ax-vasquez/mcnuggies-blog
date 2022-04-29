@@ -1,26 +1,24 @@
-# Exclude generated Gatsby files from linting
-web/static/*
-web/public/*
-web/.cache/*
-web/src/images
-
-# Don't lint config files; not much reason to
-web/**/*.js
-
 # File types to exclude from linting (attempting to lint them will cause errors or other unexpected issues)
-*.json
-*.lock
-*.md
-*.jpg
-*.jpeg
-*.png
-*.scss
+*/**/*.json
+*/**/*.lock
+*/**/*.md
+*/**/*.jpg
+*/**/*.jpeg
+*/**/*.png
+*/**/*.scss
+*/**/*.svg
+*/**/*.log
+*/**/*.ico
+*/**/*.js
 
-web/cypress/screenshots
-web/cypress/videos
+*/**/dist/*
+*/**/*.config.ts
+
+next/cypress/screenshots
+next/cypress/videos
 
 # Always exclude node_modules (everywhere) from linting; it's pointless since it's not your code
-**/node_modules/*
+*/**/node_modules/*
 
 # exclude generated types
 graphql-types.ts

@@ -1,0 +1,82 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+// The styles in this partial SCSS file override/modify classes from react-bootstrap
+
+.card {
+    margin: 0 0 1rem 0;
+    // TODO: What's the "ideal" way to do this in react-bootstrap? (e.g. without !important)
+    border-radius: 1rem !important; // !important - overrides the default border-radius of 0.25rem set in react-bootstrap
+
+    // Our custom classes
+    .section-header {
+        width: 100%;
+        // display: flex;
+        div {
+            right: 0;
+            margin-left: auto;
+            input {
+                margin-left: 1rem;
+            }
+        }
+    }
+}
+
+.input-group {
+    border-color: vars.$card-border;
+
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .input-group-text {
+        background-color: vars.$indigo-100;
+        color: vars.$indigo-500;
+    }
+}
+
+.navbar {
+    background-color: vars.$gray-800;
+    padding-left: 1rem;
+    color: vars.$gray-100;
+    .menu-icon {
+        left: 0;
+        margin-right: auto;
+        svg {
+            @include mixins.nav-icon-hover-transition();
+        }
+    }
+    .app-icon {
+        right: 0;
+        margin-left: auto;
+        img {
+            @include mixins.nav-icon-hover-transition();
+        }
+    }
+    
+}
+
+.carousel {
+    .carousel-control-prev,
+    .carousel-control-next {
+        span {
+            margin-bottom: 1rem;
+            margin-top: auto;
+        }
+    }
+    .carousel-inner {
+        h1,h2,h3,h4 {
+            color: vars.$gray-50;
+            margin: 0 0 1rem 0;
+        }
+        padding: 0 2rem 4rem 2rem;
+        border-radius: 4px;
+        background-color: vars.$gray-600;
+        color: vars.$gray-50;
+        img {
+            margin: auto;
+            max-height: 400px;
+            width: auto;
+        }
+    }
+}
+

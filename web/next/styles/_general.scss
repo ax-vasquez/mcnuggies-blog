@@ -1,0 +1,51 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
+textarea,
+input {
+    color: vars.$gray-700 !important;
+    padding: 0.5rem;
+    border: 1px solid vars.$card-border;
+    border-radius: 6px;
+    @include mixins.ease-transition-border-and-glow(
+        $default-border-color: vars.$card-border,
+        $default-box-shadow: none,
+        $hover-border-color: vars.$indigo-400,
+        $glow-color: vars.$indigo-200,
+        $glow-range: 3px,
+        $duration: 0.1s,
+    );
+    &:focus {
+        outline: none !important;
+        border-color: vars.$indigo-400 !important;
+        box-shadow: 0px 0px 2px 2px vars.$indigo-200 !important;
+    }
+}
+
+blockquote {
+    background-color: vars.$gray-100;
+    border-left: 5px solid vars.$gray-300;
+    padding: 1rem;
+    font-style: italic;
+    color: vars.$gray-500;
+}
+
+main {
+    margin-top: 1rem;
+    font-size: 20px;
+    color: vars.$gray-600;
+    text-align: justify;
+}
+
+// Style for ALL list items (in all levels of both ordered lists and unordered lists)
+li {
+    margin: 8px 0 8px 0;
+}
+
+ol {
+    @include mixins.orderedListNesting();
+}
+
+ul {
+    @include mixins.unorderedListNesting();
+}

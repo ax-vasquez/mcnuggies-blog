@@ -1,0 +1,19 @@
+@use 'variables' as vars;
+
+.noMatchFoundContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    font-size: 30px;
+    color: vars.$gray-400;
+}
+
+.noMatchMessage {
+    margin-top: 2rem;
+}
+
+.noMatchQueryText {
+    color: vars.$indigo-400;
+    font-weight: 600;
+}

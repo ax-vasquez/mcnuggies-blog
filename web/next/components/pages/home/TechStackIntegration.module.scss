@@ -1,0 +1,47 @@
+@use 'variables' as vars;
+
+.techStackIntegration {
+    padding: 1rem;
+    transition: 0.2s ease;
+    border-radius: 0.25rem;
+    .integrationTitle {
+        display: inline-flex;
+        align-items: center;
+        transition: 0.2s ease;
+        svg {
+            margin-right: 0.5rem;
+        }
+        @media (min-width: vars.$mobileS) {
+            font-size: 1.5rem;
+        }
+        @media (min-width: vars.$tablet) {
+            font-size: 2rem;
+        }
+    }
+    .integrationDescription {
+        margin-top: 0.25rem;
+        margin-left: 1rem;
+        border-left: 1px solid vars.$gray-300;
+        padding: 0 1rem 0 1rem;
+        font-style: italic;
+        transition: 0.2s ease;
+        @media (min-width: vars.$mobileS) {
+            font-size: 16px;
+        }
+        @media (min-width: vars.$tablet) {
+            font-size: inherit;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: vars.$indigo-100;
+        transition: 0.2s ease;
+        .integrationDescription {
+            color: vars.$gray-900;
+            border-left: 1px solid vars.$gray-500;
+        }
+        .integrationTitle {
+            color: vars.$gray-900;
+        }
+    }
+}

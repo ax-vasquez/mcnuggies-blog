@@ -3,8 +3,9 @@
 
 echo "--- prevent .only() ---"
 
-yarn stop-only
+# yarn stop-only
 
 echo "--- linting ---"
 
-yarn lint-web
+# yarn lint-next
+# yarn lint-studio

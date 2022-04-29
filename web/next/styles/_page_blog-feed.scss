@@ -1,0 +1,29 @@
+@use 'variables' as vars;
+
+.blog-controls {
+    position: sticky;
+    top: 3em;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(vars.$gray-A1, 98%, transparent);
+    input {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+    .categories-filter {
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        >:not(:last-child) {
+            margin-right: 1rem;
+        }
+        > * {
+            margin-bottom: 1rem;
+        }
+        margin-bottom: 2rem;
+    }
+}
+
+.blog-feed {
+    overflow: hidden;
+}
