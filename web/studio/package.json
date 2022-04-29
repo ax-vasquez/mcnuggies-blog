@@ -8,7 +8,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "tsc": "tsc",
-    "start": "sanity start",
+    "start": "rm -rf node_modules && yarn && sanity start",
     "build": "sanity build"
   },
   "keywords": [

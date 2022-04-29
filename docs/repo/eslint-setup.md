@@ -1,3 +1,0 @@
-# ESlint Setup
-
-
