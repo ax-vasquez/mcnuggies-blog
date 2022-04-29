@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "tsc": "tsc",
-    "dev": "next dev",
+    "dev": "rm -rf node_modules .next && yarn && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
