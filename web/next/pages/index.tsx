@@ -6,21 +6,16 @@ import { TechStackIntegration } from '../components/pages/home/TechStackIntegrat
 
 const Home: NextPage = () => {
   return (
-    <PageLayout
-      pageTitle='Home'
-      imgSrc='/building-blocks.jpg'
-    >
+    <PageLayout>
       <Card
         className='tech-stack'
       >
-        <br />
         <RootPageSection
           title='Blog'
           iconFileName='bootstrap-book'
           href='/blog-feed'
           description="My occasional guides, reviews and general musings"
         />
-        <br />
         <RootPageSection
           title='About'
           iconFileName='bootstrap-info-circle'

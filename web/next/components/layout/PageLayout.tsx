@@ -6,7 +6,7 @@ import Sidebar from './sidebar/Sidebar'
 import Image from 'next/image'
 
 interface PageLayoutProps {
-    pageTitle: string
+    pageTitle?: string
     metaDescription?: string
     metaContent?: string
     children: any
