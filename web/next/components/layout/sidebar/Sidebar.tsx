@@ -41,8 +41,9 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
      */
     function outerClickHandler(e) {
         const sidebarElement = document.getElementById('sidebar')
-        if (sidebarElement) {
-            if (!sidebarElement.contains(e.target as Node)) {
+        const sidebarButton = document.getElementById('sidebar-menu-button')
+        if (sidebarElement && sidebarButton) {
+            if (!sidebarElement.contains(e.target as Node) && !sidebarButton.contains(e.target as Node)) {
                 dispatch(toggleShowSidebar())
             }
         }
