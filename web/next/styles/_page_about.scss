@@ -34,6 +34,7 @@
         .creator-socials {
             bottom: 0;
             margin-top: auto;
+            display: inline-flex;
             >:not(:last-child) {
                 margin-right: 1rem;
             }
