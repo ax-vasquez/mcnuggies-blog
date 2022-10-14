@@ -9,6 +9,8 @@ export default defineConfig({
     env: {
       home_url: `http://localhost:3000`,
       blog_url: `http://localhost:3000/blog-feed`,
+      article_url_root: `http://localhost:3000/blog`,
+      about_url: `http://localhost:3000/about`,
     }
   },
 })

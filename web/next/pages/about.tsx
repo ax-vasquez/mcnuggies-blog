@@ -56,21 +56,25 @@ const About: NextPage<AboutPageProps> = (props) => {
         <div className='creator-bio'>
           <div className='creator-image-container'>
             <Image
-            src={creator.imageUrl}
-            layout='fill'
-            alt='creator-image'
-          />
+              data-cy='author-avatar'
+              src={creator.imageUrl}
+              layout='fill'
+              alt='creator-image'
+            />
           </div>
           <div className='creator-details'>
-            <div className='creator-name'>
+            <div className='creator-name' data-cy='author-name'>
               {creator.name!}
             </div>
-            <PortableText
-              value={creator.bio!}
-            />
+            <div data-cy='author-description'>
+              <PortableText
+                value={creator.bio!}
+              />
+            </div>
             <div className='creator-socials'>
               {!!creator.githubUrl && (
                 <CustomIcon
+              data-cy='github'
               fileName='logo-github'
               height={32}
               width={32}
@@ -80,6 +84,7 @@ const About: NextPage<AboutPageProps> = (props) => {
           )}
               {!!creator.linkedInUrl && (
                 <CustomIcon
+                data-cy='linkedin'
               fileName='logo-linkedin'
               height={32}
               width={32}
@@ -90,7 +95,7 @@ const About: NextPage<AboutPageProps> = (props) => {
             </div>
           </div>
         </div>
-        <div className='work-history'>
+        <div className='work-history' data-cy='work-history'>
           <div className='section-title'>
             <h2>Work history</h2>
           </div>

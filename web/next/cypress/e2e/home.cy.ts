@@ -9,7 +9,7 @@ describe(`home page`, () => {
             [
                 `next-js`,
                 `sanity`,
-                `netlify`,
+                `vercel`,
                 `cypress`,
                 `eslint`,
                 `react-bootstrap`,
