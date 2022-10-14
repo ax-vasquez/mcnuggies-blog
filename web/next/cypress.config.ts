@@ -11,6 +11,7 @@ export default defineConfig({
       blog_url: `http://localhost:3000/blog-feed`,
       article_url_root: `http://localhost:3000/blog`,
       about_url: `http://localhost:3000/about`,
+      test_article_name: `how-to-share-a-minecraft-modpack-on-curseforge-without-review`
     }
   },
 })
