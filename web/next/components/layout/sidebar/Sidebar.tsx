@@ -46,14 +46,15 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
         if (sidebarElement && sidebarButton) {
             if (!sidebarElement.contains(e.target as Node) && !sidebarButton.contains(e.target as Node)) {
                 dispatch(toggleShowSidebar())
-            // Prevents sidebar from closing when clicking a root item (Redux state can override this when hitting the home page, though - fix TBD)
-            } else if (sidebarRow) {
-                if (!sidebarRow.contains(e.target as Node)) {
-                    dispatch(toggleShowSidebar())
-                }
+            
             }
         }
-        
+        // Prevents sidebar from closing when clicking a root item (Redux state can override this when hitting the home page, though - fix TBD)
+        if (sidebarRow) {
+            if (!sidebarRow.contains(e.target as Node)) {
+                dispatch(toggleShowSidebar())
+            }
+        }
     }
 
     useEffect(() => {
