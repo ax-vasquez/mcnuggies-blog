@@ -109,14 +109,13 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     return (
       <PageLayout
             pageTitle="Blog"
-            imgSrc="/generic-blog.jpeg"
         >
           <div className='blog-feed-container'>
             <div className='blog-controls'>
-              <input placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-              <ul className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
+              <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+              <ul data-cy="blog-category-filters" className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
             </div>
-            <div className="blog-feed">
+            <div className="blog-feed" data-cy="blog-feed">
               { shownArticles.length > 0 ?
               
               shownArticles

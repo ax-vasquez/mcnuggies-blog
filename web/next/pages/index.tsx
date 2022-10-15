@@ -6,7 +6,9 @@ import { TechStackIntegration } from '../components/pages/home/TechStackIntegrat
 
 const Home: NextPage = () => {
   return (
-    <PageLayout>
+    <PageLayout
+      pageTitle='Home'
+    >
       <Card
         className='tech-stack'
       >
