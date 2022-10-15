@@ -1,0 +1,22 @@
+@use 'variables' as vars;
+
+.article-metadata {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    h1 {
+        text-align: justify;
+        margin: 0;
+        padding: 2rem 0 1rem 0;
+    }
+    .publish-date {
+        font-size: 1rem;
+        color: vars.$gray-400;
+        font-style: italic;
+        text-align: left;
+    }
+    .author-field {
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+}

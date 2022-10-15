@@ -50,7 +50,6 @@ const About: NextPage<AboutPageProps> = (props) => {
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
-                imgSrc='/about.jpg'
             >
         <br />
         <div className='creator-bio'>

@@ -4,6 +4,7 @@
 @use 'page_home';
 @use 'page_about';
 @use 'page_blog-feed';
+@use 'page_template_article';
 @use 'variables' as vars;
 
 .site-content {
