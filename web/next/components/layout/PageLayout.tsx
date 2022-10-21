@@ -3,7 +3,7 @@ import Head from "next/head"
 import { Container } from "react-bootstrap"
 import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
-import Image from 'next/image'
+import { ChromeBad } from '../chromeBad/ChromeBad'
 
 interface PageLayoutProps {
     pageTitle?: string
@@ -19,7 +19,9 @@ export const PageLayout = ({
     children,
 }: PageLayoutProps) => {
     return (
-      <div>
+      <ChromeBad
+        Shim={Container}
+      >
         <SiteNavigation />
         <Sidebar
                 options={[]}
@@ -36,6 +38,6 @@ export const PageLayout = ({
             </main>
           </Container>
         </div>
-      </div>
+      </ChromeBad>
     )
 }

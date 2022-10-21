@@ -1,0 +1,23 @@
+@use 'variables' as vars;
+
+.chromeBadInfo {
+    .haiku {
+        color: vars.$gray-400;
+        font-size: 2rem;
+        font-weight: 100;
+        margin-top: 2rem;
+        text-align: center;
+        font-style: italic;
+        :not(:last-child) {
+            margin-bottom: 3rem;
+        }
+    }
+    .message {
+        margin-top: 5rem;
+    }
+    .evidence {
+        h2 {
+            text-align: center;
+        }
+    }
+}
