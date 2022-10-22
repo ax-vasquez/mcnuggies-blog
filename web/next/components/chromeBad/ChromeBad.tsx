@@ -19,10 +19,10 @@ export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
                         <h1>🚫 GOOGLE CHROME DETECTED 🚫</h1>
                         <div className={styles.haiku}>
                             <p>
-                                Google Chrome is bad
+                                Google is evil,
                             </p>
                             <p>
-                                It wants to sell your data
+                                they're selling all your data.
                             </p>
                             <p>
                                 Are you good with that?
