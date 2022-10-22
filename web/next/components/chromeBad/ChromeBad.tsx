@@ -43,27 +43,32 @@ export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
                             </p>
                         </div>
                         <div className={styles.evidence}>
-                            <h2>Don't believe me?</h2>
+                            <h2>iOS Browser App Comparison</h2>
+                            <p>
+                                Apple has very strict requirements around data collection practices for apps on their App store and require developers to disclose what data they collect
+                                in a more conspicuous manner. This makes App Store listings a pretty good place to get an idea for what a given vendor is really trying to accomplish.
+                            </p>
                             <div className={styles.corroboratingLinks}>
-                                <p>
-                                    Here's some links to proof of their dealings:
-                                </p>
                                 <ol>
-                                    <li></li>
-                                </ol>
-                            </div>
-                            <div className={styles.googleResources}>
-                                <p>
-                                    
-                                    And here's what Google has to say about it:
-                                </p>
-                                <ol>
-                                    <li><a href="https://www.google.com/chrome/terms/" target="_blank">Google Chrome and ChromeOS Additional Terms of Service</a></li>
+                                    <li><a href="https://apps.apple.com/us/app/google-chrome/id535886823" target="_blank">Chrome</a></li>
                                     <ul>
-                                        <li>Piggy-backs off of <a href="https://policies.google.com/terms" target="_blank">Google's base Terms and Conditions</a></li>
-                                        <ul>
-                                            <li></li>
-                                        </ul>
+                                        <li></li>
+                                    </ul>
+                                    <li><a href="https://apps.apple.com/us/app/duckduckgo-privacy-browser/id663592361" target="_blank">DuckDuckGo</a></li>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <li><a href="https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926" target="_blank">Firefox</a></li>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <li><a href="https://apps.apple.com/us/app/opera-browser-fast-private/id1411869974" target="_blank">Opera</a></li>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                    <li><a href="https://apps.apple.com/us/app/safari/id1146562112" target="_blank">Safari</a></li>
+                                    <ul>
+                                        <li></li>
                                     </ul>
                                 </ol>
                             </div>
