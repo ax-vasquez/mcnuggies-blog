@@ -1,5 +1,6 @@
 import React from "react"
 import useUserAgent from "../../hooks/useUserAgent"
+import BrowserTable from "./browserTable"
 import styles from "./ChromeBad.module.scss"
 
 type ChromeBadProps = {
@@ -42,35 +43,21 @@ export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
                                 the same time, they get to claim they were transparent on the matter since it was "clearly-stated" in the Terms and Conditions and/or patch notes.
                             </p>
                         </div>
+                        {/* https://developer.apple.com/app-store/app-privacy-details/ */}
+                        <BrowserTable />
                         <div className={styles.evidence}>
-                            <h2>iOS Browser App Comparison</h2>
+                            <h2>Browser Comparison</h2>
                             <p>
-                                Apple has very strict requirements around data collection practices for apps on their App store and require developers to disclose what data they collect
-                                in a more conspicuous manner. This makes App Store listings a pretty good place to get an idea for what a given vendor is really trying to accomplish.
+                                In order to simplify the comparison, this chart uses the Apple iOS App store listing for each browser. The reason for this is that Apple has strict requirements
+                                on how the app's on their store disclose their permissions. This is certainly not perfect, but does serve as a good "top-down" view for how the various browsers
+                                compare.
+                            </p>
+                            <p>
+                                Even though these apps list their permissions on their respective App Store pages, it's not entirely clear what these permissions are granting from the limited
+                                information on the listing page. For more information on what the App Store permissions mean, see the <a href="https://developer.apple.com/app-store/app-privacy-details/" target="_blank">App Privacy Details</a> page.
                             </p>
                             <div className={styles.corroboratingLinks}>
-                                <ol>
-                                    <li><a href="https://apps.apple.com/us/app/google-chrome/id535886823" target="_blank">Chrome</a></li>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                    <li><a href="https://apps.apple.com/us/app/duckduckgo-privacy-browser/id663592361" target="_blank">DuckDuckGo</a></li>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                    <li><a href="https://apps.apple.com/us/app/firefox-private-safe-browser/id989804926" target="_blank">Firefox</a></li>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                    <li><a href="https://apps.apple.com/us/app/opera-browser-fast-private/id1411869974" target="_blank">Opera</a></li>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                    <li><a href="https://apps.apple.com/us/app/safari/id1146562112" target="_blank">Safari</a></li>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </ol>
+                                
                             </div>
                         </div>
                     </div>
