@@ -1,10 +1,37 @@
 import React from "react"
 import useUserAgent from "../../hooks/useUserAgent"
 import BrowserTable from "./browserTable"
+import { BRAVE } from "./browserTable/permissions/brave"
+import { CHROME } from "./browserTable/permissions/chrome"
+import { DUCKDUCKGO } from "./browserTable/permissions/duckduckgo"
+import { FIREFOX } from "./browserTable/permissions/firefox"
+import { OPERA } from "./browserTable/permissions/opera"
+import { SAFARI } from "./browserTable/permissions/safari"
+import { BrowserData } from "./browserTable/permissions/types"
 import styles from "./ChromeBad.module.scss"
 
 type ChromeBadProps = {
     Shim?: React.ElementType
+}
+
+const BROWSERS = [
+    BRAVE,
+    CHROME,
+    DUCKDUCKGO,
+    FIREFOX,
+    OPERA,
+    SAFARI
+] as BrowserData[]
+
+const formatBrowserName = (browser: string) => {
+    switch(browser) {
+        case `DUCKDUCKGO`: {
+            return `DuckDuckGo`
+        }
+        default: {
+            return browser.charAt(0).toUpperCase() + browser.slice(1).toLowerCase()
+        }
+    }
 }
 
 export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
@@ -56,8 +83,16 @@ export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
                                 Even though these apps list their permissions on their respective App Store pages, it's not entirely clear what these permissions are granting from the limited
                                 information on the listing page. For more information on what the App Store permissions mean, see the <a href="https://developer.apple.com/app-store/app-privacy-details/" target="_blank">App Privacy Details</a> page.
                             </p>
-                            <div className={styles.corroboratingLinks}>
-                                
+                            <div className={styles.browsers}>
+                                {BROWSERS.map(browser => {
+                                    return (
+                                        <div className={styles.row}>
+                                            <div className={styles.name}>
+                                                {formatBrowserName(browser.browser)}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                             </div>
                         </div>
                     </div>
