@@ -1,50 +1,50 @@
-type BROWSER = |
-    'BRAVE' |
-    'CHROME' |
-    'DUCKDUCKGO' |
-    'FIREFOX' |
-    'OPERA' | 
-    'SAFARI'
 
-type Permission = {
-    name: String
-    linkedToYou: boolean
-    description: {
+export type IOS_APP_PERMISSION_NAME = |
+    'Other Data' |
+    'Browsing History' |
+    'Usage Data' |
+    'Identifiers' |
+    'Financial Info' |
+    'Contact Info' | 
+    'Contacts' |
+    'User Content' |
+    'Location' |
+    'Search History' |
+    'Diagnostics'
+
+export type IOSAppPermission = {
+    name: IOS_APP_PERMISSION_NAME
+    /**
+     * A quick description of the kind of data this permission releases
+     */
+    description: string
+    /**
+     * A developer's reasoning behind why this permission may be requested
+     */
+    rationale: string
+    /**
+     * The items released by this permission based on Apple's App Privacy Details breakdown
+     * 
+     * @see https://developer.apple.com/app-store/app-privacy-details/
+     */
+    itemsReleased: string[]
+    risk: {
         /**
-         * Apple-provided definition for what the permission is for
+         * If true, this permission poses a potential financial impact. This is expected for applications
+         * that access the user's Wallet.
          */
-        definition: String
+        potentialFincialImpact: boolean
         /**
-         * Quick explanation as to why this permission is requested
+         * Whether or not the permission grants access to ambiguously-defined data, such as "any other user-generated content", which
+         * is part of the items released for the User Content permission.
+         * 
+         * Ambiguous is never good - in this case, it means you're granting permissions to things not clearly
+         * stated in the listing. In other words, you can't know what you're agreeing to.
          */
-        rationale: String
+        isAmbiguous: boolean
         /**
-         * Optional section warning the reader about why the permission is risky. Not necessary for permissions that are generally reasonable.
+         * Whether or not the data released by this permission has use outside of the context of the application it was collected from
          */
-        warning?: String
+        hasExternalImpact: boolean
     }
-    /**
-     * The list of things this permissions grants the parent browser app access to
-     */
-    releases: String[]
-    
-}
-
-export type BrowserData = {
-    /**
-     * The name of the browser
-     */
-    browser: BROWSER
-    /**
-     * URL for the iOS App listing (where the permissions lists were obtained from)
-     */
-    iosListing: String
-    /**
-     * The parent company of the browser (e.g., who benefits from the data collection practices, if any)
-     */
-    owner: String
-    /**
-     * List of permissions the browser requires access for
-     */
-    permissions: Permission[]
 }
