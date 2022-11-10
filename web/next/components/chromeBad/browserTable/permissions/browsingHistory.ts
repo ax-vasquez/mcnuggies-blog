@@ -7,6 +7,7 @@ export const BrowsingHistory: IOSAppPermission = {
     itemsReleased: [
         'Browsing History (ENTIRE DEVICE)',
     ],
+    icon: 'bootstrap-phone',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

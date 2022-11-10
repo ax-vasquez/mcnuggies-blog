@@ -8,6 +8,7 @@ export const Location: IOSAppPermission = {
         'Precise Location',
         'Coarse Location'
     ],
+    icon: 'bootstrap-cursor-fill',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

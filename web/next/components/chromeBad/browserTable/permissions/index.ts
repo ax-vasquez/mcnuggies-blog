@@ -7,9 +7,13 @@ import { Identifiers } from "./identifiers";
 import { Location } from "./location";
 import { OtherData } from "./otherData";
 import { SearchHistory } from "./searchHistory";
+import { IOSAppPermission } from "./types";
 import { UsageData } from "./usageData";
 import { UserContent } from "./userContent";
 
+/**
+ * Tenuously-ranked permissions where the more-invasive/risky permissions are ranked at, or near the top.
+ */
 export const RANKED_PERMISSIONS = {
     0: FinancialInfo,
     1: BrowsingHistory,
@@ -22,4 +26,6 @@ export const RANKED_PERMISSIONS = {
     8: SearchHistory,
     9: UsageData,
     10: Diagnostics
+} as {
+    [key: number]: IOSAppPermission
 }

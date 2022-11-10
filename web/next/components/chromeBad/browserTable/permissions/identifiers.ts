@@ -8,6 +8,7 @@ export const Identifiers: IOSAppPermission = {
         'User ID',
         'Device ID'
     ],
+    icon: 'bootstrap-card-text',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

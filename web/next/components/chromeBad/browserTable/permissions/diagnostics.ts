@@ -9,6 +9,7 @@ export const Diagnostics: IOSAppPermission = {
         'Performance Data',
         'Other Diagnostic Data'
     ],
+    icon: 'bootstrap-clipboard-data',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

@@ -9,6 +9,7 @@ export const UsageData: IOSAppPermission = {
         'Advertising Data (app only)',
         'Other Usage Data (app only)',
     ],
+    icon: 'bootstrap-hand-index',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

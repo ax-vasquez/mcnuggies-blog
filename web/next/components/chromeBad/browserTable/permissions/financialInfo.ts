@@ -9,6 +9,7 @@ export const FinancialInfo: IOSAppPermission = {
         'Credit Info',
         'Other Financial Info'
     ],
+    icon: 'bootstrap-coin',
     risk: {
         potentialFincialImpact: true,
         isAmbiguous: true,

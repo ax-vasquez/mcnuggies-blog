@@ -7,6 +7,7 @@ export const Contacts: IOSAppPermission = {
     itemsReleased: [
         'Contacts',
     ],
+    icon: 'bootstrap-person-rolodex',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

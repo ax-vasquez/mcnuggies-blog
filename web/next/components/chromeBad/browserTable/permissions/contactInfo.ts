@@ -11,6 +11,7 @@ export const ContactInfo: IOSAppPermission = {
         'Physical Address',
         'Other User Contact Info'
     ],
+    icon: 'bootstrap-person-badge',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,

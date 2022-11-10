@@ -86,29 +86,6 @@ export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
                         </div>
                         {/* https://developer.apple.com/app-store/app-privacy-details/ */}
                         <BrowserTable />
-                        <div className={styles.evidence}>
-                            <h2>Browser Comparison</h2>
-                            <p>
-                                In order to simplify the comparison, this chart uses the Apple iOS App store listing for each browser. The reason for this is that Apple has strict requirements
-                                on how the app's on their store disclose their permissions. This is certainly not perfect, but does serve as a good "top-down" view for how the various browsers
-                                compare.
-                            </p>
-                            <p>
-                                Even though these apps list their permissions on their respective App Store pages, it's not entirely clear what these permissions are granting from the limited
-                                information on the listing page. For more information on what the App Store permissions mean, see the <a href="https://developer.apple.com/app-store/app-privacy-details/" target="_blank">App Privacy Details</a> page.
-                            </p>
-                            <div className={styles.browsers}>
-                                {BROWSERS.map(browser => {
-                                    return (
-                                        <div className={styles.row}>
-                                            <div className={styles.name}>
-                                                {formatBrowserName(browser.browser)}
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
                     </div>
                 </main>
             </div>

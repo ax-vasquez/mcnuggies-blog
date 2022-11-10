@@ -13,6 +13,7 @@ export const UserContent: IOSAppPermission = {
         'Customer Support data',
         'Any other user-generated content'
     ],
+    icon: 'bootstrap-card-image',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: true,

@@ -7,6 +7,7 @@ export const OtherData: IOSAppPermission = {
     itemsReleased: [
         'Other data types',
     ],
+    icon: 'bootstrap-question-octagon',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: true,

@@ -28,6 +28,10 @@ export type IOSAppPermission = {
      * @see https://developer.apple.com/app-store/app-privacy-details/
      */
     itemsReleased: string[]
+    /**
+     * The string name of the icon to use for the permission in the table header
+     */
+    icon: string
     risk: {
         /**
          * If true, this permission poses a potential financial impact. This is expected for applications

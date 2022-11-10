@@ -7,6 +7,7 @@ export const SearchHistory: IOSAppPermission = {
     itemsReleased: [
         'Search History (app only)',
     ],
+    icon: 'bootstrap-search',
     risk: {
         potentialFincialImpact: false,
         isAmbiguous: false,
