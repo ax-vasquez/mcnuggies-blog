@@ -1,4 +1,12 @@
 
+.container {
+    display: inline-flex;
+
+    >:not(:last-child) {
+        margin-right: 2rem;
+    }
+}
+
 .header {
     display: flex;
     flex-direction: column;
@@ -15,6 +23,7 @@
     justify-content: center;
 
     .permissionName {
+        margin-top: .5rem;
         font-size: 14px;
         text-align: center;
     }

@@ -1,57 +1,15 @@
-import React, { useEffect } from "react"
+import React from "react"
 import useUserAgent from "../../hooks/useUserAgent"
 import BrowserTable from "./browserTable"
-import {
-    BRAVE,
-    CHROME,
-    DUCKDUCKGO,
-    FIREFOX,
-    OPERA,
-    SAFARI
-} from './browserTable/browsers'
-import { BrowserData } from "./browserTable/browsers/types"
 import styles from "./ChromeBad.module.scss"
 
 type ChromeBadProps = {
     Shim?: React.ElementType
 }
 
-const BROWSERS = [
-    BRAVE,
-    CHROME,
-    DUCKDUCKGO,
-    FIREFOX,
-    OPERA,
-    SAFARI
-] as BrowserData[]
-
-const formatBrowserName = (browser: string) => {
-    switch(browser) {
-        case `DUCKDUCKGO`: {
-            return `DuckDuckGo`
-        }
-        default: {
-            return browser.charAt(0).toUpperCase() + browser.slice(1).toLowerCase()
-        }
-    }
-}
-
-const collectAllPermissions = (browsers: BrowserData[]) => {
-    const permissionsObj = {}
-
-    browsers.forEach(browser => {
-        browser.permissions.forEach(permission => permissionsObj[`${permission.name}`] = 0)
-    })
-
-    return Object.keys(permissionsObj)
-}
-
 export const ChromeBad: React.FC<ChromeBadProps> = ({ children, Shim }) => {
     const userAgent = useUserAgent()
     const isChrome = userAgent.includes('Chrome')
-
-    const permissions = collectAllPermissions(BROWSERS)
-    console.log(`PERMISSIONS: `, permissions)
 
     const getChromeBadInfoMessage = () => {
         return (

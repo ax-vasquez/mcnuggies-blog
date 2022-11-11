@@ -8,30 +8,6 @@ type BROWSER = |
     'OPERA' | 
     'SAFARI'
 
-type BrowserPermission = {
-    name: IOS_APP_PERMISSION_NAME
-    linkedToYou: boolean
-    description: {
-        /**
-         * Apple-provided definition for what the permission is for
-         */
-        definition: String
-        /**
-         * Quick explanation as to why this permission is requested
-         */
-        rationale: String
-        /**
-         * Optional section warning the reader about why the permission is risky. Not necessary for permissions that are generally reasonable.
-         */
-        warning?: String
-    }
-    /**
-     * The list of things this permissions grants the parent browser app access to
-     */
-    releases: String[]
-    
-}
-
 export type BrowserData = {
     /**
      * The name of the browser
@@ -48,5 +24,5 @@ export type BrowserData = {
     /**
      * List of permissions the browser requires access for
      */
-    permissions: BrowserPermission[]
+    permissions: IOS_APP_PERMISSION_NAME[]
 }
