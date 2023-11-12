@@ -25,8 +25,9 @@ const blogPostComponents = {
   marks: {
     highlight: ({ children }) => <span className="highlighted-text">{children}</span>,
     internalLink: ({ value, children }) => {
-        const { slug } = value.reference
-        return <Link href={`/blog/${slug.current}`}>{children}</Link>
+        const linkText = !!children ? children[0] : '[internal_link]'
+        const { slug = {}} = value
+        return <Link href={`/blog/${slug.current}`}>{linkText}</Link>
     },
     link: ({ value, children }) => {
         return (
