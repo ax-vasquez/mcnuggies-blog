@@ -48,6 +48,7 @@
     .app-icon {
         right: 0;
         margin-left: auto;
+        display: flex;
         img {
             @include mixins.nav-icon-hover-transition();
         }

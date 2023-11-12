@@ -9,6 +9,7 @@ import Link from 'next/link'
 interface BlogPostProps {
   article: Article & {
     imageUrl?: string
+    authorName?: string
   }
 }
 
@@ -43,16 +44,23 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
     !!article && (
       <PageLayout
       pageTitle={article.title!}
-      imgSrc={article.imageUrl}
     >
         {!!article && (
-          <>
+          <div>
+            <div className='article-metadata'>
+              <h1 data-cy="article-title">{article.title}</h1>
+              <div className='author-field'>By {article.authorName}</div>
+              <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+            </div>
             <br />
+            <div data-cy="article-body">
             <PortableText
-            value={article.body}
-            components={blogPostComponents}
-          />
-          </>
+              value={article.body}
+              components={blogPostComponents}
+            />
+            </div>
+            
+          </div>
       )}
       </PageLayout>
     )
@@ -81,7 +89,9 @@ export async function getStaticProps(context: any) {
   const article = await client.fetch(`
     *[_type == "article" && slug.current == $slug][0]{
       title,
+      publishDate,
       "imageUrl": image.asset->url,
+      "authorName": author->name,
       body
     }
   `, { slug: slug.toLowerCase() })

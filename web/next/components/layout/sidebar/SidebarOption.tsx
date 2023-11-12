@@ -18,7 +18,7 @@ const SidebarOption: FunctionComponent<SidebarOptionConfig> = ({
     option
 }) => {
     return (
-      <div className='sidebar-option-row'>
+      <div className='sidebar-option-row' id="sidebar-option">
         <Link href={option.to!} passHref>
           <div className='sidebar-option-row-content'>
             <span>

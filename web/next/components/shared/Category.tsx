@@ -18,7 +18,7 @@ export const Category: FunctionComponent<CategoryProps> = ({
       <div
             className={cs(isActive ? style.categoryActive : style.categoryDefault)}
             onClick={onClick}
-            data-cy={`category-${kebabCase(title)}`}
+            data-cy="category-filter"
         >
         {title}
       </div>
