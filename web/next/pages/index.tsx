@@ -12,7 +12,6 @@ const Home: NextPage = () => {
       <Card
         className='tech-stack'
       >
-        <h1>mcnuggies.dev</h1>
         <RootPageSection
           title='Blog'
           iconFileName='bootstrap-book'
