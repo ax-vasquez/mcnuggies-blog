@@ -109,7 +109,6 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     return (
       <PageLayout
             pageTitle="Blog"
-            imgSrc="/generic-blog.jpeg"
         >
           <div className='blog-feed-container'>
             <div className='blog-controls'>

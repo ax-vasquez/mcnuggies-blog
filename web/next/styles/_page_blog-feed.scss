@@ -5,6 +5,7 @@
     top: 3em;
     display: flex;
     flex-direction: column;
+    // TODO: Figure out why this looks bad in Firefox
     background: linear-gradient(vars.$gray-A1, 98%, transparent);
     input {
         margin-top: 1rem;

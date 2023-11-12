@@ -8,27 +8,22 @@ const Home: NextPage = () => {
   return (
     <PageLayout
       pageTitle='Home'
-      imgSrc='/building-blocks.jpg'
     >
       <Card
         className='tech-stack'
       >
-        <br />
         <RootPageSection
           title='Blog'
           iconFileName='bootstrap-book'
           href='/blog-feed'
           description="My occasional guides, reviews and general musings"
         />
-        <br />
         <RootPageSection
           title='About'
           iconFileName='bootstrap-info-circle'
           href='/about'
           description="Find out more about mcnuggies.dev and its creator"
         />
-        <br />
-        <br />
         <div className='title-container'>
           <h2>
             Tech stack
