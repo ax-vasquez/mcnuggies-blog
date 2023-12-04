@@ -1,4 +1,5 @@
 {
+  // TODO: Remove this file once you know it works
   "root": true,
   "project": {
     "name": "my-creators-blog"
