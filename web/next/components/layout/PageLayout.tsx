@@ -10,6 +10,7 @@ interface PageLayoutProps {
     metaDescription?: string
     metaContent?: string
     children: any
+    imgSrc?: string
 }
 
 export const PageLayout = ({
@@ -17,6 +18,7 @@ export const PageLayout = ({
     metaDescription,
     metaContent,
     children,
+    imgSrc
 }: PageLayoutProps) => {
     return (
       <div>
@@ -25,6 +27,23 @@ export const PageLayout = ({
                 options={[]}
             />
         <div className='site-content'>
+          {!!imgSrc && (
+            <div className='hero-image-container'>
+              {!!pageTitle && (
+                <div className='hero-image-overlay'>
+                  <h1>{pageTitle}</h1>
+                </div>
+              )}
+              <div className='hero-image'>
+                <Image
+                  src={imgSrc}
+                  height={1080}
+                  width={1920}
+								  alt='hero-image'
+                />
+              </div>
+            </div>
+          )}
           <Container>
             <Head>
               <title>mcnuggies | {pageTitle}</title>
