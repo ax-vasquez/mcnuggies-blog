@@ -5,6 +5,15 @@ import client from '../../sanity/client'
 import { Article } from '../../types/sanity'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
+import createImageUrlBuilder from '@sanity/image-url'
+import Image from 'next/image'
+
+const projectId = process.env.SANITY_PROJECT || '4t91dfsx'
+const dataset = process.env.SANITY_DATASET || 'production'
+
+console.log(`PROJECT ID: `, projectId)
+
+const imageBuilder = createImageUrlBuilder({ projectId, dataset })
 
 interface BlogPostProps {
   article: Article & {
@@ -13,6 +22,9 @@ interface BlogPostProps {
   }
 }
 
+const urlForImage = (source) =>
+  imageBuilder.image(source).auto('format').fit('max')
+
 const blogPostComponents = {
   types: {
     code: (props) => {
@@ -20,7 +32,15 @@ const blogPostComponents = {
       return (
         <SyntaxHighlighter theme="" language={language}>{code}</SyntaxHighlighter>
       )
-  },
+    },
+    image: ({value}) => {
+      // we need to get the image source url, and since @sanity/image-url will give us optimised images for each instance we use it
+      const imgUrl = urlForImage(value.assset).url()
+
+      console.log(`IMAGE URL: `, imgUrl)
+      
+      return null
+    },
   },
   marks: {
     highlight: ({ children }) => <span className="highlighted-text">{children}</span>,
