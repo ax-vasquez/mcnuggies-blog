@@ -11,6 +11,10 @@ const nextConfig = {
       'cdn.sanity.io'
     ],
     formats: ['image/avif', 'image/webp'],
+  },
+  env: {
+    SANITY_PROJECT: process.env.SANITY_PROJECT,
+    SANITY_DATASET: process.env.SANITY_DATASET
   }
 }
 
