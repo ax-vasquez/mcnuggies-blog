@@ -8,12 +8,7 @@ import Link from 'next/link'
 import createImageUrlBuilder from '@sanity/image-url'
 import Image from 'next/image'
 
-const projectId = process.env.SANITY_PROJECT || '4t91dfsx'
-const dataset = process.env.SANITY_DATASET || 'production'
-
-console.log(`PROJECT ID: `, projectId)
-
-const imageBuilder = createImageUrlBuilder({ projectId, dataset })
+const imageBuilder = createImageUrlBuilder(client)
 
 interface BlogPostProps {
   article: Article & {
@@ -34,12 +29,30 @@ const blogPostComponents = {
       )
     },
     image: ({value}) => {
-      // we need to get the image source url, and since @sanity/image-url will give us optimised images for each instance we use it
-      const imgUrl = urlForImage(value.assset).url()
+      const imageHeight = 600
+      const imageWidth = 1200
 
-      console.log(`IMAGE URL: `, imgUrl)
+      /**
+       * NOTE: Sanity's docs on presenting images DOES NOT cover presenting images this way. When you have images embedded in body
+       * content, as article images are, you do NOT have access to a normal "SanityReference" object as their docs assume. Fortunately,
+       * the `image()` API accepts a `_ref` value in addition to the types discussed in the docs. Simply target `_ref` as we do here
+       * in order to render images within block content.
+       * 
+       * @see https://www.sanity.io/docs/presenting-images
+       */
+      const imgUrl = urlForImage(value.asset['_ref']).auto('format').url()
+
+      if (!imgUrl) {
+        return null
+      }
       
-      return null
+      return (
+        <Image 
+          src={imgUrl}
+          height={imageHeight}
+          width={imageWidth}
+        />
+      )
     },
   },
   marks: {
