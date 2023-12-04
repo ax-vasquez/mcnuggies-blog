@@ -8,27 +8,22 @@
   "license": "UNLICENSED",
   "scripts": {
     "tsc": "tsc",
-    "start": "rm -rf node_modules && yarn && sanity start",
+    "start": "rm -rf node_modules && yarn && sanity dev",
     "build": "sanity build"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.23.2",
-    "@sanity/cli": "^2.23.2",
-    "@sanity/code-input": "^2.23.2",
-    "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.23.2",
-    "@sanity/dashboard": "^2.23.2",
-    "@sanity/default-layout": "^2.23.2",
-    "@sanity/default-login": "^2.23.2",
-    "@sanity/desk-tool": "^2.23.2",
-    "@sanity/vision": "^2.23.2",
+    "@sanity/cli": "3.20.2",
+    "@sanity/code-input": "4.1.1",
+    "@sanity/dashboard": "3.1.6",
+    "@sanity/vision": "3.20.2",
     "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-icons": "^4.2.0",
+    "sanity": "3.20.2",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

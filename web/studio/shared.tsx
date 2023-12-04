@@ -4,7 +4,7 @@ import {FaPaperclip} from 'react-icons/fa'
 const highlightIcon = () => (
   <span style={{fontWeight: `bold`}}>H</span>
 )
-const highlightRender = (props) => (
+const Highlight = (props) => (
   <span style={{backgroundColor: `yellow`}}>{props.children}</span>
 )
 
@@ -29,10 +29,8 @@ export const richTextFieldConfig = {
           {
             title: `Highlight`,
             value: `highlight`,
-            blockEditor: {
-              icon: highlightIcon,
-              render: highlightRender,
-            },
+            icon: highlightIcon,
+            component: Highlight
           },
           {title: `Inline-code`, value: `code`},
         ],
@@ -52,9 +50,7 @@ export const richTextFieldConfig = {
             name: `internalLink`,
             type: `object`,
             title: `Internal link`,
-            blockEditor: {
-              icon: FaPaperclip,
-            },
+            icon: FaPaperclip,
             fields: [
               {
                 name: `reference`,
@@ -111,9 +107,7 @@ export const summaryRichTextFieldConfig = {
             name: `internalLink`,
             type: `object`,
             title: `Internal link`,
-            blockEditor: {
-              icon: FaPaperclip,
-            },
+            icon: FaPaperclip,
             fields: [
               {
                 name: `reference`,
