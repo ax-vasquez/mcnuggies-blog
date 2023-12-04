@@ -76,8 +76,8 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
   return (
     !!article && (
       <PageLayout
-      pageTitle={article.title!}
-    >
+        imgSrc={article.imageUrl}
+      >
         {!!article && (
           <div>
             <div className='article-metadata'>
