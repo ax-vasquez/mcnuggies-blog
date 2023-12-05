@@ -72,13 +72,6 @@ const blogPostComponents = {
     },
   },
   block: {
-    h1: ({ value, children })=> {
-      return <AnchoredHeading
-        component={children}
-        label={value.children[0].text}
-        variant='h1'
-      />
-    },
     h2: ({ value, children })=> {
       return <AnchoredHeading
         component={children}

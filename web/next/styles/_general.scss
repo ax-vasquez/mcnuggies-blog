@@ -37,6 +37,14 @@ main {
     text-align: justify;
 }
 
+h1,
+h2,
+h3,
+h4 {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 // Style for ALL list items (in all levels of both ordered lists and unordered lists)
 li {
     margin: 8px 0 8px 0;
