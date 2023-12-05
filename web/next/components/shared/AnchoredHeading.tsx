@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import slugify from 'slugify'
 import CustomIcon from './CustomIcon'
+import kebabCase from '../../util/kebabCase'
 
 interface AnchoredHeadingProps {
     component: React.ReactNode
@@ -15,7 +15,7 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
     variant,
 }) => {
 
-    const id = slugify(label.toLowerCase(), '-')
+    const id = kebabCase(label.toLowerCase())
 
     const pickHeader = () => {
         switch (variant) {
