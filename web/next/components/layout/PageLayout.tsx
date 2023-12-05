@@ -51,6 +51,7 @@ export const PageLayout = ({
               <title>mcnuggies | {pageTitle}</title>
               <meta name={metaDescription} content={metaContent} />
               <link rel="icon" href="/mcnuggies.ico" />
+              <script defer data-domain="mcnuggies.dev" src="https://plausible.io/js/script.js"></script>
             </Head>
             <main>
               {children}
