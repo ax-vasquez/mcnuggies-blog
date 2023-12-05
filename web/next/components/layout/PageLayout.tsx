@@ -7,6 +7,7 @@ import Image from 'next/image'
 
 interface PageLayoutProps {
     pageTitle?: string
+    useTitleOverlay?: boolean
     metaDescription?: string
     metaContent?: string
     children: any
@@ -15,6 +16,7 @@ interface PageLayoutProps {
 
 export const PageLayout = ({
     pageTitle,
+    useTitleOverlay = false,
     metaDescription,
     metaContent,
     children,
@@ -29,7 +31,7 @@ export const PageLayout = ({
         <div className='site-content'>
           {!!imgSrc && (
             <div className='hero-image-container'>
-              {!!pageTitle && (
+              {!!pageTitle && useTitleOverlay &&  (
                 <div className='hero-image-overlay'>
                   <h1>{pageTitle}</h1>
                 </div>

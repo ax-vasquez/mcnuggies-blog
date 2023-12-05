@@ -21,7 +21,6 @@ interface CustomIconProps {
  * 2. Pass in the name as part of the arguments
  * 3. Pass any customizations you need
  * 4. Done!
- * 
  */
 const CustomIcon: FunctionComponent<CustomIconProps> = ({
     fileName,
@@ -42,7 +41,7 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
                 title={alt}
                 // Report any errors loading an SVG to the console
                 onError={console.log}
-                onClick={onClick ? () => onClick() : undefined}
+                onClick={!!onClick ? onClick : undefined}
                 {...props}
             />
         </div>
