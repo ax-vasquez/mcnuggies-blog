@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import kebabCase from '../../util/kebabCase'
 import style from './Category.module.scss'
 import cs from 'clsx'
 

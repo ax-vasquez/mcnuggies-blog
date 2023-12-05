@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
 import createImageUrlBuilder from '@sanity/image-url'
 import Image from 'next/image'
+import { AnchoredHeading } from '../../components/shared/AnchoredHeading'
 
 const imageBuilder = createImageUrlBuilder(client)
 
@@ -69,6 +70,29 @@ const blogPostComponents = {
           </a>
         )
     },
+  },
+  block: {
+    h2: ({ value, children })=> {
+      return <AnchoredHeading
+        component={children}
+        label={value.children[0].text}
+        variant='h2'
+      />
+    },
+    h3: ({ value, children })=> {
+      return <AnchoredHeading
+        component={children}
+        label={value.children[0].text}
+        variant='h3'
+      />
+    },
+    h4: ({ value, children })=> {
+      return <AnchoredHeading
+        component={children}
+        label={value.children[0].text}
+        variant='h4'
+      />
+    }
   }
 } as Partial<PortableTextReactComponents>
 
@@ -76,6 +100,8 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
   return (
     !!article && (
       <PageLayout
+        pageTitle={article.title}
+        useTitleOverlay={false}
         imgSrc={article.imageUrl}
       >
         {!!article && (
