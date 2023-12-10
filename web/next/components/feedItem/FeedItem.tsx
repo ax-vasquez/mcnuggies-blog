@@ -21,7 +21,6 @@ const FeedItem: FunctionComponent<FeedItemProps> = ({
       <div className={styles.container} data-cy='blog-feed-item'>
         <Link
                 href={href}
-                passHref
             >
           <div>
             <h2>{title}</h2>
