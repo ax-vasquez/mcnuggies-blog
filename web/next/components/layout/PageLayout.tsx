@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap"
 import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
 import Image from 'next/image'
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 interface PageLayoutProps {
     pageTitle?: string
