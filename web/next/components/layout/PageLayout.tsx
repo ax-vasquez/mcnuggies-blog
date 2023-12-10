@@ -38,10 +38,13 @@ export const PageLayout = ({
               <div className='hero-image'>
                 <Image
                   src={imgSrc}
-                  height={1080}
-                  width={1920}
+                  height={0}
+                  width={0}
+                  sizes="100vw"
+                  fill
                   alt='hero-image'
                   priority={true}
+                  style={{ objectFit: `cover` }}
                 />
               </div>
             </div>
