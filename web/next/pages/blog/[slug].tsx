@@ -97,12 +97,14 @@ const blogPostComponents = {
 } as Partial<PortableTextReactComponents>
 
 const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
+  console.log(article.summary)
   return (
     !!article && (
       <PageLayout
         pageTitle={article.title}
         useTitleOverlay={false}
         imgSrc={article.imageUrl}
+        metaDescription={article.summary && article.summary[0].children[0].text}
       >
         {!!article && (
           <div>
@@ -149,6 +151,7 @@ export async function getStaticProps(context: any) {
     *[_type == "article" && slug.current == $slug][0]{
       title,
       publishDate,
+      summary,
       "imageUrl": image.asset->url,
       "authorName": author->name,
       body

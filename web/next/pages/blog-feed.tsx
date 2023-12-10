@@ -109,6 +109,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     return (
       <PageLayout
             pageTitle="Blog"
+            metaDescription={`Searchable & filterable blog feed for ${process.env.HOST}`}
         >
           <div className='blog-feed-container'>
             <div className='blog-controls'>

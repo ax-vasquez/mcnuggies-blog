@@ -8,8 +8,7 @@ import Image from 'next/image'
 interface PageLayoutProps {
     pageTitle?: string
     useTitleOverlay?: boolean
-    metaDescription?: string
-    metaContent?: string
+    metaDescription: string | undefined
     children: any
     imgSrc?: string
 }
@@ -18,7 +17,6 @@ export const PageLayout = ({
     pageTitle,
     useTitleOverlay = false,
     metaDescription,
-    metaContent,
     children,
     imgSrc
 }: PageLayoutProps) => {
@@ -49,7 +47,7 @@ export const PageLayout = ({
           <Container>
             <Head>
               <title>mcnuggies | {pageTitle}</title>
-              <meta name={metaDescription} content={metaContent} />
+              <meta name='description' content={metaDescription} />
               <link rel="icon" href="/mcnuggies.ico" />
             </Head>
             <main>

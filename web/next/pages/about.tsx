@@ -50,6 +50,7 @@ const About: NextPage<AboutPageProps> = (props) => {
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
+                metaDescription={`Learn more about the creator & curator of ${process.env.HOST}`}
             >
         <br />
         <div className='creator-bio'>

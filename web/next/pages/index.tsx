@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   return (
     <PageLayout
       pageTitle='Home'
+      metaDescription='Yet another dev blog & portfolio site with a focus on anything an adult observably-afflicted with ADHD might focus on.'
     >
       <Card
         className='tech-stack'
