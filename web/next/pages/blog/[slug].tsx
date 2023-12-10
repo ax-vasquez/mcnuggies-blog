@@ -54,7 +54,7 @@ const blogPostComponents = {
           src={imgUrl}
           height={imageHeight}
           width={imageWidth}
-          alt={`embedded-image-${value['_key']}`}
+          alt={`embedded-image-${value[`_key`]}`}
         />
       )
     },
