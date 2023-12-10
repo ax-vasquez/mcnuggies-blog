@@ -43,6 +43,8 @@ export const EmployerDetails: FunctionComponent<EmployerProps> = ({
                 height={48}
                 width={48}
                 alt={`employer-logo-${kebabCase(name!.toLowerCase())}`}
+                placeholder='blur'
+                blurDataURL={imageUrl}
             />
           </div>
           <div className={styles.employerNameAndDates}>
