@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
-import { ContactForm } from '../components/pages/about/ContactForm'
+// import { ContactForm } from '../components/pages/about/ContactForm'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import CustomIcon from '../components/shared/CustomIcon'
 import client from '../sanity/client'
@@ -24,32 +24,33 @@ interface AboutPageProps {
 }
 
 // TODO: 
-const HEALTHCHECK_ENDPOINT = `http://localhost:3001/ping`
+// const HEALTHCHECK_ENDPOINT = `http://localhost:3001/ping`
 
 const About: NextPage<AboutPageProps> = (props) => {
   const { creators, employers } = props
 
-  const showContactForm = React.useMemo(() => {
-    try {
-      fetch(HEALTHCHECK_ENDPOINT, {
-        mode: 'cors',
-        method: 'GET',
-      })
-      .then(res => {
-        if (res.status === 200) return true
-        return false
-      })
-      .catch(e => false)
-    } catch (e) {
-      return false
-    }
-  }, [])
+  // const showContactForm = React.useMemo(() => {
+  //   try {
+  //     fetch(HEALTHCHECK_ENDPOINT, {
+  //       mode: `cors`,
+  //       method: `GET`,
+  //     })
+  //     .then(res => {
+  //       if (res.status === 200) return true
+  //       return false
+  //     })
+  //     // .catch(e => false)
+  //   } catch (e) {
+  //     return false
+  //   }
+  // }, [])
 
   const creator = creators[0]
 
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
+                metaDescription={`Learn more about the creator & curator of ${process.env.HOST}`}
             >
         <br />
         <div className='creator-bio'>
@@ -112,15 +113,15 @@ const About: NextPage<AboutPageProps> = (props) => {
               )
             })}
         </div>
-        {showContactForm && (
+        {/* {showContactForm && (
           <div className='contact'>
             <div className='section-title'>
               <h2>Contact</h2>
             </div>
             <ContactForm />
           </div>
-        )}
-        
+        )} */}
+
       </PageLayout>
     )
 }

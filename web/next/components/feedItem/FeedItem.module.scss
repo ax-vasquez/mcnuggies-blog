@@ -4,12 +4,17 @@
     border: 1px solid vars.$gray-100;
     border-radius: 6px;
     transition: 0.3s ease;
-    h2, p {
+    p {
         padding: 0;
         margin: 0;
+        font-weight: 300;
+        color: vars.$indigo-500;
     }
-    >div {
-        padding: 1rem;
+    a {
+        text-decoration: none;
+        >div {
+            padding: 1rem;
+        }
     }
     &:hover {
         cursor: pointer;

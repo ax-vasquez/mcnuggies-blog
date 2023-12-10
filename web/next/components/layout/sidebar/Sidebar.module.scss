@@ -9,7 +9,9 @@
     overflow: hidden;
     width: 20%;
     transition: 0.5s ease;
-
+    a {
+        text-decoration: none;
+    }
     >:first-child {
         margin-top: 1rem;
     }

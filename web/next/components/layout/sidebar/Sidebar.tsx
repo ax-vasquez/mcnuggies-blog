@@ -31,7 +31,7 @@ const SIDEBAR_OPTIONS = [
 ] as SidebarOptionConfig[]
 
 const Sidebar: FunctionComponent<SidebarProps> = () => {
-    
+
     const dispatch = useDispatch()
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
 
@@ -40,13 +40,13 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
      * 
      */
     function outerClickHandler(e) {
-        const sidebarElement = document.getElementById('sidebar')
-        const sidebarButton = document.getElementById('sidebar-menu-button')
-        const sidebarRow = document.getElementById('sidebar-option-row')
+        const sidebarElement = document.getElementById(`sidebar`)
+        const sidebarButton = document.getElementById(`sidebar-menu-button`)
+        const sidebarRow = document.getElementById(`sidebar-option-row`)
         if (sidebarElement && sidebarButton) {
             if (!sidebarElement.contains(e.target as Node) && !sidebarButton.contains(e.target as Node)) {
                 dispatch(toggleShowSidebar())
-            
+
             }
         }
         // Prevents sidebar from closing when clicking a root item (Redux state can override this when hitting the home page, though - fix TBD)
@@ -59,15 +59,15 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
 
     useEffect(() => {
         if (isSidebarOpen) {
-            window.addEventListener('click', outerClickHandler)
+            window.addEventListener(`click`, outerClickHandler)
         }
         // Must remove the event listener on cleanup
         return () => {
-            window.removeEventListener('click', outerClickHandler)
+            window.removeEventListener(`click`, outerClickHandler)
         }
     }, [isSidebarOpen])
 
-    
+
 
     return (
       <div id='sidebar' className={`${styles.sidebarContainer} ${isSidebarOpen ? undefined : styles.closed}`}>

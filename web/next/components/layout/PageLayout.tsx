@@ -8,8 +8,7 @@ import Image from 'next/image'
 interface PageLayoutProps {
     pageTitle?: string
     useTitleOverlay?: boolean
-    metaDescription?: string
-    metaContent?: string
+    metaDescription: string | undefined
     children: any
     imgSrc?: string
 }
@@ -18,7 +17,6 @@ export const PageLayout = ({
     pageTitle,
     useTitleOverlay = false,
     metaDescription,
-    metaContent,
     children,
     imgSrc
 }: PageLayoutProps) => {
@@ -41,15 +39,15 @@ export const PageLayout = ({
                   src={imgSrc}
                   height={1080}
                   width={1920}
-								  alt='hero-image'
+                  alt='hero-image'
                 />
               </div>
             </div>
           )}
           <Container>
             <Head>
-              <title>mcnuggies | {pageTitle}</title>
-              <meta name={metaDescription} content={metaContent} />
+              <title>{`mcnuggies | ${pageTitle}`}</title>
+              <meta name='description' content={metaDescription} />
               <link rel="icon" href="/mcnuggies.ico" />
               <script defer data-domain="mcnuggies.dev" src="https://plausible.io/js/script.js"></script>
             </Head>

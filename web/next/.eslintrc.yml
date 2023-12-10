@@ -1,12 +1,14 @@
 env:
   browser: true
-  es2021: true
   node: true
   # enables the use of cypress globals 
   'cypress/globals': true
+  es2021: true
 globals:
   JSX: true
 extends:
+  - next/core-web-vitals
+  - next
   # Enables basic rules such as no-unused-vars
   - eslint:recommended
 root: true
@@ -19,40 +21,34 @@ parserOptions:
 plugins:
   - '@typescript-eslint'
   - cypress
-rules: {
+rules:
+  max-len: "off"
+  quotes: [2, "backtick"]
   # "default" indent must ignore all things JSX (otherwise weird behavior can happen)
-  indent: "off",
+  indent: "off"
   # JSX-only indentation rule
   # 'react/jsx-indent': ["error", 4],
   # never error when semicolon is missing from the end of a line
-  semi: ["error", "never"],
+  semi: ["error", "never"]
   # required for importing React without error
-  'no-use-before-define': "off",
+  'no-use-before-define': "off"
   # required for importing React without error
-  '@typescript-eslint/no-use-before-define': ["error"],
+  '@typescript-eslint/no-use-before-define': ["error"]
   # allow JSX in .tsx files
-  'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+  'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }]
   # so we can 'return' object from arrow body
-  arrow-body-style: "off",
-  padded-blocks: ["error", { "classes": "always" }],
-  max-len: "off",
-  no-underscore-dangle: "off",
-  quotes: [2, "backtick"],
-  no-trailing-spaces: ["error", { "ignoreComments": true }],
+  arrow-body-style: "off"
+  padded-blocks: ["error", { "classes": "always" }]
+  no-underscore-dangle: "off"
+  no-trailing-spaces: ["error", { "ignoreComments": true }]
   # TODO: turn these on and fix errors, if needed
-  jsx-a11y/click-events-have-key-events: "off",
-  jsx-a11y/no-static-element-interactions: "off",
-  react/no-unescaped-entities: "off",
-  import/prefer-default-export: "off",
-  import/extensions: "off",
-  react/require-default-props: "off",
-  # We do this because of the Sanity "parts" system; I believe they intend to deprecate this functionality in the future,
-  # since the "workaround" right now is to simply either turn off the rule, or add a workaround that enables the parts
-  # system to work, but with no added benefit from types (all types are "any" from the parts system - may as well turn this
-  # rule off until they have a different system)
-  import/no-unresolved: "off",
+  jsx-a11y/click-events-have-key-events: "off"
+  jsx-a11y/no-static-element-interactions: "off"
+  import/prefer-default-export: "off"
+  import/extensions: "off"
+  react/require-default-props: "off"
   react/jsx-indent: [2, 2, { checkAttributes: true, indentLogicalExpressions: true }]
-}
+  react/no-unescaped-entities: "off"
 settings: {
   # Enables "local" imports without specifying the file extension
   'import/resolver': [

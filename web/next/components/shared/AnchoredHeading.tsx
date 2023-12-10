@@ -20,13 +20,13 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
 
     const pickHeader = () => {
         switch (variant) {
-            case 'h2': {
+            case `h2`: {
                 return <h2 id={id}>{component}</h2>
             }
-            case 'h3': {
+            case `h3`: {
                 return <h3 id={id}>{component}</h3>
             }
-            case 'h4':
+            case `h4`:
             default: {
                 return <h4 id={id}>{component}</h4>
             }
@@ -38,12 +38,12 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
     }
 
     return (
-        <div className={style.container}>
-            {pickHeader()}
-            <Link
+      <div className={style.container}>
+        {pickHeader()}
+        <Link
                 href={`#${id}`}
             >
-                <CustomIcon 
+          <CustomIcon
                     fileName="link-45deg"
                     height={32}
                     width={32}
@@ -51,7 +51,7 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
                         navigator.clipboard.writeText(`${window.location.href}#${id}`)
                     }}
                 />
-            </Link>
-        </div>
+        </Link>
+      </div>
     )
 }
