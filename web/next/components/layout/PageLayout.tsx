@@ -41,6 +41,7 @@ export const PageLayout = ({
                   height={1080}
                   width={1920}
                   alt='hero-image'
+                  priority={true}
                 />
               </div>
             </div>

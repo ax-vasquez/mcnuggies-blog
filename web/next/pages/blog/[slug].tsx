@@ -5,11 +5,8 @@ import client from '../../sanity/client'
 import { Article } from '../../types/sanity'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
-import createImageUrlBuilder from '@sanity/image-url'
-import Image from 'next/image'
 import { AnchoredHeading } from '../../components/shared/AnchoredHeading'
-
-const imageBuilder = createImageUrlBuilder(client)
+import { ArticleBodyImage } from './ArticleBodyImage'
 
 interface BlogPostProps {
   article: Article & {
@@ -18,8 +15,6 @@ interface BlogPostProps {
   }
 }
 
-const urlForImage = (source) =>
-  imageBuilder.image(source).auto(`format`).fit(`max`)
 
 const blogPostComponents = {
   types: {
@@ -30,28 +25,11 @@ const blogPostComponents = {
       )
     },
     image: ({value}) => {
-      const imageHeight = 600
-      const imageWidth = 1200
-
-      /**
-       * NOTE: Sanity's docs on presenting images DOES NOT cover presenting images this way. When you have images embedded in body
-       * content, as article images are, you do NOT have access to a normal "SanityReference" object as their docs assume. Fortunately,
-       * the `image()` API accepts a `_ref` value in addition to the types discussed in the docs. Simply target `_ref` as we do here
-       * in order to render images within block content.
-       * 
-       * @see https://www.sanity.io/docs/presenting-images
-       */
-      const imgUrl = urlForImage(value.asset[`_ref`]).auto(`format`).url()
-      if (!imgUrl) {
-        return null
-      }
-
       return (
-        <Image
-          src={imgUrl}
-          height={imageHeight}
-          width={imageWidth}
-          alt={`embedded-image-${value[`_key`]}`}
+        <ArticleBodyImage
+          imageRef={value.asset[`_ref`]}
+          height={600}
+          width={1200}
         />
       )
     },

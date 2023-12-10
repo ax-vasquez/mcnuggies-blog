@@ -60,6 +60,8 @@ const About: NextPage<AboutPageProps> = (props) => {
               src={creator.imageUrl}
               layout='fill'
               alt='creator-image'
+              placeholder='blur'
+              blurDataURL={creator.imageUrl}
             />
           </div>
           <div className='creator-details'>
