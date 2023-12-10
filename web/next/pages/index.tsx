@@ -46,13 +46,13 @@ const Home: NextPage = () => {
           </p>
           <p>
             What I <i>will</i> write about are more-technical pieces about game performance, setting up servers, or general observations about company and industry moves. While I lack in raw gaming skill,
-            I make up for it in technical know-how. I've dabbled in Unity, Unreal and Godot and have years of experience with JavaScript, Python, C++ and more. At a more end-user level, I've set up a variety of 
+            I make up for it in technical know-how. I've dabbled in Unity, Unreal and Godot and have years of experience with JavaScript, Python, C++ and more. At a more end-user level, I've set up a variety of
             different game servers both self-hosted and through paid providers and have gained a wide range of experience in networking architecture through my day job as a full stack web developer.
           </p>
           <h3>3D Modeling</h3>
           <p>
             Some of my personal projects are more than pure software projects. As such, I've been a user of difficult-to-use, but free modeling software to aid in designing some of my projects. On the more
-            creative side of 3D modeling, I've used Blender for creating and animating organic character models. For projects that require mathematical precision (at least, more so than Blender can easily 
+            creative side of 3D modeling, I've used Blender for creating and animating organic character models. For projects that require mathematical precision (at least, more so than Blender can easily
             provide out-of-the-box), I use FreeCAD. Both Blender and FreeCAD are incredibly difficult to use coming from a place of no experience - as was the case for me. I intend to write a variety of
             guides to help others get through issues I had to faceplant my way through. Hopefully, with minimal faceplanting of their own.
           </p>
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
             encapsulate all categories of my interests. With that said, all of these projects are very exciting to me and I will, no doubt, write about them at length.
           </p>
         </div>
-        
+
         <br />
         <br />
         <div className='title-container'>

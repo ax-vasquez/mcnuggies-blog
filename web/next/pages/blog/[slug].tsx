@@ -19,7 +19,7 @@ interface BlogPostProps {
 }
 
 const urlForImage = (source) =>
-  imageBuilder.image(source).auto('format').fit('max')
+  imageBuilder.image(source).auto(`format`).fit(`max`)
 
 const blogPostComponents = {
   types: {
@@ -41,14 +41,14 @@ const blogPostComponents = {
        * 
        * @see https://www.sanity.io/docs/presenting-images
        */
-      const imgUrl = urlForImage(value.asset['_ref']).auto('format').url()
+      const imgUrl = urlForImage(value.asset[`_ref`]).auto(`format`).url()
 
       if (!imgUrl) {
         return null
       }
-      
+
       return (
-        <Image 
+        <Image
           src={imgUrl}
           height={imageHeight}
           width={imageWidth}
@@ -59,7 +59,7 @@ const blogPostComponents = {
   marks: {
     highlight: ({ children }) => <span className="highlighted-text">{children}</span>,
     internalLink: ({ value, children }) => {
-        const linkText = !!children ? children[0] : '[internal_link]'
+        const linkText = children ? children[0] : `[internal_link]`
         const {slug = {}} = value
         return <Link href={`/blog/${slug.current}`}>{linkText}</Link>
     },
@@ -115,12 +115,12 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
             </div>
             <br />
             <div data-cy="article-body">
-            <PortableText
+              <PortableText
               value={article.body}
               components={blogPostComponents}
             />
             </div>
-            
+
           </div>
       )}
       </PageLayout>

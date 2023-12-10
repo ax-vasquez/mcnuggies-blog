@@ -39,7 +39,7 @@ export const PageLayout = ({
                   src={imgSrc}
                   height={1080}
                   width={1920}
-								  alt='hero-image'
+                  alt='hero-image'
                 />
               </div>
             </div>

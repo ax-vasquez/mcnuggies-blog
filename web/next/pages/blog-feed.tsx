@@ -102,7 +102,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
       if (searchText.length > 0) {
         return shownArticles.filter(article => article.title.toLowerCase().includes(searchText.toLowerCase()))
       }
-      
+
       return shownArticles
     }, [activeCategories, allArticles, searchText])
 
@@ -111,14 +111,14 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             pageTitle="Blog"
             metaDescription={`Searchable & filterable blog feed for ${process.env.HOST}`}
         >
-          <div className='blog-feed-container'>
-            <div className='blog-controls'>
-              <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-              <ul data-cy="blog-category-filters" className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
-            </div>
-            <div className="blog-feed" data-cy="blog-feed">
-              { shownArticles.length > 0 ?
-              
+        <div className='blog-feed-container'>
+          <div className='blog-controls'>
+            <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
+            <ul data-cy="blog-category-filters" className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
+          </div>
+          <div className="blog-feed" data-cy="blog-feed">
+            { shownArticles.length > 0 ?
+
               shownArticles
               .map(article => {
                         const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
@@ -134,13 +134,13 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
                                 )}
                             />
                         )
-                })  
+                })
             :
-                <NoMatchFound query={searchText}/>
+              <NoMatchFound query={searchText}/>
             }
-            </div>
           </div>
-        
+        </div>
+
       </PageLayout>
     )
 }

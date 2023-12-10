@@ -16,10 +16,10 @@ export const ContactForm: FunctionComponent = () => {
       })
       e.preventDefault()
       return fetch(FORM_ENDPONT, {
-        mode: 'cors',
-        method: 'POST',
+        mode: `cors`,
+        method: `POST`,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': `application/json`
         },
         body: formData
       })

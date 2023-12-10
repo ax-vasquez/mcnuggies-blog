@@ -17,13 +17,13 @@ const SiteNavigation = () => {
                 />
         </Navbar.Brand>
         <Navbar.Brand className="app-icon" href='/'>
-            <Image
+          <Image
                     alt="mcnuggies-logo"
                     width="32"
                     height="32"
                     src="/mcnuggies.png"
                 />
-          
+
         </Navbar.Brand>
       </Navbar>
     )

@@ -32,14 +32,14 @@ const About: NextPage<AboutPageProps> = (props) => {
   const showContactForm = React.useMemo(() => {
     try {
       fetch(HEALTHCHECK_ENDPOINT, {
-        mode: 'cors',
-        method: 'GET',
+        mode: `cors`,
+        method: `GET`,
       })
       .then(res => {
         if (res.status === 200) return true
         return false
       })
-      .catch(e => false)
+      // .catch(e => false)
     } catch (e) {
       return false
     }
@@ -121,7 +121,7 @@ const About: NextPage<AboutPageProps> = (props) => {
             <ContactForm />
           </div>
         )}
-        
+
       </PageLayout>
     )
 }
