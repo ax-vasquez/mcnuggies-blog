@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap"
 import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
 import Image from 'next/image'
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 interface PageLayoutProps {
     pageTitle?: string
@@ -53,6 +54,7 @@ export const PageLayout = ({
             </Head>
             <main>
               {children}
+              <SpeedInsights />
             </main>
           </Container>
         </div>
