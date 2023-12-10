@@ -64,3 +64,5 @@ export const ArticleBodyImage: React.FC<ArticleBodyImageProps> = ({
         />
     )
 }
+
+export default ArticleBodyImage
