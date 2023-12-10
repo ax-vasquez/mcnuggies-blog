@@ -28,8 +28,6 @@ const blogPostComponents = {
       return (
         <ArticleBodyImage
           imageRef={value.asset[`_ref`]}
-          height={600}
-          width={1200}
         />
       )
     },
