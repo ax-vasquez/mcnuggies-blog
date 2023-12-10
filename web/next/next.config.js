@@ -7,8 +7,12 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
-    domains: [
-      'cdn.sanity.io'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '**',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
   },

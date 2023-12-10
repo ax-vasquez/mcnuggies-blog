@@ -42,9 +42,6 @@ const blogPostComponents = {
        * @see https://www.sanity.io/docs/presenting-images
        */
       const imgUrl = urlForImage(value.asset[`_ref`]).auto(`format`).url()
-
-      console.log(value)
-
       if (!imgUrl) {
         return null
       }
@@ -100,7 +97,6 @@ const blogPostComponents = {
 } as Partial<PortableTextReactComponents>
 
 const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
-  console.log(article.summary)
   return (
     !!article && (
       <PageLayout

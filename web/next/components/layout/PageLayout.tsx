@@ -46,7 +46,7 @@ export const PageLayout = ({
           )}
           <Container>
             <Head>
-              <title>mcnuggies | {pageTitle}</title>
+              <title>{`mcnuggies | ${pageTitle}`}</title>
               <meta name='description' content={metaDescription} />
               <link rel="icon" href="/mcnuggies.ico" />
             </Head>

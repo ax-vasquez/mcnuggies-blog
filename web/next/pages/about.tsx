@@ -24,26 +24,26 @@ interface AboutPageProps {
 }
 
 // TODO: 
-const HEALTHCHECK_ENDPOINT = `http://localhost:3001/ping`
+// const HEALTHCHECK_ENDPOINT = `http://localhost:3001/ping`
 
 const About: NextPage<AboutPageProps> = (props) => {
   const { creators, employers } = props
 
-  const showContactForm = React.useMemo(() => {
-    try {
-      fetch(HEALTHCHECK_ENDPOINT, {
-        mode: `cors`,
-        method: `GET`,
-      })
-      .then(res => {
-        if (res.status === 200) return true
-        return false
-      })
-      // .catch(e => false)
-    } catch (e) {
-      return false
-    }
-  }, [])
+  // const showContactForm = React.useMemo(() => {
+  //   try {
+  //     fetch(HEALTHCHECK_ENDPOINT, {
+  //       mode: `cors`,
+  //       method: `GET`,
+  //     })
+  //     .then(res => {
+  //       if (res.status === 200) return true
+  //       return false
+  //     })
+  //     // .catch(e => false)
+  //   } catch (e) {
+  //     return false
+  //   }
+  // }, [])
 
   const creator = creators[0]
 
@@ -113,14 +113,14 @@ const About: NextPage<AboutPageProps> = (props) => {
               )
             })}
         </div>
-        {showContactForm && (
+        {/* {showContactForm && (
           <div className='contact'>
             <div className='section-title'>
               <h2>Contact</h2>
             </div>
             <ContactForm />
           </div>
-        )}
+        )} */}
 
       </PageLayout>
     )
