@@ -27,7 +27,9 @@ const blogPostComponents = {
     image: ({value}) => {
       return (
         <ArticleBodyImage
-          imageRef={value.asset[`_ref`]}
+          imgIndex={value.asset.index}
+          imgUrl={value.asset.url}
+          blurImg={value.asset.blurImg}
         />
       )
     },
@@ -132,6 +134,35 @@ export async function getStaticProps(context: any) {
       body
     }
   `, { slug: slug.toLowerCase() })
+
+  let imgCount = 0
+    await Promise.all(
+      article.body.map(async (block, index) => {
+        if (block._type === `image`) {
+          imgCount++
+          const embeddedImage = await client.fetch(`*[_type == "sanity.imageAsset" && _id == $ref][0]{
+            metadata,
+            url
+        }`, { ref: block.asset._ref }) as {
+            // There are more fields available here, but we only need the lqip field
+            metadata: {
+                lqip: string    // A 20x20, base64 encoding of the image, useful for placeholders
+            },
+            url: string     // The URL to the original, full-resolution asset
+        }
+          article.body[index] = {
+            ...block,
+            asset: {
+              index: imgCount,
+              url: embeddedImage.url,
+              blurImg: embeddedImage.metadata.lqip
+            }
+          }
+        } else {
+          article.body[index] = block
+        }
+    })
+  )
 
   return {
     props: {
