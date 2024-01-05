@@ -1,0 +1,7 @@
+@use 'variables' as vars;
+
+.container {
+    background-color: vars.$gray-200;
+    position: fixed;
+    bottom: 0;
+}

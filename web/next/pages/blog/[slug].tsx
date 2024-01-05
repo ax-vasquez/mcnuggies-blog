@@ -1,5 +1,5 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useState } from 'react'
 import { PageLayout } from '../../components/layout/PageLayout'
 import client from '../../sanity/client'
 import { Article } from '../../types/sanity'
@@ -7,10 +7,14 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
 import { AnchoredHeading } from '../../components/shared/AnchoredHeading'
 import { ArticleBodyImage } from './ArticleBodyImage'
+import styles from './article.module.scss'
+import CustomIcon from '../../components/shared/CustomIcon'
+import { OutlineModal } from './modal/OutlineModal'
 
 interface BlogPostProps {
   article: Article & {
     imageUrl?: string
+    seriesTitle?: string
     authorName?: string
   }
 }
@@ -75,6 +79,7 @@ const blogPostComponents = {
 } as Partial<PortableTextReactComponents>
 
 const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
     !!article && (
       <PageLayout
@@ -87,8 +92,13 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
           <div>
             <div className='article-metadata'>
               <h1 data-cy="article-title">{article.title}</h1>
-              <div className='author-field'>By {article.authorName}</div>
-              <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+              <div className={styles.publishDataAndSeries}>
+                <div className={styles.publishAndAuthor}>
+                  <div className='author-field'>By {article.authorName}</div>
+                  <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+                </div>
+                {article.seriesTitle && <div className={styles.seriesTitle}>Series: <i>{article.seriesTitle}</i></div>}
+              </div>
             </div>
             <br />
             <div data-cy="article-body">
@@ -97,7 +107,25 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
               components={blogPostComponents}
             />
             </div>
-
+            <button className={styles.outlineButton}
+              title="See Outline View"
+              onClick={() => setModalIsOpen(!modalIsOpen)}
+            >
+              <CustomIcon
+                fileName="card-list"
+                height={32}
+                width={32}
+              />
+            </button>
+            <OutlineModal
+              isOpen={modalIsOpen}
+              items={{
+                0: {
+                  label: `test`,
+                  href: ``
+                }
+              }}
+            />
           </div>
       )}
       </PageLayout>
@@ -129,6 +157,8 @@ export async function getStaticProps(context: any) {
       title,
       publishDate,
       summary,
+      seriesIndex,
+      "seriesTitle": series->seriesTitle,
       "imageUrl": image.asset->url,
       "authorName": author->name,
       body
