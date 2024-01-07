@@ -17,7 +17,22 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
     isOpen,
     onClose
 }) => {
-    console.log(`ITEMS: `, items)
+    // Recursively-create the nested outline lists
+    const makeList = ( itemsLocal: { [index: number]: OutlineItem } ) => {
+        return (
+          <ol type="I">
+            {Object.keys(itemsLocal).map((itemIdxString) => {
+                const itemIdx = parseInt(itemIdxString)
+                return (
+                  <li key={itemIdx}>
+                    {itemsLocal[itemIdx].label}
+                    {itemsLocal[itemIdx].children && makeList(itemsLocal[itemIdx].children!)}
+                  </li>
+                )
+            })}
+          </ol>
+        )
+    }
     return (
       <div className={cs(styles.background, !isOpen && styles.closed)}>
         <div className={styles.content}>
@@ -31,16 +46,7 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
                 />
             </button>
           </div>
-          <ol type="I">
-            {Object.keys(items).map(itemIdxString => {
-            const itemIdx = parseInt(itemIdxString)
-            return (
-              <li key={itemIdx}>
-                {items[itemIdx].label}
-              </li>
-            )
-          })}
-          </ol>
+          {makeList(items)}
         </div>
       </div>
     )
