@@ -10,12 +10,20 @@ import { ArticleBodyImage } from './ArticleBodyImage'
 import styles from './article.module.scss'
 import CustomIcon from '../../components/shared/CustomIcon'
 import { OutlineModal } from './modal/OutlineModal'
+import kebabCase from '../../util/kebabCase'
 
 interface BlogPostProps {
   article: Article & {
     imageUrl?: string
     seriesTitle?: string
     authorName?: string
+  }
+  outlineItems: {
+    [index: number]: {
+      label: string
+      href: string
+      level: number
+    }
   }
 }
 
@@ -78,7 +86,7 @@ const blogPostComponents = {
   }
 } as Partial<PortableTextReactComponents>
 
-const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
+const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
     !!article && (
@@ -119,12 +127,8 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
             </button>
             <OutlineModal
               isOpen={modalIsOpen}
-              items={{
-                0: {
-                  label: `test`,
-                  href: ``
-                }
-              }}
+              onClose={() => setModalIsOpen(false)}
+              items={outlineItems}
             />
           </div>
       )}
@@ -142,6 +146,14 @@ export async function getStaticPaths() {
   return {
     paths: paths.map((slug: string) => ({params: {slug}})),
     fallback: true,
+  }
+}
+
+export type OutlineItem = {
+  label: string
+  href: string
+  children?: {
+    [index: number]: OutlineItem
   }
 }
 
@@ -164,6 +176,55 @@ export async function getStaticProps(context: any) {
       body
     }
   `, { slug: slug.toLowerCase() })
+
+  const isHeadingBlock = (block: any) => [`h2`, `h3`, `h4`].includes(block.style)
+
+  const makeNestedOutline = () => {
+    const nestedHeadings: {
+      [index: number]: OutlineItem
+    } = {}
+    const headingBlocks = article.body.filter(block => isHeadingBlock(block))
+    headingBlocks.forEach((headingBlock) => {
+
+      const level = parseInt(headingBlock.style.replace(`h`, ``))
+      const outlineItem = {
+        label: headingBlock.children[0].text,
+        href: `#${kebabCase(headingBlock.children[0].text)}`
+      }
+
+      switch (level) {
+        case 2: {
+          const idx = Object.keys(nestedHeadings).length ? Object.keys(nestedHeadings).length : 0
+          nestedHeadings[idx] = outlineItem
+          break
+        }
+        case 3: {
+          const latestH2Idx = Object.keys(nestedHeadings).length - 1
+          if (nestedHeadings[latestH2Idx].children) {
+            const idx = Object.keys(nestedHeadings[latestH2Idx].children!).length
+            nestedHeadings[latestH2Idx].children![idx] = outlineItem
+          } else {
+            nestedHeadings[latestH2Idx].children = {}
+            nestedHeadings[latestH2Idx].children![0] = outlineItem
+          }
+          break
+        }
+        case 4: {
+          const latestH2Idx = Object.keys(nestedHeadings).length - 1
+          const latestH3Idx = Object.keys(nestedHeadings[latestH2Idx].children!).length - 1
+          if (nestedHeadings[latestH2Idx].children![latestH3Idx].children) {
+            const idx = Object.keys(nestedHeadings[latestH2Idx].children![latestH3Idx].children!).length
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children![idx] = outlineItem
+          } else {
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children = {}
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children![0] = outlineItem
+          }
+          break
+        }
+      }
+    })
+    return nestedHeadings
+  }
 
   let imgCount = 0
     await Promise.all(
@@ -196,7 +257,8 @@ export async function getStaticProps(context: any) {
 
   return {
     props: {
-      article
+      article,
+      outlineItems: makeNestedOutline()
     }
   }
 }

@@ -1,7 +1,51 @@
 @use 'variables' as vars;
 
-.container {
-    background-color: vars.$gray-200;
+.closed {
+    display: none;
+}
+
+.background {
+    background-color: rgba(0,0,0,0.4);
     position: fixed;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: inline-flex;
+    width: 100%;
+    h2 {
+        flex: 1;
+    }
+    button {
+        div {
+            display: flex;
+        }
+        padding: 0.5rem;
+        display: flex;
+        flex: 0;
+        margin: auto;
+        outline: none;
+        border: none;
+        background-color: vars.$gray-800;
+        border-radius: 50%;
+        opacity: 30%;
+        color: vars.$gray-400;
+        transition: 0.2s ease opacity;
+        &:hover {
+            opacity: 100%;
+            transition: 0.2s ease opacity;
+            cursor: pointer;
+        }
+    }
+}
+
+.content {
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: vars.$gray-100;
+    margin: 5rem auto;
+    width: 60%;
 }
