@@ -3,6 +3,7 @@ import styles from './OutlineModal.module.scss'
 import cs from 'clsx'
 import CustomIcon from '../../../components/shared/CustomIcon'
 import { OutlineItem } from '../[slug]'
+import Link from 'next/link'
 
 interface OutlineModalProps {
     items: {
@@ -25,7 +26,12 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
                 const itemIdx = parseInt(itemIdxString)
                 return (
                   <li key={itemIdx}>
-                    {itemsLocal[itemIdx].label}
+                    <Link
+                        href={itemsLocal[itemIdx].href}
+                        onClick={onClose}
+                    >
+                      {itemsLocal[itemIdx].label}
+                    </Link>
                     {itemsLocal[itemIdx].children && makeList(itemsLocal[itemIdx].children!)}
                   </li>
                 )
