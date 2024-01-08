@@ -4,6 +4,7 @@ import cs from 'clsx'
 import CustomIcon from '../../../components/shared/CustomIcon'
 import { OutlineItem, SeriesOutlineItem } from '../[slug]'
 import Link from 'next/link'
+import kebabCase from '../../../util/kebabCase'
 
 interface OutlineModalProps {
     items: {
@@ -42,47 +43,44 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
               </ol>
             )
         }
+        return makeList(items)
+    }
+    const makeSeriesOutline = () => {
+        if (!seriesOutline) return null
         return (
-          <div className={cs(styles.background, !isOpen && styles.closed)}>
-            <div className={styles.content}>
-              <div className={styles.header}>
-                <h2>Outline</h2>
-                <button onClick={onClose}>
-                  <CustomIcon
+          <div>
+            {seriesOutline.map(seriesArticle => {
+                return (
+                  <div key={`outline-item-series-${kebabCase(seriesArticle.title)}`}>
+                    <h3>{seriesArticle.title}</h3>
+                    {seriesArticle.isCurrent && makeOutline()}
+                  </div>
+                )
+            })}
+          </div>
+        )
+    }
+    return (
+      <div className={cs(styles.background, !isOpen && styles.closed)}>
+        <div className={styles.content}>
+          <div className={styles.header}>
+            <h2>Outline</h2>
+            <button onClick={onClose}>
+              <CustomIcon
                         fileName='x-large'
                         height={22}
                         width={22}
                     />
-                </button>
-              </div>
-              {makeList(items)}
-            </div>
+            </button>
           </div>
-        )
-    }
-    if (seriesOutline) {
-        return (
-          <div>
-            {seriesOutline.map(seriesArticle => {
-            if (seriesArticle.isCurrent) {
-                return (
-                  <div>
-                    <p>{seriesArticle.title}</p>
-                    {makeOutline()}
-                  </div>
-                )
-            } else {
-                return (
-                  <div>
-                    <p>{seriesArticle.title}</p>
-                  </div>
-                )
+          <div className={styles.outlineWrapper}>
+            {seriesOutline && seriesOutline.length > 0 ?
+                makeSeriesOutline()
+            :
+                makeOutline()
             }
-        })}
           </div>
-        )
-
-    } else {
-        return makeOutline()
-    }
+        </div>
+      </div>
+    )
 }

@@ -48,4 +48,14 @@
     background-color: vars.$gray-100;
     margin: 5rem auto;
     width: 60%;
+    h3 {
+        font-size: 22px;
+    }
+}
+
+.outlineWrapper {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    padding-left: 1rem;
+    max-height: 50%;
 }
