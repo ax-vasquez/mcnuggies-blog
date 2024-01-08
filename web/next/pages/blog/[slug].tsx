@@ -19,12 +19,9 @@ interface BlogPostProps {
     authorName?: string
   }
   outlineItems: {
-    [index: number]: {
-      label: string
-      href: string
-      level: number
-    }
+    [index: number]: OutlineItem
   }
+  seriesArticlesOutline: SeriesOutlineItem[]
 }
 
 
@@ -86,7 +83,7 @@ const blogPostComponents = {
   }
 } as Partial<PortableTextReactComponents>
 
-const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems }) => {
+const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, seriesArticlesOutline }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
     !!article && (
@@ -129,6 +126,7 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems }) =
               isOpen={modalIsOpen}
               onClose={() => setModalIsOpen(false)}
               items={outlineItems}
+              seriesOutline={seriesArticlesOutline}
             />
           </div>
       )}
@@ -156,6 +154,12 @@ export type OutlineItem = {
     [index: number]: OutlineItem
   }
 }
+export type SeriesOutlineItem = {
+  title: string
+  href: string
+  index: number
+  isCurrent: boolean
+}
 
 export async function getStaticProps(context: any) {
   // It's important to default the slug so that it doesn't return "undefined"
@@ -169,6 +173,7 @@ export async function getStaticProps(context: any) {
       title,
       publishDate,
       summary,
+      series,
       seriesIndex,
       "seriesTitle": series->seriesTitle,
       "imageUrl": image.asset->url,
@@ -178,6 +183,28 @@ export async function getStaticProps(context: any) {
   `, { slug: slug.toLowerCase() })
 
   const isHeadingBlock = (block: any) => [`h2`, `h3`, `h4`].includes(block.style)
+  const isSeriesArticle = () => Boolean(article.series)
+  let seriesArticlesOutline: SeriesOutlineItem[] = []
+
+  if (isSeriesArticle()) {
+    const seriesArticles = await client.fetch(`
+      *[_type == "article" && series._ref == $seriesRef] | order(seriesIndex asc) {
+        title,
+        seriesIndex
+      }
+    `, { seriesRef: article.series._ref })
+    seriesArticles.forEach(seriesArticle => {
+      let isCurrent = Boolean(seriesArticle.seriesIndex === article.seriesIndex)
+      seriesArticlesOutline.push({
+        title: seriesArticle.title,
+        href: ``,
+        index: seriesArticle.seriesIndex,
+        isCurrent
+      })
+    })
+  }
+
+  console.log(`SERIES ARTICLES: `, seriesArticlesOutline)
 
   const makeNestedOutline = () => {
     const nestedHeadings: {
@@ -258,7 +285,8 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       article,
-      outlineItems: makeNestedOutline()
+      outlineItems: makeNestedOutline(),
+      seriesArticlesOutline
     }
   }
 }
