@@ -1,5 +1,5 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useState } from 'react'
 import { PageLayout } from '../../components/layout/PageLayout'
 import client from '../../sanity/client'
 import { Article } from '../../types/sanity'
@@ -7,12 +7,21 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
 import { AnchoredHeading } from '../../components/shared/AnchoredHeading'
 import { ArticleBodyImage } from './ArticleBodyImage'
+import styles from './article.module.scss'
+import CustomIcon from '../../components/shared/CustomIcon'
+import { OutlineModal } from '../../components/blog/modal/OutlineModal'
+import kebabCase from '../../util/kebabCase'
 
 interface BlogPostProps {
   article: Article & {
     imageUrl?: string
+    seriesTitle?: string
     authorName?: string
   }
+  outlineItems: {
+    [index: number]: OutlineItem
+  }
+  seriesArticlesOutline: SeriesOutlineItem[]
 }
 
 
@@ -74,7 +83,8 @@ const blogPostComponents = {
   }
 } as Partial<PortableTextReactComponents>
 
-const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
+const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, seriesArticlesOutline }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   return (
     !!article && (
       <PageLayout
@@ -87,8 +97,13 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
           <div>
             <div className='article-metadata'>
               <h1 data-cy="article-title">{article.title}</h1>
-              <div className='author-field'>By {article.authorName}</div>
-              <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+              <div className={styles.publishDataAndSeries}>
+                <div className={styles.publishAndAuthor}>
+                  <div className='author-field'>By {article.authorName}</div>
+                  <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+                </div>
+                {article.seriesTitle && <div className={styles.seriesTitle}>Series: <i>{article.seriesTitle}</i></div>}
+              </div>
             </div>
             <br />
             <div data-cy="article-body">
@@ -97,7 +112,22 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article }) => {
               components={blogPostComponents}
             />
             </div>
-
+            <button className={styles.outlineButton}
+              title="See Outline View"
+              onClick={() => setModalIsOpen(!modalIsOpen)}
+            >
+              <CustomIcon
+                fileName="bootstrap-card-list"
+                height={32}
+                width={32}
+              />
+            </button>
+            <OutlineModal
+              isOpen={modalIsOpen}
+              onClose={() => setModalIsOpen(false)}
+              items={outlineItems}
+              seriesOutline={seriesArticlesOutline}
+            />
           </div>
       )}
       </PageLayout>
@@ -117,6 +147,21 @@ export async function getStaticPaths() {
   }
 }
 
+export type OutlineItem = {
+  label: string
+  href: string
+  children?: {
+    [index: number]: OutlineItem
+  }
+}
+export type SeriesOutlineItem = {
+  title: string
+  slug: string
+  href: string
+  index: number
+  isCurrent: boolean
+}
+
 export async function getStaticProps(context: any) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = `` } = context.params
@@ -129,11 +174,84 @@ export async function getStaticProps(context: any) {
       title,
       publishDate,
       summary,
+      series,
+      seriesIndex,
+      "seriesTitle": series->seriesTitle,
       "imageUrl": image.asset->url,
       "authorName": author->name,
       body
     }
   `, { slug: slug.toLowerCase() })
+
+  const isHeadingBlock = (block: any) => [`h2`, `h3`, `h4`].includes(block.style)
+  const isSeriesArticle = () => Boolean(article.series)
+  let seriesArticlesOutline: SeriesOutlineItem[] = []
+
+  if (isSeriesArticle()) {
+    const seriesArticles = await client.fetch(`
+      *[_type == "article" && series._ref == $seriesRef] | order(seriesIndex asc) {
+        title,
+        seriesIndex,
+        slug
+      }
+    `, { seriesRef: article.series._ref })
+    seriesArticles.forEach(seriesArticle => {
+      let isCurrent = Boolean(seriesArticle.seriesIndex === article.seriesIndex)
+      seriesArticlesOutline.push({
+        title: seriesArticle.title,
+        href: ``,
+        index: seriesArticle.seriesIndex,
+        isCurrent,
+        slug: seriesArticle.slug.current.toLowerCase()
+      })
+    })
+  }
+  const makeNestedOutline = () => {
+    const nestedHeadings: {
+      [index: number]: OutlineItem
+    } = {}
+    const headingBlocks = article.body.filter(block => isHeadingBlock(block))
+    headingBlocks.forEach((headingBlock) => {
+
+      const level = parseInt(headingBlock.style.replace(`h`, ``))
+      const outlineItem = {
+        label: headingBlock.children[0].text,
+        href: `#${kebabCase(headingBlock.children[0].text)}`
+      }
+
+      switch (level) {
+        case 2: {
+          const idx = Object.keys(nestedHeadings).length ? Object.keys(nestedHeadings).length : 0
+          nestedHeadings[idx] = outlineItem
+          break
+        }
+        case 3: {
+          const latestH2Idx = Object.keys(nestedHeadings).length - 1
+          if (nestedHeadings[latestH2Idx].children) {
+            const idx = Object.keys(nestedHeadings[latestH2Idx].children!).length
+            nestedHeadings[latestH2Idx].children![idx] = outlineItem
+          } else {
+            nestedHeadings[latestH2Idx].children = {}
+            nestedHeadings[latestH2Idx].children![0] = outlineItem
+          }
+          break
+        }
+        case 4: {
+          const latestH2Idx = Object.keys(nestedHeadings).length - 1
+          const latestH3Idx = Object.keys(nestedHeadings[latestH2Idx].children!).length - 1
+          if (nestedHeadings[latestH2Idx].children![latestH3Idx].children) {
+            const idx = Object.keys(nestedHeadings[latestH2Idx].children![latestH3Idx].children!).length
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children![idx] = outlineItem
+          } else {
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children = {}
+            nestedHeadings[latestH2Idx].children![latestH3Idx].children![0] = outlineItem
+          }
+          break
+        }
+      }
+    })
+    return nestedHeadings
+  }
 
   let imgCount = 0
     await Promise.all(
@@ -166,7 +284,9 @@ export async function getStaticProps(context: any) {
 
   return {
     props: {
-      article
+      article,
+      outlineItems: makeNestedOutline(),
+      seriesArticlesOutline
     }
   }
 }
