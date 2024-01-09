@@ -9,7 +9,7 @@ import { AnchoredHeading } from '../../components/shared/AnchoredHeading'
 import { ArticleBodyImage } from './ArticleBodyImage'
 import styles from './article.module.scss'
 import CustomIcon from '../../components/shared/CustomIcon'
-import { OutlineModal } from './modal/OutlineModal'
+import { OutlineModal } from '../../components/blog/modal/OutlineModal'
 import kebabCase from '../../util/kebabCase'
 
 interface BlogPostProps {
