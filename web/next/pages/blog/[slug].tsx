@@ -156,6 +156,7 @@ export type OutlineItem = {
 }
 export type SeriesOutlineItem = {
   title: string
+  slug: string
   href: string
   index: number
   isCurrent: boolean
@@ -190,7 +191,8 @@ export async function getStaticProps(context: any) {
     const seriesArticles = await client.fetch(`
       *[_type == "article" && series._ref == $seriesRef] | order(seriesIndex asc) {
         title,
-        seriesIndex
+        seriesIndex,
+        slug
       }
     `, { seriesRef: article.series._ref })
     seriesArticles.forEach(seriesArticle => {
@@ -199,13 +201,11 @@ export async function getStaticProps(context: any) {
         title: seriesArticle.title,
         href: ``,
         index: seriesArticle.seriesIndex,
-        isCurrent
+        isCurrent,
+        slug: seriesArticle.slug.current.toLowerCase()
       })
     })
   }
-
-  console.log(`SERIES ARTICLES: `, seriesArticlesOutline)
-
   const makeNestedOutline = () => {
     const nestedHeadings: {
       [index: number]: OutlineItem

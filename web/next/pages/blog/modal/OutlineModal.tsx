@@ -21,6 +21,7 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
     isOpen,
     onClose
 }) => {
+    const isPartOfSeries = seriesOutline && seriesOutline.length > 0
     const makeOutline = () => {
         // Recursively-create the nested outline lists
         const makeList = ( itemsLocal: { [index: number]: OutlineItem } ) => {
@@ -48,23 +49,30 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
     const makeSeriesOutline = () => {
         if (!seriesOutline) return null
         return (
-          <div>
-            {seriesOutline.map(seriesArticle => {
+          <ol>
+            {seriesOutline.map((seriesArticle) => {
                 return (
-                  <div key={`outline-item-series-${kebabCase(seriesArticle.title)}`}>
-                    <h3>{seriesArticle.title}</h3>
+                  <li key={`outline-item-series-${kebabCase(seriesArticle.title)}`}>
+                    <div
+                        style={{
+                            display: `inline-flex`,
+                            alignItems: `center`
+                        }}
+                    >
+                      <Link href={`${seriesArticle.slug}`} className={styles.seriesArticleLabel}>{seriesArticle.title}</Link>
+                    </div>
                     {seriesArticle.isCurrent && makeOutline()}
-                  </div>
+                  </li>
                 )
             })}
-          </div>
+          </ol>
         )
     }
     return (
       <div className={cs(styles.background, !isOpen && styles.closed)}>
         <div className={styles.content}>
           <div className={styles.header}>
-            <h2>Outline</h2>
+            <h2>{isPartOfSeries && `Series `}Outline</h2>
             <button onClick={onClose}>
               <CustomIcon
                         fileName='x-large'
@@ -74,7 +82,7 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
             </button>
           </div>
           <div className={styles.outlineWrapper}>
-            {seriesOutline && seriesOutline.length > 0 ?
+            {isPartOfSeries ?
                 makeSeriesOutline()
             :
                 makeOutline()
