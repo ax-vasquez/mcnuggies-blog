@@ -1,0 +1,53 @@
+@use 'variables' as vars;
+
+.blogFeed {
+    overflow: hidden;
+    :not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.blogControls {
+    position: sticky;
+    top: 3.5em;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1rem;
+    input {
+        flex: 1;
+    }
+}
+
+.categoriesWrapper {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.categoriesFilters {
+    margin-left: 0;
+    padding-left: 0;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.filterButton {
+    border: none;
+    border-radius: 50%;
+    background-color: vars.$gray-100;
+    display: flex;
+    margin: auto;
+    margin-left: 1rem;
+    padding: 0.5rem;
+    transition: 0.2s ease background-color;
+    svg {
+        color: vars.$gray-400;
+    }
+    &:hover {
+        background-color: vars.$gray-200;
+        transition: 0.2s ease background-color;
+    }
+}

@@ -1,10 +1,9 @@
 import React from 'react'
 import styles from './OutlineModal.module.scss'
-import cs from 'clsx'
-import CustomIcon from '../../../components/shared/CustomIcon'
 import { OutlineItem, SeriesOutlineItem } from '../[slug]'
 import Link from 'next/link'
 import kebabCase from '../../../util/kebabCase'
+import { Modal } from '../../../components/shared/modal/Modal'
 
 interface OutlineModalProps {
     items: {
@@ -69,26 +68,18 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
         )
     }
     return (
-      <div className={cs(styles.background, !isOpen && styles.closed)}>
-        <div className={styles.content}>
-          <div className={styles.header}>
-            <h2>{isPartOfSeries && `Series `}Outline</h2>
-            <button onClick={onClose}>
-              <CustomIcon
-                        fileName='x-large'
-                        height={22}
-                        width={22}
-                    />
-            </button>
-          </div>
-          <div className={styles.outlineWrapper}>
-            {isPartOfSeries ?
+      <Modal
+        title={`${isPartOfSeries ? `Series ` : ``}Outline`}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <div className={styles.outlineWrapper}>
+          {isPartOfSeries ?
                 makeSeriesOutline()
             :
                 makeOutline()
             }
-          </div>
         </div>
-      </div>
+      </Modal>
     )
 }

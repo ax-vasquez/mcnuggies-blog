@@ -117,7 +117,7 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, ser
               onClick={() => setModalIsOpen(!modalIsOpen)}
             >
               <CustomIcon
-                fileName="card-list"
+                fileName="bootstrap-card-list"
                 height={32}
                 width={32}
               />

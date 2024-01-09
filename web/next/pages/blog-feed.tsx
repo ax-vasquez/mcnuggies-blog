@@ -8,6 +8,10 @@ import FeedItem from "../components/feedItem/FeedItem"
 import { SanityBlock, SanityKeyed } from 'sanity-codegen'
 import { Category } from '../components/shared/Category'
 import { NoMatchFound } from '../components/pages/blog-feed/NoMatchFound'
+import CustomIcon from '../components/shared/CustomIcon'
+import styles from './BlogFeed.module.scss'
+import { FilterModal } from './blog/modal/FilterModal'
+import { Modal } from '../components/shared/modal/Modal'
 
 type ArticleResponse = {
   title: string
@@ -27,6 +31,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 
     const [activeCategories, setActiveCategories] = useState([] as string[])
     const [searchText, setSearchText] = useState(``)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     /**
      * Handler to add/remove active categories to the stateful array
@@ -112,13 +117,20 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             metaDescription={`Searchable & filterable blog feed for ${process.env.HOST}`}
         >
         <div className='blog-feed-container'>
-          <div className='blog-controls'>
+          <div className={styles.blogControls}>
             <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-            <ul data-cy="blog-category-filters" className='categories-filter'>{allCategories.map(category => (<Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} />))}</ul>
+            <button className={styles.filterButton}
+              onClick={() => setModalIsOpen(!modalIsOpen)}
+            >
+              <CustomIcon
+                fileName='bootstrap-filter'
+                width={32}
+                height={32}
+              />
+            </button>
           </div>
-          <div className="blog-feed" data-cy="blog-feed">
+          <div className={styles.blogFeed} data-cy="blog-feed">
             { shownArticles.length > 0 ?
-
               shownArticles
               .map(article => {
                         const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
@@ -140,7 +152,16 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             }
           </div>
         </div>
-
+        <Modal
+              title={`Filters`}
+              isOpen={modalIsOpen}
+              onClose={() => setModalIsOpen(false)}
+        >
+          <div className={styles.categoriesWrapper}>
+            <h3>Categories</h3>
+            <ul data-cy="blog-category-filters" className={styles.categoriesFilters}>{allCategories.map(category => (<li key={`category-${kebabCase(category)}`}><Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} /></li>))}</ul>
+          </div>
+        </Modal>
       </PageLayout>
     )
 }
@@ -162,6 +183,5 @@ export async function getStaticProps() {
       }
     }
 }
-
 
 export default BlogFeed

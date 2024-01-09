@@ -44,7 +44,7 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
                 href={`#${id}`}
             >
           <CustomIcon
-                    fileName="link-45deg"
+                    fileName="bootstrap-link-45deg"
                     height={32}
                     width={32}
                     onClick={() => {
