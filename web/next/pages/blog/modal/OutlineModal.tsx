@@ -83,3 +83,5 @@ export const OutlineModal: React.FC<OutlineModalProps> = ({
       </Modal>
     )
 }
+
+export default OutlineModal
