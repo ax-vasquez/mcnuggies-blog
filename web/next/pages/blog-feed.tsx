@@ -10,7 +10,6 @@ import { Category } from '../components/shared/Category'
 import { NoMatchFound } from '../components/pages/blog-feed/NoMatchFound'
 import CustomIcon from '../components/shared/CustomIcon'
 import styles from './BlogFeed.module.scss'
-import { FilterModal } from './blog/modal/FilterModal'
 import { Modal } from '../components/shared/modal/Modal'
 
 type ArticleResponse = {
