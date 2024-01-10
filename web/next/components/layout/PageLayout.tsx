@@ -5,6 +5,7 @@ import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
 import Image from 'next/image'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import Script from 'next/script'
 
 interface PageLayoutProps {
     pageTitle?: string
@@ -54,8 +55,8 @@ export const PageLayout = ({
               <title>{`mcnuggies | ${pageTitle}`}</title>
               <meta name='description' content={metaDescription} />
               <link rel="icon" href="/mcnuggies.ico" />
-              <script defer data-domain="mcnuggies.dev" src="https://plausible.io/js/script.js"></script>
             </Head>
+            <Script defer data-domain="mcnuggies.dev" src="https://plausible.io/js/script.js" />
             <main>
               {children}
               <SpeedInsights />
