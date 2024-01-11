@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleShowSidebar } from "../../../redux/sidebarSlice"
 
 interface OptionConfig {
     label: string
@@ -17,9 +19,10 @@ export interface SidebarOptionConfig {
 const SidebarOption: FunctionComponent<SidebarOptionConfig> = ({
     option
 }) => {
+  const dispatch = useDispatch()
     return (
       <div className='sidebar-option-row' id="sidebar-option">
-        <Link href={option.to!} passHref>
+        <Link href={option.to!} passHref onClick={() => dispatch(toggleShowSidebar())}>
           <div className='sidebar-option-row-content'>
             <span>
               {option.label}
