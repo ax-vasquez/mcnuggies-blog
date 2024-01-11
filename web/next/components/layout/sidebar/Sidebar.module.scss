@@ -7,13 +7,18 @@
     background-color: vars.$gray-600;
     height: 100%;
     overflow: hidden;
-    width: 20%;
     transition: 0.5s ease;
     a {
         text-decoration: none;
     }
     >:first-child {
         margin-top: 1rem;
+    }
+    @media screen and (min-width: 480px) {
+        width: 25%;
+    }
+    @media screen and (max-width: 480px) {
+        width: 60%
     }
 
     :global(.sidebar-option-row) {
