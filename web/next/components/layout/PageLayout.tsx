@@ -24,7 +24,7 @@ export const PageLayout = ({
     imgSrc
 }: PageLayoutProps) => {
     return (
-      <div className={styles.siteContent}>
+      <>
         <Head>
           <title>{`mcnuggies | ${pageTitle}`}</title>
           <meta name='description' content={metaDescription} />
@@ -61,6 +61,6 @@ export const PageLayout = ({
           {children}
         </main>
         <Footer />
-      </div>
+      </>
     )
 }
