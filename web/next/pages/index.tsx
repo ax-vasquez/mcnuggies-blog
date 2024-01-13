@@ -9,6 +9,19 @@ const Home: NextPage = () => {
       pageTitle='Home'
       metaDescription='Yet another dev blog & portfolio site with a focus on anything an adult observably-afflicted with ADHD might focus on.'
     >
+      {/* TODO: inline-styles only due to this being a temporary area; I intend to replace this, but not sure with what yet */}
+      <div
+        style={{
+          display: `flex`,
+          justifyContent: `center`,
+          marginTop: `1rem`,
+          marginBottom: `2rem`
+        }}
+      >
+        <h1>
+          mcnuggies.dev
+        </h1>
+      </div>
       <RootPageSection
           title='Blog'
           iconFileName='bootstrap-book'
