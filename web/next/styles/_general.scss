@@ -35,6 +35,20 @@ main {
     font-size: 20px;
     color: vars.$gray-600;
     text-align: justify;
+    max-width: 700px;
+    margin: auto;
+    @media (min-width: vars.$mobileS) {
+        margin-bottom: 100px;
+    }
+    @media (min-width: vars.$tablet) {
+        margin-bottom: 400px;
+    }
+    .linkedin-logo {
+        color: vars.$linkedin;
+    }
+    >:not(:first-child) {
+        margin-top: 43px;
+    }
 }
 
 h1,
@@ -42,7 +56,7 @@ h2,
 h3,
 h4 {
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0;
 }
 
 // Style for ALL list items (in all levels of both ordered lists and unordered lists)

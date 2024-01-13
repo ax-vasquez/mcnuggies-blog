@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import styles from './PageLayout.module.scss'
+import Footer from './footer/Footer'
 
 interface PageLayoutProps {
     pageTitle?: string
@@ -56,11 +57,10 @@ export const PageLayout = ({
             </div>
           </div>
         )}
-        <>
-          <main>
-            {children}
-          </main>
-        </>
+        <main>
+          {children}
+        </main>
+        <Footer />
       </div>
     )
 }

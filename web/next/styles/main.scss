@@ -6,24 +6,6 @@
 @use 'page_template_article';
 @use 'variables' as vars;
 
-main {
-    max-width: 700px;
-    font-size: 20px;
-    margin: auto;
-    @media (min-width: vars.$mobileS) {
-        margin-bottom: 100px;
-    }
-    @media (min-width: vars.$tablet) {
-        margin-bottom: 400px;
-    }
-    .linkedin-logo {
-        color: vars.$linkedin;
-    }
-    >:not(:first-child) {
-        margin-top: 43px;
-    }
-}
-
 .highlighted-text {
     border-radius: 0.25rem;
     padding: 0.25rem;
