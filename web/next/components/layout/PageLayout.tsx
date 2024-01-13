@@ -4,7 +4,6 @@ import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
-import Footer from './footer/Footer'
 import HeroImage from './hero-image/HeroImage'
 
 interface PageLayoutProps {
@@ -45,7 +44,6 @@ export const PageLayout = ({
         <main>
           {children}
         </main>
-        <Footer />
       </>
     )
 }
