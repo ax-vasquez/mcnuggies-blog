@@ -35,12 +35,13 @@ main {
     font-size: 20px;
     color: vars.$gray-600;
     text-align: justify;
-    max-width: 700px;
-    margin: auto;
-    @media (min-width: vars.$mobileS) {
+    @media screen and (max-width: vars.$mobileL) {
         margin-bottom: 100px;
+        margin: auto 24px;
     }
-    @media (min-width: vars.$tablet) {
+    @media screen and (min-width: vars.$mobileL) {
+        margin: auto;
+        max-width: 700px;
         margin-bottom: 400px;
     }
     .linkedin-logo {

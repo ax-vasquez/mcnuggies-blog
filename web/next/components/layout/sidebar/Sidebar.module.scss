@@ -14,10 +14,10 @@
     >:first-child {
         margin-top: 1rem;
     }
-    @media screen and (min-width: 480px) {
+    @media screen and (min-width: vars.$mobileS) {
         width: 25%;
     }
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: vars.$mobileS) {
         width: 60%
     }
 
