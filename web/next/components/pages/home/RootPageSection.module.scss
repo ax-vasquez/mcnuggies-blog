@@ -11,7 +11,7 @@
         justify-content: center;
         color: vars.$gray-600;
         svg {
-            margin-right: 2rem;
+            margin-right: 1rem;
             color: vars.$indigo-500;
             @media (min-width: vars.$mobileS) {
                 display: none;
@@ -22,21 +22,9 @@
         }
         .sectionTitle {
             font-weight: 800;
-            @media (min-width: vars.$mobileS) {
-                font-size: 24px;
-            }
-            @media (min-width: vars.$tablet) {
-                font-size: 48px;
-            }
         }
         .sectionDescription {
             font-weight: 300;
-            @media (min-width: vars.$mobileS) {
-                font-size: 16px;
-            }
-            @media (min-width: vars.$tablet) {
-                font-size: 32px;
-            }
         }
     }
     &:hover {
@@ -48,6 +36,6 @@
         padding: 0.5rem 1rem 0.5rem 1rem;
     }
     @media (min-width: vars.$tablet) {
-        padding: 2rem;
+        padding: 1rem;
     }
 }
