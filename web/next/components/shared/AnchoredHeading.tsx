@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import CustomIcon from './CustomIcon'
 import kebabCase from '../../util/kebabCase'
-import style from './AnchoredHeading.module.scss'
+import styles from './AnchoredHeading.module.scss'
 
 interface AnchoredHeadingProps {
     component: React.ReactNode
@@ -38,10 +38,12 @@ export const AnchoredHeading: React.FC<AnchoredHeadingProps> = ({
     }
 
     return (
-      <div className={style.container}>
+      <div className={styles.container}>
         {pickHeader()}
         <Link
                 href={`#${id}`}
+                passHref
+                className={styles.anchor}
             >
           <CustomIcon
                     fileName="bootstrap-link-45deg"

@@ -1,0 +1,25 @@
+@use 'variables' as vars;
+@use 'mixins' as mixins;
+
+.navBar {
+    background-color: vars.$gray-800;
+    padding-left: 1rem;
+    color: vars.$gray-100;
+}
+
+.menuIcon {
+    left: 0;
+    margin-right: auto;
+    svg {
+        @include mixins.nav-icon-hover-transition();
+    }
+}
+
+.appIcon {
+    right: 0;
+    margin-left: auto;
+    display: flex;
+    img {
+        @include mixins.nav-icon-hover-transition();
+    }
+}

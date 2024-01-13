@@ -23,7 +23,6 @@
 
 .input-group {
     border-color: vars.$card-border;
-
     &:not(:last-child) {
         margin-bottom: 1rem;
     }
@@ -32,28 +31,6 @@
         background-color: vars.$indigo-100;
         color: vars.$indigo-500;
     }
-}
-
-.navbar {
-    background-color: vars.$gray-800;
-    padding-left: 1rem;
-    color: vars.$gray-100;
-    .menu-icon {
-        left: 0;
-        margin-right: auto;
-        svg {
-            @include mixins.nav-icon-hover-transition();
-        }
-    }
-    .app-icon {
-        right: 0;
-        margin-left: auto;
-        display: flex;
-        img {
-            @include mixins.nav-icon-hover-transition();
-        }
-    }
-    
 }
 
 .carousel {

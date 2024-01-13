@@ -8,9 +8,9 @@ import FeedItem from "../components/feedItem/FeedItem"
 import { SanityBlock, SanityKeyed } from 'sanity-codegen'
 import { Category } from '../components/shared/Category'
 import { NoMatchFound } from '../components/pages/blog-feed/NoMatchFound'
-import CustomIcon from '../components/shared/CustomIcon'
 import styles from './BlogFeed.module.scss'
 import { Modal } from '../components/shared/modal/Modal'
+import BlogFeedControls from '../components/pages/blog-feed/BlogFeedControls'
 
 type ArticleResponse = {
   title: string
@@ -60,16 +60,6 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
     }
 
     /**
-     * Helper method to determine if an article should be shown, based on the currently-selected active
-     * categories.
-     */
-    const articleShouldBeVisible = (article: ArticleResponse) => {
-      const articleCategories = categoriesForArticle(article)
-      if (activeCategories.every(activeCategory => articleCategories.includes(activeCategory))) return true
-      return false
-    }
-
-    /**
      * Memoized list of all *distinct* categories, extracted from the current list of articles.
      */
     const allCategories = useMemo(() => {
@@ -91,6 +81,17 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
      *    currently active)
      */
     const shownArticles = useMemo(() => {
+
+      /**
+       * Helper method to determine if an article should be shown, based on the currently-selected active
+       * categories.
+       */
+      const articleShouldBeVisible = (article: ArticleResponse) => {
+        const articleCategories = categoriesForArticle(article)
+        if (activeCategories.every(activeCategory => articleCategories.includes(activeCategory))) return true
+        return false
+      }
+
       if (activeCategories.length === 0 && searchText.length === 0) {
         return allArticles
       }
@@ -115,21 +116,21 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             pageTitle="Blog"
             metaDescription={`Searchable & filterable blog feed for ${process.env.HOST}`}
         >
-        <div className='blog-feed-container'>
-          <div className={styles.blogControls}>
-            <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={(e) => setSearchText(e.target.value)}/>
-            <button className={styles.filterButton}
-              onClick={() => setModalIsOpen(!modalIsOpen)}
-            >
-              <CustomIcon
-                fileName='bootstrap-filter'
-                width={32}
-                height={32}
-              />
-            </button>
-          </div>
-          <div className={styles.blogFeed} data-cy="blog-feed">
-            { shownArticles.length > 0 ?
+        <div style={{
+          display: `flex`,
+          justifyContent: `center`,
+          marginTop: `2rem`,
+          marginBottom: `2rem`
+        }}>
+          <h1>mcnuggies.dev - blog</h1>
+        </div>
+        <BlogFeedControls
+          searchText={searchText}
+          searchTextHandler={(e) => setSearchText(e.target.value)}
+          filterButtonHandler={() => setModalIsOpen(!modalIsOpen)}
+        />
+        <div className={styles.blogFeed} data-cy="blog-feed">
+          { shownArticles.length > 0 ?
               shownArticles
               .map(article => {
                         const rowKey = `article-row-${kebabCase(article.title).toLowerCase()}`
@@ -149,7 +150,6 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
             :
               <NoMatchFound query={searchText}/>
             }
-          </div>
         </div>
         <Modal
               title={`Filters`}

@@ -27,10 +27,10 @@ export const RootPageSection: FunctionComponent<RootPageSectionProps> = ({
             >
           <div className={styles.sectionContentWrapper}>
             <CustomIcon
-                        fileName={iconFileName}
-                        height={128}
-                        width={128}
-                    />
+                fileName={iconFileName}
+                height={32}
+                width={32}
+            />
             <div>
               <div className={styles.sectionTitle}>
                 {title}

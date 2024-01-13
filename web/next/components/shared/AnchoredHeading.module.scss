@@ -1,8 +1,12 @@
 @use 'variables' as vars;
 
 .container {
+    >::before {
+        height: 4rem;
+        content: "";
+        display:block;
+    }
     display: flex;
-    margin: 3em 0 0.5em 0;
     div {
         margin-left: 0.5em;
         color: vars.$gray-300;
