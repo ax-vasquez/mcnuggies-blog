@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import kebabCase from '../../../util/kebabCase'
-import CustomIcon from '../../shared/CustomIcon'
+import kebabCase from '../../../../util/kebabCase'
+import CustomIcon from '../../../shared/CustomIcon'
 import styles from './TechStackIntegration.module.scss'
 
 interface TechStackIntegrationProps {
