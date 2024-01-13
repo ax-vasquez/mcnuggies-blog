@@ -2,11 +2,10 @@ import React from 'react'
 import Head from "next/head"
 import SiteNavigation from './nav/NavBar'
 import Sidebar from './sidebar/Sidebar'
-import Image from 'next/image'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
-import styles from './PageLayout.module.scss'
 import Footer from './footer/Footer'
+import HeroImage from './hero-image/HeroImage'
 
 interface PageLayoutProps {
     pageTitle?: string
@@ -37,25 +36,11 @@ export const PageLayout = ({
               options={[]}
           />
         {!!imgSrc && (
-          <div className={styles.heroImageContainer}>
-            {!!pageTitle && useTitleOverlay &&  (
-              <div className={styles.heroImageOverlay}>
-                <h1>{pageTitle}</h1>
-              </div>
-            )}
-            <div className={styles.heroImage}>
-              <Image
-                src={imgSrc}
-                height={0}
-                width={0}
-                sizes="100vw"
-                fill
-                alt='hero-image'
-                priority={true}
-                style={{ objectFit: `cover` }}
-              />
-            </div>
-          </div>
+          <HeroImage
+            pageTitle={pageTitle}
+            useTitleOverlay={useTitleOverlay}
+            imgSrc={imgSrc}
+          />
         )}
         <main>
           {children}
