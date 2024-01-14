@@ -7,15 +7,14 @@
     .integrationTitle {
         display: inline-flex;
         align-items: center;
+        margin: auto;
         transition: 0.2s ease;
         svg {
             margin-right: 0.5rem;
         }
-        @media (min-width: vars.$mobileS) {
-            font-size: 1.5rem;
-        }
-        @media (min-width: vars.$tablet) {
-            font-size: 2rem;
+        h3 {
+            margin: auto;
+            font-size: 24px;
         }
     }
     .integrationDescription {

@@ -32,9 +32,8 @@ blockquote {
 
 main {
     margin-top: 1rem;
-    font-size: 20px;
+    font-size: 18px;
     color: vars.$gray-600;
-    text-align: justify;
     @media screen and (max-width: vars.$laptop) {
         margin-bottom: 100px;
         margin: auto 24px;
