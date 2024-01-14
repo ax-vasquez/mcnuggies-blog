@@ -1,31 +1,22 @@
 @use 'variables' as vars;
 
+.creator-name {
+    margin: 0;
+}
+
+.creator-subtitle {
+    margin-bottom: 1rem;
+    color: vars.$gray-500;
+    font-style: italic;
+}
+
 .creator-bio {
     display: inline-flex;
     .creator-details {
         flex: 1;
         display: flex;
         flex-direction: column;
-        .creator-name {
-            margin-bottom: 1rem;
-            @media (min-width: vars.$mobileS) {
-                font-size: 32px;
-            }
-            @media (min-width: vars.$tablet) {
-                font-size: 48px;
-            }
-        }
-        .creator-socials {
-            bottom: 0;
-            margin-top: auto;
-            display: inline-flex;
-            >:not(:last-child) {
-                margin-right: 1rem;
-            }
-            >:hover {
-                cursor: pointer;
-            }
-        }
+        
     }
 }
 

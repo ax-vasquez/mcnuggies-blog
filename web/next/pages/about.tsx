@@ -37,6 +37,7 @@ const About: NextPage<AboutPageProps> = (props) => {
         <h1 className='creator-name' data-cy='author-name'>
           {creator.name!}
         </h1>
+        <p className='creator-subtitle'>Creator & maintainer of mcnuggies.dev</p>
         <div className='creator-bio'>
           <CreatorImage
             imageUrl={creator.imageUrl}
