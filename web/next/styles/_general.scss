@@ -35,11 +35,11 @@ main {
     font-size: 20px;
     color: vars.$gray-600;
     text-align: justify;
-    @media screen and (max-width: vars.$mobileL) {
+    @media screen and (max-width: vars.$laptop) {
         margin-bottom: 100px;
         margin: auto 24px;
     }
-    @media screen and (min-width: vars.$mobileL) {
+    @media screen and (min-width: vars.$laptop) {
         margin: auto;
         max-width: 700px;
         margin-bottom: 400px;
