@@ -27,7 +27,9 @@ export const TechStackIntegration: FunctionComponent<TechStackIntegrationProps> 
                     height={32}
                     width={32}
                 />
-          {provider}
+          <h3>
+            {provider}
+          </h3>
         </div>
         <div className={styles.integrationDescription}>
           {description}

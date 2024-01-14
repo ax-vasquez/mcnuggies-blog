@@ -25,10 +25,12 @@ const TechStackList: React.FC<TechStackListProps> = ({
         <div className={styles.labelContainer}>
           {label}
         </div>
-        {integrations.map(integration => <TechStackIntegration
-            key={kebabCase(integration.provider)}
-            {...integration}
-        />)}
+        <div className={styles.listContainer}>
+          {integrations.map(integration => <TechStackIntegration
+              key={kebabCase(integration.provider)}
+              {...integration}
+          />)}
+        </div>
       </>
     )
 }

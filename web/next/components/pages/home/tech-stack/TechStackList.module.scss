@@ -9,3 +9,12 @@
         padding: 0;
     }
 }
+
+.listContainer {
+    >:first-child {
+        margin-top: 1rem;
+    }
+    >:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
