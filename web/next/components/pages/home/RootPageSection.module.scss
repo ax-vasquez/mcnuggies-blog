@@ -13,10 +13,10 @@
         svg {
             margin-right: 1rem;
             color: vars.$indigo-500;
-            @media (min-width: vars.$mobileS) {
+            @media  screen and (max-width: vars.$laptop) {
                 display: none;
             }
-            @media (min-width: vars.$tablet) {
+            @media screen and (min-width: vars.$laptop) {
                 display: inherit;
             }
         }
@@ -32,10 +32,10 @@
         transition: 0.2s ease;
         box-shadow: 0 0 4px 4px vars.$indigo-100;
     }
-    @media (min-width: vars.$mobileS) {
+    @media  screen and (max-width: vars.$laptop) {
         padding: 0.5rem 1rem 0.5rem 1rem;
     }
-    @media (min-width: vars.$tablet) {
+    @media screen and (min-width: vars.$laptop) {
         padding: 1rem;
     }
 }
