@@ -2,22 +2,6 @@
 
 .creator-bio {
     display: inline-flex;
-    .creator-image-container {
-        position: relative;
-        height: 256px;
-        width: 256px;
-        margin-right: 2rem;
-        img {
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        @media (min-width: vars.$mobileS) {
-            display: none;
-        }
-        @media (min-width: vars.$tablet) {
-            display: inherit;
-        }
-    }
     .creator-details {
         flex: 1;
         display: flex;
