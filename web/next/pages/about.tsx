@@ -3,8 +3,8 @@ import { NextPage } from 'next'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
 import CreatorImage from '../components/pages/about/CreatorImage'
+import CreatorSocials from '../components/pages/about/CreatorSocials'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
-import CustomIcon from '../components/shared/CustomIcon'
 import client from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
 import kebabCase from '../util/kebabCase'
@@ -34,44 +34,26 @@ const About: NextPage<AboutPageProps> = (props) => {
                 metaDescription={`Learn more about the creator & curator of ${process.env.HOST}`}
             >
         <br />
+        <h1 className='creator-name' data-cy='author-name'>
+          {creator.name!}
+        </h1>
         <div className='creator-bio'>
           <CreatorImage
             imageUrl={creator.imageUrl}
             base64Image={creator.imageBase64}
           />
           <div className='creator-details'>
-            <div className='creator-name' data-cy='author-name'>
-              {creator.name!}
-            </div>
             <div data-cy='author-description'>
               <PortableText
                 value={creator.bio!}
               />
             </div>
-            <div className='creator-socials'>
-              {!!creator.githubUrl && (
-                <CustomIcon
-              data-cy='github'
-              fileName='logo-github'
-              height={32}
-              width={32}
-              className='github-logo'
-              onClick={() => window.open(creator.githubUrl!, `_blank`)}
-            />
-          )}
-              {!!creator.linkedInUrl && (
-                <CustomIcon
-                data-cy='linkedin'
-              fileName='logo-linkedin'
-              height={32}
-              width={32}
-              className='linkedin-logo'
-              onClick={() => window.open(creator.linkedInUrl!, `_blank`)}
-            />
-          )}
-            </div>
           </div>
         </div>
+        <CreatorSocials
+          githubUrl={creator.githubUrl}
+          linkedInUrl={creator.linkedInUrl}
+        />
         <div className='work-history' data-cy='work-history'>
           <div className='section-title'>
             <h2>Work history</h2>
