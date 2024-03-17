@@ -106,7 +106,7 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, ser
               </div>
             </div>
             <br />
-            <div data-cy="article-body">
+            <div data-cy="article-body" className={styles.articleBodyWrapper}>
               <PortableText
               value={article.body}
               components={blogPostComponents}
