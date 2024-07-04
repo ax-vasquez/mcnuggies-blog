@@ -42,6 +42,24 @@ export default {
       type: `url`,
     },
     {
+      title: `Profession`,
+      validation: (Rule) => Rule.required(),
+      name: `profession`,
+      type: `string`,
+    },
+    {
+      title: `Career Start Date`,
+      validation: (Rule) => Rule.required(),
+      name: `careerStartDate`,
+      type: `date`,
+    },
+    {
+      title: `Open to Work`,
+      validation: (Rule) => Rule.required(),
+      name: `openToWork`,
+      type: `boolean`,
+    },
+    {
       name: `bio`,
       title: `Bio`,
       validation: (Rule) => Rule.required(),

@@ -1,0 +1,21 @@
+@use 'variables' as vars;
+
+.yearsExperience {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        flex: 1;
+    }
+    p {
+        color: vars.$gray-400;
+        margin: auto;
+        font-style: italic;
+    }
+}
+
+.bioSection {
+    margin: 2rem 0;
+}

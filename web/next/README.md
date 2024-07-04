@@ -14,8 +14,6 @@ This configuration also applies to `.env.production`, but that one is only used 
 ```
 SANITY_PROJECT=<PROJECT_ID>
 SANITY_DATASET=<DATASET>
-
-PLAUSIBLE_API_KEY=<PLAUSIBLE_API_KEY>
 ```
 ## GROQ
 

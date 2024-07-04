@@ -8,6 +8,7 @@ import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import client from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
 import kebabCase from '../util/kebabCase'
+import styles from './About.module.scss'
 
 type EmployerProps = Employer & {
   imageUrl: string
@@ -23,38 +24,58 @@ interface AboutPageProps {
   employers: EmployerProps[]
 }
 
+const getYearsExperience = (startDate: Date) => {
+  var ageDifMs = Date.now() - startDate;
+  var ageDate = new Date(ageDifMs); // miliseconds from epoch
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 const About: NextPage<AboutPageProps> = (props) => {
   const { creators, employers } = props
 
   const creator = creators[0]
 
+  console.log(creator)
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
                 metaDescription={`Learn more about the creator & curator of ${process.env.HOST}`}
             >
         <br />
-        <h1 className='creator-name' data-cy='author-name'>
-          {creator.name!}
-        </h1>
-        <p className='creator-subtitle'>Creator & maintainer of mcnuggies.dev</p>
+        <div>
+          <h1>About mcnuggies.dev</h1>
+          <p>
+            mcnuggies.dev is a work-in-progress blog and portfolio site. Progress on it is intermittent and sporadic because life is just weird 
+            sometimes. Learn more about the site creator and maintainer!
+          </p>
+        </div>
         <div className='creator-bio'>
           <CreatorImage
             imageUrl={creator.imageUrl}
             base64Image={creator.imageBase64}
           />
+          {/* TODO: Make this an "at-a-glance" section */}
           <div className='creator-details'>
-            <div data-cy='author-description'>
-              <PortableText
-                value={creator.bio!}
-              />
+            <h2 className='creator-name' data-cy='author-name'>
+              {creator.name!}
+            </h2>
+            <div className={styles.yearsExperience}>
+              <span>{creator.profession}</span>
+              <p>{getYearsExperience(new Date(creator.careerStartDate!))} years experience</p>
             </div>
+            {creator.openToWork && <span>I'm currently open to work!</span>}
           </div>
         </div>
-        <CreatorSocials
+        <div className={styles.bioSection}>
+          <PortableText
+            data-cy='author-description'
+            value={creator.bio!}
+          />
+        </div>
+        {/* <CreatorSocials
           githubUrl={creator.githubUrl}
           linkedInUrl={creator.linkedInUrl}
-        />
+        /> */}
         <div className='work-history' data-cy='work-history'>
           <div className='section-title'>
             <h2>Work history</h2>
@@ -85,7 +106,10 @@ export async function getStaticProps() {
           "imageBase64": image.asset->metadata.lqip,
           githubUrl,
           linkedInUrl,
-          bio
+          bio,
+          careerStartDate,
+          openToWork,
+          profession,
       }
     `)
 
