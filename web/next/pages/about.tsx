@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
 import CreatorImage from '../components/pages/about/CreatorImage'
-import CreatorSocials from '../components/pages/about/CreatorSocials'
+// import CreatorSocials from '../components/pages/about/CreatorSocials'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import client from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
@@ -72,6 +72,7 @@ const About: NextPage<AboutPageProps> = (props) => {
             value={creator.bio!}
           />
         </div>
+        {/* TODO: Use these in the new bio area */}
         {/* <CreatorSocials
           githubUrl={creator.githubUrl}
           linkedInUrl={creator.linkedInUrl}
