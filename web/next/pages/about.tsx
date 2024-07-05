@@ -45,7 +45,7 @@ const About: NextPage<AboutPageProps> = (props) => {
         <div>
           <h1>About mcnuggies.dev</h1>
           <p>
-            mcnuggies.dev is a work-in-progress blog and portfolio site. Progress on it is intermittent and sporadic because life is just weird 
+            mcnuggies.dev is a work-in-progress blog and portfolio site. Progress on it is intermittent and sporadic because life is just weird
             sometimes. Learn more about the site creator and maintainer!
           </p>
         </div>
