@@ -87,6 +87,13 @@ export interface Creator extends SanityDocument {
   };
 
   /**
+   * Github Username — `string`
+   *
+   *
+   */
+  githubUsername?: string;
+
+  /**
    * Github — `url`
    *
    *
@@ -108,11 +115,11 @@ export interface Creator extends SanityDocument {
   profession?: string;
 
   /**
-   * Career Start Date — `number`
+   * Career Start Date — `date`
    *
    *
    */
-  careerStartDate?: number;
+  careerStartDate?: string;
 
   /**
    * Open to Work — `boolean`

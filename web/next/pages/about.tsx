@@ -3,12 +3,12 @@ import { NextPage } from 'next'
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
 import CreatorImage from '../components/pages/about/CreatorImage'
-// import CreatorSocials from '../components/pages/about/CreatorSocials'
+import CreatorSocials from '../components/pages/about/CreatorSocials'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import client from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
 import kebabCase from '../util/kebabCase'
-import styles from './About.module.scss'
+import GitHubCalendar from 'react-github-calendar';
 
 type EmployerProps = Employer & {
   imageUrl: string
@@ -25,7 +25,7 @@ interface AboutPageProps {
 }
 
 const getYearsExperience = (startDate: Date) => {
-  var ageDifMs = Date.now() - startDate;
+  var ageDifMs = Date.now().valueOf() - startDate.valueOf();
   var ageDate = new Date(ageDifMs); // miliseconds from epoch
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
@@ -49,34 +49,39 @@ const About: NextPage<AboutPageProps> = (props) => {
             sometimes. Learn more about the site creator and maintainer!
           </p>
         </div>
-        <div className='creator-bio'>
+        <div className='maintainer-name-and-title'>
+          <h3 className='creator-name' data-cy='author-name'>
+            {creator.name!}
+          </h3>
+          <div className='profession'>
+            <span>{creator.profession}</span>
+            <p>{getYearsExperience(new Date(creator.careerStartDate!))} years experience</p>
+          </div>
+        </div>
+        <div className='creator-details'>
           <CreatorImage
             imageUrl={creator.imageUrl}
             base64Image={creator.imageBase64}
           />
-          {/* TODO: Make this an "at-a-glance" section */}
           <div className='creator-details'>
-            <h2 className='creator-name' data-cy='author-name'>
-              {creator.name!}
-            </h2>
-            <div className={styles.yearsExperience}>
-              <span>{creator.profession}</span>
-              <p>{getYearsExperience(new Date(creator.careerStartDate!))} years experience</p>
+            <div className='creator-bio'>
+              <PortableText
+                data-cy='author-description'
+                value={creator.bio!}
+              />
             </div>
-            {creator.openToWork && <span>I'm currently open to work!</span>}
           </div>
         </div>
-        <div className={styles.bioSection}>
-          <PortableText
-            data-cy='author-description'
-            value={creator.bio!}
+        <div className='creator-socials-wrapper'>
+          <CreatorSocials
+            githubUrl={creator.githubUrl}
+            linkedInUrl={creator.linkedInUrl}
           />
         </div>
-        {/* TODO: Use these in the new bio area */}
-        {/* <CreatorSocials
-          githubUrl={creator.githubUrl}
-          linkedInUrl={creator.linkedInUrl}
-        /> */}
+        {creator.githubUsername && <div className='github-activity'>
+          <h2>GitHub Activity</h2>
+          <GitHubCalendar colorScheme="light" username={creator.githubUsername} />
+        </div>}
         <div className='work-history' data-cy='work-history'>
           <div className='section-title'>
             <h2>Work history</h2>
@@ -111,6 +116,7 @@ export async function getStaticProps() {
           careerStartDate,
           openToWork,
           profession,
+          githubUsername,
       }
     `)
 

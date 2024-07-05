@@ -35,6 +35,7 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.1.2",
     "react-dom": "18.2.0",
+    "react-github-calendar": "^4.1.6",
     "react-inlinesvg": "^2.3.0",
     "react-redux": "^7.2.6",
     "react-syntax-highlighter": "^15.4.5",
@@ -44,6 +45,7 @@
     "typescript": "4.5.5"
   },
   "devDependencies": {
+    "@types/next": "^9.0.0",
     "eslint-plugin-cypress": "^2.15.1"
   }
 }

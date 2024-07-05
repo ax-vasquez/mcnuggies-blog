@@ -32,6 +32,11 @@ export default {
       },
     },
     {
+      title: `Github Username`,
+      name: `githubUsername`,
+      type: `string`,
+    },
+    {
       title: `Github`,
       name: `githubUrl`,
       type: `url`,
