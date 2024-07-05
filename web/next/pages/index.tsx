@@ -3,6 +3,34 @@ import { PageLayout } from '../components/layout/PageLayout'
 import { RootPageSection } from '../components/pages/home/RootPageSection'
 import TechStackList from '../components/pages/home/tech-stack/TechStackList'
 
+const rootPageConfigs = {
+  0: {
+    title: 'Blog',
+    href: '/blog-feed',
+    iconFileName: 'bootstrap-book',
+    description: "My occasional guides, reviews and general musings"
+  },
+  1: {
+    title: 'Projects',
+    href: '/projects',
+    iconFileName: 'bootstrap-hammer',
+    description: "Take a peek at some of the projects I've worked on"
+  },
+  2: {
+    title: 'About',
+    href: '/about',
+    iconFileName: 'bootstrap-info-circle',
+    description: "Find out more about mcnuggies.dev and its creator"
+  }
+} as {
+  [idx: number]: {
+    title: 'Blog' | 'Projects' | 'About'
+    href: '/blog-feed' | '/projects' | '/about'
+    iconFileName: 'bootstrap-book' | 'bootstrap-hammer' | 'bootstrap-info-circle'
+    description: string
+  }
+}
+
 const Home: NextPage = () => {
   return (
     <PageLayout
@@ -22,18 +50,23 @@ const Home: NextPage = () => {
           mcnuggies.dev
         </h1>
       </div>
-      <RootPageSection
-          title='Blog'
-          iconFileName='bootstrap-book'
-          href='/blog-feed'
-          description="My occasional guides, reviews and general musings"
-        />
-      <RootPageSection
-          title='About'
-          iconFileName='bootstrap-info-circle'
-          href='/about'
-          description="Find out more about mcnuggies.dev and its creator"
-        />
+      {Object.keys(rootPageConfigs).map(idx => {
+        const i = parseInt(idx)
+        const {
+          title,
+          iconFileName,
+          href, 
+          description
+        } = rootPageConfigs[i]
+        return (
+          <RootPageSection 
+            title={title}
+            iconFileName={iconFileName}
+            href={href}
+            description={description}
+          />
+        )
+      })}
 
       <TechStackList
         label={(

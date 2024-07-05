@@ -24,6 +24,12 @@ const SIDEBAR_OPTIONS = [
     },
     {
         option: {
+            label: `Projects`,
+            to: `/projects`
+        }
+    },
+    {
+        option: {
             label: `About`,
             to: `/about`
         }
