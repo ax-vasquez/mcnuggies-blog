@@ -1,31 +1,78 @@
 @use 'variables' as vars;
 
-.creator-name {
-    margin: 0;
+h1 {
+    text-align: center;
 }
 
-.creator-subtitle {
-    margin-bottom: 1rem;
-    color: vars.$gray-500;
-    font-style: italic;
-}
-
-.creator-bio {
+.creator-details {
     display: inline-flex;
+    width: 100%;
     .creator-details {
         flex: 1;
         display: flex;
         flex-direction: column;
-        
     }
 }
 
+.creator-socials-wrapper {
+    display: inline-flex;
+    width: 100%;
+    margin: 1rem 0;
+    >div {
+        flex: 1;
+    }
+}
+
+.github-activity {
+    margin-top: 2rem;
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+}
+
+.maintainer-name-and-title {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    .creator-name {
+        margin: 0;
+    }
+}
+
+.profession {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    span {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    p {
+        color: vars.$gray-400;
+        margin-left: 1rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        font-style: italic;
+    }
+}
+
+.creator-bio {
+
+}
+
 .work-history {
-    padding: 0 2rem 0 2rem;
+    margin-top: 2rem;
     width: 100%;
     .section-title {
         display: flex;
         justify-content: center;
+    }
+    @media (min-width: vars.$mobileS) {
+        padding: 0;
+    }
+    @media (min-width: vars.$tablet) {
+        padding: 0 2rem 0 2rem;
     }
 }
 

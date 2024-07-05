@@ -32,6 +32,11 @@ export default {
       },
     },
     {
+      title: `Github Username`,
+      name: `githubUsername`,
+      type: `string`,
+    },
+    {
       title: `Github`,
       name: `githubUrl`,
       type: `url`,
@@ -40,6 +45,24 @@ export default {
       title: `LinkedIn`,
       name: `linkedInUrl`,
       type: `url`,
+    },
+    {
+      title: `Profession`,
+      validation: (Rule) => Rule.required(),
+      name: `profession`,
+      type: `string`,
+    },
+    {
+      title: `Career Start Date`,
+      validation: (Rule) => Rule.required(),
+      name: `careerStartDate`,
+      type: `date`,
+    },
+    {
+      title: `Open to Work`,
+      validation: (Rule) => Rule.required(),
+      name: `openToWork`,
+      type: `boolean`,
     },
     {
       name: `bio`,

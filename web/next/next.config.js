@@ -19,7 +19,7 @@ const nextConfig = {
   env: {
     HOST: process.env.HOST,
     SANITY_PROJECT: process.env.SANITY_PROJECT,
-    SANITY_DATASET: process.env.SANITY_DATASET
+    SANITY_DATASET: process.env.SANITY_DATASET,
   }
 }
 

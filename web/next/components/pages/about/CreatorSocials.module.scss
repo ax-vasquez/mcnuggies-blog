@@ -4,6 +4,7 @@
     bottom: 0;
     margin-top: auto;
     display: inline-flex;
+    flex: 1;
     >:not(:last-child) {
         margin-right: 1rem;
     }

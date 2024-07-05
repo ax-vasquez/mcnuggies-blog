@@ -10,8 +10,7 @@
     "clean-next": "cd web/next && rm -rf node_modules",
     "clean-root": "rm -rf node_modules",
     "clean-studio": "cd web/studio && rm -rf node_modules",
-    "setup": "yarn && yarn setup-lerna && yarn setup-next && yarn setup-studio",
-    "setup-lerna": "yarn lerna bootstrap",
+    "setup": "yarn && yarn setup-next && yarn setup-studio",
     "setup-next": "cd web/next && yarn",
     "setup-studio": "cd web/studio && yarn && sanity install",
     "web": "cd web/next && yarn dev",
@@ -19,6 +18,7 @@
     "studio": "cd web/studio && yarn start"
   },
   "devDependencies": {
+    "@sanity/cli": "^3.49.0",
     "@types/node": "^17.0.21",
     "husky": "^7.0.4",
     "moment": "^2.29.2",

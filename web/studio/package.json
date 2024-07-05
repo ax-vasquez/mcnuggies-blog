@@ -9,7 +9,8 @@
   "scripts": {
     "tsc": "tsc",
     "start": "rm -rf node_modules && yarn && sanity dev",
-    "build": "sanity build"
+    "build": "sanity build",
+    "generateSchemaTypes": "sanity-codegen"
   },
   "keywords": [
     "sanity"
