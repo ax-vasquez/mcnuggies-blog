@@ -10,6 +10,7 @@
     "clean-next": "cd web/next && rm -rf node_modules",
     "clean-root": "rm -rf node_modules",
     "clean-studio": "cd web/studio && rm -rf node_modules",
+    "lint-next": "cd web/next && yarn lint",
     "setup": "yarn && yarn setup-next && yarn setup-studio",
     "setup-next": "cd web/next && yarn",
     "setup-studio": "cd web/studio && yarn && sanity install",

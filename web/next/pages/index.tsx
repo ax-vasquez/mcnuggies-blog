@@ -5,28 +5,28 @@ import TechStackList from '../components/pages/home/tech-stack/TechStackList'
 
 const rootPageConfigs = {
   0: {
-    title: 'Blog',
-    href: '/blog-feed',
-    iconFileName: 'bootstrap-book',
-    description: "My occasional guides, reviews and general musings"
+    title: `Blog`,
+    href: `/blog-feed`,
+    iconFileName: `bootstrap-book`,
+    description: `My occasional guides, reviews and general musings`
   },
   1: {
-    title: 'Projects',
-    href: '/projects',
-    iconFileName: 'bootstrap-hammer',
-    description: "Take a peek at some of the projects I've worked on"
+    title: `Projects`,
+    href: `/projects`,
+    iconFileName: `bootstrap-hammer`,
+    description: `Take a peek at some of the projects I've worked on`
   },
   2: {
-    title: 'About',
-    href: '/about',
-    iconFileName: 'bootstrap-info-circle',
-    description: "Find out more about mcnuggies.dev and its creator"
+    title: `About`,
+    href: `/about`,
+    iconFileName: `bootstrap-info-circle`,
+    description: `Find out more about mcnuggies.dev and its creator`
   }
 } as {
   [idx: number]: {
-    title: 'Blog' | 'Projects' | 'About'
-    href: '/blog-feed' | '/projects' | '/about'
-    iconFileName: 'bootstrap-book' | 'bootstrap-hammer' | 'bootstrap-info-circle'
+    title: `Blog` | `Projects` | `About`
+    href: `/blog-feed` | `/projects` | `/about`
+    iconFileName: `bootstrap-book` | `bootstrap-hammer` | `bootstrap-info-circle`
     description: string
   }
 }
@@ -55,11 +55,12 @@ const Home: NextPage = () => {
         const {
           title,
           iconFileName,
-          href, 
+          href,
           description
         } = rootPageConfigs[i]
         return (
-          <RootPageSection 
+          <RootPageSection
+            key={`root-item-${idx}`}
             title={title}
             iconFileName={iconFileName}
             href={href}

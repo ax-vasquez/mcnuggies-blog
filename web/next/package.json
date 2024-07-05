@@ -6,7 +6,7 @@
     "dev": "rm -rf node_modules .next && yarn && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "cy:open": "yarn cypress open"
   },
   "resolutions": {

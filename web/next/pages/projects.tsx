@@ -7,7 +7,7 @@ const Projects: React.FC = () => {
             metaDescription={`Projects from the creator and maintainer of ${process.env.HOST}`}
             pageTitle='Projects'
         >
-            <h1>Projects</h1>
+        <h1>Projects</h1>
       </PageLayout>
     )
 }

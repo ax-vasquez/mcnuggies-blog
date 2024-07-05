@@ -7,5 +7,5 @@ echo "--- prevent .only() ---"
 
 echo "--- linting ---"
 
-# yarn lint-next
+yarn lint-next
 # yarn lint-studio
