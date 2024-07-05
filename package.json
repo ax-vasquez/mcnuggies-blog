@@ -5,8 +5,7 @@
   "author": "Armando Vasquez <mando@mcnuggies.dev>",
   "license": "MIT",
   "scripts": {
-    "clean": "yarn clean-lerna && yarn clean-root && yarn clean-next && yarn clean-studio",
-    "clean-lerna": "yarn lerna clean",
+    "clean": "yarn clean-root && yarn clean-next && yarn clean-studio",
     "clean-next": "cd web/next && rm -rf node_modules",
     "clean-root": "rm -rf node_modules",
     "clean-studio": "cd web/studio && rm -rf node_modules",
@@ -21,7 +20,6 @@
   "devDependencies": {
     "@sanity/cli": "^3.49.0",
     "@types/node": "^17.0.21",
-    "husky": "^7.0.4",
     "moment": "^2.29.2",
     "typescript": "^4.6.2",
     "uuid": "^8.3.2"
