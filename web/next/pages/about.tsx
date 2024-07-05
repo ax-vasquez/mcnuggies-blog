@@ -8,7 +8,7 @@ import { EmployerDetails } from '../components/pages/about/EmployerDetails'
 import client from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
 import kebabCase from '../util/kebabCase'
-import GitHubCalendar from 'react-github-calendar';
+import GitHubCalendar from 'react-github-calendar'
 
 type EmployerProps = Employer & {
   imageUrl: string
@@ -24,10 +24,10 @@ interface AboutPageProps {
   employers: EmployerProps[]
 }
 
-const getYearsExperience = (startDate: Date) => {
-  var ageDifMs = Date.now().valueOf() - startDate.valueOf();
-  var ageDate = new Date(ageDifMs); // miliseconds from epoch
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
+const getYearsSinceDate = (startDate: Date) => {
+  var ageDifMs = Date.now().valueOf() - startDate.valueOf()
+  var ageDate = new Date(ageDifMs) // miliseconds from epoch
+  return Math.abs(ageDate.getUTCFullYear() - 1970)
 }
 
 const About: NextPage<AboutPageProps> = (props) => {
@@ -55,7 +55,7 @@ const About: NextPage<AboutPageProps> = (props) => {
           </h3>
           <div className='profession'>
             <span>{creator.profession}</span>
-            <p>{getYearsExperience(new Date(creator.careerStartDate!))} years experience</p>
+            <p>{getYearsSinceDate(new Date(creator.careerStartDate!))} years experience</p>
           </div>
         </div>
         <div className='creator-details'>
