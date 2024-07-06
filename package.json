@@ -15,7 +15,8 @@
     "setup-studio": "cd web/studio && yarn && sanity install",
     "web": "cd web/next && yarn dev",
     "cy:open": "cd web/next && yarn && yarn cy:open",
-    "studio": "cd web/studio && yarn start"
+    "studio": "cd web/studio && yarn start",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@sanity/cli": "^3.49.0",
