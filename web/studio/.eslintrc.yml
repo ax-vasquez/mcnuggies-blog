@@ -1,0 +1,12 @@
+env: 
+    node: true
+    browser: true
+files:
+    - "schemas/**/*"
+extends:
+    - "sanity"
+    - "sanity/react"
+    - "sanity/typescript"
+rules:
+    max-len: "off"
+    quotes: [2, "backtick"]

@@ -1,12 +1,10 @@
-import creator from './documents/creator'
-import article from './documents/article'
-import project from './documents/project'
-import projectLink from './documents/projectLink'
-import projectLinkProvider from './documents/projectLinkProvider'
-import category from './documents/category'
-import employer from './documents/employer'
-import series from './documents/series'
-import jobTitle from './documents/jobTitle'
+import article from "./documents/article";
+import category from "./documents/category";
+import creator from "./documents/creator";
+import employer from "./documents/employer";
+import jobTitle from "./documents/jobTitle";
+import project from "./documents/project";
+import series from "./documents/series";
 
 export const schemaTypes = [
   category,
@@ -15,9 +13,7 @@ export const schemaTypes = [
   jobTitle,
   article,
   project,
-  projectLink,
-  projectLinkProvider,
   series,
-]
+];
 
 export default schemaTypes;

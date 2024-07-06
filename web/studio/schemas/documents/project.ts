@@ -15,10 +15,8 @@ export default {
       type: `slug`,
       options: {
         source: `title`,
-        slugify: (input: string) => input
-          .toLowerCase()
-          .replace(/\s+/g, `-`)
-          .slice(0, 200),
+        slugify: (input: string) =>
+          input.toLowerCase().replace(/\s+/g, `-`).slice(0, 200),
       },
     },
     {
@@ -27,10 +25,12 @@ export default {
       type: `url`,
     },
     {
-      name: `link`,
-      title: `Links`,
-      type: `array`,
-      of: [{type: `reference`, to: [{type: `projectLink`}]}],
+      name: `image`,
+      title: `Image`,
+      type: `image`,
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: `description`,
@@ -41,16 +41,10 @@ export default {
         {
           title: `Block`,
           type: `block`,
-          styles: [{title: `Normal`, value: `normal`}],
+          styles: [{ title: `Normal`, value: `normal` }],
           lists: [],
         },
       ],
     },
-    {
-      name: `version`,
-      title: `Version`,
-      type: `string`,
-      validation: (Rule) => Rule.required(),
-    },
   ],
-}
+};
