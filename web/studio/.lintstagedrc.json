@@ -1,5 +1,5 @@
 {
-    "{schemas}/**/*.{js,ts,jsx,tsx}": [
+    "schemas/**/*.{js,ts,jsx,tsx}": [
         "eslint --fix",
         "prettier --write -u"
     ]
