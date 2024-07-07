@@ -2,6 +2,7 @@ import { FunctionComponent } from "react"
 import { PageLayout } from "../../components/layout/PageLayout"
 import client from "../../sanity/client"
 import { Project } from "../../types/sanity"
+import styles from './project.module.scss'
 
 interface ProjectPageProps {
     projectTitle: string
@@ -17,7 +18,15 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
             useTitleOverlay={false}
             metaDescription={`Project details for ${projectTitle}`}
         >
-        <h1>{projectTitle}</h1>
+        <div className={styles.pageHeader}>
+          <h1>{projectTitle}</h1>
+        </div>
+        <div className={styles.projectMetadata}>
+
+        </div>
+        <div className={styles.projectReadme}>
+
+        </div>
       </PageLayout>
     )
 }

@@ -19,7 +19,7 @@ const Projects: React.FC<ProjectsProps> = ({
         >
         <div className='projects-page-heading'>
           <h1>Projects</h1>
-          <span>Projects I've created</span>
+          <span>A curated list of projects I've created</span>
         </div>
         <ul className='projects-list'>
           {projects.map((project, idx) => <ProjectComponent key={`project-${idx}`} title={project.title!} repoUrl={project.repoUrl!} slug={project.slug!.current} description={<PortableText value={project.description!}/>}/>)}

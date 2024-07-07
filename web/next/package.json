@@ -14,6 +14,7 @@
     "@types/react-dom": "17.0.2"
   },
   "dependencies": {
+    "@octokit/core": "^6.1.2",
     "@portabletext/react": "^3.0.11",
     "@reduxjs/toolkit": "^1.7.2",
     "@sanity/client": "^3.2.0",
@@ -30,6 +31,7 @@
     "cypress": "13.5.0",
     "eslint": "^8.55.0",
     "eslint-config-next": "12.0.10",
+    "import": "^0.0.6",
     "next": "14.0.4",
     "prettier": "^2.5.1",
     "react": "18.2.0",
