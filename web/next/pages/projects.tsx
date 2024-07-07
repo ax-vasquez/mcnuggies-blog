@@ -1,7 +1,9 @@
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
 import client from '../sanity/client'
+import { ProjectComponent } from '../components/pages/projects/ProjectComponent'
 import { Project } from '../types/sanity'
+import { PortableText } from '@portabletext/react'
 
 interface ProjectsProps {
   projects: Project[]
@@ -10,13 +12,18 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({
   projects
 }) => {
-    console.log(`PROJECTS: `, projects)
     return (
       <PageLayout
             metaDescription={`Projects from the creator and maintainer of ${process.env.HOST}`}
             pageTitle='Projects'
         >
-        <h1>Projects</h1>
+        <div className='projects-page-heading'>
+          <h1>Projects</h1>
+          <span>Projects I've created</span>
+        </div>
+        <ul className='projects-list'>
+          {projects.map((project, idx) => <ProjectComponent key={`project-${idx}`} title={project.title!} repoUrl={project.repoUrl!} slug={project.slug!.current} description={<PortableText value={project.description!}/>}/>)}
+        </ul>
       </PageLayout>
     )
 }
