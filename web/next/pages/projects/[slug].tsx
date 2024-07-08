@@ -5,31 +5,69 @@ import octokitClient from "../../github/client"
 import { Project } from "../../types/sanity"
 import styles from './project.module.scss'
 import Markdown from 'react-markdown'
+import CustomIcon from "../../components/shared/CustomIcon"
+import { PortableText } from "@portabletext/react"
 
 interface ProjectPageProps {
-    projectTitle: string
+    project: Project
     readmeContent?: string
 }
 
 const ProjectPage: FunctionComponent<ProjectPageProps> = ({
-    projectTitle,
+    project,
     readmeContent
 }) => {
 
     return (
       <PageLayout
-            pageTitle={projectTitle}
+            pageTitle={project.title}
             useTitleOverlay={false}
-            metaDescription={`Project details for ${projectTitle}`}
+            metaDescription={`Project details for ${project.title}`}
         >
         <div className={styles.pageHeader}>
-          <h1>{projectTitle}</h1>
+          <h1>{project.title}</h1>
+          <CustomIcon
+              data-cy='github'
+              fileName='logo-github'
+              height={32}
+              width={32}
+              className={styles.githubLogo}
+              onClick={() => window.open(project.repoUrl!, `_blank`)}
+          />
+        </div>
+        <div className={styles.projectDescription}>
+          <div className={styles.sectionHeading}>
+            <h2>Project Description</h2>
+          </div>
+          <PortableText value={project.description!}/>
         </div>
         <div className={styles.projectMetadata}>
-
+          <div className={styles.sectionHeading}>
+            <h2>Project Details</h2>
+            <span>Data imported from GitHub</span>
+          </div>
+          <div className={styles.metadataItem}>
+            <h3>Deployments</h3>
+          </div>
+          <div className={styles.metadataItem}>
+            <h3>Languages</h3>
+          </div>
+          <div className={styles.metadataItem}>
+            <h3>Contributors</h3>
+          </div>
+          <div className={styles.metadataItem}>
+            <h3>Latest commit</h3>
+          </div>
+          <div className={styles.metadataItem}>
+            <h3>License</h3>
+          </div>
         </div>
         <div className={styles.projectReadme}>
-          <Markdown>
+          <div className={styles.sectionHeading}>
+            <h2>Project Readme</h2>
+            <span>Readme content imported from GitHub</span>
+          </div>
+          <Markdown className={styles.readmeContent}>
             {readmeContent}
           </Markdown>
         </div>
@@ -74,7 +112,7 @@ export async function getStaticProps(context: any) {
 
       return {
         props: {
-            projectTitle: project.title,
+            project,
             readmeContent
         }
     }
@@ -83,7 +121,7 @@ export async function getStaticProps(context: any) {
 
     return {
         props: {
-            projectTitle: project.title,
+            project,
         }
     }
 }

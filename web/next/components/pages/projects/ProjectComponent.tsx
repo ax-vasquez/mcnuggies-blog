@@ -26,13 +26,13 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
             <div className={styles.projectHeading}>
               <h2>{title}</h2>
               <CustomIcon
-                            data-cy='github'
-                            fileName='logo-github'
-                            height={32}
-                            width={32}
-                            className='github-logo'
-                            onClick={() => window.open(repoUrl!, `_blank`)}
-                        />
+                  data-cy='github'
+                  fileName='logo-github'
+                  height={32}
+                  width={32}
+                  className='github-logo'
+                  onClick={() => window.open(repoUrl!, `_blank`)}
+              />
             </div>
             <div className={styles.descriptionText}>
               {description}

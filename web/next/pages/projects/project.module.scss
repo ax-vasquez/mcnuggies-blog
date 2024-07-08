@@ -1,7 +1,20 @@
 @use 'variables' as vars;
 
 .pageHeader {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    .githubLogo {
+        margin-left: 1rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
 
+.projectDescription {
+    margin: 2rem 0;
 }
 
 .projectMetadata {
@@ -9,5 +22,22 @@
 }
 
 .projectReadme {
-    
+    .readmeContent {
+        border: 1px solid vars.$gray-200;
+        border-radius: 8px;
+        padding: 1rem;
+        background-color: vars.$gray-100;
+    }
+}
+
+.sectionHeading {
+    text-align: center;
+    margin-bottom: 1rem;
+    h2 {
+        text-align: center;
+    }
+    span {
+        color: vars.$gray-400;
+        font-weight: 200;
+    }
 }

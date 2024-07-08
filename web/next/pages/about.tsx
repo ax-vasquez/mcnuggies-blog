@@ -35,7 +35,6 @@ const About: NextPage<AboutPageProps> = (props) => {
 
   const creator = creators[0]
 
-  console.log(creator)
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
