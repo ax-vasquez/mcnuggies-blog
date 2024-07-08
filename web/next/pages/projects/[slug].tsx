@@ -18,7 +18,7 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     readmeContent
 }) => {
 
-    return (
+    return ( !!project &&
       <PageLayout
             pageTitle={project.title}
             useTitleOverlay={false}
@@ -99,6 +99,9 @@ export async function getStaticProps(context: any) {
         }
     `, { slug: slug.toLowerCase() })
 
+    console.log(`PROJECT: `, project)
+    let readmeContent
+
     if (project.githubOwner && project.githubRepo) {
       const getReadmeResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/readme`, {
         owner: project.githubOwner,
@@ -108,22 +111,17 @@ export async function getStaticProps(context: any) {
         }
       })
 
-      const readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
+      console.log(`RES: `, getReadmeResponse)
 
-      return {
-        props: {
-            project,
-            readmeContent
-        }
+      readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
     }
-    }
-
 
     return {
-        props: {
-            project,
-        }
-    }
+      props: {
+          project,
+          readmeContent
+      }
+  }
 }
 
 export default ProjectPage
