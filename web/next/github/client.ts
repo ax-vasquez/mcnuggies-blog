@@ -1,5 +1,7 @@
 import { Octokit } from "@octokit/core"
 
-export const client = new Octokit({
+const octokitClient = new Octokit({
     auth: process.env.GITHUB_API_TOKEN
 })
+
+export default octokitClient

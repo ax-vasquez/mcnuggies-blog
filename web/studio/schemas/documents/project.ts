@@ -20,6 +20,16 @@ export default {
       },
     },
     {
+      title: `GitHub Owner`,
+      name: `githubOwner`,
+      type: `string`,
+    },
+    {
+      title: `GitHub Repo`,
+      name: `githubRepo`,
+      type: `string`,
+    },
+    {
       title: `Repo URL`,
       name: `repoUrl`,
       type: `url`,

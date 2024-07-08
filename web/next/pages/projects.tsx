@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageLayout } from '../components/layout/PageLayout'
-import client from '../sanity/client'
+import sanityClient from '../sanity/client'
 import { ProjectComponent } from '../components/pages/projects/ProjectComponent'
 import { Project } from '../types/sanity'
 import { PortableText } from '@portabletext/react'
@@ -30,7 +30,7 @@ const Projects: React.FC<ProjectsProps> = ({
 
 export async function getStaticProps() {
 
-  const projects = await client.fetch(`*[_type == "project"]{
+  const projects = await sanityClient.fetch(`*[_type == "project"]{
     title,
     slug,
     description,
