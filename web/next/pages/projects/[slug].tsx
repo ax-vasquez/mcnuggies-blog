@@ -99,7 +99,6 @@ export async function getStaticProps(context: any) {
         }
     `, { slug: slug.toLowerCase() })
 
-    console.log(`PROJECT: `, project)
     let readmeContent
 
     if (project.githubOwner && project.githubRepo) {
@@ -110,8 +109,6 @@ export async function getStaticProps(context: any) {
           'X-GitHub-Api-Version': `2022-11-28`
         }
       })
-
-      console.log(`RES: `, getReadmeResponse)
 
       readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
     }
