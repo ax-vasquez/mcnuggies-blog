@@ -42,7 +42,7 @@
     "redux": "^4.1.2",
     "sanity-codegen": "^0.9.8",
     "sass": "^1.49.7",
-    "typescript": "4.5.5"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",
