@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { FunctionComponent, useMemo } from "react"
 import { PageLayout } from "../../components/layout/PageLayout"
 import sanityClient from "../../sanity/client"
 import octokitClient from "../../github/client"
@@ -8,11 +8,12 @@ import Markdown from 'react-markdown'
 import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
 import { Endpoints } from "@octokit/types"
+import { DeploymentComponent } from "../../components/pages/projects/DeploymentComponent"
 
 interface ProjectPageProps {
     project: Project
     readmeContent?: string
-    getDeploymentsResponse: Endpoints[`GET /repos/{owner}/{repo}/deployments`][`response`] | undefined
+    getDeploymentStatusesResponses: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][] | undefined
     getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
     getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
@@ -21,7 +22,7 @@ interface ProjectPageProps {
 const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
-    // getDeploymentsResponse,
+    getDeploymentStatusesResponses,
     getLanguagesResponse,
     // getContributorsResponse,
     // getCommitsResponse
@@ -32,21 +33,33 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
    * object where the language name is the key and the BYTE amount is the value (not the line count). This
    * value is used when calculating the percentage of language usages.
    */
-    const [maxBytes, setMaxBytes] = useState(0)
+  const maxBytes = useMemo(() => {
+    let bytes = 0
+    if (getLanguagesResponse) {
+      Object.keys(getLanguagesResponse.data).forEach((key) => {
+        bytes += getLanguagesResponse.data[key]
+      })
+    }
+    return bytes
+  }, [getLanguagesResponse])
 
-    useEffect(() => {
-      const getMaxBytes = () => {
-        let bytes = 0
-        if (getLanguagesResponse) {
-          Object.keys(getLanguagesResponse.data).forEach((key) => {
-            bytes += getLanguagesResponse.data[key]
+  const latestUniqueDeployments = useMemo(() => {
+    const uniqueDeployments = {} as { [key: string]: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][`data`] }
+
+    if (getDeploymentStatusesResponses) {
+      getDeploymentStatusesResponses.map(statusResponse => {
+        const successfulDeployments = statusResponse.data.filter(status => status.state === `success`)
+
+        if (successfulDeployments.length > 0 && successfulDeployments[0].environment) {
+          uniqueDeployments[successfulDeployments[0].environment] = successfulDeployments.sort((a, b) => {
+            if (a.created_at > b.created_at) return 1
+            else return 0
           })
         }
-        return bytes
-      }
-
-      setMaxBytes(getMaxBytes())
-    }, [getLanguagesResponse])
+      })
+    }
+    return uniqueDeployments
+  }, [getDeploymentStatusesResponses])
 
     return ( !!project &&
       <PageLayout
@@ -76,9 +89,21 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
             <h2>Project Details</h2>
             <span>Data imported from GitHub</span>
           </div>
-          <div className={styles.metadataItem}>
-            <h3>Deployments</h3>
-          </div>
+          {!!getDeploymentStatusesResponses && (
+            <div className={styles.metadataItem}>
+              <h3>Deployments</h3>
+              {Object.keys(latestUniqueDeployments).map((environment) => {
+                return (
+                  <DeploymentComponent
+                    key={`deployment-${environment.toLowerCase()}`}
+                    environment={environment}
+                    environmentUrl={latestUniqueDeployments[environment][0].environment_url!}
+                    state={latestUniqueDeployments[environment][0].state}
+                  />
+                )
+              })}
+            </div>
+          )}
           {!!getLanguagesResponse && (
             <div className={styles.metadataItem}>
               <h3>Languages</h3>
@@ -136,7 +161,7 @@ export async function getStaticProps(context: any) {
     `, { slug: slug.toLowerCase() })
 
     let readmeContent
-    let getDeploymentsResponse: Endpoints[`GET /repos/{owner}/{repo}/deployments`][`response`] | undefined
+    let getDeploymentStatusesResponses: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][] | undefined
     let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
     let getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     let getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
@@ -150,10 +175,25 @@ export async function getStaticProps(context: any) {
         }
       }
       const getReadmeResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/readme`, requestArgs)
-      getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
+      const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
       getLanguagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
       getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
       getCommitsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/commits`, requestArgs)
+
+      getDeploymentStatusesResponses = await Promise.all(
+        getDeploymentsResponse.data.map(async (deployment) => {
+          try {
+            const deploymentStatus = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`, {
+              ...requestArgs,
+              deployment_id: deployment.id
+            })
+
+            return deploymentStatus
+          } catch (e) {
+            console.log(e)
+          }
+        })
+      )
 
       readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
     }
@@ -162,7 +202,7 @@ export async function getStaticProps(context: any) {
       props: {
           project,
           readmeContent,
-          getDeploymentsResponse,
+          getDeploymentStatusesResponses,
           getLanguagesResponse,
           getContributorsResponse,
           getCommitsResponse,
