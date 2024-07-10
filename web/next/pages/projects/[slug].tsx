@@ -25,7 +25,7 @@ interface ProjectPageProps {
     project: Project
     readmeContent?: string
     prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null
-    getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
+    getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
     getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
 }
@@ -47,8 +47,8 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
   const maxBytes = useMemo(() => {
     let bytes = 0
     if (getLanguagesResponse) {
-      Object.keys(getLanguagesResponse.data).forEach((key) => {
-        bytes += getLanguagesResponse.data[key]
+      Object.keys(getLanguagesResponse).forEach((key) => {
+        bytes += getLanguagesResponse[key]
       })
     }
     return bytes
@@ -111,8 +111,8 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
             <div className={styles.metadataItem}>
               <h3>Languages</h3>
               <ul className={styles.languagesBar}>
-                {Object.keys(getLanguagesResponse.data).map(key => {
-                  const currentBytes: number = getLanguagesResponse.data[key]
+                {Object.keys(getLanguagesResponse).map(key => {
+                  const currentBytes: number = getLanguagesResponse[key]
                   const percentage = (currentBytes / maxBytes) * 100
                   return <li key={`language-${key.toLowerCase()}-usages`}>{key}: {percentage.toFixed(2)}%</li>
                 })}
@@ -165,7 +165,7 @@ export async function getStaticProps(context: any) {
 
     let readmeContent
     let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null = null
-    let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
+    let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
     let getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     let getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
 
@@ -180,7 +180,8 @@ export async function getStaticProps(context: any) {
       }
       const getReadmeResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/readme`, requestArgs)
       const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
-      getLanguagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
+      // Get .data here since the data object for the languages response is simple enough to pass to the static bundle without increasing byte size too much
+      getLanguagesResponse = (await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)).data
       getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
       getCommitsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/commits`, requestArgs)
 
@@ -228,7 +229,7 @@ export async function getStaticProps(context: any) {
           project,
           readmeContent,
           prunedDeploymentStatuses,
-          getLanguagesResponse,
+          getLanguagesResponse: getLanguagesResponse,
           getContributorsResponse,
           getCommitsResponse,
       }
