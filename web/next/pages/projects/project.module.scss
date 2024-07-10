@@ -14,7 +14,6 @@
 }
 
 .deploymentsWrapper {
-    margin-bottom: 1rem;
     >:not(:last-child) {
         border-bottom: 1px solid vars.$gray-200;
     }
@@ -25,7 +24,40 @@
 }
 
 .projectMetadata {
+    margin-bottom: 2rem;
+}
 
+.contributor {
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    a {
+        width: 100%;
+        text-decoration: none;
+        color: inherit;
+        span {
+            margin-left: 0.5rem;
+        }
+    }
+    img {
+        width: 48px;
+        height: 48px;
+        border-radius: 100px;
+        background-color: vars.$gray-400;
+        padding: 1px;
+    }
+    &:hover {
+        cursor: pointer;
+        transition: 0.2s ease;
+        box-shadow: 0 0 4px 4px vars.$indigo-100;
+    }
+}
+
+.metadataItem {
+    margin-bottom: 1rem;
 }
 
 .languagesBar {

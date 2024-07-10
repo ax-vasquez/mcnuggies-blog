@@ -9,25 +9,31 @@ import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
 import { Endpoints } from "@octokit/types"
 import { DeploymentComponent, DeploymentState } from "../../components/pages/projects/DeploymentComponent"
+import Link from "next/link"
 
 /**
  * Based on Octokit return type for desployment statuses, but only contains fields that
  * are actually used (there is a lot more in the response that can be used later, if needed)
  */
-type PrunedDeploymentStatus = {
+type PrunedDeploymentStatusData = {
   environment: string,
   environmentUrl: string,
   createdAt: string,
   state: DeploymentState
 }
 
+type PrunedContributorData = {
+  login: string | undefined
+  url: string | undefined
+  avatarUrl: string | undefined
+}
+
 interface ProjectPageProps {
     project: Project
     readmeContent?: string
-    prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null
+    prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null
     getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
-    getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
-    getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
+    prunedContributors: { [key: string]: PrunedContributorData } | null
 }
 
 const ProjectPage: FunctionComponent<ProjectPageProps> = ({
@@ -35,8 +41,7 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     readmeContent,
     prunedDeploymentStatuses,
     getLanguagesResponse,
-    // getContributorsResponse,
-    // getCommitsResponse
+    prunedContributors,
 }) => {
 
   /**
@@ -119,12 +124,21 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
               </ul>
             </div>
           )}
-          <div className={styles.metadataItem}>
-            <h3>Contributors</h3>
-          </div>
-          <div className={styles.metadataItem}>
-            <h3>Latest commit</h3>
-          </div>
+          {!!prunedContributors && (
+            <div className={styles.metadataItem}>
+              <h3>Contributors</h3>
+              {Object.keys(prunedContributors).map((key => {
+                return (
+                  <div className={styles.contributor} key={`contributor-${key.toLowerCase()}`}>
+                    <Link href={prunedContributors[key].url!} target="_blank" >
+                      <img src={prunedContributors[key].avatarUrl}/>
+                      <span>{key}</span>
+                    </Link>
+                  </div>
+                )
+              }))}
+            </div>
+          )}
         </div>
         <div className={styles.projectReadme}>
           <div className={styles.sectionHeading}>
@@ -164,10 +178,9 @@ export async function getStaticProps(context: any) {
     `, { slug: slug.toLowerCase() })
 
     let readmeContent
-    let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null = null
+    let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null = null
+    let prunedContributors: { [key: string]: PrunedContributorData } | null = null
     let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
-    let getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
-    let getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
 
     if (project.githubOwner && project.githubRepo) {
 
@@ -182,11 +195,10 @@ export async function getStaticProps(context: any) {
       const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
       // Get .data here since the data object for the languages response is simple enough to pass to the static bundle without increasing byte size too much
       getLanguagesResponse = (await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)).data
-      getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
-      getCommitsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/commits`, requestArgs)
+      const getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
 
       const getLatestUniqueDeployments = async () => {
-        const uniqueDeployments = {} as { [key: string]: PrunedDeploymentStatus }
+        const uniqueDeployments = {} as { [key: string]: PrunedDeploymentStatusData }
 
         if (getDeploymentsResponse) {
           await Promise.all(
@@ -209,7 +221,7 @@ export async function getStaticProps(context: any) {
                   environmentUrl: latestDeploymentStatus.environment_url,
                   state: latestDeploymentStatus.state,
                   createdAt: latestDeploymentStatus.created_at
-                } as PrunedDeploymentStatus
+                } as PrunedDeploymentStatusData
               }
             })
           )
@@ -219,6 +231,24 @@ export async function getStaticProps(context: any) {
         return uniqueDeployments
       }
 
+      if (getContributorsResponse.data.length > 0) {
+        prunedContributors = {}
+        getContributorsResponse.data.forEach((contributor) => {
+          const {
+            login,
+            html_url,
+            avatar_url
+          } = contributor
+          console.log(contributor)
+          if (login && avatar_url && prunedContributors) {
+            prunedContributors[login] = {
+              login,
+              url: html_url,
+              avatarUrl: avatar_url
+            }
+          }
+        })
+      }
 
       readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
       prunedDeploymentStatuses = await getLatestUniqueDeployments()
@@ -230,8 +260,7 @@ export async function getStaticProps(context: any) {
           readmeContent,
           prunedDeploymentStatuses,
           getLanguagesResponse: getLanguagesResponse,
-          getContributorsResponse,
-          getCommitsResponse,
+          prunedContributors,
       }
   }
 }
