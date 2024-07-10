@@ -1,0 +1,37 @@
+@use 'variables' as vars;
+
+.container {
+    padding: 0.5rem;
+    border-radius: 4px;
+    a {
+        text-decoration: none;
+        color: inherit;
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+    }
+    &:hover {
+        cursor: pointer;
+        transition: 0.2s ease;
+        box-shadow: 0 0 4px 4px vars.$indigo-100;
+    }
+}
+
+.deploymentLabel {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.deploymentCreatedAt {
+    font-size: 12px;
+    font-style: italic;
+    color: vars.$gray-400;
+}
+
+.passedIcon {
+    color: green;
+}
+
+.failedIcon {
+    color: red;
+}

@@ -13,6 +13,13 @@
     }
 }
 
+.deploymentsWrapper {
+    margin-bottom: 1rem;
+    >:not(:last-child) {
+        border-bottom: 1px solid vars.$gray-200;
+    }
+}
+
 .projectDescription {
     margin: 2rem 0;
 }

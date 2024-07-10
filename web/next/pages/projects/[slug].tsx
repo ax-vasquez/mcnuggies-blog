@@ -8,12 +8,23 @@ import Markdown from 'react-markdown'
 import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
 import { Endpoints } from "@octokit/types"
-import { DeploymentComponent } from "../../components/pages/projects/DeploymentComponent"
+import { DeploymentComponent, DeploymentState } from "../../components/pages/projects/DeploymentComponent"
+
+/**
+ * Based on Octokit return type for desployment statuses, but only contains fields that
+ * are actually used (there is a lot more in the response that can be used later, if needed)
+ */
+type PrunedDeploymentStatus = {
+  environment: string,
+  environmentUrl: string,
+  createdAt: string,
+  state: DeploymentState
+}
 
 interface ProjectPageProps {
     project: Project
     readmeContent?: string
-    getDeploymentStatusesResponses: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][] | undefined
+    prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null
     getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
     getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
@@ -22,7 +33,7 @@ interface ProjectPageProps {
 const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
-    getDeploymentStatusesResponses,
+    prunedDeploymentStatuses,
     getLanguagesResponse,
     // getContributorsResponse,
     // getCommitsResponse
@@ -42,24 +53,6 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     }
     return bytes
   }, [getLanguagesResponse])
-
-  const latestUniqueDeployments = useMemo(() => {
-    const uniqueDeployments = {} as { [key: string]: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][`data`] }
-
-    if (getDeploymentStatusesResponses) {
-      getDeploymentStatusesResponses.map(statusResponse => {
-        const successfulDeployments = statusResponse.data.filter(status => status.state === `success`)
-
-        if (successfulDeployments.length > 0 && successfulDeployments[0].environment) {
-          uniqueDeployments[successfulDeployments[0].environment] = successfulDeployments.sort((a, b) => {
-            if (a.created_at > b.created_at) return 1
-            else return 0
-          })
-        }
-      })
-    }
-    return uniqueDeployments
-  }, [getDeploymentStatusesResponses])
 
     return ( !!project &&
       <PageLayout
@@ -89,19 +82,29 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
             <h2>Project Details</h2>
             <span>Data imported from GitHub</span>
           </div>
-          {!!getDeploymentStatusesResponses && (
+
+          {!!prunedDeploymentStatuses && (
             <div className={styles.metadataItem}>
               <h3>Deployments</h3>
-              {Object.keys(latestUniqueDeployments).map((environment) => {
-                return (
-                  <DeploymentComponent
-                    key={`deployment-${environment.toLowerCase()}`}
-                    environment={environment}
-                    environmentUrl={latestUniqueDeployments[environment][0].environment_url!}
-                    state={latestUniqueDeployments[environment][0].state}
-                  />
-                )
-              })}
+              <div className={styles.deploymentsWrapper}>
+                {Object.keys(prunedDeploymentStatuses).map((deployment) => {
+                  const {
+                    createdAt,
+                    environment,
+                    environmentUrl,
+                    state,
+                  } = prunedDeploymentStatuses[deployment]
+                  return (
+                    <DeploymentComponent
+                      key={`deployment-${environment.toLowerCase()}`}
+                      environment={environment}
+                      environmentUrl={environmentUrl}
+                      state={state}
+                      createdAt={createdAt}
+                    />
+                  )
+                })}
+              </div>
             </div>
           )}
           {!!getLanguagesResponse && (
@@ -161,12 +164,13 @@ export async function getStaticProps(context: any) {
     `, { slug: slug.toLowerCase() })
 
     let readmeContent
-    let getDeploymentStatusesResponses: Endpoints[`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`][`response`][] | undefined
+    let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatus } | null = null
     let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`] | undefined
     let getContributorsResponse: Endpoints[`GET /repos/{owner}/{repo}/contributors`][`response`] | undefined
     let getCommitsResponse: Endpoints[`GET /repos/{owner}/{repo}/commits`][`response`] | undefined
 
     if (project.githubOwner && project.githubRepo) {
+
       const requestArgs = {
         owner: project.githubOwner,
         repo: project.githubRepo,
@@ -180,29 +184,50 @@ export async function getStaticProps(context: any) {
       getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
       getCommitsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/commits`, requestArgs)
 
-      getDeploymentStatusesResponses = await Promise.all(
-        getDeploymentsResponse.data.map(async (deployment) => {
-          try {
-            const deploymentStatus = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`, {
-              ...requestArgs,
-              deployment_id: deployment.id
-            })
+      const getLatestUniqueDeployments = async () => {
+        const uniqueDeployments = {} as { [key: string]: PrunedDeploymentStatus }
 
-            return deploymentStatus
-          } catch (e) {
-            console.log(e)
-          }
-        })
-      )
+        if (getDeploymentsResponse) {
+          await Promise.all(
+            getDeploymentsResponse.data.map(async ( deploymentRespose ) => {
+              const statusesForDeployment = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses`, {
+                ...requestArgs,
+                deployment_id: deploymentRespose.id
+              })
+
+              if (statusesForDeployment.data.length > 0) {
+
+                // Grab the latest status for the deployment
+                const latestDeploymentStatus = statusesForDeployment.data.sort((statusA, statusB) => {
+                  if (statusA.created_at > statusB.created_at) return 1
+                  return 0
+                })[0]
+
+                uniqueDeployments[deploymentRespose.environment] = {
+                  environment: latestDeploymentStatus.environment,
+                  environmentUrl: latestDeploymentStatus.environment_url,
+                  state: latestDeploymentStatus.state,
+                  createdAt: latestDeploymentStatus.created_at
+                } as PrunedDeploymentStatus
+              }
+            })
+          )
+
+        }
+        if (Object.keys(uniqueDeployments).length === 0) return null
+        return uniqueDeployments
+      }
+
 
       readmeContent = await (await fetch(getReadmeResponse.data.download_url!)).text()
+      prunedDeploymentStatuses = await getLatestUniqueDeployments()
     }
 
     return {
       props: {
           project,
           readmeContent,
-          getDeploymentStatusesResponses,
+          prunedDeploymentStatuses,
           getLanguagesResponse,
           getContributorsResponse,
           getCommitsResponse,
