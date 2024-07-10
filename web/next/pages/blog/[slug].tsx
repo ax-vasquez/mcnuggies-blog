@@ -1,7 +1,7 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react'
 import { FunctionComponent, useState } from 'react'
 import { PageLayout } from '../../components/layout/PageLayout'
-import client from '../../sanity/client'
+import sanityClient from '../../sanity/client'
 import { Article } from '../../types/sanity'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Link from 'next/link'
@@ -137,7 +137,7 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, ser
 }
 
 export async function getStaticPaths() {
-  const paths = await client.fetch(
+  const paths = await sanityClient.fetch(
     `*[_type == "article" && defined(slug.current)][].slug.current`
   )
 
@@ -169,7 +169,7 @@ export async function getStaticProps(context: any) {
    * Because the generated slug is lower case, the query also needs to pass a slug that's all lower-case.
    * Othwerise, no match will be found; in other words, this query syntax is case-sensitive
    */
-  const article = await client.fetch(`
+  const article = await sanityClient.fetch(`
     *[_type == "article" && slug.current == $slug][0]{
       title,
       publishDate,
@@ -188,7 +188,7 @@ export async function getStaticProps(context: any) {
   let seriesArticlesOutline: SeriesOutlineItem[] = []
 
   if (isSeriesArticle()) {
-    const seriesArticles = await client.fetch(`
+    const seriesArticles = await sanityClient.fetch(`
       *[_type == "article" && series._ref == $seriesRef] | order(seriesIndex asc) {
         title,
         seriesIndex,
@@ -258,7 +258,7 @@ export async function getStaticProps(context: any) {
       article.body.map(async (block, index) => {
         if (block._type === `image`) {
           imgCount++
-          const embeddedImage = await client.fetch(`*[_type == "sanity.imageAsset" && _id == $ref][0]{
+          const embeddedImage = await sanityClient.fetch(`*[_type == "sanity.imageAsset" && _id == $ref][0]{
             metadata,
             url
         }`, { ref: block.asset._ref }) as {
