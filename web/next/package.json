@@ -44,7 +44,7 @@
     "react-syntax-highlighter": "^15.4.5",
     "redux": "^4.1.2",
     "sanity-codegen": "^0.9.8",
-    "sass": "^1.49.7",
+    "sass": "^1.77.5",
     "typescript": "4.5.5"
   },
   "devDependencies": {
