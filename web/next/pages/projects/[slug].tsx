@@ -32,7 +32,7 @@ interface ProjectPageProps {
     project: Project
     readmeContent?: string
     prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null
-    getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
+    getLanguagesResponseData: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
     prunedContributors: { [key: string]: PrunedContributorData } | null
 }
 
@@ -40,7 +40,7 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
     prunedDeploymentStatuses,
-    getLanguagesResponse,
+    getLanguagesResponseData,
     prunedContributors,
 }) => {
 
@@ -51,13 +51,13 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
    */
   const maxBytes = useMemo(() => {
     let bytes = 0
-    if (getLanguagesResponse) {
-      Object.keys(getLanguagesResponse).forEach((key) => {
-        bytes += getLanguagesResponse[key]
+    if (getLanguagesResponseData) {
+      Object.keys(getLanguagesResponseData).forEach((key) => {
+        bytes += getLanguagesResponseData[key]
       })
     }
     return bytes
-  }, [getLanguagesResponse])
+  }, [getLanguagesResponseData])
 
     return ( !!project &&
       <PageLayout
@@ -112,12 +112,12 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
               </div>
             </div>
           )}
-          {!!getLanguagesResponse && (
+          {!!getLanguagesResponseData && Object.keys(getLanguagesResponseData).length && (
             <div className={styles.metadataItem}>
               <h3>Languages</h3>
               <ul className={styles.languagesBar}>
-                {Object.keys(getLanguagesResponse).map(key => {
-                  const currentBytes: number = getLanguagesResponse[key]
+                {Object.keys(getLanguagesResponseData).map(key => {
+                  const currentBytes: number = getLanguagesResponseData[key]
                   const percentage = (currentBytes / maxBytes) * 100
                   return <li key={`language-${key.toLowerCase()}-usages`}>{key}: {percentage.toFixed(2)}%</li>
                 })}
