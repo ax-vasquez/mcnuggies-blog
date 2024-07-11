@@ -43,8 +43,8 @@
     "react-syntax-highlighter": "^15.4.5",
     "redux": "^4.1.2",
     "sanity-codegen": "^0.9.8",
-    "sass": "^1.77.5",
-    "typescript": "4.5.5"
+    "typescript": "4.9.5",
+    "sass": "^1.77.5"
   },
   "devDependencies": {
     "@octokit/types": "^13.5.0",
