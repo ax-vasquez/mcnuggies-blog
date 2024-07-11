@@ -15,7 +15,7 @@ import type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-} from "sanity-codegen";
+} from "sanity-codegen"
 
 export type {
   SanityReference,
@@ -34,7 +34,7 @@ export type {
   SanityImageDimensions,
   SanityImagePalette,
   SanityImagePaletteSwatch,
-};
+}
 
 /**
  * Category
@@ -42,7 +42,7 @@ export type {
  *
  */
 export interface Category extends SanityDocument {
-  _type: "category";
+  _type: `category`;
 
   /**
    * Title — `string`
@@ -58,7 +58,7 @@ export interface Category extends SanityDocument {
  *
  */
 export interface Creator extends SanityDocument {
-  _type: "creator";
+  _type: `creator`;
 
   /**
    * Name — `string`
@@ -72,7 +72,7 @@ export interface Creator extends SanityDocument {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: `slug`; current: string };
 
   /**
    * Image — `image`
@@ -80,7 +80,7 @@ export interface Creator extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
+    _type: `image`;
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -137,7 +137,7 @@ export interface Creator extends SanityDocument {
     | SanityKeyed<SanityBlock>
     | SanityKeyed<Code>
     | SanityKeyed<{
-        _type: "image";
+        _type: `image`;
         asset: SanityReference<SanityImageAsset>;
         crop?: SanityImageCrop;
         hotspot?: SanityImageHotspot;
@@ -151,7 +151,7 @@ export interface Creator extends SanityDocument {
  *
  */
 export interface Employer extends SanityDocument {
-  _type: "employer";
+  _type: `employer`;
 
   /**
    * Name — `string`
@@ -173,7 +173,7 @@ export interface Employer extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
+    _type: `image`;
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -202,7 +202,7 @@ export interface Employer extends SanityDocument {
     | SanityKeyed<SanityBlock>
     | SanityKeyed<Code>
     | SanityKeyed<{
-        _type: "image";
+        _type: `image`;
         asset: SanityReference<SanityImageAsset>;
         crop?: SanityImageCrop;
         hotspot?: SanityImageHotspot;
@@ -230,7 +230,7 @@ export interface Employer extends SanityDocument {
  *
  */
 export interface JobTitle extends SanityDocument {
-  _type: "jobTitle";
+  _type: `jobTitle`;
 
   /**
    * Title — `string`
@@ -274,7 +274,7 @@ export interface JobTitle extends SanityDocument {
  *
  */
 export interface Article extends SanityDocument {
-  _type: "article";
+  _type: `article`;
 
   /**
    * Title — `string`
@@ -288,7 +288,7 @@ export interface Article extends SanityDocument {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: `slug`; current: string };
 
   /**
    * Publish date — `date`
@@ -310,7 +310,7 @@ export interface Article extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
+    _type: `image`;
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
@@ -332,7 +332,7 @@ export interface Article extends SanityDocument {
     | SanityKeyed<SanityBlock>
     | SanityKeyed<Code>
     | SanityKeyed<{
-        _type: "image";
+        _type: `image`;
         asset: SanityReference<SanityImageAsset>;
         crop?: SanityImageCrop;
         hotspot?: SanityImageHotspot;
@@ -367,7 +367,7 @@ export interface Article extends SanityDocument {
  *
  */
 export interface Project extends SanityDocument {
-  _type: "project";
+  _type: `project`;
 
   /**
    * Title — `string`
@@ -381,7 +381,21 @@ export interface Project extends SanityDocument {
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: `slug`; current: string };
+
+  /**
+   * GitHub Owner — `string`
+   *
+   *
+   */
+  githubOwner?: string;
+
+  /**
+   * GitHub Repo — `string`
+   *
+   *
+   */
+  githubRepo?: string;
 
   /**
    * Repo URL — `url`
@@ -391,11 +405,16 @@ export interface Project extends SanityDocument {
   repoUrl?: string;
 
   /**
-   * Links — `array`
+   * Image — `image`
    *
    *
    */
-  link?: Array<SanityKeyedReference<ProjectLink>>;
+  image?: {
+    _type: `image`;
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 
   /**
    * Description — `array`
@@ -403,64 +422,6 @@ export interface Project extends SanityDocument {
    *
    */
   description?: Array<SanityKeyed<SanityBlock>>;
-
-  /**
-   * Version — `string`
-   *
-   *
-   */
-  version?: string;
-}
-
-/**
- * Project Link
- *
- *
- */
-export interface ProjectLink extends SanityDocument {
-  _type: "projectLink";
-
-  /**
-   * Title — `reference`
-   *
-   *
-   */
-  provider?: SanityReference<ProjectLinkProvider>;
-
-  /**
-   * URL — `url`
-   *
-   *
-   */
-  url?: string;
-}
-
-/**
- * Project Link Provider
- *
- *
- */
-export interface ProjectLinkProvider extends SanityDocument {
-  _type: "projectLinkProvider";
-
-  /**
-   * Title — `string`
-   *
-   *
-   */
-  title?: string;
-
-  /**
-   * Icon — `image`
-   *
-   *
-   */
-  icon?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
 }
 
 /**
@@ -469,7 +430,7 @@ export interface ProjectLinkProvider extends SanityDocument {
  *
  */
 export interface Series extends SanityDocument {
-  _type: "series";
+  _type: `series`;
 
   /**
    * Series Title — `string`
@@ -487,7 +448,7 @@ export interface Series extends SanityDocument {
     | SanityKeyed<SanityBlock>
     | SanityKeyed<Code>
     | SanityKeyed<{
-        _type: "image";
+        _type: `image`;
         asset: SanityReference<SanityImageAsset>;
         crop?: SanityImageCrop;
         hotspot?: SanityImageHotspot;
@@ -509,8 +470,6 @@ export type Documents =
   | JobTitle
   | Article
   | Project
-  | ProjectLink
-  | ProjectLinkProvider
   | Series;
 
 /**

@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { NextPage } from "next"
 import { PageLayout } from "../components/layout/PageLayout"
-import client from "../sanity/client"
+import sanityClient from "../sanity/client"
 import kebabCase from "../util/kebabCase"
 import {PortableText} from '@portabletext/react'
 import FeedItem from "../components/feedItem/FeedItem"
@@ -166,7 +166,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
 }
 
 export async function getStaticProps() {
-    const allArticles = await client.fetch(`
+    const allArticles = await sanityClient.fetch(`
       *[_type == "article"]{
           title,
           slug,

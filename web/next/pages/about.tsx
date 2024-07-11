@@ -5,7 +5,7 @@ import { PageLayout } from '../components/layout/PageLayout'
 import CreatorImage from '../components/pages/about/CreatorImage'
 import CreatorSocials from '../components/pages/about/CreatorSocials'
 import { EmployerDetails } from '../components/pages/about/EmployerDetails'
-import client from '../sanity/client'
+import sanityClient from '../sanity/client'
 import { Creator, Employer, JobTitle } from '../types/sanity'
 import kebabCase from '../util/kebabCase'
 import GitHubCalendar from 'react-github-calendar'
@@ -35,7 +35,6 @@ const About: NextPage<AboutPageProps> = (props) => {
 
   const creator = creators[0]
 
-  console.log(creator)
     return (!!creator &&
       <PageLayout
                 pageTitle='About'
@@ -105,7 +104,7 @@ const About: NextPage<AboutPageProps> = (props) => {
 }
 
 export async function getStaticProps() {
-    const creators = await client.fetch(`
+    const creators = await sanityClient.fetch(`
       *[_type == "creator" && name == "Armando Vasquez"]{
           name,
           "imageUrl": image.asset->url,
@@ -120,7 +119,7 @@ export async function getStaticProps() {
       }
     `)
 
-      const employers = await client.fetch(`*[_type == "employer"]{
+      const employers = await sanityClient.fetch(`*[_type == "employer"]{
         name,
         endDate,
         startDate,
