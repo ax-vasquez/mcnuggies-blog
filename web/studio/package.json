@@ -17,18 +17,26 @@
   ],
   "dependencies": {
     "@sanity/cli": "3.20.2",
-    "@sanity/code-input": "4.1.1",
+    "@sanity/code-input": "4.1.4",
     "@sanity/dashboard": "3.1.6",
-    "@sanity/vision": "3.20.2",
+    "@sanity/vision": "3.46.1",
+    "eslint": "^9.6.0",
+    "eslint-config-sanity": "^7.1.2",
     "prop-types": "^15.7",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-icons": "^4.2.0",
     "sanity": "3.20.2",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "eslint-config-sanity": "^5.1.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "globals": "^15.8.0",
     "prettier": "^2.5.1",
     "sanity-codegen": "^0.9.8"
   }

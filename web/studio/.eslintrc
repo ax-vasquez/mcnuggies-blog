@@ -1,8 +1,0 @@
-{
-    "env": {"node": true, "browser": true},
-    "extends": ["sanity/react", "sanity/typescript"],
-    "rules": {
-        "max-len": "off",
-        "quotes": [2, "backtick"],
-    }
-}

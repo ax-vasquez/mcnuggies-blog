@@ -1,0 +1,28 @@
+@use 'variables' as vars;
+
+.container {
+    border: 1px solid vars.$gray-200;
+    border-radius: 8px;
+    a {
+        text-decoration: none;
+        color: inherit;
+        >div {
+            padding: 1rem;
+        }
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.descriptionText {
+    margin-top: 1rem;
+}
+
+.projectHeading {
+    display: inline-flex;
+    width: 100%;
+    h2 {
+        flex: 1;
+    }
+}
