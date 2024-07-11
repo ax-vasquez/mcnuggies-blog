@@ -41,7 +41,11 @@ const CustomIcon: FunctionComponent<CustomIconProps> = ({
                 title={alt}
                 // Report any errors loading an SVG to the console
                 onError={console.log}
-                onClick={onClick ? onClick : undefined}
+                onClick={onClick ? (e) => {
+                    // Prevent default so clickable icons can be embedded in linked components without triggering the parent onClick logic
+                    e.preventDefault()
+                    return onClick()
+                } : undefined}
                 {...props}
             />
       </div>

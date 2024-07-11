@@ -1,6 +1,6 @@
-import client from '@sanity/client'
+import sanityClient from '@sanity/client'
 
-export default client({
+export default sanityClient({
     projectId: process.env.SANITY_PROJECT,
     dataset: process.env.SANITY_DATASET,
     useCdn: true, // `false` if you want to ensure fresh data
