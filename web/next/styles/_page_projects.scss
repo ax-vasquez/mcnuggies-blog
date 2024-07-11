@@ -1,0 +1,12 @@
+@use 'variables' as vars;
+
+.projects-page-heading {
+    text-align: center;
+}
+
+.projects-list {
+    margin-top: 2rem;
+    >:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}

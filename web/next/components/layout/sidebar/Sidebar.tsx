@@ -24,6 +24,12 @@ const SIDEBAR_OPTIONS = [
     },
     {
         option: {
+            label: `Projects`,
+            to: `/projects`
+        }
+    },
+    {
+        option: {
             label: `About`,
             to: `/about`
         }
@@ -35,21 +41,23 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
     const dispatch = useDispatch()
     const isSidebarOpen = useSelector((state: any) => state.nav.showSidebar)
 
-    /**
-     * Handler to close the sidebar when the user clicks outside of it
-     * 
-     */
-    function outerClickHandler(e) {
-        const sidebarElement = document.getElementById(`sidebar`)
-        const sidebarButton = document.getElementById(`sidebar-menu-button`)
-        if (sidebarElement && sidebarButton) {
-            if (!sidebarElement.contains(e.target as Node) && !sidebarButton.contains(e.target as Node)) {
-                dispatch(toggleShowSidebar())
-            }
-        }
-    }
+
 
     useEffect(() => {
+        /**
+         * Handler to close the sidebar when the user clicks outside of it
+         * 
+         */
+        function outerClickHandler(e) {
+            const sidebarElement = document.getElementById(`sidebar`)
+            const sidebarButton = document.getElementById(`sidebar-menu-button`)
+            if (sidebarElement && sidebarButton) {
+                if (!sidebarElement.contains(e.target as Node) && !sidebarButton.contains(e.target as Node)) {
+                    dispatch(toggleShowSidebar())
+                }
+            }
+        }
+
         if (isSidebarOpen) {
             window.addEventListener(`click`, outerClickHandler)
         }
@@ -57,7 +65,7 @@ const Sidebar: FunctionComponent<SidebarProps> = () => {
         return () => {
             window.removeEventListener(`click`, outerClickHandler)
         }
-    }, [isSidebarOpen])
+    }, [isSidebarOpen, dispatch])
 
 
 
