@@ -8,21 +8,22 @@ import Markdown from 'react-markdown'
 import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
 import { Endpoints } from "@octokit/types"
-import { DeploymentComponent, DeploymentState } from "../../components/pages/projects/DeploymentComponent"
+import { DeploymentState } from "../../components/pages/projects/DeploymentComponent"
 import Link from "next/link"
+import { Deployments } from "../../components/pages/projects/Deployments"
 
 /**
  * Based on Octokit return type for desployment statuses, but only contains fields that
  * are actually used (there is a lot more in the response that can be used later, if needed)
  */
-type PrunedDeploymentStatusData = {
+export type PrunedDeploymentStatusData = {
   environment: string,
   environmentUrl: string,
   createdAt: string,
   state: DeploymentState
 }
 
-type PrunedContributorData = {
+export type PrunedContributorData = {
   login: string | undefined
   url: string | undefined
   avatarUrl: string | undefined
@@ -90,26 +91,9 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
 
           {!!prunedDeploymentStatuses && (
             <div className={styles.metadataItem}>
-              <h3>Deployments</h3>
-              <div className={styles.deploymentsWrapper}>
-                {Object.keys(prunedDeploymentStatuses).map((deployment) => {
-                  const {
-                    createdAt,
-                    environment,
-                    environmentUrl,
-                    state,
-                  } = prunedDeploymentStatuses[deployment]
-                  return (
-                    <DeploymentComponent
-                      key={`deployment-${environment.toLowerCase()}`}
-                      environment={environment}
-                      environmentUrl={environmentUrl}
-                      state={state}
-                      createdAt={createdAt}
-                    />
-                  )
-                })}
-              </div>
+              <Deployments
+                prunedDeploymentStatuses={prunedDeploymentStatuses}
+              />
             </div>
           )}
           {!!getLanguagesResponseData && Object.keys(getLanguagesResponseData).length && (
