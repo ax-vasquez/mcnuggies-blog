@@ -394,10 +394,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-14.2.4.tgz#5546813dc4f809884a37d257b254a5ce1b0248d7"
   integrity sha512-3EtkY5VDkuV2+lNmKlbkibIJxcO4oIHEhBWne6PaAp+76J9KoSsGvNikp6ivzAT8dhhBMYrm6op2pS1ApG0Hzg==
 
-"@next/eslint-plugin-next@12.0.10":
-  version "12.0.10"
-  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.0.10.tgz#521ab5d05a89e818528668df8a3edb8f9df2c547"
-  integrity sha512-PbGRnV5HGSfRGLjf8uTh1MaWgLwnjKjWiGVjK752ifITJbZ28/5AmLAFT2shDYeux8BHgpgVll5QXu7GN3YLFw==
+"@next/eslint-plugin-next@12.3.4":
+  version "12.3.4"
+  resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.3.4.tgz#e7dc00e2e89ed361f111d687b8534483ec15518b"
+  integrity sha512-BFwj8ykJY+zc1/jWANsDprDIu2MgwPOIKxNVnrKvPs+f5TPegrVnem8uScND+1veT4B7F6VeqgaNLFW1Hzl9Og==
   dependencies:
     glob "7.1.7"
 
@@ -595,7 +595,7 @@
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
-"@rushstack/eslint-patch@^1.0.8":
+"@rushstack/eslint-patch@^1.1.3":
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.10.3.tgz#391d528054f758f81e53210f1a1eebcf1a8b1d20"
   integrity sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==
@@ -879,7 +879,7 @@
     semver "^7.5.4"
     ts-api-utils "^1.0.1"
 
-"@typescript-eslint/parser@^5.0.0":
+"@typescript-eslint/parser@^5.21.0":
   version "5.62.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.62.0.tgz#1b63d082d849a2fcae8a569248fbe2ee1b8a56c7"
   integrity sha512-VlJEV0fOQ7BExOsHYAGrgbEiZoi8D+Bl2+f6V2RrXerRSylnp+ZBHmPvaIa8cz0Ajx7WO7Z5RqfgYg7ED1nRhA==
@@ -2169,22 +2169,22 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-next@12.0.10:
-  version "12.0.10"
-  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.0.10.tgz#f201f8f4514018f7ef46f454f56b81cf5c790379"
-  integrity sha512-l1er6mwSo1bltjLwmd71p5BdT6k/NQxV1n4lKZI6xt3MDMrq7ChUBr+EecxOry8GC/rCRUtPpH8Ygs0BJc5YLg==
+eslint-config-next@12.3.4:
+  version "12.3.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-next/-/eslint-config-next-12.3.4.tgz#3d4d9e74b919b879c4cc79c61bdc388fb2b964ee"
+  integrity sha512-WuT3gvgi7Bwz00AOmKGhOeqnyA5P29Cdyr0iVjLyfDbk+FANQKcOjFUTZIdyYfe5Tq1x4TGcmoe4CwctGvFjHQ==
   dependencies:
-    "@next/eslint-plugin-next" "12.0.10"
-    "@rushstack/eslint-patch" "^1.0.8"
-    "@typescript-eslint/parser" "^5.0.0"
-    eslint-import-resolver-node "^0.3.4"
-    eslint-import-resolver-typescript "^2.4.0"
-    eslint-plugin-import "^2.25.2"
+    "@next/eslint-plugin-next" "12.3.4"
+    "@rushstack/eslint-patch" "^1.1.3"
+    "@typescript-eslint/parser" "^5.21.0"
+    eslint-import-resolver-node "^0.3.6"
+    eslint-import-resolver-typescript "^2.7.1"
+    eslint-plugin-import "^2.26.0"
     eslint-plugin-jsx-a11y "^6.5.1"
-    eslint-plugin-react "^7.27.0"
-    eslint-plugin-react-hooks "^4.3.0"
+    eslint-plugin-react "^7.31.7"
+    eslint-plugin-react-hooks "^4.5.0"
 
-eslint-import-resolver-node@^0.3.4, eslint-import-resolver-node@^0.3.9:
+eslint-import-resolver-node@^0.3.6, eslint-import-resolver-node@^0.3.9:
   version "0.3.9"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.9.tgz#d4eaac52b8a2e7c3cd1903eb00f7e053356118ac"
   integrity sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==
@@ -2193,7 +2193,7 @@ eslint-import-resolver-node@^0.3.4, eslint-import-resolver-node@^0.3.9:
     is-core-module "^2.13.0"
     resolve "^1.22.4"
 
-eslint-import-resolver-typescript@^2.4.0:
+eslint-import-resolver-typescript@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-2.7.1.tgz#a90a4a1c80da8d632df25994c4c5fdcdd02b8751"
   integrity sha512-00UbgGwV8bSgUv34igBDbTOtKhqoRMy9bFjNehT40bXg6585PNIct8HhXZ0SybqB9rWtXj9crcku8ndDn/gIqQ==
@@ -2218,7 +2218,7 @@ eslint-plugin-cypress@^2.15.1:
   dependencies:
     globals "^13.20.0"
 
-eslint-plugin-import@^2.25.2:
+eslint-plugin-import@^2.26.0:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.29.1.tgz#d45b37b5ef5901d639c15270d74d46d161150643"
   integrity sha512-BbPC0cuExzhiMo4Ff1BTVwHpjjv28C5R+btTOGaCRC7UEz801up0JadwkeSk5Ued6TG34uaczuVuH6qyy5YUxw==
@@ -2259,12 +2259,12 @@ eslint-plugin-jsx-a11y@^6.5.1:
     language-tags "^1.0.5"
     minimatch "^3.0.4"
 
-eslint-plugin-react-hooks@^4.3.0:
+eslint-plugin-react-hooks@^4.5.0:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.2.tgz#c829eb06c0e6f484b3fbb85a97e57784f328c596"
   integrity sha512-QzliNJq4GinDBcD8gPB5v0wh6g8q3SUi6EFF0x8N/BL9PoVs0atuGc47ozMRyOWAKdwaZ5OnbOEa3WR+dSGKuQ==
 
-eslint-plugin-react@^7.27.0:
+eslint-plugin-react@^7.31.7:
   version "7.34.3"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.34.3.tgz#9965f27bd1250a787b5d4cfcc765e5a5d58dcb7b"
   integrity sha512-aoW4MV891jkUulwDApQbPYTVZmeuSyFrudpbTAQuj5Fv8VL+o6df2xIGpw8B0hPjAaih1/Fb0om9grCdyFYemA==
