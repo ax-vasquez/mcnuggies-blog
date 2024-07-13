@@ -17,3 +17,34 @@
         background-color: red;
     }
 }
+
+.languagesList {
+    width: 100%;
+    .languageListItem {
+        font-size: 22px;
+    }
+}
+
+.languageLabel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .languageKey {
+        font-size: 18px;
+        color: vars.$gray-800;
+        flex: 1;
+    }
+    .languagePercentage {
+        font-size: 14px;
+        color: vars.$gray-400;
+    }
+}
+
+.noticeText {
+    display: flex;
+    justify-content: center;
+    color: vars.$gray-400;
+    font-weight: 200;
+    width: 100%;
+    font-style: italic;
+}
