@@ -1,6 +1,6 @@
 import React from 'react'
-import { DeploymentComponent } from './DeploymentComponent'
-import { PrunedDeploymentStatusData } from '../../../pages/projects/[slug]'
+import { DeploymentComponent } from '../DeploymentComponent'
+import { PrunedDeploymentStatusData } from '../../../../pages/projects/[slug]'
 import styles from './Deployments.module.scss'
 
 interface DeploymentsProps {

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from "react"
+import React, { FunctionComponent } from "react"
 import { PageLayout } from "../../components/layout/PageLayout"
 import sanityClient from "../../sanity/client"
 import octokitClient from "../../github/client"
@@ -10,7 +10,8 @@ import { PortableText } from "@portabletext/react"
 import { Endpoints } from "@octokit/types"
 import { DeploymentState } from "../../components/pages/projects/DeploymentComponent"
 import Link from "next/link"
-import { Deployments } from "../../components/pages/projects/Deployments"
+import { Deployments } from "../../components/pages/projects/github-data-components/Deployments"
+import { Languages } from "../../components/pages/projects/github-data-components/Languages"
 
 /**
  * Based on Octokit return type for desployment statuses, but only contains fields that
@@ -41,24 +42,31 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
     prunedDeploymentStatuses,
-    getLanguagesResponseData,
+    // getLanguagesResponseData,
     prunedContributors,
 }) => {
 
-  /**
-   * maxBytes is determined by the getLanguagesResponse object. GitHub returns languages data as a key-value
-   * object where the language name is the key and the BYTE amount is the value (not the line count). This
-   * value is used when calculating the percentage of language usages.
-   */
-  const maxBytes = useMemo(() => {
-    let bytes = 0
-    if (getLanguagesResponseData) {
-      Object.keys(getLanguagesResponseData).forEach((key) => {
-        bytes += getLanguagesResponseData[key]
-      })
-    }
-    return bytes
-  }, [getLanguagesResponseData])
+  // const requestArgs = useMemo(() => {
+  //   return {
+  //       owner: project.githubOwner || ``,
+  //       repo: project.githubRepo || ``,
+  //       headers: {
+  //         'X-GitHub-Api-Version': `2022-11-28`
+  //       }
+  //     }
+  // }, [project])
+
+  // const deploymentsAndStatuses = useMemo(async () => {
+  //   const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
+  // }, [requestArgs])
+
+  // const contributors = useMemo(async () => {
+
+  // }, [requestArgs])
+
+  // const latestCommits = useMemo(async () => {
+
+  // }, [requestArgs])
 
     return ( !!project &&
       <PageLayout
@@ -96,18 +104,10 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
               />
             </div>
           )}
-          {!!getLanguagesResponseData && Object.keys(getLanguagesResponseData).length && (
-            <div className={styles.metadataItem}>
-              <h3>Languages</h3>
-              <ul className={styles.languagesBar}>
-                {Object.keys(getLanguagesResponseData).map(key => {
-                  const currentBytes: number = getLanguagesResponseData[key]
-                  const percentage = (currentBytes / maxBytes) * 100
-                  return <li key={`language-${key.toLowerCase()}-usages`}>{key}: {percentage.toFixed(2)}%</li>
-                })}
-              </ul>
-            </div>
-          )}
+          <div className={styles.metadataItem}>
+            <h3>Languages</h3>
+            <Languages githubOwner={project.githubOwner || ``} githubRepo={project.githubRepo || ``} />
+          </div>
           {!!prunedContributors && (
             <div className={styles.metadataItem}>
               <h3>Contributors</h3>

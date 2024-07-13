@@ -1,0 +1,19 @@
+@use 'variables' as vars;
+
+.languagesBar {
+    width: 100%;
+    >:first-child {
+        border-radius: 8px 0 0 8px;
+    }
+    >:last-child {
+        border-radius: 0 8px 8px 0;
+    }
+    >:not(:last-child) {
+        border-right: 1px solid white;
+    }
+    .languageSpan {
+        height: 12px;
+        display: inline-block;
+        background-color: red;
+    }
+}
