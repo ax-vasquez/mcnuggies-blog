@@ -1386,6 +1386,13 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.12.tgz#12bb1e2be27293c1406acb6af1c3f3a1481d98c6"
   integrity sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
 
+"@types/react-inlinesvg@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-inlinesvg/-/react-inlinesvg-1.0.0.tgz#c7c1e24afe26e67ae7608ab4b3a6ff3ede3b0782"
+  integrity sha512-KV9aRzRSQzfq8PFMROlt+We5UVTzJHReYW1670SrFA05qCwch1u2gafeKnXbYaqQr8odc913wT0LEzARZ7ckkg==
+  dependencies:
+    react-inlinesvg "*"
+
 "@types/react@^18.0.25":
   version "18.3.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.3.tgz#9679020895318b0915d7a3ab004d92d33375c45f"
@@ -2586,6 +2593,18 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+react-from-dom@^0.7.2:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.7.3.tgz#60e75fde2369ceb0a8f87d88f9cfbeb67b730e43"
+  integrity sha512-9IK6R7+eD1wOAMC2ZCrENev0eK1625cb7vX+cnnOR9LBRNbjKiaJk4ij2zQbcefEXTWjXFhA7CTO1cd8wMONnw==
+
+react-inlinesvg@*:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-4.1.3.tgz#671f083fd78934ec58afa5128460252dcae61177"
+  integrity sha512-p1+wkr1UQZyLw/3bdpnHO3v3tMNVWyxWnAEY6ML/Ql9ldDYTBTy6HqAyNl7u3au925XPffLMiXKnQrqZeJAldw==
+  dependencies:
+    react-from-dom "^0.7.2"
 
 readable-stream@^2.3.0, readable-stream@^2.3.5, readable-stream@~2.3.6:
   version "2.3.8"
