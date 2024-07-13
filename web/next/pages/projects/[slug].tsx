@@ -7,7 +7,6 @@ import styles from './project.module.scss'
 import Markdown from 'react-markdown'
 import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
-import { Endpoints } from "@octokit/types"
 import { DeploymentState } from "../../components/pages/projects/DeploymentComponent"
 import Link from "next/link"
 import { Deployments } from "../../components/pages/projects/github-data-components/Deployments"
@@ -34,7 +33,6 @@ interface ProjectPageProps {
     project: Project
     readmeContent?: string
     prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null
-    getLanguagesResponseData: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
     prunedContributors: { [key: string]: PrunedContributorData } | null
 }
 
@@ -42,31 +40,8 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
     prunedDeploymentStatuses,
-    // getLanguagesResponseData,
     prunedContributors,
 }) => {
-
-  // const requestArgs = useMemo(() => {
-  //   return {
-  //       owner: project.githubOwner || ``,
-  //       repo: project.githubRepo || ``,
-  //       headers: {
-  //         'X-GitHub-Api-Version': `2022-11-28`
-  //       }
-  //     }
-  // }, [project])
-
-  // const deploymentsAndStatuses = useMemo(async () => {
-  //   const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
-  // }, [requestArgs])
-
-  // const contributors = useMemo(async () => {
-
-  // }, [requestArgs])
-
-  // const latestCommits = useMemo(async () => {
-
-  // }, [requestArgs])
 
     return ( !!project &&
       <PageLayout
@@ -164,7 +139,6 @@ export async function getStaticProps(context: any) {
     let readmeContent
     let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null = null
     let prunedContributors: { [key: string]: PrunedContributorData } | null = null
-    let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
 
     if (project.githubOwner && project.githubRepo) {
 
@@ -177,8 +151,6 @@ export async function getStaticProps(context: any) {
       }
       const getReadmeResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/readme`, requestArgs)
       const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
-      // Get .data here since the data object for the languages response is simple enough to pass to the static bundle without increasing byte size too much
-      getLanguagesResponse = (await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)).data
       const getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
 
       const getLatestUniqueDeployments = async () => {
@@ -223,7 +195,6 @@ export async function getStaticProps(context: any) {
             html_url,
             avatar_url
           } = contributor
-          console.log(contributor)
           if (login && avatar_url && prunedContributors) {
             prunedContributors[login] = {
               login,
@@ -243,7 +214,6 @@ export async function getStaticProps(context: any) {
           project,
           readmeContent,
           prunedDeploymentStatuses,
-          getLanguagesResponse: getLanguagesResponse,
           prunedContributors,
       }
   }
