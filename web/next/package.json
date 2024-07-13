@@ -23,7 +23,7 @@
     "@types/react-bootstrap": "^0.32.29",
     "@types/react-redux": "^7.1.33",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.13.2",
     "@vercel/speed-insights": "^1.0.1",
     "bootstrap": "5.1.3",
