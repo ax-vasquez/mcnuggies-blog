@@ -11,6 +11,9 @@
     >:not(:last-child) {
         border-right: 1px solid white;
     }
+    >:first-child:last-child {
+        border-radius: 8px 8px 8px 8px;
+    }
     .languageSpan {
         height: 12px;
         display: inline-block;
