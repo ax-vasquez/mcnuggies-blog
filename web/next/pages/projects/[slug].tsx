@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from "react"
+import React, { FunctionComponent } from "react"
 import { PageLayout } from "../../components/layout/PageLayout"
 import sanityClient from "../../sanity/client"
 import octokitClient from "../../github/client"
@@ -7,22 +7,23 @@ import styles from './project.module.scss'
 import Markdown from 'react-markdown'
 import CustomIcon from "../../components/shared/CustomIcon"
 import { PortableText } from "@portabletext/react"
-import { Endpoints } from "@octokit/types"
-import { DeploymentComponent, DeploymentState } from "../../components/pages/projects/DeploymentComponent"
+import { DeploymentState } from "../../components/pages/projects/DeploymentComponent"
 import Link from "next/link"
+import { Deployments } from "../../components/pages/projects/github-data-components/Deployments"
+import { Languages } from "../../components/pages/projects/github-data-components/Languages"
 
 /**
  * Based on Octokit return type for desployment statuses, but only contains fields that
  * are actually used (there is a lot more in the response that can be used later, if needed)
  */
-type PrunedDeploymentStatusData = {
+export type PrunedDeploymentStatusData = {
   environment: string,
   environmentUrl: string,
   createdAt: string,
   state: DeploymentState
 }
 
-type PrunedContributorData = {
+export type PrunedContributorData = {
   login: string | undefined
   url: string | undefined
   avatarUrl: string | undefined
@@ -32,7 +33,6 @@ interface ProjectPageProps {
     project: Project
     readmeContent?: string
     prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null
-    getLanguagesResponseData: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
     prunedContributors: { [key: string]: PrunedContributorData } | null
 }
 
@@ -40,24 +40,8 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
     project,
     readmeContent,
     prunedDeploymentStatuses,
-    getLanguagesResponseData,
     prunedContributors,
 }) => {
-
-  /**
-   * maxBytes is determined by the getLanguagesResponse object. GitHub returns languages data as a key-value
-   * object where the language name is the key and the BYTE amount is the value (not the line count). This
-   * value is used when calculating the percentage of language usages.
-   */
-  const maxBytes = useMemo(() => {
-    let bytes = 0
-    if (getLanguagesResponseData) {
-      Object.keys(getLanguagesResponseData).forEach((key) => {
-        bytes += getLanguagesResponseData[key]
-      })
-    }
-    return bytes
-  }, [getLanguagesResponseData])
 
     return ( !!project &&
       <PageLayout
@@ -90,40 +74,15 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
 
           {!!prunedDeploymentStatuses && (
             <div className={styles.metadataItem}>
-              <h3>Deployments</h3>
-              <div className={styles.deploymentsWrapper}>
-                {Object.keys(prunedDeploymentStatuses).map((deployment) => {
-                  const {
-                    createdAt,
-                    environment,
-                    environmentUrl,
-                    state,
-                  } = prunedDeploymentStatuses[deployment]
-                  return (
-                    <DeploymentComponent
-                      key={`deployment-${environment.toLowerCase()}`}
-                      environment={environment}
-                      environmentUrl={environmentUrl}
-                      state={state}
-                      createdAt={createdAt}
-                    />
-                  )
-                })}
-              </div>
+              <Deployments
+                prunedDeploymentStatuses={prunedDeploymentStatuses}
+              />
             </div>
           )}
-          {!!getLanguagesResponseData && Object.keys(getLanguagesResponseData).length && (
-            <div className={styles.metadataItem}>
-              <h3>Languages</h3>
-              <ul className={styles.languagesBar}>
-                {Object.keys(getLanguagesResponseData).map(key => {
-                  const currentBytes: number = getLanguagesResponseData[key]
-                  const percentage = (currentBytes / maxBytes) * 100
-                  return <li key={`language-${key.toLowerCase()}-usages`}>{key}: {percentage.toFixed(2)}%</li>
-                })}
-              </ul>
-            </div>
-          )}
+          <div className={styles.metadataItem}>
+            <h3>Languages</h3>
+            <Languages githubOwner={project.githubOwner || ``} githubRepo={project.githubRepo || ``} />
+          </div>
           {!!prunedContributors && (
             <div className={styles.metadataItem}>
               <h3>Contributors</h3>
@@ -180,7 +139,6 @@ export async function getStaticProps(context: any) {
     let readmeContent
     let prunedDeploymentStatuses: { [key: string]: PrunedDeploymentStatusData } | null = null
     let prunedContributors: { [key: string]: PrunedContributorData } | null = null
-    let getLanguagesResponse: Endpoints[`GET /repos/{owner}/{repo}/languages`][`response`][`data`] | undefined
 
     if (project.githubOwner && project.githubRepo) {
 
@@ -193,8 +151,6 @@ export async function getStaticProps(context: any) {
       }
       const getReadmeResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/readme`, requestArgs)
       const getDeploymentsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/deployments`, requestArgs)
-      // Get .data here since the data object for the languages response is simple enough to pass to the static bundle without increasing byte size too much
-      getLanguagesResponse = (await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)).data
       const getContributorsResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/contributors`, requestArgs)
 
       const getLatestUniqueDeployments = async () => {
@@ -239,7 +195,6 @@ export async function getStaticProps(context: any) {
             html_url,
             avatar_url
           } = contributor
-          console.log(contributor)
           if (login && avatar_url && prunedContributors) {
             prunedContributors[login] = {
               login,
@@ -259,7 +214,6 @@ export async function getStaticProps(context: any) {
           project,
           readmeContent,
           prunedDeploymentStatuses,
-          getLanguagesResponse: getLanguagesResponse,
           prunedContributors,
       }
   }
