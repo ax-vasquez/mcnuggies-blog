@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import octokitClient from '../../../../github/client'
 import { Endpoints } from '@octokit/types'
-import cs from 'clsx'
+// import cs from 'clsx'
 import styles from './Languages.module.scss'
 import { GITHUB_LANGUAGE_COLORS } from './githubColors'
+import { Pie, PieChart } from 'recharts'
 
 interface LanguagesProps {
     githubOwner: string | undefined,
@@ -43,6 +44,16 @@ export const Languages: React.FC<LanguagesProps> = ({
         return bytes
     }, [languages])
 
+    const languageChartData = useMemo(() => {
+      const chartData = [] as { language: string, bytes: number, fill: string }[]
+      if (languages) {
+        Object.keys(languages).forEach(lang => {
+          chartData.push({ language: lang, bytes: languages[lang], fill: GITHUB_LANGUAGE_COLORS[lang].color || `red` })
+        })
+      }
+      return chartData
+    }, [languages])
+
     useEffect(() => {
 
         const getLanguages = async () => {
@@ -70,7 +81,7 @@ export const Languages: React.FC<LanguagesProps> = ({
       <>
         {languages ?
           <>
-            <span className={styles.languagesBar}>{Object.keys(languages).map(key => {
+            {/* <span className={styles.languagesBar}>{Object.keys(languages).map(key => {
                         const currentBytes: number = languages[key]
                         const percentage = (currentBytes / maxBytes) * 100
                         return <span
@@ -80,7 +91,16 @@ export const Languages: React.FC<LanguagesProps> = ({
                                 width: `${percentage}%`,
                                 backgroundColor: GITHUB_LANGUAGE_COLORS[key].color || `red`
                             }}/>
-                    })}</span>
+                    })}</span> */}
+            <PieChart width={300} height={300}>
+              <Pie
+                data={languageChartData}
+                nameKey="language"
+                dataKey="bytes"
+                innerRadius={60}
+                strokeWidth={5}
+              />
+            </PieChart>
             <ul className={styles.languagesList}>
               {Object.keys(languages).map(key => {
                             const currentBytes: number = languages[key]
