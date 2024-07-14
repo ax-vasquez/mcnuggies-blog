@@ -9,10 +9,6 @@
     "lint": "next lint --fix",
     "cy:open": "yarn cypress open"
   },
-  "resolutions": {
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0"
-  },
   "dependencies": {
     "@octokit/core": "^6.1.2",
     "@portabletext/react": "^3.0.11",
@@ -32,7 +28,7 @@
     "react-bootstrap": "^2.1.2",
     "react-dom": "18.3.1",
     "react-github-calendar": "^4.1.6",
-    "react-inlinesvg": "4.0.4",
+    "react-inlinesvg": "3.0.3",
     "react-markdown": "^9.0.1",
     "react-redux": "^7.2.6",
     "react-syntax-highlighter": "^15.4.5",

@@ -757,13 +757,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-dom@18.3.0":
-  version "18.3.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.0.tgz#0cbc818755d87066ab6ca74fbedb2547d74a82b0"
-  integrity sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-redux@^7.1.20":
   version "7.1.24"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.24.tgz#6caaff1603aba17b27d20f8ad073e4c077e975c0"
@@ -2412,6 +2405,11 @@ executable@^4.1.1:
   integrity sha512-8iA79xD3uAch729dUG8xaaBBFGaEa0wdD2VkYLFHwlqosEj/jT66AzcreRDSgV7ehnNLBW2WR5jIXwGKjVdTLg==
   dependencies:
     pify "^2.2.0"
+
+exenv@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+  integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
 
 extend@^3.0.0, extend@~3.0.2:
   version "3.0.2"
@@ -4630,11 +4628,12 @@ react-github-calendar@^4.1.6:
     react-activity-calendar "^2.2.11"
     react-error-boundary "^4.0.12"
 
-react-inlinesvg@4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-4.0.4.tgz#100e377ed13f71f24e08055882a4b8981038e638"
-  integrity sha512-OnXi+IHoY2zj6rt+kLmXQth9HZ3rS1TDtDwjFbELcCZngAJC32nXp2ZzLp4FpijzISDe7YfHI3SFs9qALWv+xw==
+react-inlinesvg@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-3.0.3.tgz#b52d34869af2f7dd06f459302f5719ff70f0cb44"
+  integrity sha512-D9wqEyh1+ni07+CP2yaD9nSK11Y2ngd79xudEilX7YHKmUCeP1lXZqFvuLbdOo+m+oEjekd+c0DBc/bj93Lwqg==
   dependencies:
+    exenv "^1.2.2"
     react-from-dom "^0.6.2"
 
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.7.0:
