@@ -91,6 +91,8 @@ export const Languages: React.FC<LanguagesProps> = ({
                     innerRadius={60}
                     strokeWidth={5}
                     blendStroke
+                    startAngle={90}
+                    endAngle={450}
                   />
                 </PieChart>
               </div>
