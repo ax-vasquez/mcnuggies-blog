@@ -99,6 +99,7 @@ export const Languages: React.FC<LanguagesProps> = ({
                 dataKey="bytes"
                 innerRadius={60}
                 strokeWidth={5}
+                blendStroke
               />
             </PieChart>
             <ul className={styles.languagesList}>
