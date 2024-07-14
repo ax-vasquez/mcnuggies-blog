@@ -1,45 +1,44 @@
 @use 'variables' as vars;
 
-.languagesBar {
+.languageChartWrapper {
     width: 100%;
-    >:first-child {
-        border-radius: 8px 0 0 8px;
+    @media  screen and (max-width: vars.$laptop) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
     }
-    >:last-child {
-        border-radius: 0 8px 8px 0;
+    @media screen and (min-width: vars.$laptop) {
+        display: inline-flex;
     }
-    >:not(:last-child) {
-        border-right: 1px solid white;
-    }
-    >:first-child:last-child {
-        border-radius: 8px;
-    }
-    .languageSpan {
-        height: 12px;
-        display: inline-block;
-        background-color: red;
+    .languageChart {
+        flex: 1;
     }
 }
 
 .languagesList {
+    margin: 0;
+    padding: 0;
     width: 100%;
+    >:not(:last-child) {
+        border-bottom: 1px solid vars.$gray-200;
+    }
     .languageListItem {
+        list-style-position: inside;
         font-size: 22px;
-    }
-}
-
-.languageLabel {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    .languageKey {
-        font-size: 18px;
-        color: vars.$gray-800;
-        flex: 1;
-    }
-    .languagePercentage {
-        font-size: 14px;
-        color: vars.$gray-400;
+        .languageKey {
+            color: vars.$gray-800;
+            font-size: 18px;
+            color: vars.$gray-800;
+        }
+        .languagePercentage {
+            font-size: 14px;
+            color: vars.$gray-400;
+            float: right;
+        }
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 

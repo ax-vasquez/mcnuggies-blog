@@ -81,46 +81,37 @@ export const Languages: React.FC<LanguagesProps> = ({
       <>
         {languages ?
           <>
-            {/* <span className={styles.languagesBar}>{Object.keys(languages).map(key => {
-                        const currentBytes: number = languages[key]
-                        const percentage = (currentBytes / maxBytes) * 100
-                        return <span
-                            key={`lang-span-${key.toLowerCase()}`}
-                            className={cs(styles.languageSpan)}
-                            style={{
-                                width: `${percentage}%`,
-                                backgroundColor: GITHUB_LANGUAGE_COLORS[key].color || `red`
-                            }}/>
-                    })}</span> */}
-            <PieChart width={300} height={300}>
-              <Pie
-                data={languageChartData}
-                nameKey="language"
-                dataKey="bytes"
-                innerRadius={60}
-                strokeWidth={5}
-                blendStroke
-              />
-            </PieChart>
-            <ul className={styles.languagesList}>
-              {Object.keys(languages).map(key => {
-                            const currentBytes: number = languages[key]
-                            const percentage = (currentBytes / maxBytes) * 100
-                            return <li
-                                    className={styles.languageListItem}
-                                    key={`lang-list-item-${key.toLowerCase()}-usages`}
-                                    style={{
-                                        color: GITHUB_LANGUAGE_COLORS[key].color || `red`
-                                    }}
-                                    onClick={() => window.open(GITHUB_LANGUAGE_COLORS[key].url, `_blank`)}
-                                >
-                              <div className={styles.languageLabel}>
+            <div className={styles.languageChartWrapper}>
+              <div className={styles.languageChart}>
+                <PieChart width={250} height={250} >
+                  <Pie
+                    data={languageChartData}
+                    nameKey="language"
+                    dataKey="bytes"
+                    innerRadius={60}
+                    strokeWidth={5}
+                    blendStroke
+                  />
+                </PieChart>
+              </div>
+              <ul className={styles.languagesList}>
+                {Object.keys(languages).map(key => {
+                              const currentBytes: number = languages[key]
+                              const percentage = (currentBytes / maxBytes) * 100
+                              return <li
+                                      className={styles.languageListItem}
+                                      key={`lang-list-item-${key.toLowerCase()}-usages`}
+                                      style={{
+                                          color: GITHUB_LANGUAGE_COLORS[key].color || `red`
+                                      }}
+                                      onClick={() => window.open(GITHUB_LANGUAGE_COLORS[key].url, `_blank`)}
+                                  >
                                 <span className={styles.languageKey}>{key}</span>
                                 <span className={styles.languagePercentage}>{percentage.toFixed(2)}%</span>
-                              </div>
-                            </li>
-                        })}
-            </ul>
+                              </li>
+                          })}
+              </ul>
+            </div>
           </>
         :
           <>
