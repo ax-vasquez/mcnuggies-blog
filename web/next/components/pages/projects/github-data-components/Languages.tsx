@@ -55,20 +55,22 @@ export const Languages: React.FC<LanguagesProps> = ({
     }, [languages])
 
     useEffect(() => {
-
         const getLanguages = async () => {
           if (!languages) {
-            setLoadingLanguages(true)
-            let languagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
-            if (Object.keys(languagesResponse.data).length > 0) {
-              setLanguages(languagesResponse.data)
+            try {
+              setLoadingLanguages(true)
+              let languagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
+              if (Object.keys(languagesResponse.data).length > 0) {
+                setLanguages(languagesResponse.data)
+              }
+            } catch (e) {
+              // TODO: Sentry logging in the distant future (provided this doesn't massively change by then, which is probably will)
+              setLanguages(undefined)
             }
             setLoadingLanguages(false)
           }
         }
-
         getLanguages()
-
     }, [requestArgs])
 
     if (loadingLanguages) {
