@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import octokitClient from '../../../../github/client'
 import { Endpoints } from '@octokit/types'
-import cs from 'clsx'
+// import cs from 'clsx'
 import styles from './Languages.module.scss'
 import { GITHUB_LANGUAGE_COLORS } from './githubColors'
+import { Pie, PieChart } from 'recharts'
 
 interface LanguagesProps {
     githubOwner: string | undefined,
@@ -43,21 +44,33 @@ export const Languages: React.FC<LanguagesProps> = ({
         return bytes
     }, [languages])
 
-    useEffect(() => {
+    const languageChartData = useMemo(() => {
+      const chartData = [] as { language: string, bytes: number, fill: string }[]
+      if (languages) {
+        Object.keys(languages).forEach(lang => {
+          chartData.push({ language: lang, bytes: languages[lang], fill: GITHUB_LANGUAGE_COLORS[lang].color || `red` })
+        })
+      }
+      return chartData
+    }, [languages])
 
+    useEffect(() => {
         const getLanguages = async () => {
           if (!languages) {
-            setLoadingLanguages(true)
-            let languagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
-            if (Object.keys(languagesResponse.data).length > 0) {
-              setLanguages(languagesResponse.data)
+            try {
+              setLoadingLanguages(true)
+              let languagesResponse = await octokitClient.request(`GET /repos/{owner}/{repo}/languages`, requestArgs)
+              if (Object.keys(languagesResponse.data).length > 0) {
+                setLanguages(languagesResponse.data)
+              }
+            } catch (e) {
+              // TODO: Sentry logging in the distant future (provided this doesn't massively change by then, which is probably will)
+              setLanguages(undefined)
             }
             setLoadingLanguages(false)
           }
         }
-
         getLanguages()
-
     }, [requestArgs])
 
     if (loadingLanguages) {
@@ -70,36 +83,39 @@ export const Languages: React.FC<LanguagesProps> = ({
       <>
         {languages ?
           <>
-            <span className={styles.languagesBar}>{Object.keys(languages).map(key => {
-                        const currentBytes: number = languages[key]
-                        const percentage = (currentBytes / maxBytes) * 100
-                        return <span
-                            key={`lang-span-${key.toLowerCase()}`}
-                            className={cs(styles.languageSpan)}
-                            style={{
-                                width: `${percentage}%`,
-                                backgroundColor: GITHUB_LANGUAGE_COLORS[key].color || `red`
-                            }}/>
-                    })}</span>
-            <ul className={styles.languagesList}>
-              {Object.keys(languages).map(key => {
-                            const currentBytes: number = languages[key]
-                            const percentage = (currentBytes / maxBytes) * 100
-                            return <li
-                                    className={styles.languageListItem}
-                                    key={`lang-list-item-${key.toLowerCase()}-usages`}
-                                    style={{
-                                        color: GITHUB_LANGUAGE_COLORS[key].color || `red`
-                                    }}
-                                    onClick={() => window.open(GITHUB_LANGUAGE_COLORS[key].url, `_blank`)}
-                                >
-                              <div className={styles.languageLabel}>
+            <div className={styles.languageChartWrapper}>
+              <div className={styles.languageChart}>
+                <PieChart width={250} height={250} >
+                  <Pie
+                    data={languageChartData}
+                    nameKey="language"
+                    dataKey="bytes"
+                    innerRadius={60}
+                    strokeWidth={5}
+                    blendStroke
+                    startAngle={90}
+                    endAngle={450}
+                  />
+                </PieChart>
+              </div>
+              <ul className={styles.languagesList}>
+                {Object.keys(languages).map(key => {
+                              const currentBytes: number = languages[key]
+                              const percentage = (currentBytes / maxBytes) * 100
+                              return <li
+                                      className={styles.languageListItem}
+                                      key={`lang-list-item-${key.toLowerCase()}-usages`}
+                                      style={{
+                                          color: GITHUB_LANGUAGE_COLORS[key].color || `red`
+                                      }}
+                                      onClick={() => window.open(GITHUB_LANGUAGE_COLORS[key].url, `_blank`)}
+                                  >
                                 <span className={styles.languageKey}>{key}</span>
                                 <span className={styles.languagePercentage}>{percentage.toFixed(2)}%</span>
-                              </div>
-                            </li>
-                        })}
-            </ul>
+                              </li>
+                          })}
+              </ul>
+            </div>
           </>
         :
           <>

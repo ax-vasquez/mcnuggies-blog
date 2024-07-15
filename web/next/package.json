@@ -32,10 +32,11 @@
     "react-markdown": "^9.0.1",
     "react-redux": "^7.2.6",
     "react-syntax-highlighter": "^15.4.5",
+    "recharts": "^2.12.7",
     "redux": "^4.1.2",
     "sanity-codegen": "^0.9.8",
-    "typescript": "4.9.5",
-    "sass": "^1.77.5"
+    "sass": "^1.77.5",
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@octokit/types": "^13.5.0",
