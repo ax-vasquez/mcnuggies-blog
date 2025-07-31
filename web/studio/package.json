@@ -19,7 +19,7 @@
     "@sanity/cli": "3.20.2",
     "@sanity/code-input": "4.1.4",
     "@sanity/dashboard": "3.1.6",
-    "@sanity/vision": "3.46.1",
+    "@sanity/vision": "4.2.0",
     "eslint": "^9.6.0",
     "eslint-config-sanity": "^7.1.2",
     "prop-types": "^15.7",
