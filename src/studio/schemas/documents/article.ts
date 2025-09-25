@@ -1,4 +1,4 @@
-import {richTextFieldConfig, summaryRichTextFieldConfig} from '../../shared'
+import { richTextFieldConfig, summaryRichTextFieldConfig } from "../../shared";
 
 export default {
   name: `article`,
@@ -17,10 +17,8 @@ export default {
       type: `slug`,
       options: {
         source: `title`,
-        slugify: (input: string) => input
-          .toLowerCase()
-          .replace(/\s+/g, `-`)
-          .slice(0, 200),
+        slugify: (input: string) =>
+          input.toLowerCase().replace(/\s+/g, `-`).slice(0, 200),
       },
     },
     {
@@ -37,7 +35,7 @@ export default {
       title: `Author`,
       name: `author`,
       type: `reference`,
-      to: [{type: `creator`}],
+      to: [{ type: `creator` }],
       validation: (Rule) => Rule.required(),
     },
     {
@@ -64,14 +62,14 @@ export default {
       name: `categories`,
       title: `Categories`,
       type: `array`,
-      of: [{type: `reference`, to: [{type: `category`}]}],
+      of: [{ type: `reference`, to: [{ type: `category` }] }],
       validation: (Rule) => Rule.required(),
     },
     {
       name: `series`,
       title: `Series`,
       type: `reference`,
-      to: [{type: `series`}],
+      to: [{ type: `series` }],
     },
     {
       name: `seriesIndex`,
@@ -85,4 +83,4 @@ export default {
       media: `image`,
     },
   },
-}
+};
