@@ -1,4 +1,4 @@
-import {richTextFieldConfig} from '../../shared'
+import { richTextFieldConfig } from "../../shared";
 
 export default {
   name: `creator`,
@@ -17,10 +17,8 @@ export default {
       type: `slug`,
       options: {
         source: `name`,
-        slugify: (input: string) => input
-          .toLowerCase()
-          .replace(/\s+/g, `-`)
-          .slice(0, 200),
+        slugify: (input: string) =>
+          input.toLowerCase().replace(/\s+/g, `-`).slice(0, 200),
       },
     },
     {
@@ -77,4 +75,4 @@ export default {
       media: `image`,
     },
   },
-}
+};

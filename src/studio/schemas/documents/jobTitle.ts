@@ -37,7 +37,7 @@ export default {
       title: `Responsibilities`,
       name: `responsibilities`,
       type: `array`,
-      of: [{type: `string`}],
+      of: [{ type: `string` }],
     },
   ],
   preview: {
@@ -48,4 +48,4 @@ export default {
   initialValue: {
     currentJobTitle: false,
   },
-}
+};

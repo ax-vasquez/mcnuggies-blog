@@ -1,4 +1,4 @@
-import {richTextFieldConfig} from '../../shared'
+import { richTextFieldConfig } from "../../shared";
 
 export default {
   name: `employer`,
@@ -59,7 +59,7 @@ export default {
       name: `jobTitles`,
       title: `Job Titles`,
       type: `array`,
-      of: [{type: `reference`, to: [{type: `jobTitle`}]}],
+      of: [{ type: `reference`, to: [{ type: `jobTitle` }] }],
       description: `The job title(s) you held, or currently hold, at this employer`,
       validation: (Rule) => Rule.required(),
     },
@@ -70,4 +70,4 @@ export default {
       media: `image`,
     },
   },
-}
+};

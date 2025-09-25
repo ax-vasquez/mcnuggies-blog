@@ -1,4 +1,4 @@
-import {richTextFieldConfig} from '../../shared'
+import { richTextFieldConfig } from "../../shared";
 
 export default {
   name: `series`,
@@ -9,7 +9,7 @@ export default {
       name: `seriesTitle`,
       title: `Series Title`,
       type: `string`,
-      validation: (Rule) => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: `seriesDescription`,
@@ -21,7 +21,7 @@ export default {
       name: `articles`,
       title: `Articles`,
       type: `array`,
-      of: [{type: `reference`, to: [{type: `article`}]}]
-    }
-  ]
-}
+      of: [{ type: `reference`, to: [{ type: `article` }] }],
+    },
+  ],
+};
