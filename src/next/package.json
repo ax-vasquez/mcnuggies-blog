@@ -6,7 +6,7 @@
     "dev": "yarn && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
+    "lint": "eslint --fix .",
     "cy:open": "yarn cypress open"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "typescript": "^5.6.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@octokit/types": "^13.5.0",
     "@types/next": "^9.0.0",
     "@types/node": "17.0.17",
