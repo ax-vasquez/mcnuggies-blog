@@ -871,7 +871,7 @@ __metadata:
     next: "npm:15.5.4"
     prettier: "npm:^2.5.1"
     react: "npm:^19.0.0"
-    react-bootstrap: "npm:^2.9.0"
+    react-bootstrap: "npm:^2.10.3"
     react-dom: "npm:^19.0.0"
     react-github-calendar: "npm:^4.1.6"
     react-inlinesvg: "npm:3.0.3"
@@ -7878,7 +7878,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-bootstrap@npm:^2.9.0":
+"react-bootstrap@npm:^2.10.3":
   version: 2.10.10
   resolution: "react-bootstrap@npm:2.10.10"
   dependencies:
