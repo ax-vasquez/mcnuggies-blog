@@ -5,6 +5,7 @@
   "repository": "git@github.com:ax-vasquez/mcnuggies-blog.git",
   "author": "Armando Vasquez <mando@mcnuggies.dev>",
   "license": "MIT",
+  "private": true,
   "workspaces": [
     "src/next",
     "src/studio"
