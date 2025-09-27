@@ -15,7 +15,6 @@ const CreatorSocials: React.FC<CreatorSocialsProps> = ({
       <div className={styles.container}>
         {!!githubUrl && (
           <CustomIcon
-                  data-cy='github'
                   fileName='logo-github'
                   height={32}
                   width={32}
@@ -25,7 +24,6 @@ const CreatorSocials: React.FC<CreatorSocialsProps> = ({
               )}
         {!!linkedInUrl && (
           <CustomIcon
-                    data-cy='linkedin'
                   fileName='logo-linkedin'
                   height={32}
                   width={32}

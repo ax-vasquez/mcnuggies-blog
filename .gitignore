@@ -8,8 +8,5 @@
 # exclude generated types
 graphql-types.ts
 
-web/cypress/screenshots
-web/cypress/vidoes
-
 dist
 certs

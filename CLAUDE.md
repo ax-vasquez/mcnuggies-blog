@@ -16,78 +16,63 @@ The frontend consumes data from Sanity CMS via their client library. Content inc
 
 **Start the Next.js frontend:**
 ```bash
-# From repo root
 yarn web
-# OR from src/next
-yarn dev
 ```
 
 **Start the Sanity Studio:**
 ```bash
-# From repo root
 yarn studio
-# OR from src/studio
-yarn start
 ```
 
 ### Build Commands
 
 **Next.js:**
 ```bash
-cd src/next && yarn build
+yarn build:next
 ```
 
 **Sanity Studio:**
 ```bash
-cd src/studio && yarn build
+yarn build:studio
 ```
 
 ### Linting and Type Checking
 
 **Lint Next.js code:**
 ```bash
-# From repo root
 yarn lint-next
-# OR from src/next
-yarn lint
 ```
 
 **Type checking:**
 ```bash
-cd src/next && yarn tsc
-cd src/studio && yarn tsc
+yarn tsc:next   # Next.js
+yarn tsc:studio # Sanity Studio
 ```
 
 ### Testing
 
-**Run Cypress E2E tests:**
-```bash
-cd src/next && yarn cy:open
-```
-
 **Generate Sanity schema types:**
 ```bash
-cd src/studio && yarn generateSchemaTypes
+yarn generateSchemaTypes
 ```
 
 ### Setup Commands
 
 **Initial setup:**
 ```bash
-yarn setup  # Installs all dependencies
+yarn install  # Installs all workspace dependencies
 ```
 
 **Clean install:**
 ```bash
-yarn clean  # Removes all node_modules
-yarn setup  # Reinstalls everything
+yarn clean     # Removes all node_modules
+yarn install   # Reinstalls everything
 ```
 
 ## Key Technologies
 
 - **Frontend**: Next.js 14, React 18, TypeScript, Bootstrap 5, Redux Toolkit, SASS
 - **CMS**: Sanity v3 with custom schema types
-- **Testing**: Cypress for E2E testing
 - **Code Quality**: ESLint, Prettier, Husky pre-commit hooks, lint-staged
 - **Deployment**: Vercel (frontend), hosted Sanity Studio optional
 
@@ -109,8 +94,10 @@ src/
 
 ## Development Notes
 
+- This project uses **Yarn Workspaces** to manage dependencies across both applications
 - The frontend expects the Sanity Studio to be running to access content data
 - Schema changes in the studio require regenerating types with `yarn generateSchemaTypes`
 - Pre-commit hooks run linting via lint-staged configuration
 - The site uses Bootstrap 5 with custom SASS for styling
 - Redux is used for client-side state management (primarily sidebar state)
+- Shared dependencies like TypeScript, ESLint, and Prettier are managed at the workspace root

@@ -49,7 +49,7 @@ const About: NextPage<AboutPageProps> = (props) => {
           </p>
         </div>
         <div className='maintainer-name-and-title'>
-          <h3 className='creator-name' data-cy='author-name'>
+          <h3 className='creator-name'>
             {creator.name!}
           </h3>
           <div className='profession'>
@@ -65,7 +65,6 @@ const About: NextPage<AboutPageProps> = (props) => {
           <div className='creator-details'>
             <div className='creator-bio'>
               <PortableText
-                data-cy='author-description'
                 value={creator.bio!}
               />
             </div>
@@ -81,7 +80,7 @@ const About: NextPage<AboutPageProps> = (props) => {
           <h2>GitHub Activity</h2>
           <GitHubCalendar colorScheme="light" username={creator.githubUsername} />
         </div>}
-        <div className='work-history' data-cy='work-history'>
+        <div className='work-history'>
           <div className='section-title'>
             <h2>Work history</h2>
           </div>
