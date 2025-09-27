@@ -63,7 +63,7 @@ export const Languages: React.FC<LanguagesProps> = ({
               if (Object.keys(languagesResponse.data).length > 0) {
                 setLanguages(languagesResponse.data)
               }
-            } catch (e) {
+            } catch {
               // TODO: Sentry logging in the distant future (provided this doesn't massively change by then, which is probably will)
               setLanguages(undefined)
             }
@@ -71,7 +71,7 @@ export const Languages: React.FC<LanguagesProps> = ({
           }
         }
         getLanguages()
-    }, [requestArgs])
+    }, [requestArgs, languages])
 
     if (loadingLanguages) {
         return (
