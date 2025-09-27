@@ -26,7 +26,6 @@ export const ProjectComponent: React.FC<ProjectComponentProps> = ({
             <div className={styles.projectHeading}>
               <h2>{title}</h2>
               <CustomIcon
-                  data-cy='github'
                   fileName='logo-github'
                   height={32}
                   width={32}

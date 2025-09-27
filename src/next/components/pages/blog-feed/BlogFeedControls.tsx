@@ -16,7 +16,7 @@ const BlogFeedControls: React.FC<BlogFeedControlsProps> = ({
 }) => {
     return (
       <div className={styles.blogControls}>
-        <input data-cy="blog-search-field" placeholder='Search...' value={searchText} onChange={searchTextHandler}/>
+        <input placeholder='Search...' value={searchText} onChange={searchTextHandler}/>
         <button className={styles.filterButton}
               onClick={filterButtonHandler}
             >

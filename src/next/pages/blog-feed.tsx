@@ -129,7 +129,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
           searchTextHandler={(e) => setSearchText(e.target.value)}
           filterButtonHandler={() => setModalIsOpen(!modalIsOpen)}
         />
-        <div className={styles.blogFeed} data-cy="blog-feed">
+        <div className={styles.blogFeed}>
           { shownArticles.length > 0 ?
               shownArticles
               .map(article => {
@@ -158,7 +158,7 @@ const BlogFeed: NextPage<NextPageProps> = ({ allArticles }) => {
         >
           <div className={styles.categoriesWrapper}>
             <h3>Categories</h3>
-            <ul data-cy="blog-category-filters" className={styles.categoriesFilters}>{allCategories.map(category => (<li key={`category-${kebabCase(category)}`}><Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} /></li>))}</ul>
+            <ul className={styles.categoriesFilters}>{allCategories.map(category => (<li key={`category-${kebabCase(category)}`}><Category isActive={activeCategories.includes(category)} onClick={() => categoryFilterHandler(category)} key={`cat-item-${kebabCase(category)}`} title={category} /></li>))}</ul>
           </div>
         </Modal>
       </PageLayout>

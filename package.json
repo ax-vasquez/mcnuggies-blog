@@ -14,7 +14,6 @@
     "lint-next": "yarn workspace @mcnuggies-blog/next lint",
     "web": "yarn workspace @mcnuggies-blog/next dev",
     "studio": "yarn workspace @mcnuggies-blog/studio start",
-    "cy:open": "yarn workspace @mcnuggies-blog/next cy:open",
     "build:next": "yarn workspace @mcnuggies-blog/next build",
     "build:studio": "yarn workspace @mcnuggies-blog/studio build",
     "tsc:next": "yarn workspace @mcnuggies-blog/next tsc",

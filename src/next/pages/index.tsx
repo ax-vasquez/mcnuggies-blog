@@ -105,12 +105,6 @@ const Home: NextPage = () => {
         label={`And was developed using these fine tools and packages`}
         integrations={[
           {
-            provider: `Cypress`,
-            homePage: `https://www.cypress.io/`,
-            iconFileName: `logo-cypress`,
-            description: `Fast, easy and reliable testing for anything that runs in a browser.`
-          },
-          {
             provider: `ESLint`,
             homePage: `https://eslint.org/`,
             iconFileName: `logo-eslint`,

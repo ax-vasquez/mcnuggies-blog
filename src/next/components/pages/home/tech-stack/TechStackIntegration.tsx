@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import kebabCase from '../../../../util/kebabCase'
 import CustomIcon from '../../../shared/CustomIcon'
 import styles from './TechStackIntegration.module.scss'
 
@@ -19,7 +18,6 @@ export const TechStackIntegration: FunctionComponent<TechStackIntegrationProps> 
     return (
       <div className={styles.techStackIntegration}
             onClick={() => window.open(homePage, `_blank`)}
-            data-cy={`integration-${kebabCase(provider)}`}
         >
         <div className={styles.integrationTitle}>
           <CustomIcon

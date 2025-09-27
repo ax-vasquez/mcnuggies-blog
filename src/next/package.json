@@ -7,8 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --fix .",
-    "cy:open": "yarn cypress open"
+    "lint": "eslint --fix ."
   },
   "dependencies": {
     "@octokit/core": "^6.1.5",
@@ -39,7 +38,6 @@
     "@types/react": "^19.0.0",
     "@types/react-bootstrap": "^0.32.29",
     "@types/react-redux": "^7.1.33",
-    "@types/react-syntax-highlighter": "^13.5.2",
-    "eslint-plugin-cypress": "^2.15.1"
+    "@types/react-syntax-highlighter": "^13.5.2"
   }
 }

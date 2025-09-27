@@ -14,7 +14,6 @@ const CreatorImage: React.FC<CreatorImageProps> = ({
     return (
       <div className={styles.container}>
         <Image
-              data-cy='author-avatar'
               src={imageUrl}
               layout='fill'
               alt='creator-image'

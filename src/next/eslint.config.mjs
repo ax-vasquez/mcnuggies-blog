@@ -1,7 +1,6 @@
 import js from '@eslint/js'
 import typescript from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
-import cypress from 'eslint-plugin-cypress'
 import globals from 'globals'
 import { FlatCompat } from '@eslint/eslintrc'
 
@@ -41,15 +40,10 @@ export default [
         ...globals.node,
         ...globals.es2021,
         JSX: true,
-        // Cypress globals
-        cy: 'readonly',
-        Cypress: 'readonly',
-        expect: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': typescript,
-      cypress: cypress,
     },
     rules: {
       'max-len': 'off',
@@ -94,31 +88,6 @@ export default [
     rules: {
       '@typescript-eslint/no-use-before-define': ['error'],
       'no-use-before-define': 'off',
-    },
-  },
-  // Cypress specific configuration
-  {
-    files: ['cypress/**/*.{js,ts}', '**/*.cy.{js,ts}'],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        cy: 'readonly',
-        Cypress: 'readonly',
-        describe: 'readonly',
-        it: 'readonly',
-        context: 'readonly',
-        beforeEach: 'readonly',
-        before: 'readonly',
-        afterEach: 'readonly',
-        after: 'readonly',
-        expect: 'readonly',
-      },
-    },
-    rules: {
-      // Disable problematic rules for Cypress files
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 ]

@@ -52,7 +52,6 @@ const ProjectPage: FunctionComponent<ProjectPageProps> = ({
         <div className={styles.pageHeader}>
           <h1>{project.title}</h1>
           <CustomIcon
-              data-cy='github'
               fileName='logo-github'
               height={32}
               width={32}

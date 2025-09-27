@@ -51,11 +51,6 @@ yarn tsc:studio # Sanity Studio
 
 ### Testing
 
-**Run Cypress E2E tests:**
-```bash
-yarn cy:open
-```
-
 **Generate Sanity schema types:**
 ```bash
 yarn generateSchemaTypes
@@ -78,7 +73,6 @@ yarn install   # Reinstalls everything
 
 - **Frontend**: Next.js 14, React 18, TypeScript, Bootstrap 5, Redux Toolkit, SASS
 - **CMS**: Sanity v3 with custom schema types
-- **Testing**: Cypress for E2E testing
 - **Code Quality**: ESLint, Prettier, Husky pre-commit hooks, lint-staged
 - **Deployment**: Vercel (frontend), hosted Sanity Studio optional
 

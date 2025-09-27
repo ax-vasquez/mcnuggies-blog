@@ -96,17 +96,17 @@ const BlogPost: FunctionComponent<BlogPostProps> = ({ article, outlineItems, ser
         {!!article && (
           <div>
             <div className='article-metadata'>
-              <h1 data-cy="article-title">{article.title}</h1>
+              <h1>{article.title}</h1>
               <div className={styles.publishDataAndSeries}>
                 <div className={styles.publishAndAuthor}>
                   <div className='author-field'>By {article.authorName}</div>
-                  <div className='publish-date' data-cy="article-publish-date">Published {article.publishDate}</div>
+                  <div className='publish-date'>Published {article.publishDate}</div>
                 </div>
                 {article.seriesTitle && <div className={styles.seriesTitle}>Series: <i>{article.seriesTitle}</i></div>}
               </div>
             </div>
             <br />
-            <div data-cy="article-body" className={styles.articleBodyWrapper}>
+            <div className={styles.articleBodyWrapper}>
               <PortableText
               value={article.body}
               components={blogPostComponents}
